@@ -50,3 +50,12 @@ hexo S --draft
 # 将草稿发布为正式文章
 hexo P hexo常用命令备忘录
 ```
+
+# 放图片或文件下载
+
+hexo在构建成静态页面时，会将目录`./source/images/`下的内容全部拷贝至`./public/images/`目录。而`public`目录为网站根目录。
+
+所以需要以下操作：
+1. 将文件或照片放至`./source/images/`目录下
+2. 在md文件中，图片通过`![例子](./images/<相对source/images目录的路径>)`或`<img src="images/<相对source/images目录的路径>" width="80%">`
+   文件通过`[例子-文件](./images/<相对source/images目录的路径>)`
