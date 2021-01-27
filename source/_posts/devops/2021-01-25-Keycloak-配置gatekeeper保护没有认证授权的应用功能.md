@@ -10,6 +10,7 @@ comments: true
 ---
 
 # 重要
+虽然gatekeeper停止开发，转向`oauth2proxy`。但由于`oauth2proxy`功能太弱。不适用此场景。继续选用gatekeeper配置。
 
 部署配置， 一共有三个组件（以nuclio举例）：
 1. keycloak:   提供oauth2的认证源。在此处配置client、redirect_url、scope等
@@ -19,9 +20,9 @@ comments: true
 # 环境说明
 keycloak: 
 
-gatekeeper:
+gatekeeper: 
 
-nuclio: 
+nuclio: 1.5.12
 
 # 安装
 
@@ -126,6 +127,9 @@ error redirect_url
 4. nuclio会在请求header中`x-nuclio-project-namespace: <namespace: eg. nuclio>`,来区分不同命名空间下的function, 后期可以结合`User Group`，
 来进行租户划分和授权管理。
 
+# 后续
+nuclio使用gatekeeper进行鉴权，多租户管理。
+
 # Reference
 
 [gatekeeper git 仓库](https://github.com/louketo/louketo-proxy)
@@ -136,3 +140,5 @@ error redirect_url
 
 [Keycloak 文档 - Audience support](https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/audience.adoc)
 
+# 参考，理解类似gatekeepr、oauth2proxy这类工具的实现
+[Open Policy Agent 文档](https://www.openpolicyagent.org/docs/latest/)
