@@ -119,6 +119,36 @@ metadata:
 ```
 删除命名空间`kube-system`下的coredns pod，重启dns服务。
 
+## 3. 通过pod增加hostalias
+以`deployment`修改举例
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      hostAliases:
+      - ip: "192.168.100.106"
+        hostnames:
+        - "rancher.icos.city"
+      containers:
+      - env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: nginx
+        name: nginx
+```
+
 # Reference
 [开发服务器 k8s 设置 自定义 dns解析](https://blog.csdn.net/fenglailea/article/details/100577403)
 [coredns 官网](https://coredns.io/)
