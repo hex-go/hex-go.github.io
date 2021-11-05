@@ -108,3 +108,9 @@ deploy:
   - type: git
     repo: https://GH_TOKEN@github.com/hex-py/hex-py.github.io.git
     branch: master
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
