@@ -5,6 +5,7 @@ go := golang
 k8s := kubernetes
 self := 个人工具
 ps := persistence
+theory := 计算机原理
 
 bash := bash
 
@@ -59,6 +60,11 @@ self:
 ps:
 	hexo new ps --path $(ps)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(ps)/$(FILE_NAME)
+
+.PHONY: theory
+theory:
+	hexo new theory --path $(theory)/$(FILE_NAME) $(TITLE)
+	git add $(POST_PATH)/$(theory)/$(FILE_NAME)
 
 .PHONY: bash
 bash:
