@@ -52,11 +52,34 @@ hexo S --draft
 hexo P hexo常用命令备忘录
 ```
 
-# 放图片或文件下载
+# 配置文件
 
+- `./_config.yml`
+
+- `./themes/next/_config.yml`
+
+- `./source/_data/next.yml`
+
+
+# 放图片或文件下载
+- 本网站挂载
 hexo在构建成静态页面时，会将目录`./source/images/`下的内容全部拷贝至`./public/images/`目录。而`public`目录为网站根目录。
 
 所以需要以下操作：
 1. 将文件或照片放至`./source/images/`目录下
-2. 在md文件中，图片通过`![例子](./images/<相对source/images目录的路径>)`或`<img src="images/<相对source/images目录的路径>" width="80%">`
-   文件通过`[例子-文件](./images/<相对source/images目录的路径>)`
+2. 在md文件中，图片通过`![例子](/images/<相对source/images目录的路径>)`或`<img src="/images/<相对source/images目录的路径>" width="80%">`
+   文件通过`[例子-文件](/images/<相对source/images目录的路径>)`
+> hexo构建后的静态网页会将source目录下的文件夹(除`_data/`, `_drafts`, `posts`)放至 根目录下，所以可以通过绝对路径索引。
+
+- 第三方工具挂载
+
+1. 使用chrome插件`微博图床`工具上传图片
+2. 将url放至md文件中例如`![xxx图片](https://tvax4.sinaimg.cn/large/006hT4w1ly1gaqf0wt3l1j31ac0u0dka.jpg)`
+
+# local-search设置
+
+
+# CDN加速
+
+# 国内字体
+
