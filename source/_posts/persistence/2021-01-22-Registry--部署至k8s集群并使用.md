@@ -23,7 +23,7 @@ nuclio平台部署，需要一个镜像仓库提供两个功能
 # 2.环境准备
 获取, 基于 
 [此chart](https://github.com/helm/charts/tree/master/stable/docker-registry) 修改的registry。 
-[离线chart](images/charts/prebaked-registry-0.0.1.tgz)
+[离线chart](/images/charts/prebaked-registry-0.0.1.tgz)
 
 # 3.部署
 ## 参数说明

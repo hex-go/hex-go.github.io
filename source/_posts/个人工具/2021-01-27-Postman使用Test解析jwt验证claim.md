@@ -25,7 +25,7 @@ curl --location --request POST 'https://sso.icos.city/auth/realms/icos/protocol/
 --data-urlencode 'client_secret=<client-secret>'
 ```
 
-<img src="images/post-image/postman-tests-decode-jwt-2.png" width="60%">
+<img src="/images/post-image/postman-tests-decode-jwt-2.png" width="60%">
 
 增加的Test脚本如下
 ```javascript 1.8
@@ -50,7 +50,7 @@ function jwt_decode(jwt) {
 }
 ```
 
-<img src="images/post-image/postman-tests-decode-jwt-2.png" width="60%">
+<img src="/images/post-image/postman-tests-decode-jwt-2.png" width="60%">
 
 
 # Reference

@@ -26,7 +26,7 @@ nginx-ingress-controller:3.21.0
 # 配置
 
 ## 1. 获取chart
-[离线备份](images/charts/ingress-nginx-3.21.0.tgz)
+[离线备份](/images/charts/ingress-nginx-3.21.0.tgz)
 
 ```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
