@@ -17,7 +17,7 @@ comments: true
 
 部署的external-dns包括以下组件:
 
-- external-dns: k3s集群内部，kube-system命名空间 [下载](/images/charts/dns/external-dns.yaml)
+- external-dns: k3s集群内部，kube-system命名空间 [下载](/images/charts/dns/external-dns.tar.gz)
 - etcd        : k3s集群内部，paas命名空间        [下载](/images/charts/dns/etcd.tar.gz)
 - coredns     : k3s集群内部，paas命名空间        [下载](/images/charts/dns/coredns-1.16.0.tgz)
 
