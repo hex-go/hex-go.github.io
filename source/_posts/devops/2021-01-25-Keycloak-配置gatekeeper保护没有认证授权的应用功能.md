@@ -51,7 +51,7 @@ nuclio: 1.5.12
 
 - `skip-openid-provider-tls-verify`: 跳过证书校验
 
-> proxy的chart  `value.yaml`如下：([proxy-chart文件](./images/charts/nuclio-proxy-1.0.0.tgz))
+> proxy的chart  `value.yaml`如下：([proxy-chart文件](/images/charts/nuclio-proxy-1.0.0.tgz))
 
 ```yaml
 #【----------------全局变量--------------------】
@@ -122,7 +122,7 @@ ingressHosts:
 
 1. 配置client
 
-    <img src="images/post-image/gatekeeper-keycloakclient-config.png" width="60%">
+    <img src="/images/post-image/gatekeeper-keycloakclient-config.png" width="60%">
 
 2. 配置Scope
    
@@ -132,7 +132,7 @@ ingressHosts:
     
     - `name: ` 设置名字为`nuclio-service`
 - `Protocol: ` 设置名字为`openid-connect`
-    <img src="images/post-image/gatekeeper-ClientScope-1.png" width="60%">
+    <img src="/images/post-image/gatekeeper-ClientScope-1.png" width="60%">
     
     2.2 在`Client Scope`页面 -- 点击`Mappers`
     
@@ -141,14 +141,14 @@ ingressHosts:
     - `Included Client: ` 输入`nuclio`，选择所要关联的client
     - `Add to access token: ` 将状态设置为`ON`
     
-    <img src="images/post-image/gatekeeper-ClientScope-2.png" width="60%">
+    <img src="/images/post-image/gatekeeper-ClientScope-2.png" width="60%">
     
     2.3 返回`Clients`页面 -- 点击`nuclio` client -- 选择`Client Scopes`标签页 -- 选择`Setup`
     
     在`Available Client Scopes` 中选择刚创建的`nuclio-service` -- 点击`Add selected`
     
 
-<img src="images/post-image/gatekeeper-ClientScope-3.png" width="60%">
+<img src="/images/post-image/gatekeeper-ClientScope-3.png" width="60%">
 
    
 
