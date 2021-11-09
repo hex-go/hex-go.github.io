@@ -6,7 +6,7 @@ k8s := kubernetes
 self := 个人工具
 ps := persistence
 theory := 计算机原理
-
+leetcode := leetcode
 bash := bash
 
 path := $($(type))/$(title)
@@ -70,3 +70,8 @@ theory:
 bash:
 	hexo new bash --path $(bash)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(bash)/$(FILE_NAME)
+
+.PHONY: leetcode
+leetcode:
+	hexo new leetcode --path $(leetcode)/$(FILE_NAME) $(TITLE)
+	git add $(POST_PATH)/$(leetcode)/$(FILE_NAME)
