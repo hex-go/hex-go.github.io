@@ -4,7 +4,7 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - golang
+  - Go
 date: '2020-05-25 03:35:11'
 top: false
 comments: true
