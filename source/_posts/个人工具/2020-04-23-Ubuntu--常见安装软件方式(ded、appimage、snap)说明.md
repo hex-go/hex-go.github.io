@@ -4,7 +4,7 @@ categories:
   - 个人工具
 tags:
   - 个人工具
-  - ubuntu
+  - Ubuntu
   - snap
   - appimage
   - snap
