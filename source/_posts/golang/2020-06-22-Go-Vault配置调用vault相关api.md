@@ -5,7 +5,7 @@ categories:
 tags:
   - Go
   - Vault
-  - draft
+  - Draft
 date: '2020-06-22 10:17:50'
 top: false
 comments: true

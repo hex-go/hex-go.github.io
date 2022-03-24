@@ -4,7 +4,7 @@ categories:
   - Golang
 tags:
   - Go
-  - draft
+  - Draft
 date: '2020-05-28 11:11:41'
 top: false
 comments: true

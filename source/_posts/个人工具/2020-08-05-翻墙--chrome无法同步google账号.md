@@ -4,8 +4,8 @@ categories:
   - 个人工具
 tags:
   - 个人工具
-  - v2ray
-  - chrome
+  - V2ray
+  - Chrome
 date: '2020-08-05 05:53:29'
 top: false
 comments: true

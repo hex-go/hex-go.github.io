@@ -4,7 +4,7 @@ categories:
   - Devops
 tags:
   - Devops
-  - draft
+  - Draft
 date: '2020-06-28 09:36:19'
 top: false
 comments: true

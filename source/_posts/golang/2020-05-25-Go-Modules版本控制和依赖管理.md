@@ -5,7 +5,7 @@ categories:
 tags:
   - Go
   - Go-Module
-  - draft
+  - Draft
 date: '2020-05-25 12:23:43'
 top: false
 comments: true

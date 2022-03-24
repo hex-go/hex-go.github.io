@@ -5,7 +5,7 @@ categories:
 tags:
   - Go
   - Validator
-  - draft
+  - Draft
 date: '2020-05-25 12:22:36'
 top: false
 comments: true
