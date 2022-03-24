@@ -4,8 +4,8 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - client-go
-  - go
+  - Client-go
+  - Go
 
 date: '2020-05-28 11:16:44'
 top: false
@@ -449,7 +449,7 @@ func (i *Crd) GetToken(namespace string, name string) (token *fleet.ClusterRegis
 
 
 #### 5.3.3 创建资源
-
+> 注意: `yaml`包一定要用 `"k8s.io/apimachinery/pkg/runtime/serializer/yaml"`， 否则想资源部分数据解析会报错
 ```go
 var CreateData = `
 kind: ClusterRegistrationToken
@@ -532,7 +532,7 @@ func (i *Crd) ListGitRepo(namespace string) (repoList *fleet.GitRepoList, err er
 
 ## 6. 查看容器日志
 
-```
+```go
 // PodLogs - pod  logs
 func (k *K8S) PodLogs(namespace string, name string) (string, error) {
 	podLogOpts := coreV1.PodLogOptions{}
