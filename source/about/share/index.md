@@ -38,7 +38,11 @@ Golang implementation of the Raft consensus protocol
 * [**kafka-operator**](https://github.com/banzaicloud/kafka-operator) <font color=#bbb>automate provisioning, management, autoscaling and operations of Apache Kafka clusters deployed to K8s.</font>
 * [**keycloak*](https://github.com/keycloak/keycloak-gatekeeper) <font color=#bbb>A OpenID / Keycloak Proxy service</font>
 
-### 2.4 其他
+### 2.4 云原生
+* [**koderover/zadig**](https://github.com/koderover/zadig) <font color=#bbb>七牛云的一款面向开发者设计的云原生持续交付(Continuous Delivery)产品，具备高可用 CI/CD 能力，提供云原生运行环境，支持开发者本地联调、微服务并行构建和部署、集成测试等</font>
+
+
+### 2.5 其他
 * [**HelloGitHub**](https://hellogithub.com/) <font color=#bbb>分享 GitHub 上有趣、入门级的开源项目</font>
 各种语言的开源项目、让生活变得更美好的工具、书籍、学习笔记、教程等。通过这些项目你将学习到更多编程知识、提高自己的编程技巧、发现编程的乐趣。
 * [**awesome**](https://github.com/sindresorhus/awesome#learn)<font color=#bbb>Awesome lists</font>
