@@ -6,6 +6,7 @@ tags:
   - Devops
   - Drone
   - Pipeline
+  - Dockerfile
 date: '2020-01-07 08:48:41'
 top: false
 comments: true

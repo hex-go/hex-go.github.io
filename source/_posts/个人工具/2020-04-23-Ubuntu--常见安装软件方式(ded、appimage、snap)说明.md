@@ -5,9 +5,8 @@ categories:
 tags:
   - 个人工具
   - Ubuntu
-  - snap
-  - appimage
-  - snap
+  - Appimage
+  - Snap
 date: '2020-04-23 09:09:56'
 top: false
 comments: true

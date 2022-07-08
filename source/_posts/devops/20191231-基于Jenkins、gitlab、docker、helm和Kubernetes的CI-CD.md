@@ -6,7 +6,7 @@ tags:
   - Devops
   - Jenkins
   - JenkinsFile
-  - gitlab
+  - Gitlab
   - Kubernetes
   - Docker  
 date: '2019-12-31 07:05:19'

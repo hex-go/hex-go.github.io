@@ -4,6 +4,7 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
+  - Draft
 date: '2021-11-10 08:21:32'
 top: false
 comments: true
