@@ -1,29 +1,46 @@
 # BUILD
 
+## 环境准备
+- 0. install nvm
 ```bash
-# 0. install nvm
 # refrence (https://hackernoon.com/how-to-install-node-js-on-ubuntu-16-04-18-04-using-nvm-node-version-manager-668a7166b854)
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 bash install_nvm.sh
 source ~/.profile
 nvm --version
 nvm ls-remote
+```
+
+- 1. install nodejs
+```bash
 nvm install 10.15
 nvm use 10.15
 node -v
 npm -v
-# 0. install yarn
+```
+
+- 2. isntall+set yarn
+
+```bash
 npm i -g npm --registry https://registry.npm.taobao.org
 npm i -g yarn --registry https://registry.npm.taobao.org
 # set yarn use taobao proxy
 yarn config set registry https://registry.npm.taobao.org
+```
+
+- 3. isntall hexo
+```bash
 # install pkg
 yarn install
+
 # 安装包
 npm install hexo-generator-searchdb --save
 npm install -g hexo-cli
 npm install -g hexo@3.9.0
+```
 
+## 本地调试
+```bash
 # local start
 hexo g
 ## 启动服务

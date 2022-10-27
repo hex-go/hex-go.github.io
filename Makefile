@@ -40,38 +40,47 @@ publish: gen
 devops:
 	hexo new devops --path $(devops)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(devops)/$(FILE_NAME)
+	typora $(POST_PATH)/$(devops)/$(FILE_NAME)
 
 .PHONY: golang
 golang:
 	hexo new golang --path $(go)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(go)/$(FILE_NAME)
+	typora $(POST_PATH)/$(golang)/$(FILE_NAME)
 
 .PHONY: k8s
 k8s:
 	hexo new k8s --path $(k8s)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(k8s)/$(FILE_NAME)
+	typora $(POST_PATH)/$(k8s)/$(FILE_NAME)
 
 .PHONY: self
 self:
 	hexo new self --path $(self)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(self)/$(FILE_NAME)
 
+	typora $(POST_PATH)/$(self)/$(FILE_NAME)
+
 .PHONY: ps
 ps:
 	hexo new ps --path $(ps)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(ps)/$(FILE_NAME)
+	typora $(POST_PATH)/$(ps)/$(FILE_NAME)
 
 .PHONY: theory
 theory:
 	hexo new theory --path $(theory)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(theory)/$(FILE_NAME)
+	typora $(POST_PATH)/$(theory)/$(FILE_NAME)
 
 .PHONY: bash
 bash:
 	hexo new bash --path $(bash)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(bash)/$(FILE_NAME)
+	typora $(POST_PATH)/$(bash)/$(FILE_NAME)
 
 .PHONY: leetcode
 leetcode:
 	hexo new leetcode --path $(leetcode)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(leetcode)/$(FILE_NAME)
+	typora $(POST_PATH)/$(leetcode)/$(FILE_NAME)
