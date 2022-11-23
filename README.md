@@ -64,10 +64,34 @@ make k8s TITLE='解析k8s-yaml成client-go中的data-structs'
 
 # 创建草稿
 hexo new draft hexo常用命令备忘录
+
+# make 创建草稿
+make draft TITLE='容器常见：Dockerfile的ENTRYPOINT中不能使用环境变量'
+
 # 本机预览草稿
 hexo S --draft
 # 将草稿发布为正式文章
 hexo P hexo常用命令备忘录
+# 或者 将草稿 以 bash 的布局发布(不支持--path参数知道目录，文件会保存在_post目录下，只能手动移动到相应子文件夹下)
+hexo publish bash hexo常用命令备忘录 
+
+make publish TYPE='bash' TITLE='hexo常用命令备忘录'
+```
+
+# 建议使用顺序
+> 尽量避免使用 make new 直接创建正式博客，除非有大块的时间将博客能一步到位写完。
+> make types 命令查看所有类型，
+1. make draft来创建文章草稿并推送远端
+```bash
+# TITLE 禁止包含空格、/、.等特殊字符
+make draft TITLE='容器常见：Dockerfile的ENTRYPOINT中不能使用环境变量'
+```
+2. 将草稿修改内容每天推送远端
+
+3. 草稿完成后 make publish 发布为正式博客，并推送github
+> make show-drafts 命令查看所有草稿文件名(不包含父目录和后缀)
+```bash
+make publish TYPE='bash' TITLE='hexo常用命令备忘录'
 ```
 
 # 配置文件

@@ -1,4 +1,6 @@
+TYPE:= bash
 TITLE := test
+
 #  post模板名 := 目标文件夹
 devops := devops
 go := golang
@@ -9,20 +11,24 @@ theory := 计算机原理
 leetcode := leetcode
 bash := bash
 
-path := $($(type))/$(title)
+path := $($(TYPE))/$(TITLE)
 BUILD_TIME=`date +%F`
 FILE_NAME=$(BUILD_TIME)-$(TITLE).md
 POST_PATH=source/_posts
+DRAFT_PATH=source/_drafts
 
-test:
-	@echo ">>>>>>>>>generate test<<<<<<<<<"
-	@echo $(TYPE)
-	@echo $(TITLE)
-	@echo $(path)
+types:
+	@echo ">>>>>>>>>show types<<<<<<<<<"
+	@echo Modles:  devops	go    k8s    self    ps    theory    leetcode    bash
+	@echo Folders: $(devops) $(go) $(k8s) $(self) $(ps) $(theory) $(leetcode) $(bash)
+
+show-drafts:
+	@echo ">>>>>>>>>show drafts<<<<<<<<<"
+	ls -1 $(DRAFT_PATH)/*.md |cut -d \/ -f 3 |cut -d . -f 1
 
 post:
-	@echo $(type)
-	@echo $(title)
+	@echo $(TYPE)
+	@echo $(TITLE)
 	@echo $(path)
     #hexo new --path $(path) $(type) $(title)
 
@@ -33,8 +39,8 @@ gen:
 local: gen
 	hexo s
 
-publish: gen
-	git commit -m "add some blog"
+#publish: gen
+#	git commit -m "add some blog"
 
 .PHONY: devops
 devops:
@@ -84,3 +90,18 @@ leetcode:
 	hexo new leetcode --path $(leetcode)/$(FILE_NAME) $(TITLE)
 	git add $(POST_PATH)/$(leetcode)/$(FILE_NAME)
 	typora $(POST_PATH)/$(leetcode)/$(FILE_NAME)
+
+.PHONY: draft
+draft:
+	hexo new draft $(TITLE)
+	git add $(DRAFT_PATH)/$(TITLE).md
+	git commit -m "feat($(TYPE)): add draft $(TITLE)"
+	git push origin
+
+.PHONY: publish
+publish:
+	hexo publish $(TYPE) $(TITLE)
+	mv $(POST_PATH)/*-$(TITLE).md $(POST_PATH)/$($(TYPE))/
+	git add $(POST_PATH)/$($(TYPE))/*-$(TITLE).md
+	git commit -m "feat($(TYPE)): add post $(TITLE)"
+	git push origin
