@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="重要1. 目录操作1.1 删除目录 删除目录下所有内容  12345678910111213141516171819&#x2F;&#x2F; Golang program to illustrate how to &#x2F;&#x2F; remove all the files and directories &#x2F;&#x2F; from the default directory package main import ( 	&quot;log&quot;	&quot;os&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go-Path-文件路径操作汇总">
+<meta property="og:url" content="https://hex-py.github.io/2020/09/22/golang-2020-09-22-Go-Path-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="重要1. 目录操作1.1 删除目录 删除目录下所有内容  12345678910111213141516171819&#x2F;&#x2F; Golang program to illustrate how to &#x2F;&#x2F; remove all the files and directories &#x2F;&#x2F; from the default directory package main import ( 	&quot;log&quot;	&quot;os&quot;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-22T00:31:58.000Z">
+<meta property="article:modified_time" content="2022-11-30T03:22:28.021Z">
+<meta property="article:author" content="Hex">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/2020/09/22/golang-2020-09-22-Go-Path-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Go-Path-文件路径操作汇总 | Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/22/golang-2020-09-22-Go-Path-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Go-Path-文件路径操作汇总
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-22 08:31:58" itemprop="dateCreated datePublished" datetime="2020-09-22T08:31:58+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/22/golang-2020-09-22-Go-Path-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Path-文件路径操作汇总" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h2 id="1-目录操作"><a href="#1-目录操作" class="headerlink" title="1. 目录操作"></a>1. 目录操作</h2><h3 id="1-1-删除目录"><a href="#1-1-删除目录" class="headerlink" title="1.1 删除目录"></a>1.1 删除目录</h3><ul>
+<li>删除目录下所有内容</li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Golang program to illustrate how to </span></span><br><span class="line"><span class="comment">// remove all the files and directories </span></span><br><span class="line"><span class="comment">// from the default directory </span></span><br><span class="line"><span class="keyword">package</span> main </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> ( </span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">) </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> { </span><br><span class="line"></span><br><span class="line">	<span class="comment">// Remove all the directories and files </span></span><br><span class="line">	<span class="comment">// Using RemoveAll() function </span></span><br><span class="line">	err := os.RemoveAll(<span class="string">"/Users/hex/Documents/go"</span>) </span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> { </span><br><span class="line">		log.Fatal(err) </span><br><span class="line">	} </span><br><span class="line">} </span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-2-创建目录"><a href="#1-2-创建目录" class="headerlink" title="1.2 创建目录"></a>1.2 创建目录</h3><ul>
+<li>级联创建所有目录</li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.MkdirAll(<span class="string">"/tmp/"</span>,FileMode)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-3-创建临时目录"><a href="#1-3-创建临时目录" class="headerlink" title="1.3 创建临时目录"></a>1.3 创建临时目录</h3><blockquote>
+<p>方法：</p>
+<p>调用<code>io.ioutil</code>包的 <code>ioutil.TempDir</code>方法 == == <code>os</code>包的 <code>os.MkdirTemp</code>方法</p>
+<p>作用：</p>
+<p>创建全局唯一的临时目录。但在使用完成后，需要自行删除此目录。</p>
+<p>参数：</p>
+<ul>
+<li>第一个<code>dir</code>参数如果不指定，则为<code>os.TempDir()</code>目录。如Linux下取<code>$TMPDIR</code>变量，变量空值则为<code>/tmp</code>目录。</li>
+</ul>
+</blockquote>
+<p> <code>ioutil.TempDir</code>方法调用过程说明：</p>
+<ul>
+<li>在目录<code>/tmp</code>目录中创建一个名称以<code>prefix</code>开头的新目录</li>
+<li>并返回新创建目录的路径</li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dir, err := ioutil.TempDir(<span class="string">"/tmp"</span>, <span class="string">"prefix-"</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">	log.Fatal(err)</span><br><span class="line">}</span><br><span class="line"><span class="keyword">defer</span> os.RemoveAll(dir)</span><br><span class="line"></span><br><span class="line">fmt.Println(dir) <span class="comment">// 例如目录名为 "/tmp/prefix-054003078/"</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="1-3-1-创建时间目录"><a href="#1-3-1-创建时间目录" class="headerlink" title="1.3.1 创建时间目录"></a>1.3.1 创建时间目录</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// logsDir := os.path.Join("/tmp", time.Now().Format("2006/01/02"))</span></span><br><span class="line">logsDir := filepath.Join(<span class="string">"/tmp"</span>, time.Now().Format(<span class="string">"2006/01/02"</span>))</span><br><span class="line">err := os.MkdirAll(logsDir, <span class="number">666</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-4-检查路径是否为目录"><a href="#1-4-检查路径是否为目录" class="headerlink" title="1.4 检查路径是否为目录"></a>1.4 检查路径是否为目录</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IsDir</span><span class="params">(name <span class="type">string</span>)</span></span> <span class="type">bool</span> {</span><br><span class="line">    <span class="keyword">if</span> info, err := os.State(name); err == <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">return</span> info.IsDir()</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-5-打印当前目录"><a href="#1-5-打印当前目录" class="headerlink" title="1.5 打印当前目录"></a>1.5 打印当前目录</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.Getwd() <span class="comment">//获取当前目录</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-6-文件目录拼接"><a href="#1-6-文件目录拼接" class="headerlink" title="1.6 文件目录拼接"></a>1.6 文件目录拼接</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">os.path.join(<span class="string">"/tmp"</span>, <span class="string">"/text.md"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-7-目录复制"><a href="#1-7-目录复制" class="headerlink" title="1.7 目录复制"></a>1.7 目录复制</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CopyDir</span><span class="params">(srcPath, desPath <span class="type">string</span>)</span></span> <span class="type">error</span> {</span><br><span class="line">	<span class="comment">//检查目录是否正确</span></span><br><span class="line">	<span class="keyword">if</span> srcInfo, err := os.Stat(srcPath); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	} <span class="keyword">else</span> {</span><br><span class="line">		<span class="keyword">if</span> !srcInfo.IsDir() {</span><br><span class="line">			<span class="keyword">return</span> errors.New(<span class="string">"源路径不是一个正确的目录！"</span>)</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span> desInfo, err := os.Stat(desPath); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	} <span class="keyword">else</span> {</span><br><span class="line">		<span class="keyword">if</span> !desInfo.IsDir() {</span><br><span class="line">			<span class="keyword">return</span> errors.New(<span class="string">"目标路径不是一个正确的目录！"</span>)</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span> strings.TrimSpace(srcPath) == strings.TrimSpace(desPath) {</span><br><span class="line">		<span class="keyword">return</span> errors.New(<span class="string">"源路径与目标路径不能相同！"</span>)</span><br><span class="line">	}</span><br><span class="line"> </span><br><span class="line">	err := filepath.Walk(srcPath, <span class="function"><span class="keyword">func</span><span class="params">(path <span class="type">string</span>, f os.FileInfo, err <span class="type">error</span>)</span></span> <span class="type">error</span> {</span><br><span class="line">		<span class="keyword">if</span> f == <span class="literal">nil</span> {</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		}</span><br><span class="line"> </span><br><span class="line">		<span class="comment">//复制目录是将源目录中的子目录复制到目标路径中，不包含源目录本身</span></span><br><span class="line">		<span class="keyword">if</span> path == srcPath {</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		}</span><br><span class="line"> </span><br><span class="line">		<span class="comment">//生成新路径</span></span><br><span class="line">		destNewPath := strings.Replace(path, srcPath, desPath, <span class="number">-1</span>)</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">if</span> !f.IsDir() {</span><br><span class="line">			CopyFile(path, destNewPath)</span><br><span class="line">		} <span class="keyword">else</span> {</span><br><span class="line">			<span class="keyword">if</span> !FileIsExisted(destNewPath) {</span><br><span class="line">				<span class="keyword">return</span> MakeDir(destNewPath)</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	})</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> err</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-8-遍历目录下所有文件-不包含子目录"><a href="#1-8-遍历目录下所有文件-不包含子目录" class="headerlink" title="1.8 遍历目录下所有文件(不包含子目录)"></a>1.8 遍历目录下所有文件(不包含子目录)</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 获取指定路径下的所有文件，只搜索当前路径，不进入下一级目录，可匹配后缀过滤（suffix为空则不过滤）*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ListDir</span><span class="params">(dir, suffix <span class="type">string</span>)</span></span> (files []<span class="type">string</span>, err <span class="type">error</span>) {</span><br><span class="line">   files = []<span class="type">string</span>{}</span><br><span class="line"> </span><br><span class="line">   _dir, err := ioutil.ReadDir(dir)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">   }</span><br><span class="line"> </span><br><span class="line">   suffix = strings.ToLower(suffix)  <span class="comment">//匹配后缀</span></span><br><span class="line"> </span><br><span class="line">   <span class="keyword">for</span> _, _file := <span class="keyword">range</span> _dir {</span><br><span class="line">      <span class="keyword">if</span> _file.IsDir() {</span><br><span class="line">         <span class="keyword">continue</span>   <span class="comment">//忽略目录</span></span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">if</span> <span class="built_in">len</span>(suffix) == <span class="number">0</span> || strings.HasSuffix(strings.ToLower(_file.Name()), suffix) {</span><br><span class="line">         <span class="comment">//文件后缀匹配</span></span><br><span class="line">         files = <span class="built_in">append</span>(files, path.Join(dir, _file.Name()))</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line"> </span><br><span class="line">   <span class="keyword">return</span> files, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-9-遍历目录下所有文件-包含子目录"><a href="#1-9-遍历目录下所有文件-包含子目录" class="headerlink" title="1.9 遍历目录下所有文件(包含子目录)"></a>1.9 遍历目录下所有文件(包含子目录)</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 获取指定路径下以及所有子目录下的所有文件，可匹配后缀过滤（suffix为空则不过滤）*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">WalkDir</span><span class="params">(dir, suffix <span class="type">string</span>)</span></span> (files []<span class="type">string</span>, err <span class="type">error</span>) {</span><br><span class="line">	files = []<span class="type">string</span>{}</span><br><span class="line"> </span><br><span class="line">	err = filepath.Walk(dir, <span class="function"><span class="keyword">func</span><span class="params">(fname <span class="type">string</span>, fi os.FileInfo, err <span class="type">error</span>)</span></span> <span class="type">error</span> {</span><br><span class="line">		<span class="keyword">if</span> fi.IsDir() {</span><br><span class="line">			<span class="comment">//忽略目录</span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		}</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(suffix) == <span class="number">0</span> || strings.HasSuffix(strings.ToLower(fi.Name()), suffix) {</span><br><span class="line">			<span class="comment">//文件后缀匹配</span></span><br><span class="line">			files = <span class="built_in">append</span>(files, fname)</span><br><span class="line">		}</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	})</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> files, err</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+<h2 id="2-文件操作"><a href="#2-文件操作" class="headerlink" title="2. 文件操作"></a>2. 文件操作</h2><h3 id="2-1-文件创建或追加内容"><a href="#2-1-文件创建或追加内容" class="headerlink" title="2.1 文件创建或追加内容"></a>2.1 文件创建或追加内容</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"io/ioutil"</span></span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">    <span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="comment">// ioutil包 创建文件</span></span><br><span class="line">    err := ioutil.WriteFile(<span class="string">"temp.txt"</span>, []<span class="type">byte</span>(<span class="string">"first line\n"</span>), <span class="number">0644</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// os包 Create方法 创建文件</span></span><br><span class="line">    f1, _ := os.Create(<span class="string">"./temp.txt"</span>)</span><br><span class="line">    <span class="keyword">defer</span> f1.<span class="built_in">close</span>()</span><br><span class="line">    <span class="comment">// os包 Openfile 读写打开文件</span></span><br><span class="line">    f2, _ := os.Openfile(<span class="string">"./temp.txt"</span>, os.O_RDWR|os.O_CREATE|os.O_TRUNC, <span class="number">0666</span>)</span><br><span class="line">    <span class="keyword">defer</span> f2.<span class="built_in">close</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 追加文件内容</span></span><br><span class="line">    file, err := os.OpenFile(<span class="string">"temp.txt"</span>, os.O_APPEND|os.O_WRONLY, <span class="number">0644</span>)</span><br><span class="line">    <span class="keyword">defer</span> file.<span class="built_in">close</span>()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        log.Println(err)</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> _, err := file.WriteString(<span class="string">"second line"</span>); err != <span class="literal">nil</span> {</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Print the contents of the file</span></span><br><span class="line">    data, err := ioutil.ReadFile(<span class="string">"temp.txt"</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    }</span><br><span class="line">    fmt.Println(<span class="type">string</span>(data))</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="2-2-创建临时文件"><a href="#2-2-创建临时文件" class="headerlink" title="2.2 创建临时文件"></a>2.2 创建临时文件</h3><blockquote>
+<p>方法：</p>
+<p>调用<code>io.ioutil</code>包的 <code>ioutil.TempFile</code>方法[Go-旧版]  == <code>os</code>包的 <code>os.CreateTemp</code>方法[ Go 1.17以上版本]</p>
+<p>作用： </p>
+<p>创建全局唯一的临时文件。但在使用完成后，需要自行删除此文件。</p>
+<p>参数：</p>
+<ul>
+<li><p>第一个<code>dir</code>参数如果不指定，则为<code>os.TempDir()</code>目录。如Linux下取<code>$TMPDIR</code>变量，变量空值则为<code>/tmp</code>目录。</p>
+</li>
+<li><p>第二个参数<code>pattern</code>，在Go-1.11以后支持使用<code>*</code>占位符来制定随机串的位置，没有<code>*</code>则保持默认，再最后追加随机串。</p>
+</li>
+</ul>
+</blockquote>
+<p> <code>ioutil.TempFile</code>方法调用过程说明：</p>
+<ul>
+<li>在目录<code>/tmp</code>目录中以<code>prefix</code>开头的名称创建一个新文件</li>
+<li>打开文件进行读写操作</li>
+<li>并返回新创建临时文件对象<code>*os.File</code></li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不指定随机串位置</span></span><br><span class="line">file, err := ioutil.TempFile(<span class="string">"/tmp"</span>, <span class="string">"prefix-"</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">}</span><br><span class="line"><span class="keyword">defer</span> os.Remove(file.Name())</span><br><span class="line"></span><br><span class="line">fmt.Println(file.Name()) <span class="comment">// 例如文件名为: "/tmp/prefix-054003078"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定随机串位置</span></span><br><span class="line">file2, err2 := ioutil.TempFile(<span class="string">"/tmp"</span>, <span class="string">"myname.*.go"</span>)</span><br><span class="line"><span class="keyword">if</span> err2 != <span class="literal">nil</span> {</span><br><span class="line">    log.Fatal(err2)</span><br><span class="line">}</span><br><span class="line"><span class="keyword">defer</span> os.Remove(file2.Name())</span><br><span class="line"></span><br><span class="line">fmt.Println(file2.Name()) <span class="comment">// 例如文件名为: "/tmp/myname.054003078.bat"</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="2-3-检查文件是否存在"><a href="#2-3-检查文件是否存在" class="headerlink" title="2.3 检查文件是否存在"></a>2.3 检查文件是否存在</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">FileIsExisted</span><span class="params">(filename <span class="type">string</span>)</span></span> <span class="type">bool</span> {</span><br><span class="line">    existed := <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> _, err := os.Stat(filename); os.IsNotExist(err){</span><br><span class="line">        existed = <span class="literal">false</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> existed</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="2-4-重命名文件"><a href="#2-4-重命名文件" class="headerlink" title="2.4 重命名文件"></a>2.4 重命名文件</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.Rename(<span class="string">"/tmp/1.md"</span>, <span class="string">"tmp/2.md"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="2-5-复制文件"><a href="#2-5-复制文件" class="headerlink" title="2.5 复制文件"></a>2.5 复制文件</h3><blockquote>
+<p> 复制文件过程中一定要注意将原始文件的权限也要复制过去，否则可能会导致可执行文件不能执行等问题。</p>
+</blockquote>
+<h4 id="2-5-1-使用io-Copy"><a href="#2-5-1-使用io-Copy" class="headerlink" title="2.5.1 使用io.Copy"></a>2.5.1 使用<code>io.Copy</code></h4><blockquote>
+<p>方法简单，但是缺少灵活性。如果文件太大，不是一种很好的方法。</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">copy</span><span class="params">(src, dst <span class="type">string</span>)</span></span> (<span class="type">int64</span>, <span class="type">error</span>) {</span><br><span class="line">    <span class="comment">// 获取文件权限</span></span><br><span class="line">    sourceFileStat, err := os.Stat(src)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">    }</span><br><span class="line">    perm := sourceFileStat.Mode()</span><br><span class="line">    <span class="comment">// 判断文件状态</span></span><br><span class="line">    <span class="keyword">if</span> !perm.IsRegular() {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, fmt.Errorf(<span class="string">"%s is not a regular file"</span>, src)</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 打开源文件</span></span><br><span class="line">    source, err := os.Open(src)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">defer</span> source.Close()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建目标文件</span></span><br><span class="line">    <span class="comment">// destination, err := os.Create(dst)	//无法复制源文件的所有权限</span></span><br><span class="line">    <span class="comment">//复制源文件的所有权限</span></span><br><span class="line">	destination, err := os.OpenFile(des, os.O_RDWR|os.O_CREATE|os.O_TRUNC, perm)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">defer</span> destination.Close()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 拷贝</span></span><br><span class="line">    nBytes, err := io.Copy(destination, source)</span><br><span class="line">    <span class="keyword">return</span> nBytes, err</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="2-5-2-使用ioutil包WriteFile-和-ReadFile"><a href="#2-5-2-使用ioutil包WriteFile-和-ReadFile" class="headerlink" title="2.5.2 使用ioutil包WriteFile() 和 ReadFile()"></a>2.5.2 使用<code>ioutil</code>包<code>WriteFile()</code> 和 <code>ReadFile()</code></h4><blockquote>
+<p>一次性读取输入文件，然后再一次性写入目标文件。依然不是很高效的方法。</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CopyFile</span><span class="params">(src, des <span class="type">string</span>)</span></span> (written <span class="type">int64</span>, err <span class="type">error</span>) {</span><br><span class="line">	<span class="comment">// 打开源文件</span></span><br><span class="line">    srcFile, err := os.Open(src)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">defer</span> srcFile.Close()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取源文件的权限</span></span><br><span class="line">    fi, _ := srcFile.Stat()</span><br><span class="line">	perm := fi.Mode()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 打开并读取源文件</span></span><br><span class="line">	input, err := ioutil.ReadFile(src)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 创建并写入目标文件</span></span><br><span class="line">	err = ioutil.WriteFile(des, input, perm)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        fmt.Println(<span class="string">"Error creating"</span>, destinationFile, err)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="type">int64</span>(<span class="built_in">len</span>(input)), <span class="literal">nil</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="2-5-3-使用os包Read-和-Write"><a href="#2-5-3-使用os包Read-和-Write" class="headerlink" title="2.5.3 使用os包Read() 和 Write()"></a>2.5.3 使用<code>os</code>包<code>Read()</code> 和 <code>Write()</code></h4><blockquote>
+<ol>
+<li>使用buffer一块块地复制文件</li>
+</ol>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CopyFile</span><span class="params">(src <span class="type">string</span>, des <span class="type">string</span>, bufSize <span class="type">int</span>)</span></span> (written <span class="type">int64</span>, err <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">if</span> bufSize &lt;= <span class="number">0</span> {</span><br><span class="line">        bufSize = <span class="number">1</span>*<span class="number">1024</span>*<span class="number">1024</span> <span class="comment">// buf大小1M</span></span><br><span class="line">    }</span><br><span class="line">	buf := <span class="built_in">make</span>([]<span class="type">byte</span>, bufSize)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 打开源文件</span></span><br><span class="line">    srcFile, err := os.Open(src)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">defer</span> srcFile.Close()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取文件权限</span></span><br><span class="line">	fileInfo, _ := srcFile.Stat()</span><br><span class="line">	perm := fileInfo.Mode()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打开目标文件+原权限</span></span><br><span class="line">	destFile, err := os.OpenFile(des, os.O_RDWR|os.O_CREATE|os.O_TRUNC, perm)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">defer</span> destFile.Close()</span><br><span class="line"></span><br><span class="line">	count := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> {</span><br><span class="line">   		n, err := srcFile.Read(buf)</span><br><span class="line">   		<span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; err != io.EOF {</span><br><span class="line">      		<span class="keyword">return</span> err</span><br><span class="line">   		}</span><br><span class="line">   		</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span> {</span><br><span class="line">      		<span class="keyword">break</span></span><br><span class="line">   		}</span><br><span class="line">        </span><br><span class="line">   		<span class="keyword">if</span> wn, err := destFile.Write(buf[:n]); err != <span class="literal">nil</span> {</span><br><span class="line">      		<span class="keyword">return</span> err</span><br><span class="line">   		} <span class="keyword">else</span>{</span><br><span class="line">       		count += wn</span><br><span class="line">   		}</span><br><span class="line">	}</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">return</span> <span class="type">int64</span>(count), <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://books.studygolang.com/The-Golang-Standard-Library-by-Example/chapter06/06.2.html">path/filepath — 兼容操作系统的文件路径操作</a><br><a target="_blank" rel="noopener" href="https://golangbyexample.com/append-file-golang/">Append to an existing file in Go (Golang)</a></p>
+</body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢支持</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/../images/wx_reward.jpg" alt="Hex 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Go/" rel="tag"><i class="fa fa-tag"></i> Go</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/22/golang-2020-09-22-Go-HDFS-%E6%93%8D%E4%BD%9Chdfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="prev" title="Go-HDFS-操作hdfs文件系统">
+      <i class="fa fa-chevron-left"></i> Go-HDFS-操作hdfs文件系统
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/22/golang-2020-09-22-Go-Gin-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" rel="next" title="Go-Gin-项目结构最佳实践">
+      Go-Gin-项目结构最佳实践 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%A6%81"><span class="nav-text">重要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="nav-text">1. 目录操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95"><span class="nav-text">1.1 删除目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="nav-text">1.2 创建目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%88%9B%E5%BB%BA%E4%B8%B4%E6%97%B6%E7%9B%AE%E5%BD%95"><span class="nav-text">1.3 创建临时目录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-%E5%88%9B%E5%BB%BA%E6%97%B6%E9%97%B4%E7%9B%AE%E5%BD%95"><span class="nav-text">1.3.1 创建时间目录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E6%A3%80%E6%9F%A5%E8%B7%AF%E5%BE%84%E6%98%AF%E5%90%A6%E4%B8%BA%E7%9B%AE%E5%BD%95"><span class="nav-text">1.4 检查路径是否为目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E6%89%93%E5%8D%B0%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95"><span class="nav-text">1.5 打印当前目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E6%8B%BC%E6%8E%A5"><span class="nav-text">1.6 文件目录拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-%E7%9B%AE%E5%BD%95%E5%A4%8D%E5%88%B6"><span class="nav-text">1.7 目录复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6-%E4%B8%8D%E5%8C%85%E5%90%AB%E5%AD%90%E7%9B%AE%E5%BD%95"><span class="nav-text">1.8 遍历目录下所有文件(不包含子目录)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6-%E5%8C%85%E5%90%AB%E5%AD%90%E7%9B%AE%E5%BD%95"><span class="nav-text">1.9 遍历目录下所有文件(包含子目录)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-text">2. 文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%E6%88%96%E8%BF%BD%E5%8A%A0%E5%86%85%E5%AE%B9"><span class="nav-text">2.1 文件创建或追加内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%88%9B%E5%BB%BA%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6"><span class="nav-text">2.2 创建临时文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-text">2.3 检查文件是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6"><span class="nav-text">2.4 重命名文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-text">2.5 复制文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-1-%E4%BD%BF%E7%94%A8io-Copy"><span class="nav-text">2.5.1 使用io.Copy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-2-%E4%BD%BF%E7%94%A8ioutil%E5%8C%85WriteFile-%E5%92%8C-ReadFile"><span class="nav-text">2.5.2 使用ioutil包WriteFile() 和 ReadFile()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-3-%E4%BD%BF%E7%94%A8os%E5%8C%85Read-%E5%92%8C-Write"><span class="nav-text">2.5.3 使用os包Read() 和 Write()</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

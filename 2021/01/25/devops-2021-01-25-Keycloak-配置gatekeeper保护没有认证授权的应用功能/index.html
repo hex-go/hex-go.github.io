@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="重要虽然louketo-proxy停止开发，转向oauth2proxy。但由于oauth2proxy功能太弱。不适用此场景。继续选用louketo-proxy实现。 部署配置， 一共有三个组件（以nuclio举例）：  keycloak:    提供oauth2的认证源。在此处配置client、redirect_url、scope等 louketo-proxy: 作为proxy，代理所有走向nuc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Keycloak-配置gatekeeper保护没有认证授权的应用功能">
+<meta property="og:url" content="https://hex-py.github.io/2021/01/25/devops-2021-01-25-Keycloak-%E9%85%8D%E7%BD%AEgatekeeper%E4%BF%9D%E6%8A%A4%E6%B2%A1%E6%9C%89%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83%E7%9A%84%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="重要虽然louketo-proxy停止开发，转向oauth2proxy。但由于oauth2proxy功能太弱。不适用此场景。继续选用louketo-proxy实现。 部署配置， 一共有三个组件（以nuclio举例）：  keycloak:    提供oauth2的认证源。在此处配置client、redirect_url、scope等 louketo-proxy: 作为proxy，代理所有走向nuc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hex-py.github.io/images/post-image/gatekeeper-keycloakclient-config.png">
+<meta property="og:image" content="https://hex-py.github.io/images/post-image/gatekeeper-ClientScope-1.png">
+<meta property="og:image" content="https://hex-py.github.io/images/post-image/gatekeeper-ClientScope-2.png">
+<meta property="og:image" content="https://hex-py.github.io/images/post-image/gatekeeper-ClientScope-3.png">
+<meta property="article:published_time" content="2021-01-25T00:46:16.000Z">
+<meta property="article:modified_time" content="2022-11-30T03:22:28.021Z">
+<meta property="article:author" content="Hex">
+<meta property="article:tag" content="Devops">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hex-py.github.io/images/post-image/gatekeeper-keycloakclient-config.png">
+
+<link rel="canonical" href="https://hex-py.github.io/2021/01/25/devops-2021-01-25-Keycloak-%E9%85%8D%E7%BD%AEgatekeeper%E4%BF%9D%E6%8A%A4%E6%B2%A1%E6%9C%89%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83%E7%9A%84%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Keycloak-配置gatekeeper保护没有认证授权的应用功能 | Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/01/25/devops-2021-01-25-Keycloak-%E9%85%8D%E7%BD%AEgatekeeper%E4%BF%9D%E6%8A%A4%E6%B2%A1%E6%9C%89%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83%E7%9A%84%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Keycloak-配置gatekeeper保护没有认证授权的应用功能
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-01-25 08:46:16" itemprop="dateCreated datePublished" datetime="2021-01-25T08:46:16+08:00">2021-01-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/01/25/devops-2021-01-25-Keycloak-%E9%85%8D%E7%BD%AEgatekeeper%E4%BF%9D%E6%8A%A4%E6%B2%A1%E6%9C%89%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83%E7%9A%84%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD/" class="post-meta-item leancloud_visitors" data-flag-title="Keycloak-配置gatekeeper保护没有认证授权的应用功能" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>虽然louketo-proxy停止开发，转向<code>oauth2proxy</code>。但由于<code>oauth2proxy</code>功能太弱。不适用此场景。继续选用louketo-proxy实现。</p>
+<p>部署配置， 一共有三个组件（以nuclio举例）：</p>
+<ol>
+<li>keycloak:    提供oauth2的认证源。在此处配置client、redirect_url、scope等</li>
+<li>louketo-proxy: 作为proxy，代理所有走向<code>nuclio</code>的流量。与keycloak集成，没有权限的请求将被<code>proxy</code>拦截。</li>
+<li>nuclio:        没有登录、授权的应用（一种faas平台）。</li>
+</ol>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>keycloak:  10.0.2</p>
+<p>louketo-proxy: v2.3.0</p>
+<p>nuclio: 1.5.12</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><blockquote>
+<p>louketo-proxy启动的ingress地址对用户开放，名字应为proxy后面服务的真实地址，如代理proxy服务，则需设置为<code>faas.icos.city</code>。</p>
+</blockquote>
+<h2 id="1-配置louketo-proxy"><a href="#1-配置louketo-proxy" class="headerlink" title="1. 配置louketo-proxy"></a>1. 配置louketo-proxy</h2><ul>
+<li><p><code>client-id</code>: 配置为keycloak服务中创建的<code>client-name</code></p>
+</li>
+<li><p><code>client-secret</code>: 配置为keycloak服务中创建的<code>client</code>, 点击<code>credentials</code>获取。</p>
+</li>
+<li><p><code>discovery-url</code>: 注意修改keycloak地址和realm名。<code>&lt;keycloak-address&gt;/auth/realms/&lt;realm-name&gt;</code></p>
+</li>
+<li><p><code>redirection-url</code>: 认证完成后，返回的访问地址，即<code>louketo-proxy</code>的ingress地址。注意，不带<code>oauth/callback</code>。</p>
+</li>
+<li><p><code>upstream-url</code>: louketo-proxy 后面的真实应用地址。</p>
+</li>
+<li><p><code>enable-refresh-tokens</code>: 允许refresh-token刷新token。</p>
+<blockquote>
+<p>用户访问应用，会重定向到Keycloak。 那里获得授权代码。 前端<code>louketo-proxy</code>将此授权代码交换为<code>access token</code>、<code>refresh token</code>，<br>这些token放在前端的cookie中。 当使用过期的<code>access token</code>调用后端时，<code>refresh token</code>将被解密并用于获取新的<code>access token</code>。<br><code>refresh token</code>可以过期或无效。 当返回401时，前端应刷新页面，以便将用户重定向到Keycloak。<br>更安全的做法是将token存储在redis中, 而不是存储在前端Cookie中。</p>
+</blockquote>
+</li>
+<li><p><code>skip-upstream-tls-verify</code>: 跳过证书校验</p>
+</li>
+<li><p><code>skip-openid-provider-tls-verify</code>: 跳过证书校验</p>
+</li>
+</ul>
+<blockquote>
+<p>proxy的chart  <code>value.yaml</code>如下：(<a href="/images/charts/nuclio-proxy-1.0.0.tgz">proxy-chart文件</a>)</p>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#【----------------全局变量--------------------】</span></span><br><span class="line"><span class="attr">global:</span></span><br><span class="line">  <span class="comment">#  # 镜像仓库名称</span></span><br><span class="line">  <span class="attr">imageRepositoryName:</span> <span class="string">reg.chebai.org</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#【----------------镜像配置--------------------】</span></span><br><span class="line"><span class="comment"># 镜像</span></span><br><span class="line"><span class="attr">imageRepository:</span> <span class="string">paas/louketo-proxy</span></span><br><span class="line">  <span class="comment">#版本要求3位数,不写默认从.Chart.appVersion拿</span></span><br><span class="line"><span class="comment">#imageTag: 5.6.10</span></span><br><span class="line">  <span class="comment"># 拉取镜像策略</span></span><br><span class="line"><span class="attr">imagePullPolicy:</span> <span class="string">Always</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#容器启动命令和参数</span></span><br><span class="line"><span class="attr">containersCommand:</span> {}</span><br><span class="line"><span class="attr">containersArgs:</span> <span class="string">'[</span></span><br><span class="line"><span class="string">  "--client-id=&lt;client-id&gt;",</span></span><br><span class="line"><span class="string">  "--client-secret=&lt;client-secret&gt;",</span></span><br><span class="line"><span class="string">  "--discovery-url=&lt;keycloak-address&gt;/auth/realms/&lt;realm-name&gt;",</span></span><br><span class="line"><span class="string">  "--enable-default-deny=true",</span></span><br><span class="line"><span class="string">  "--secure-cookie=false",</span></span><br><span class="line"><span class="string">  "--encryption-key=AgXa7xRcoClDEU0ZDSH4X0XhL5Qy2Z2j",</span></span><br><span class="line"><span class="string">  "--enable-json-logging=true",</span></span><br><span class="line"><span class="string">  "--enable-logging=true",</span></span><br><span class="line"><span class="string">  "--enable-request-id=true",</span></span><br><span class="line"><span class="string">  "--enable-security-filter=true",</span></span><br><span class="line"><span class="string">  "--http-only-cookie=true",</span></span><br><span class="line"><span class="string">  "--listen=0.0.0.0:8080",</span></span><br><span class="line"><span class="string">  "--preserve-host=true",</span></span><br><span class="line"><span class="string">  "--enable-logging",</span></span><br><span class="line"><span class="string">  "--redirection-url=http://faas.example.com",</span></span><br><span class="line"><span class="string">  "--upstream-url=http://nuclio-dashboard:8070",</span></span><br><span class="line"><span class="string">  "--skip-openid-provider-tls-verify",</span></span><br><span class="line"><span class="string">  "--skip-upstream-tls-verify",</span></span><br><span class="line"><span class="string">  "--resources=uri=/*|methods=GET,POST,DELETE,PUT,HEAD|roles=nuclio:viewer"</span></span><br><span class="line"><span class="string">  ]'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#【----------------服务配置--------------------】</span></span><br><span class="line"><span class="comment">#是否启动服务</span></span><br><span class="line"><span class="attr">serviceEnabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 服务映射端口类型ClusterIP、NodePort</span></span><br><span class="line"><span class="attr">serviceType:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="comment"># 服务</span></span><br><span class="line"><span class="attr">serviceName:</span> <span class="string">nuclio-proxy</span></span><br><span class="line"><span class="attr">servicePorts:</span></span><br><span class="line"><span class="comment"># 容器内端口</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line">  <span class="attr">protocol:</span> <span class="string">"TCP"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">ingressEnabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">ingressAnnotations:</span></span><br><span class="line">  <span class="attr">kubernetes.io/ingress.class:</span> <span class="string">nginx</span></span><br><span class="line"></span><br><span class="line"><span class="attr">ingressAddns:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="attr">ingressHosts:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">host:</span> <span class="string">faas</span></span><br><span class="line">  <span class="attr">domain:</span> <span class="string">example.com</span></span><br><span class="line">  <span class="attr">paths:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">path:</span> <span class="string">/</span></span><br><span class="line">    <span class="attr">servicePort:</span> <span class="number">8080</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-配置keycloak"><a href="#2-配置keycloak" class="headerlink" title="2. 配置keycloak"></a>2. 配置keycloak</h2><ol>
+<li><p>配置client</p>
+ <img width="60%" data-src="/images/post-image/gatekeeper-keycloakclient-config.png">
+</li>
+<li><p>配置Scope</p>
+<blockquote>
+<p>也可以直接通过Mappers配置audience,  ClientScope只是多封装了一层，好处是便于多个client共用。</p>
+</blockquote>
+<p> 2.1 选择<code>icos</code>realm – 点击<code>Client Scopes</code> – 点击<code>Settings</code></p>
+<ul>
+<li><code>name: </code> 设置名字为<code>nuclio-service</code></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p><code>Protocol: </code> 设置名字为<code>openid-connect</code></p>
+  <img width="60%" data-src="/images/post-image/gatekeeper-ClientScope-1.png">
+  
+<p>  2.2 在<code>Client Scope</code>页面 – 点击<code>Mappers</code></p>
+<ul>
+<li><code>name: </code> 设置名字为<code>nuclio-audience</code></li>
+<li><code>Mapper Type: </code> 设置为<code>Audience</code></li>
+<li><code>Included Client: </code> 输入<code>nuclio</code>，选择所要关联的client</li>
+<li><code>Add to access token: </code> 将状态设置为<code>ON</code></li>
+</ul>
+  <img width="60%" data-src="/images/post-image/gatekeeper-ClientScope-2.png">
+  
+<p>  2.3 返回<code>Clients</code>页面 – 点击<code>nuclio</code> client – 选择<code>Client Scopes</code>标签页 – 选择<code>Setup</code></p>
+<p>  在<code>Available Client Scopes</code> 中选择刚创建的<code>nuclio-service</code> – 点击<code>Add selected</code></p>
+</li>
+</ul>
+<img width="60%" data-src="/images/post-image/gatekeeper-ClientScope-3.png">
+
+   
+
+<ol start="3">
+<li>创建用户</li>
+</ol>
+<p>并将</p>
+<h2 id="3-部署nuclio"><a href="#3-部署nuclio" class="headerlink" title="3. 部署nuclio"></a>3. 部署nuclio</h2><p>将<code>nuclio</code>的集群外部访问都删除，比如<code>ingress</code>、<code>nodeport</code>等，用户只能通过代理访问<code>nuclio-dashboard:8070</code>服务。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h1><ol>
+<li><code>error redirect_url</code>报错：</li>
+</ol>
+<blockquote>
+<p>keycloak-client配置<code>redirect_url</code> 缺少<code>oauth/callback</code>,导致出现报错（keycloak端报错）</p>
+</blockquote>
+<ul>
+<li>keycloak中需要设置为<code>http://&lt;nuclio.acme.com&gt;/oauth/callback</code>（也可以直接使用通配符，配置为<code>http://&lt;nuclio.acme.com&gt;/*</code>）</li>
+<li>louketo-proxy启动时配置为<code>http://&lt;nuclio.acme.com&gt;/</code>。</li>
+</ul>
+<ol start="2">
+<li><p>登录成功，但由于未配置<code>audience</code>字段aud，claim中的字段无法对应<br>导致如下报错(louketo-proxy 端报错)</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'aud'</span> claim and <span class="string">'client_id'</span> <span class="keyword">do</span> not match</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>使用镜像supervisor启动，导致针对role的鉴权一直失败。</p>
+</li>
+</ol>
+<p>  换成<code>reg.chebai.org/paas/louketo-proxy:v1.0.0</code>之后一切正常。</p>
+<ol start="4">
+<li>keycloak服务端，注销session，需要重新无痕模式打开新的窗口生效。</li>
+</ol>
+<p>  过期时间在生成accessToken时被服务端根据配置生成（服务端默认5分钟过期），并保存在cookie中。<br>  在无refreshToken干预的条件下，只有等过期时间（默认5分钟）结束才会过期，返回keycloak登录页面。</p>
+<ol start="5">
+<li>nuclio会在请求header中<code>x-nuclio-project-namespace: &lt;namespace: eg. nuclio&gt;</code>,来区分不同命名空间下的function, 后期可以结合<code>User Group</code>，来进行租户划分和授权管理。</li>
+</ol>
+<h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1><p>nuclio使用<code>louketo-proxy</code>进行鉴权，多租户管理。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://github.com/louketo/louketo-proxy">gatekeeper git 仓库</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/louketo/louketo-proxy/blob/master/docs/user-guide.md">gatekeeper 用户手册</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/53550321/keycloak-gatekeeper-aud-claim-and-client-id-do-not-match">Keycloak-gatekeeper: ‘aud’ claim and ‘client_id’ do not match</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/audience.adoc">Keycloak 文档 - Audience support</a></p>
+<p>参考，理解类似gatekeepr、oauth2proxy这类工具的实现</p>
+<p><a target="_blank" rel="noopener" href="https://www.openpolicyagent.org/docs/latest/">Open Policy Agent 文档</a></p>
+</body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢支持</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/../images/wx_reward.jpg" alt="Hex 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Devops/" rel="tag"><i class="fa fa-tag"></i> Devops</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/22/kubernetes-2021-01-22-%E9%83%A8%E7%BD%B2%E7%BB%84%E4%BB%B6-IngressController%E5%90%AF%E7%94%A8%E8%AF%81%E4%B9%A6%E9%80%8F%E4%BC%A0/" rel="prev" title="部署组件--IngressController启用证书透传">
+      <i class="fa fa-chevron-left"></i> 部署组件--IngressController启用证书透传
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/26/persistence-2021-01-26-PostgreSQL%E4%BD%BF%E7%94%A8postgis%E6%8F%92%E4%BB%B6%E6%B6%89%E5%8F%8A%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/" rel="next" title="PostgreSQL使用postgis插件涉及权限问题">
+      PostgreSQL使用postgis插件涉及权限问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%A6%81"><span class="nav-text">重要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E"><span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%85%8D%E7%BD%AElouketo-proxy"><span class="nav-text">1. 配置louketo-proxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AEkeycloak"><span class="nav-text">2. 配置keycloak</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%83%A8%E7%BD%B2nuclio"><span class="nav-text">3. 部署nuclio</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98"><span class="nav-text">遇到问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-text">后续</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

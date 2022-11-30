@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="个人技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hex Blog">
+<meta property="og:url" content="https://hex-py.github.io/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="个人技术博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hex">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/11/23/bash-20221123-hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/23/bash-20221123-hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/" class="post-title-link" itemprop="url">hexo常用命令备忘录</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-11-23 03:27:30" itemprop="dateCreated datePublished" datetime="2022-11-23T03:27:30+08:00">2022-11-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Bash/" itemprop="url" rel="index">
+                    <span itemprop="name">Bash</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/11/23/bash-20221123-hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/" class="post-meta-item leancloud_visitors" data-flag-title="hexo常用命令备忘录" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h1 id="2-说明"><a href="#2-说明" class="headerlink" title="2.说明"></a>2.说明</h1><h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h1><h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/10/27/bash-2022-10-27-Linux%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA-3-%E7%89%B9%E6%AE%8A%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6-loop-null-zero-full-random-tcp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/27/bash-2022-10-27-Linux%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA-3-%E7%89%B9%E6%AE%8A%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6-loop-null-zero-full-random-tcp/" class="post-title-link" itemprop="url">Linux查漏补缺-3-特殊设备文件[loop,null,zero,full,random,tcp..]</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-10-27 01:46:34" itemprop="dateCreated datePublished" datetime="2022-10-27T01:46:34+08:00">2022-10-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Bash/" itemprop="url" rel="index">
+                    <span itemprop="name">Bash</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/10/27/bash-2022-10-27-Linux%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA-3-%E7%89%B9%E6%AE%8A%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6-loop-null-zero-full-random-tcp/" class="post-meta-item leancloud_visitors" data-flag-title="Linux查漏补缺-3-特殊设备文件[loop,null,zero,full,random,tcp..]" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><blockquote>
+<p>Linux查漏补缺，还剩：</p>
+<ul>
+<li>4-安装包管理[rpm/dpkg]</li>
+<li>5-proc程序查看说明</li>
+<li>6-磁盘格式化</li>
+<li>7-mount说明</li>
+<li>8-LVM</li>
+<li>9-账号管理与ACL</li>
+</ul>
+</blockquote>
+<h1 id="2-说明"><a href="#2-说明" class="headerlink" title="2.说明"></a>2.说明</h1><h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h1><h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><p>Base</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chengmo/archive/2010/10/25/1857775.html">https://www.cnblogs.com/chengmo/archive/2010/10/25/1857775.html</a></p>
+<p>Kernel - all /dev</p>
+<p><a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/v4.20/admin-guide/devices.html">https://www.kernel.org/doc/html/v4.20/admin-guide/devices.html</a></p>
+<p>关于 /dev/tcp/${HOST}/${PORT}</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f10736931b93">https://www.jianshu.com/p/f10736931b93</a><br><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10221819">https://ithelp.ithome.com.tw/articles/10221819</a></p>
+<p>4-安装包管理[rpm/dpkg]</p>
+<p><a target="_blank" rel="noopener" href="https://linux.vbird.org/linux_basic/centos7/0520rpm_and_srpm.php">第二十二章、软件安装 RPM, SRPM 与 YUM</a></p>
+<p>5-proc程序查看说明</p>
+<p><a target="_blank" rel="noopener" href="https://linux.vbird.org/linux_basic/centos7/0440processcontrol.php#process">16.3 程序管理</a></p>
+<p>6-磁盘格式化与逻辑卷管理</p>
+<p><a target="_blank" rel="noopener" href="https://linux.vbird.org/linux_basic/centos7/0230filesystem.php#disk">7.3 磁盘的分区、格式化、检验与挂载</a></p>
+<p>8-LVM</p>
+<p><a target="_blank" rel="noopener" href="https://linux.vbird.org/linux_basic/centos7/0420quota.php#lvm">14.3 逻辑卷轴管理员 （Logical Volume Manager）</a></p>
+<p>7-mount说明</p>
+<p>所谓的“挂载”就是利用一个目录当成进入点，将磁盘分区的数据放置在该目录下； 也就是说，进入该目录就可以读取该分区的意思。这个动作我们称为“挂载”，那个进入点的目录我们称为“挂载点”。</p>
+<p>目录树与文件系统的关系：通过挂载，实现目录树的架构与磁盘内的数据(文件系统)结合。</p>
+<p><a target="_blank" rel="noopener" href="https://linux.vbird.org/linux_basic/centos7/0230filesystem.php#harddisk-mount">7.1.7 挂载点的意义 （mount point）</a></p>
+<p><a target="_blank" rel="noopener" href="https://linux.vbird.org/linux_basic/centos7/0230filesystem.php#mount">7.3.5 文件系统挂载与卸载： mount, umount</a></p>
+<p>8-账号管理与ACL</p>
+<p><a target="_blank" rel="noopener" href="https://linux.vbird.org/linux_basic/centos7/0410accountmanager.php">第十三章、Linux 帐号管理与 ACL 权限设置</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/10/26/bash-2022-10-26-Linux%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA-2-%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90-s%C2%B7t/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/26/bash-2022-10-26-Linux%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA-2-%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90-s%C2%B7t/" class="post-title-link" itemprop="url">Linux查漏补缺-2-特殊权限[s·t]</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-10-26 06:38:19" itemprop="dateCreated datePublished" datetime="2022-10-26T06:38:19+08:00">2022-10-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Bash/" itemprop="url" rel="index">
+                    <span itemprop="name">Bash</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/10/26/bash-2022-10-26-Linux%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA-2-%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90-s%C2%B7t/" class="post-meta-item leancloud_visitors" data-flag-title="Linux查漏补缺-2-特殊权限[s·t]" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>​	在<code>kubernetes</code>中部署<code>mariadb</code>服务,挂载<code>local-storage</code>时，<code>binlog</code>目录赋予<code>777</code>权限，仍权限不足导致服务无法启动，后执行<code>chmod 1777 binlog/</code> 解决问题。没有系统研究过linux的权限，以为<code>rwx</code>是就是所有权限，缺少对特殊权限<code>s和t权限</code>的理解。</p>
+<h1 id="2-说明"><a href="#2-说明" class="headerlink" title="2.说明"></a>2.说明</h1><p><strong>s权限</strong>：强制位权限。可执行的文件搭配这个权限，便能得到特权，任意存取该文件的所有者能使用的全部系统资源。</p>
+<blockquote>
+<p>请注意具备<code>SUID/SGID</code>权限的文件，黑客经常利用这种权限，以SUID/SGID配上root帐号拥有者，无声无息地在系统中开扇后门，供日后进出使用。</p>
+</blockquote>
+<p>例如：</p>
+<ul>
+<li><code>SUID</code>举例  <code>/usr/bin/passwd</code></li>
+<li><code>SGID</code>举例  <code>/usr/bin/locate</code></li>
+</ul>
+<p><strong>t权限</strong>：粘滞位权限。一般只用在目录上，在具备此权限的目录下，任何用户可写入文档，又不让用户删除这个目录下他人的文档。</p>
+<p>例如：</p>
+<ul>
+<li><code>/tmp</code>和<code>/var/tmp</code>目录</li>
+</ul>
+<h2 id="2-1-SUID"><a href="#2-1-SUID" class="headerlink" title="2.1 SUID"></a>2.1 SUID</h2><blockquote>
+<p>Set UID：简称为<code>SUID</code>，s的权限是在用户。</p>
+<p>把此进程的有效用户ID设置为此文件拥有者的用户ID，程序在执行过程中拥有文件拥有者的权限。仅可用在可执行二进制文件。</p>
+</blockquote>
+<p>场景举例：</p>
+<p>账号与密码的存放文件其实是<code>/etc/passwd</code>与 <code>/etc/shadow)</code>。而<code>/etc/shadow</code>文件的权限如下</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp$ <span class="built_in">stat</span> /etc/shadow</span><br><span class="line">  File: /etc/shadow</span><br><span class="line">  Size: 1427            Blocks: 8          IO Block: 4096   regular file</span><br><span class="line">Device: 10302h/66306d   Inode: 21758432    Links: 1</span><br><span class="line">Access: (0640/-rw-r-----)  Uid: (    0/    root)   Gid: (   42/  shadow)</span><br><span class="line">Access: 2022-10-26 10:30:01.647835420 +0800</span><br><span class="line">Modify: 2022-09-21 15:42:07.468201547 +0800</span><br><span class="line">Change: 2022-09-21 15:42:07.472201579 +0800</span><br><span class="line"> Birth: 2022-09-21 15:42:07.468201547 +0800</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>shadow</code>文件所有者是<code>root</code>，权限为<code>0640</code>。在这个权限中，仅有root可以存储，其他人是连看都不行的。</p>
+<p>现有普通用户<code>hex</code>也有更新自身密码的需求，即使用<code>/usr/bin/passwd</code>命令，存取<code>/etc/shadow</code>密码文件。</p>
+<p>这是因为<code>/usr/bin/passwd</code>的文件权限如下</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp$ <span class="built_in">stat</span> /usr/bin/passwd </span><br><span class="line">  File: /usr/bin/passwd</span><br><span class="line">  Size: 59976           Blocks: 120        IO Block: 4096   regular file</span><br><span class="line">Device: 10302h/66306d   Inode: 49283913    Links: 1</span><br><span class="line">Access: (4755/-rwsr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)</span><br><span class="line">Access: 2022-09-19 15:45:14.219152977 +0800</span><br><span class="line">Modify: 2022-03-14 16:59:13.000000000 +0800</span><br><span class="line">Change: 2022-09-19 02:49:39.597789775 +0800</span><br><span class="line"> Birth: 2022-09-19 02:49:39.597789775 +0800</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>passwd</code>文件所有者是<code>root</code>，权限为<code>4755</code>。</p>
+<ul>
+<li><code>other位</code>有<code>x</code>权限说明普通用户具备此文件的可执行权限；</li>
+<li><code>user位</code>有<code>s</code>权限说明当其他用户执行<code>passwd</code>时会获得文件<code>passwd</code>的拥有者<code>root</code>的权限。</li>
+</ul>
+<p>有s权限的帮助，当普通用户<code>hex</code>执行<code>/usr/bin/passwd</code>时，会“暂时”得到<code>passwd</code>文件拥有者<code>root</code>的权限。</p>
+<h2 id="2-2-SGID"><a href="#2-2-SGID" class="headerlink" title="2.2 SGID"></a>2.2 SGID</h2><blockquote>
+<p><code>Set GID</code>: 简称为<code>SGID</code>，s的权限是在group。</p>
+<p>把此进程的有效用户组ID设置为此文件的组ID，程序在执行过程中拥有文件所属组的权限。</p>
+</blockquote>
+<p>可以用在两个方面：</p>
+<ul>
+<li><p>文件：如果SGID设置在二进制文件上，则不论用户是谁，在执行该程序的时候，它的有效用户组(effective group)将会变成该程序的用户组所有者(group id)。</p>
+<blockquote>
+<p>举例来说，<code>/usr/bin/locate</code>  可以读取 <code>/var/lib/mlocate/mlocate.db</code> 这个文件的内容 ， <code>mlocate.db</code> 的权限如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@hex-PC:/tmp<span class="comment"># ll /usr/bin/plocate /var/lib/plocate/plocate.db</span></span><br><span class="line">-rwxr-sr-x 1 root plocate   313904 Feb 17  2022 /usr/bin/plocate*</span><br><span class="line">-rw-r----- 1 root plocate 70159347 Oct 26 19:14 /var/lib/plocate/plocate.db</span><br></pre></td></tr></tbody></table></figure>
+
+<p>与 <code>SUID</code> 类似，如果使用普通用户去执行 <code>locate</code> ，那 普通用户 将会取得 <code>slocate</code> 组的支持， 因此就能够去读取 <code>mlocate.db</code> 文件</p>
+</blockquote>
+</li>
+<li><p>目录：如果<code>SGID</code>设置在A目录上，则用户在A目录下新建的文件的群组都会与A目录的群组名称相同。</p>
+<ul>
+<li>用户若对于此目录具有 r 与 x 的权限时，该用户能够进入此目录；</li>
+<li>用户在此目录下的有效群组（effective group）将会变成该目录的群组；</li>
+<li>用途：若用户在此目录下具有 w 的权限（可以新建文件），则用户所创建的新文件，该新文件的群组与此目录的群组相同。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3-SBIT"><a href="#2-3-SBIT" class="headerlink" title="2.3 SBIT"></a>2.3 SBIT</h2><blockquote>
+<p>Sticky Bit: 简称为<code>SBit</code>，只针对目录有效，对文件没有效果。</p>
+</blockquote>
+<p><code>SBIT</code> 对于目录的作用是：用户在该目录下建立文件或目录时，只有自己与root才有权力删除。</p>
+<p>用户需要对<code>SBIT</code>标记的目录具备以下权限：</p>
+<ul>
+<li>x权限：用户具备此权限才能进入目录；</li>
+<li>r权限：用户具备此权限才能查看文件属性和内容(<code>ls</code> 与 <code>cat</code>)；</li>
+<li>w权限：用户具备此权限才能创建、修改、删除文件和子目录；</li>
+</ul>
+<p>举例来说，<code>/tmp</code>本身的权限是“drwxrwxrwt”，在这样的权限内容下，任何人都可以在/tmp内新增、修改文件，但仅有该文件/目录的建立者与root能够删除自己的目录或文件。</p>
+<ol>
+<li><p>以root登入系统，并且进入 /tmp中。</p>
+</li>
+<li><p>touch test，并且更改test权限成为777.</p>
+</li>
+<li><p>以一般用户登入，并进入 /tmp.</p>
+</li>
+<li><p>尝试删除test文件。</p>
+</li>
+</ol>
+<h2 id="2-4-设置特殊权限"><a href="#2-4-设置特殊权限" class="headerlink" title="2.4 设置特殊权限"></a>2.4 设置特殊权限</h2><p>通常使用 <code>chmod xyz filename</code> 方式来设置<code>filename</code>的权限时，是假设没有<code>SUID</code>、<code>SGID</code>及<code>SBIT</code>。而在三位前增加一位用来表示这些特殊权限：</p>
+<ul>
+<li><p>4为<code>SUID</code></p>
+</li>
+<li><p>2为<code>SGID</code></p>
+</li>
+<li><p>1为<code>SBIT</code></p>
+</li>
+</ul>
+<blockquote>
+<p>3=<code>SGID</code>+<code>SBIT</code>;  5=<code>SUID</code>+<code>SBIT</code>;  6=<code>SUID</code>+<code>SGID</code>;  7=<code>SUID</code>+<code>SGID</code>+<code>SBIT</code>;</p>
+</blockquote>
+<p>例如：<code>test</code>文件权限为默认权限<code>-rw-rw-r--</code></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/perm-test$ <span class="built_in">ls</span> -alh</span><br><span class="line">total 4K</span><br><span class="line">drwxrwxr-x  2 hex  hex  4.0K Oct 26 18:53 .</span><br><span class="line">drwxrwxrwt 40 root root 4.0K Oct 26 17:29 ..</span><br><span class="line">-rw-rw-r--  1 hex  hex     0 Oct 26 18:53 <span class="built_in">test</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>为此文件<code>test</code>设置<code>SUID</code>权限，即设置s在用户权限中。因此，在原先的<code>664</code>之前还要加上4。命令如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 4664 <span class="built_in">test</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>查看修改后文件权限为</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/perm-test$ <span class="built_in">ls</span> -alh</span><br><span class="line">total 4K</span><br><span class="line">drwxrwxr-x  2 hex  hex  4.0K Oct 26 18:53 .</span><br><span class="line">drwxrwxrwt 40 root root 4.0K Oct 26 17:29 ..</span><br><span class="line">-rwSrw-r--  1 hex  hex     0 Oct 26 18:53 <span class="built_in">test</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-5-延伸"><a href="#2-5-延伸" class="headerlink" title="2.5 延伸"></a>2.5 延伸</h2><h3 id="2-5-1-SUID是否可用于bash脚本？否"><a href="#2-5-1-SUID是否可用于bash脚本？否" class="headerlink" title="2.5.1 SUID是否可用于bash脚本？否"></a>2.5.1 SUID是否可用于bash脚本？否</h3><p>不能用在批处理文件(shell脚本)上。这是因为shell脚本只是将很多二进制执行文件调进来执行而已。所以SUID的权限部分，还是要看shell脚本调用进来的程序设置，而不是shell脚本本身。</p>
+<h3 id="2-5-2-大写S与大写T说明"><a href="#2-5-2-大写S与大写T说明" class="headerlink" title="2.5.2 大写S与大写T说明"></a>2.5.2 大写S与大写T说明</h3><blockquote>
+<p><code>chmod</code>命令不进行必要的完整性检查，即使不设置x权限就设置s权限，<code>chmod</code>也不会报错。当<code>ls -l</code>时看到<code>rwS</code>，大写S说明s权限未生效。</p>
+</blockquote>
+<ol>
+<li><code>S_ISUID</code>的表示方式。所属用户的<code>S_IXUSR(x位)</code>为<code>S_ISUID</code>所共用：<ul>
+<li>当<code>S_IXUSR</code>和<code>S_ISUID</code>共存时，用<strong>小写s</strong>表示；</li>
+<li>当只设置了<code>S_ISUID</code>时，用<strong>大写S</strong>表示（权限未生效）；</li>
+</ul>
+</li>
+<li><code>S_ISGID</code>的表示方式。所属用户的<code>S_IXGRP(x位)</code>为<code>S_ISGID</code>所共用：<ul>
+<li>当<code>S_IXGRP</code>和<code>S_ISGID</code>共存时，用<strong>小写s</strong>表示；</li>
+<li>当只设置了<code>S_ISGID</code>时，用<strong>大写S</strong>表示（权限未生效）：</li>
+</ul>
+</li>
+<li><code>S_ISVTX</code>的表示方式。所属用户的<code>S_IXOTH(x位)</code>为<code>S_ISVTX</code>所共用：<ul>
+<li>当<code>S_IXOTH</code>和<code>S_ISVTX</code>共存时，用<strong>小写t</strong>表示；</li>
+<li>当只设置了<code>S_ISVTX</code>时，用<strong>大写T</strong>表示（权限未生效）：</li>
+</ul>
+</li>
+</ol>
+<p>综上：大写字母意味着该位[u|g|o]没有<code>x</code>权限，小写字母意味着该位[u|g|o]有<code>x</code>权限。因为特殊权限都必须具备<code>x</code>权限，所以：</p>
+<ul>
+<li><strong>大写</strong>意味着<strong>权限一定未生效</strong>；</li>
+<li><strong>小写</strong>意味着<strong>权限不一定生效</strong>；(比如，SUID设置在目录；SBIT设置在文件等，仍小写但无效)</li>
+</ul>
+<h3 id="2-5-3-区别"><a href="#2-5-3-区别" class="headerlink" title="2.5.3 区别"></a>2.5.3 区别</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>S_UID</th>
+<th>S_GID</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件对象</td>
+<td>二进制、可执行文件</td>
+<td>二进制、可执行文件；目录</td>
+<td>目录</td>
+</tr>
+<tr>
+<td>权限号(rwx set 755)</td>
+<td>4755</td>
+<td>2755</td>
+<td>1755</td>
+</tr>
+<tr>
+<td>生效条件</td>
+<td>文件<strong>属主</strong>必须先设置x权限</td>
+<td>文件<strong>属组</strong>必须先设置x权限</td>
+<td>- 目录具备w权限，可新建文件<br>- 目录具备rx权限，才能进入目录</td>
+</tr>
+<tr>
+<td>设置命令</td>
+<td><code>chmod u+s &lt;bin-exec文件&gt;</code></td>
+<td><code>chmod g+s &lt;bin-exec文件&gt;</code></td>
+<td><code>chmod o+t &lt;目录&gt;</code></td>
+</tr>
+<tr>
+<td>移除命令</td>
+<td><code>chmod u-s &lt;bin-exec文件&gt;</code></td>
+<td><code>chmod g-s &lt;bin-exec文件&gt;</code></td>
+<td><code>chmod o-t &lt;目录&gt;</code></td>
+</tr>
+<tr>
+<td>权限显示</td>
+<td><code>(4755/-rwsr-xr-x)</code></td>
+<td><code>(2755/-rwxr-sr-x)</code></td>
+<td><code>(1755/-rwxr-xr-t)</code></td>
+</tr>
+<tr>
+<td>生命周期</td>
+<td>仅在该程序的执行过程中有效</td>
+<td>同  S_UID</td>
+<td>文件读写</td>
+</tr>
+</tbody></table>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h1><ul>
+<li>文件具有<code>SUID</code>的特殊权限时，代表用户执行此二进制程序时，在执行过程中用户会暂时具有程序拥有者的权限。</li>
+<li>目录具有<code>SGID</code>的特殊权限时，代表用户在这个目录下新建的文件的群组都会与该目录的群组名称相同。</li>
+<li>目录具有<code>SBIT</code>的特殊权限时，代表用户在该目录下创建的文件只有自己与root能够删除。</li>
+</ul>
+<p>设置权限时，了解cat、ls、执行文件等操作所需的基本权限也很重要。<a href="#ref2">可参考  注2：鸟哥-常见指令需要的基本权限</a></p>
+<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><p><span id="ref1"></span>[注1]： <a target="_blank" rel="noopener" href="https://linux.vbird.org/linux_basic/centos7/0220filemanager.php#suid">鸟哥-特殊权限SUID说明</a></p>
+<p><span id="ref2"></span>[注2]： <a target="_blank" rel="noopener" href="https://linux.vbird.org/linux_basic/centos7/0220filemanager.php#import">鸟哥-常见指令需要的基本权限</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/10/25/bash-2022-10-25-Linux%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA-1-%E9%93%BE%E6%8E%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/25/bash-2022-10-25-Linux%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA-1-%E9%93%BE%E6%8E%A5/" class="post-title-link" itemprop="url">Linux查漏补缺-1-链接</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-10-25 03:45:44" itemprop="dateCreated datePublished" datetime="2022-10-25T03:45:44+08:00">2022-10-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Bash/" itemprop="url" rel="index">
+                    <span itemprop="name">Bash</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/10/25/bash-2022-10-25-Linux%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA-1-%E9%93%BE%E6%8E%A5/" class="post-meta-item leancloud_visitors" data-flag-title="Linux查漏补缺-1-链接" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>操作机某软件异常，进行重装时。对软链接理解存在偏差导致误删除目录问题<a href="#solve5">详细参考  2.3.5 删除目录的软链</a>。</p>
+<ol>
+<li><p>因为未移除感觉软链接，导致安装失败；</p>
+</li>
+<li><p>尝试删除软链接<code>/root/bin -&gt; /bin</code>。</p>
+</li>
+<li><p>执行命令<code>rm /root/bin/</code>时，报错<code>Is a directory</code>。</p>
+</li>
+<li><p>想当然的执行<code>rm -rf /root/bin/</code> 导致将其link的目录<code>/bin</code>删除。</p>
+<blockquote>
+<p>目录软链接的删除，应为<code>rm /root/bin</code>，而非<code>rm -rf /root/bin/</code>。</p>
+</blockquote>
+</li>
+</ol>
+<p>本文详细记录由链接引伸出来的一系列概念。</p>
+<h1 id="2-说明"><a href="#2-说明" class="headerlink" title="2.说明"></a>2.说明</h1><h2 id="2-0-基础知识"><a href="#2-0-基础知识" class="headerlink" title="2.0 基础知识"></a>2.0 基础知识</h2><p><strong>inode的相关说明：</strong><a href="#ref1">注1</a></p>
+<ul>
+<li>跨文件系统（磁盘分区），inode不唯一；</li>
+<li>每个文件都会占用一个 inode ，文件内容由 inode 来指向blok获取；</li>
+<li>inode与文件名为一对多关系；</li>
+</ul>
+<p><strong>系统内部读取文件步骤</strong>：<a href="#ref1">注1</a></p>
+<ol>
+<li>系统找到<code>文件名</code>对应的<code>inode</code></li>
+<li>通过 <code>inode</code> 号码，获取<code>inode</code>信息</li>
+<li>根据 <code>inode</code> 信息，找到文件数据所在的 <code>block</code>，读出数据。</li>
+</ol>
+<p><strong>链接</strong>: UNIX文件系统提供的一种，将不同文件链接至同一个文件的机制；实际上是一种文件共享的方式，是 <strong>POSIX</strong> 中的概念，主流文件系统都支持链接文件。</p>
+<p><strong>查看文件信息的命令</strong></p>
+<ul>
+<li><p>ls命令</p>
+<p>示例：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">ls</span> -li</span><br><span class="line">total 4</span><br><span class="line">60822147 -rw-rw-r-- 1 hex hex 12 Oct 25 17:36 <span class="built_in">test</span></span><br><span class="line">60822175 lrwxrwxrwx 1 hex hex  4 Oct 25 17:36 test-sl -&gt; <span class="built_in">test</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>参数：</p>
+<ul>
+<li><code>-i</code> 查看inode</li>
+</ul>
+<p>输出：</p>
+<ul>
+<li>第一列：inode号</li>
+<li>第二列：文件权限</li>
+<li>第三列：链接数目，指一共多少个文件名指向这个inode</li>
+<li>第四列：文件拥有者</li>
+<li>第五列：文件所属group</li>
+<li>第六列：文件大小</li>
+<li>第七列：文件内容上一次变动的时间</li>
+<li>第八列：文件名</li>
+</ul>
+</li>
+<li><p>stat命令</p>
+<p>示例：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">stat</span> test-sl </span><br><span class="line">  File: test-sl -&gt; <span class="built_in">test</span></span><br><span class="line">Size: 4               Blocks: 0          IO Block: 4096   symbolic <span class="built_in">link</span></span><br><span class="line">Device: 10302h/66306d   Inode: 60822175    Links: 1</span><br><span class="line">Access: (0777/lrwxrwxrwx)  Uid: ( 1000/     hex)   Gid: ( 1000/     hex)</span><br><span class="line">Access: 2022-10-25 17:36:18.216885854 +0800</span><br><span class="line">Modify: 2022-10-25 17:36:16.184873570 +0800</span><br><span class="line">Change: 2022-10-25 17:36:16.184873570 +0800</span><br><span class="line"> Birth: 2022-10-25 17:36:16.184873570 +0800</span><br></pre></td></tr></tbody></table></figure>
+
+<p>参数： 无</p>
+<p>输出：</p>
+<ul>
+<li><p>File：显示文件名</p>
+</li>
+<li><p>Size：显示文件大小</p>
+</li>
+<li><p>Blocks：文件使用的数据块总数</p>
+</li>
+<li><p>IO Block：IO块大小</p>
+</li>
+<li><p>symbolic link：文件类型（软链接）</p>
+</li>
+<li><p>Inode：inode 号</p>
+</li>
+<li><p>Links：链接数，即有多少文件名指向这个 inode</p>
+</li>
+<li><p>Uid：文件拥有者的 Uid</p>
+</li>
+<li><p>Gid：文件所属group的 Gid</p>
+</li>
+<li><p>Access：文件的读、写、执行权限</p>
+</li>
+<li><p>文件的时间戳，共有三个：</p>
+<ul>
+<li>Change：简写为ctime，文件状态(链接数、大小、权限、Blocks数)改变时间。</li>
+<li>Modify：简写为mtime，文件内容的修改时间，文件内容被修改时更新。</li>
+<li>Access：简写为atime，文件内容的访问时间。文件内容被访问时更新。</li>
+<li>Birth: 文件创建时间。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-1-软链接、硬链接区别"><a href="#2-1-软链接、硬链接区别" class="headerlink" title="2.1 软链接、硬链接区别"></a>2.1 软链接、硬链接区别</h2><table>
+<thead>
+<tr>
+<th>功能项</th>
+<th>软链接</th>
+<th>硬链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>使用对象</td>
+<td>文件、目录</td>
+<td>文件</td>
+</tr>
+<tr>
+<td>inode是否相同</td>
+<td>不同</td>
+<td>相同</td>
+</tr>
+<tr>
+<td>是否跨文件系统(磁盘分区)</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>原文件删除</td>
+<td>软链接不可用</td>
+<td>不受影响</td>
+</tr>
+<tr>
+<td>与原文件的关联项</td>
+<td>执行命令时，原文件名参数</td>
+<td>原文件inode</td>
+</tr>
+<tr>
+<td>原文件是否必须存在</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>执行命令</td>
+<td><code>ln -s &lt;src&gt; &lt;file-sl&gt;</code></td>
+<td><code>ln &lt;src&gt; &lt;file-hl&gt;</code></td>
+</tr>
+</tbody></table>
+<h2 id="2-2-软链接"><a href="#2-2-软链接" class="headerlink" title="2.2 软链接"></a>2.2 软链接</h2><p><strong>软链接只是一个符号链接，其实就是新建立一个文件，这个文件就是专门用来指向别的文件</strong>。大小很小，权限是777，而真正的信息是由指向的原文件决定；</p>
+<ul>
+<li>删除软链接文件，不影响原文件；</li>
+<li>删除原文件，则相应的软链接不可用（cat那个软链接文件，则提示“没有该文件或目录“）；</li>
+</ul>
+<h2 id="2-3-硬链接"><a href="#2-3-硬链接" class="headerlink" title="2.3 硬链接"></a>2.3 硬链接</h2><p><strong>硬链接实际上是为文件建一个别名，指向同一个inode。</strong></p>
+<ul>
+<li>创建硬链接时，不会建立inode，只是在原文件的<code>inode link count</code>域再增加1；</li>
+<li>删除硬链接时，在原文件的<code>inode link count</code>域再减1；</li>
+</ul>
+<p>系统调用会检查<code>inode link count</code>的数值，如果<code>&gt;=1</code>，那么inode不会被回收，文件的内容不会被删除。</p>
+<h2 id="2-4-引申问题"><a href="#2-4-引申问题" class="headerlink" title="2.4 引申问题"></a>2.4 引申问题</h2><h3 id="2-4-1-软链接跳转靠的是文件名而非inode"><a href="#2-4-1-软链接跳转靠的是文件名而非inode" class="headerlink" title="2.4.1 软链接跳转靠的是文件名而非inode"></a>2.4.1 软链接跳转靠的是文件名而非inode</h3><blockquote>
+<p>验证思路：设置软链接时，原文件参数传递为相对路径；再将软链接移动到其他目录下；如果报错<code>Not Found</code>则说明成立</p>
+<p>软链接查找使用的文件名，为<code>ln</code>执行命令时传入的原文件，如果是相对路径，则根据软链接路径进行查找。</p>
+</blockquote>
+<ol>
+<li><p>准备测试环境</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建测试目录</span></span><br><span class="line"><span class="built_in">mkdir</span> /tmp/ln-test/</span><br><span class="line"><span class="built_in">cd</span> /tmp/ln-test/</span><br><span class="line"><span class="comment"># 生成测试 原文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"source file"</span> &gt; <span class="built_in">test</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>设置软链接</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s <span class="built_in">test</span> test-sl</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>查看文件状态</p>
+<p>执行命令<code>ls -li</code>(i参数为查看文件<code>inode</code>)</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">ls</span> -li</span><br><span class="line">total 4</span><br><span class="line">60822147 -rw-rw-r-- 1 hex hex 12 Oct 25 17:36 <span class="built_in">test</span></span><br><span class="line">60822175 lrwxrwxrwx 1 hex hex  4 Oct 25 17:36 test-sl -&gt; <span class="built_in">test</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>执行命令<code>stat &lt;filename&gt;</code></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">stat</span> test-sl </span><br><span class="line">  File: test-sl -&gt; <span class="built_in">test</span></span><br><span class="line">  Size: 4               Blocks: 0          IO Block: 4096   symbolic <span class="built_in">link</span></span><br><span class="line">Device: 10302h/66306d   Inode: 60822175    Links: 1</span><br><span class="line">Access: (0777/lrwxrwxrwx)  Uid: ( 1000/     hex)   Gid: ( 1000/     hex)</span><br><span class="line">Access: 2022-10-25 17:36:18.216885854 +0800</span><br><span class="line">Modify: 2022-10-25 17:36:16.184873570 +0800</span><br><span class="line">Change: 2022-10-25 17:36:16.184873570 +0800</span><br><span class="line"> Birth: 2022-10-25 17:36:16.184873570 +0800</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>移动软链接至其他目录</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> test-sl ../</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>通过软链接<code>cat</code>文件内容</p>
+<blockquote>
+<p>stat 查看软链接属性，<code>File: test-sl -&gt; test</code> 显示软链接指向当前目录<code>test</code>文件，但<code>test</code>文件不存在。</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">cd</span> ../</span><br><span class="line">hex@hex-PC:/tmp$ <span class="built_in">stat</span> test-sl </span><br><span class="line">  File: test-sl -&gt; <span class="built_in">test</span></span><br><span class="line">  Size: 4               Blocks: 0          IO Block: 4096   symbolic <span class="built_in">link</span></span><br><span class="line">Device: 10302h/66306d   Inode: 60822175    Links: 1</span><br><span class="line">Access: (0777/lrwxrwxrwx)  Uid: ( 1000/     hex)   Gid: ( 1000/     hex)</span><br><span class="line">Access: 2022-10-25 17:40:57.608602008 +0800</span><br><span class="line">Modify: 2022-10-25 17:36:16.184873570 +0800</span><br><span class="line">Change: 2022-10-25 17:40:34.131967367 +0800</span><br><span class="line"> Birth: 2022-10-25 17:36:16.184873570 +0800</span><br><span class="line">hex@hex-PC:/tmp$ <span class="built_in">cat</span> test-sl </span><br><span class="line"><span class="built_in">cat</span>: test-sl: No such file or directory</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>软链接所在新目录创建新的<code>test</code>文件，再查看</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp$ <span class="built_in">echo</span> <span class="string">"Other test file"</span> &gt; <span class="built_in">test</span></span><br><span class="line">hex@hex-PC:/tmp$ <span class="built_in">ls</span> -li <span class="built_in">test</span>*</span><br><span class="line">60822202 -rw-rw-r-- 1 hex hex 16 Oct 25 17:47 <span class="built_in">test</span></span><br><span class="line">60822175 lrwxrwxrwx 1 hex hex  4 Oct 25 17:36 test-sl -&gt; <span class="built_in">test</span></span><br><span class="line">hex@hex-PC:/tmp$ <span class="built_in">cat</span> test-sl </span><br><span class="line">Other <span class="built_in">test</span> file</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<p>软链接移动前后，inode为<code>60822175</code>，未改变；但前后的原文件<code>test</code>的inode已发生改变<code>60822147 -&gt; 60822202</code>。说明<strong>软链接是通过<code>File: test-sl -&gt; test</code>记录所跳转的原文件</strong>，而非inode。</p>
+<h3 id="2-4-2-硬链接无法跨分区，而软链接可以的原因"><a href="#2-4-2-硬链接无法跨分区，而软链接可以的原因" class="headerlink" title="2.4.2 硬链接无法跨分区，而软链接可以的原因"></a>2.4.2 硬链接无法跨分区，而软链接可以的原因</h3><p>硬盘格式化的时候，操作系统自动将硬盘分为两个区域：</p>
+<ul>
+<li><p>数据区：存放文件内容</p>
+</li>
+<li><p>inode 区：存放 inode 包含的信息，也叫作 inode table</p>
+</li>
+</ul>
+<p>硬链接通过与原文件共用同一inode访问blok读取文件内容。跨分区无法共享inode，所以硬链接无法跨分区。</p>
+<p>软链接记录的是原文件的<code>文件名</code>， 而非inode。可以跨分区。</p>
+<p><a href="#ref3">延伸个问题：Linux是如何跨分区寻找inode的</a></p>
+<h3 id="2-4-3-硬链接不支持目录的原因"><a href="#2-4-3-硬链接不支持目录的原因" class="headerlink" title="2.4.3 硬链接不支持目录的原因"></a>2.4.3 硬链接不支持目录的原因</h3><blockquote>
+<p>系统限制对目录进行硬链接只是一个硬性规定，并不是逻辑上不允许、技术上不可行。</p>
+<p>其实使用 <code>ln -d</code> 命令也允许 root 用户尝试建立目录硬链接，且<code>.</code>与<code>..</code>都是目录的硬链接。</p>
+</blockquote>
+<ol>
+<li><p>由于 Linux 操作系统中的目录是以 <code>/</code> 为节点的树状结构，对目录的硬链接有可能破坏这种结构，甚至形成循环如： <code>/usr/bin -&gt; /usr/</code> ，在使用遍历目录的命令时（如： <code>ls -R</code> ）系统就会陷入无限循环中。</p>
+</li>
+<li><p>如果使用 hard link 链接到目录时， 链接的数据需要连同被链接目录下面的所有数据都创建链接。因此造成环境相当大的复杂度。</p>
+<blockquote>
+<p>举例来说，如果要将 <code>/etc</code> 使用实体链接创建一个 <code>/etc_hd</code> 的目录时，那么在 <code>/etc_hd</code> 下面的所有文件名同时都与 <code>/etc</code> 下面的文件名要创建 hard link 的，而不是仅链接到  <code>/etc_hd</code> 与 <code>/etc</code> 而已。 并且，未来如果需要在  <code>/etc_hd</code> 下面创建新文件时，连带的， <code>/etc</code> 下面的数据又得要创建一次 <code>hard link</code>。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="2-3-4-与-是目录的硬链接，特殊在哪里"><a href="#2-3-4-与-是目录的硬链接，特殊在哪里" class="headerlink" title="2.3.4 .与..是目录的硬链接，特殊在哪里"></a>2.3.4 <code>.</code>与<code>..</code>是目录的硬链接，特殊在哪里</h3><p>创建目录时，默认会生成两个目录项： <code>.</code> 和 <code>..</code> 。</p>
+<ul>
+<li><code>.</code> 相当于<strong>当前目录</strong>的硬链接；</li>
+<li><code>..</code> 相当于<strong>父目录</strong>的硬链接。</li>
+</ul>
+<p>目录硬链接总数：</p>
+<ul>
+<li>空目录的硬链接总数，等于2（<code>.</code>和<code>&lt;file-name&gt;</code>）；</li>
+<li>目录的硬链接总数，等于 2 + 它的子目录总数（子目录的 <code>..</code>）；</li>
+</ul>
+<h3 id="2-3-5-目录软链接删除，注意区分-软链接-与-软链接"><a href="#2-3-5-目录软链接删除，注意区分-软链接-与-软链接" class="headerlink" title="2.3.5 目录软链接删除，注意区分 软链接/ 与 软链接"></a>2.3.5 目录软链接删除，注意区分 <code>软链接/</code> 与 <code>软链接</code></h3><p><span id="solve5"></span></p>
+<blockquote>
+<p>目录的软链接=文件，而非目录文件；例如 </p>
+<p>目录文件：<code>/tmp/ln-test/test-dir</code>  等同于 <code>/tmp/ln-test/test-dir/</code></p>
+<p>目录的软链接：<code>/tmp/ln-test/test-dir-sl</code>  &lt;不等于&gt; <code>/tmp/ln-test/test-dir-sl/</code></p>
+<p>​							rm 前者 == 删除软链接；                              rm后者 == 删除原目录。                                                          </p>
+</blockquote>
+<p>验证：</p>
+<ol>
+<li><p>准备环境</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p /tmp/ln-test/test-dir</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/ln-test/test-dir</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>设置软链接</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s test-dir/ test-dir-sl</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>查看文件状态</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">ls</span> -li </span><br><span class="line">total 4</span><br><span class="line">60822338 drwxrwxr-x 2 hex hex 4096 Oct 26 10:22 test-dir</span><br><span class="line">60822339 lrwxrwxrwx 1 hex hex    9 Oct 26 10:23 test-dir-sl -&gt; test-dir/</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>软链接</code> stat</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">stat</span> test-dir-sl</span><br><span class="line">  File: test-dir-sl -&gt; test-dir/</span><br><span class="line">  Size: 9               Blocks: 0          IO Block: 4096   symbolic <span class="built_in">link</span></span><br><span class="line">Device: 10302h/66306d   Inode: 60822339    Links: 1</span><br><span class="line">Access: (0777/lrwxrwxrwx)  Uid: ( 1000/     hex)   Gid: ( 1000/     hex)</span><br><span class="line">Access: 2022-10-26 10:23:12.046192861 +0800</span><br><span class="line">Modify: 2022-10-26 10:23:06.810155908 +0800</span><br><span class="line">Change: 2022-10-26 10:23:06.810155908 +0800</span><br><span class="line"> Birth: 2022-10-26 10:23:06.810155908 +0800</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>软链接/</code> 的stat</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">stat</span> test-dir-sl/</span><br><span class="line">  File: test-dir-sl/</span><br><span class="line">  Size: 4096            Blocks: 8          IO Block: 4096   directory</span><br><span class="line">Device: 10302h/66306d   Inode: 60822338    Links: 2</span><br><span class="line">Access: (0775/drwxrwxr-x)  Uid: ( 1000/     hex)   Gid: ( 1000/     hex)</span><br><span class="line">Access: 2022-10-26 10:23:12.046192861 +0800</span><br><span class="line">Modify: 2022-10-26 10:22:18.821817214 +0800</span><br><span class="line">Change: 2022-10-26 10:22:18.821817214 +0800</span><br><span class="line"> Birth: 2022-10-26 10:22:18.821817214 +0800</span><br></pre></td></tr></tbody></table></figure>
+
+<p>可尝试执行<code>stat test-dir</code>和<code>stat test-dir/</code>，会发现与<code>stat test-dir-sl/</code>的<code>inode</code>一致。</p>
+</li>
+<li><p>测试删除</p>
+<blockquote>
+<p>通过上一步stat查看<code>软链接/</code>和<code>软链接</code>已足够说明问题，通过删除再二次验证</p>
+</blockquote>
+<p>删除<code>软链接/</code></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">rm</span> test-dir-sl/</span><br><span class="line"><span class="built_in">rm</span>: cannot remove <span class="string">'test-dir-sl/'</span>: Is a directory</span><br></pre></td></tr></tbody></table></figure>
+
+<p>删除<code>软链接</code></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">rm</span> test-dir-sl</span><br><span class="line">hex@hex-PC:/tmp/ln-test$ <span class="built_in">ls</span> -li</span><br><span class="line">total 4</span><br><span class="line">60822338 drwxrwxr-x 2 hex hex 4096 Oct 26 10:22 test-dir</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h3 id="2-3-6-应用场景"><a href="#2-3-6-应用场景" class="headerlink" title="2.3.6 应用场景"></a>2.3.6 应用场景</h3><p><strong>软链接：</strong></p>
+<ol>
+<li><p>灵活切换不同版本的目标程序</p>
+<blockquote>
+<p>在开发的过程中，对于同一个工具软件，可能要安装多个不同的版本，例如：<code>Python2</code> 和 <code>Python3</code>。</p>
+<p>当在终端窗口中输入：<code>python</code> 时，启动的是 <code>python2.7</code> 版本。</p>
+<p>如果有一天需要使用 <code>python3.5</code> 版本，只需要把软链接 <code>python</code> 指向 <code>python3.5</code> 即可。</p>
+</blockquote>
+</li>
+<li><p>动态库版本管理</p>
+<blockquote>
+<p>场景描述： 想象这样一个情景，一个程序需要使用 <code>foo_1.1</code> 文件中的共享资源，由于 <code>foo</code> 经常改变版本号。每次升级后都得将使用 <code>foo_1.1</code> 的所有程序更新到 <code>foo_1.2</code> 文件，那么每次更新 <code>foo</code> 版本后，都要重复上边的工作。</p>
+<p>解决方案：创建一个 <code>foo</code> 的软链接指向 <code>foo_1.2</code>。这时，当一个程序访问 <code>foo</code> 时，实际上是访问 <code>foo_1.2</code>。当升级到 <code>foo_1.3</code> 时，只需要更新软链接指向。这不仅解决了版本升级问题，而且还允许在系统中保存两个不同的版本，如果 <code>foo_1.3</code> 有错误，再更新回原来的 <code>foo_1.2</code> 链接就可以。</p>
+</blockquote>
+</li>
+<li><p>快捷方式，将目录层次较深的文件链接到一个更易访问的目录中。</p>
+</li>
+</ol>
+<p><strong>硬链接：</strong></p>
+<ol>
+<li>不同角度对文件进行分类</li>
+<li>文件多人共享</li>
+<li>文件备份</li>
+</ol>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h1><ol>
+<li><strong>目录的软链接</strong>比较特殊，尤其删除时注意区分带与不带的<code>/</code>的区别。<code>&lt;软链接&gt;/</code>是<strong>原目录本身</strong>，后<code>&lt;软链接&gt;</code>是<strong>软链接文件</strong>；</li>
+<li>硬链接无法跨分区是实现机制决定的，无法创建目录的硬链接是硬性规定（<code>.</code>与<code>..</code>都是目录的硬链接）；</li>
+<li>硬链接共用<strong>同一<code>inode</code><strong>，增加硬链接相当于文件<code>inode</code>的</strong>新的别名</strong>；</li>
+<li>软链接通过创建时的<strong>原文件参数</strong>查找原文件，而<strong>非原文件<code>inode</code><strong>（</strong>原文件参数==绝对路径，软链接可到处移动。否则不可以</strong>）；</li>
+</ol>
+<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><p><span id="ref1"></span>[注1]： <a target="_blank" rel="noopener" href="https://gnu-linux.readthedocs.io/zh/latest/Chapter03/00_inode.html">linux-inode说明</a></p>
+<p><span id="ref2"></span>[注2]： <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/67686817">“醉卧沙场：计算机专业性文章及回答总索引-存储和文件系统”</a></p>
+<p><span id="ref3"></span>[注3]：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/379782760/answer/1092042922">Linux是如何跨分区寻找inode</a></p>
+<p><span id="ref4"></span>[注4]： <a target="_blank" rel="noopener" href="https://linux.vbird.org/linux_basic/centos7/0230filesystem.php#link">“鸟哥私房菜-链接ln说明”</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/09/30/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-30-Terraform%E6%93%8D%E4%BD%9C%E5%8D%8E%E4%B8%BA%E4%BA%91%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/30/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-30-Terraform%E6%93%8D%E4%BD%9C%E5%8D%8E%E4%B8%BA%E4%BA%91%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="post-title-link" itemprop="url">Terraform操作华为云虚拟机</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-09-30 07:26:26" itemprop="dateCreated datePublished" datetime="2022-09-30T07:26:26+08:00">2022-09-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/09/30/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-30-Terraform%E6%93%8D%E4%BD%9C%E5%8D%8E%E4%B8%BA%E4%BA%91%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="post-meta-item leancloud_visitors" data-flag-title="Terraform操作华为云虚拟机" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><ul>
+<li><p>登录<a target="_blank" rel="noopener" href="https://www.terraform.io/downloads">官网</a>，下载相应系统版本的安装包</p>
+</li>
+<li><p>解压安装包，并将terraform可执行文件所在目录添加到系统环境变量PATH中。</p>
+</li>
+<li><p>执行terraform命令，检查是否安装成功。如下回显表示</p>
+</li>
+</ul>
+<h2 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h2><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/09/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-28-Ubuntu22-04-%E5%A3%B0%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9B%B8%E5%85%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-28-Ubuntu22-04-%E5%A3%B0%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9B%B8%E5%85%B3/" class="post-title-link" itemprop="url">Ubuntu22.04:声卡驱动相关</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-09-28 01:50:08" itemprop="dateCreated datePublished" datetime="2022-09-28T01:50:08+08:00">2022-09-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/09/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-28-Ubuntu22-04-%E5%A3%B0%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9B%B8%E5%85%B3/" class="post-meta-item leancloud_visitors" data-flag-title="Ubuntu22.04:声卡驱动相关" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>PipeWire开发工作最早可以追溯到2015年，最初被认为是 “视频领域的 PulseAudio"，但后来也扩展到了音频领域。2021年4月发布的 Fedora34 成为了第一个默认采用了这项技术的发行版，其他桌面 Linux 发行版之后也很快跟进。相比之下，Ubuntu 进度远远落后于其竞争对手。
+
+PipeWire 的优点：
+- 首先 PipeWire 的实现方式更新，开发也更加积极，bug 相对也就更少；
+- 其次 PipeWire 有更好的硬件兼容性(PulseAudio 不支持很多新的蓝牙耳机)，还减少了 CPU 的使用，代码基础更现代化；
+- 与PulseAudio相比，对现代蓝牙音频设备（例如，Apple Air Pods）的支持更好；
+
+WirePlumber, 一个流行的PipeWire会话和策略管理器。
+
+Ubuntu 22.04 LTS 的默认镜像会同时安装 PipeWire 和 PulseAudio。 PipeWire 只用于视频，PulseAudio 处理音频。需要手动将 PipeWire 设为默认的音频服务器。
+Ubuntu 22.10（代号 "Kinetic Kudu"）开发版本的日常构建中，Pipewire已经取代了 PulseAudio，成为了 Ubuntu 的默认音频服务器，不再需要任何设置。
+</code></pre>
+<h1 id="配置PipeWire为默认音频服务器"><a href="#配置PipeWire为默认音频服务器" class="headerlink" title="配置PipeWire为默认音频服务器"></a>配置PipeWire为默认音频服务器</h1><p>Ubuntu 22.04部分安装并启用了PipeWire。启用剩余的部分，并使用PipeWire进行音频和蓝牙，而不是PulseAudio。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>检查环境</p>
+<p>Pipewire预先安装，并自动作为后台服务运行。在终端运行下面的命令来进行确认</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --user status pipewire pipewire-session-manager</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">● pipewire.service - PipeWire Multimedia Service</span><br><span class="line">     Loaded: loaded (/usr/lib/systemd/user/pipewire.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: active (running) since Thu 2022-09-29 14:21:51 CST; 8min ago</span><br><span class="line">TriggeredBy: ● pipewire.socket</span><br><span class="line">   Main PID: 2657 (pipewire)</span><br><span class="line">      Tasks: 2 (<span class="built_in">limit</span>: 75541)</span><br><span class="line">     Memory: 6.6M</span><br><span class="line">        CPU: 142ms</span><br><span class="line">     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/pipewire.service</span><br><span class="line">             └─2657 /usr/bin/pipewire</span><br><span class="line"></span><br><span class="line">Sep 29 14:21:51 hex-Pad systemd[2650]: Started PipeWire Multimedia Service.</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: Cannot connect to server socket err = 没有那个文件或目录</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: Cannot connect to server request channel</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: jack server is not running or cannot be started</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: JackShmReadWritePtr::~JackShmReadWritePtr - Init not <span class="keyword">done</span> <span class="keyword">for</span> -1, skipping unlock</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: JackShmReadWritePtr::~JackShmReadWritePtr - Init not <span class="keyword">done</span> <span class="keyword">for</span> -1, skipping unlock</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: jack-device 0x5595b2c0bd58: can<span class="string">'t open client: 拒绝连接</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">● pipewire-media-session.service - PipeWire Media Session Manager</span></span><br><span class="line"><span class="string">     Loaded: loaded (/usr/lib/systemd/user/pipewire-media-session.service; enabled; vendor preset: enabled)</span></span><br><span class="line"><span class="string">     Active: active (running) since Thu 2022-09-29 14:21:51 CST; 8min ago</span></span><br><span class="line"><span class="string">   Main PID: 2658 (pipewire-media-)</span></span><br><span class="line"><span class="string">      Tasks: 2 (limit: 75541)</span></span><br><span class="line"><span class="string">     Memory: 4.9M</span></span><br><span class="line"><span class="string">        CPU: 108ms</span></span><br><span class="line"><span class="string">     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/pipewire-media-session.service</span></span><br><span class="line"><span class="string">             └─2658 /usr/bin/pipewire-media-session</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Sep 29 14:21:51 hex-Pad systemd[2650]: Started PipeWire Media Session Manager.</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>安装客户端包</p>
+<p>默认情况下，音频输出并。运行命令安装客户端库：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install pipewire-audio-client-libraries libspa-0.2-bluetooth libspa-0.2-jack</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>安装WirePlumber作为会话管理器：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install pipewire-media-session- wireplumber</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>注意’pipe - wire-media-session’后面的’-‘。这是为了在同一个命令中删除它，因为将使用’wireplumber’代替。</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --user --now <span class="built_in">enable</span> wireplumber.service</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>安装蓝牙编码器 AAC/LDAC/AptX:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install \</span><br><span class="line">  libfdk-aac2 \</span><br><span class="line">  libldacbt-{abr,enc}2 \</span><br><span class="line">  libopenaptx0</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
+<p>Wireplumber使事情变得非常容易！如果只想用PipeWire替换Pulseaudio，则启用媒体会话服务和重新启动，仅此而已！</p>
+</blockquote>
+<ol>
+<li><p>ALSA客户端配置PipeWire输出</p>
+<p>将PipeWire示例中的配置文件复制到ALSA配置目录中：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /usr/share/doc/pipewire/examples/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d/</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+<li><p>JACK客户端配置PipeWire输出:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /usr/share/doc/pipewire/examples/ld.so.conf.d/pipewire-jack-*.conf /etc/ld.so.conf.d/</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>sudo ldconfig</p>
+</blockquote>
+</li>
+<li><p>Bluetooth客户端</p>
+<p>只需删除此包装，蓝牙将由PipeWire处理：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove pulseaudio-module-bluetooth</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><h3 id="通过客户端工具pactl检查："><a href="#通过客户端工具pactl检查：" class="headerlink" title="通过客户端工具pactl检查："></a>通过客户端工具pactl检查：</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LANG=C pactl info | grep <span class="string">'^Server Name'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>返回值</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server Name: PulseAudio (on PipeWire 0.3.32)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="通过systemctl检查pipewire服务状态"><a href="#通过systemctl检查pipewire服务状态" class="headerlink" title="通过systemctl检查pipewire服务状态"></a>通过systemctl检查pipewire服务状态</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --user status pipewire pipewire-session-manager</span><br></pre></td></tr></tbody></table></figure>
+
+<p>配置返回值</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">● pipewire.service - PipeWire Multimedia Service</span><br><span class="line">     Loaded: loaded (/usr/lib/systemd/user/pipewire.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: active (running) since Thu 2022-09-29 14:21:51 CST; 13min ago</span><br><span class="line">TriggeredBy: ● pipewire.socket</span><br><span class="line">   Main PID: 2657 (pipewire)</span><br><span class="line">      Tasks: 2 (<span class="built_in">limit</span>: 75541)</span><br><span class="line">     Memory: 7.7M</span><br><span class="line">        CPU: 245ms</span><br><span class="line">     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/pipewire.service</span><br><span class="line">             └─2657 /usr/bin/pipewire</span><br><span class="line"></span><br><span class="line">Sep 29 14:21:51 hex-Pad systemd[2650]: Started PipeWire Multimedia Service.</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: Cannot connect to server socket err = 没有那个文件或目录</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: Cannot connect to server request channel</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: jack server is not running or cannot be started</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: JackShmReadWritePtr::~JackShmReadWritePtr - Init not <span class="keyword">done</span> <span class="keyword">for</span> -1, skipping unlock</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: JackShmReadWritePtr::~JackShmReadWritePtr - Init not <span class="keyword">done</span> <span class="keyword">for</span> -1, skipping unlock</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: jack-device 0x5595b2c0bd58: can<span class="string">'t open client: 拒绝连接</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">● wireplumber.service - Multimedia Service Session Manager</span></span><br><span class="line"><span class="string">     Loaded: loaded (/usr/lib/systemd/user/wireplumber.service; enabled; vendor preset: enabled)</span></span><br><span class="line"><span class="string">     Active: active (running) since Thu 2022-09-29 14:33:58 CST; 1min 26s ago</span></span><br><span class="line"><span class="string">   Main PID: 10292 (wireplumber)</span></span><br><span class="line"><span class="string">      Tasks: 4 (limit: 75541)</span></span><br><span class="line"><span class="string">     Memory: 7.2M</span></span><br><span class="line"><span class="string">        CPU: 170ms</span></span><br><span class="line"><span class="string">     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/wireplumber.service</span></span><br><span class="line"><span class="string">             └─10292 /usr/bin/wireplumber</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Sep 29 14:33:58 hex-Pad systemd[2650]: Started Multimedia Service Session Manager.</span></span><br><span class="line"><span class="string">Sep 29 14:33:58 hex-Pad wireplumber[10292]: Failed to set scheduler settings: Operation not permitted</span></span><br><span class="line"><span class="string">Sep 29 14:33:59 hex-Pad wireplumber[10292]: &lt;WpSiAudioAdapter:0x55ae534170e0&gt; Object activation aborted: proxy destroyed</span></span><br><span class="line"><span class="string">Sep 29 14:33:59 hex-Pad wireplumber[10292]: &lt;WpSiAudioAdapter:0x55ae534170e0&gt; failed to activate item: Object activation aborted: proxy destroyed</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>检查已安装deb包</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt list --installed | grep libldac</span><br><span class="line"></span><br><span class="line">apt list --installed | grep pipewire</span><br><span class="line"></span><br><span class="line">apt show pipewire-pulse</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+
+
+<h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><h2 id="1-systemctl-–user-status-执行失败"><a href="#1-systemctl-–user-status-执行失败" class="headerlink" title="1. systemctl –user status 执行失败"></a>1. systemctl –user status 执行失败</h2><p>ubuntu22.04 登录会出现问题，导致出现报错</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">process org.freedesktop.systemd1 exited with status 1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>原因是：缺少环境变量<code>XDG_RUNTIME_DIR</code>， 怀疑之前将18.04$HOME目录下内容覆盖了22.04下的内容，导致<del>/.profile或</del>/.bashrc的内容出现问题。目前通过下面命令进行屏蔽</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"export XDG_RUNTIME_DIR=/run/user/<span class="subst">$(id -u)</span>"</span> &gt;&gt; /<span class="variable">$HOME</span>/.profile</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="2-wireplumber在pipewire-media-session未卸载之前，为masked状态无法enable"><a href="#2-wireplumber在pipewire-media-session未卸载之前，为masked状态无法enable" class="headerlink" title="2. wireplumber在pipewire-media-session未卸载之前，为masked状态无法enable"></a>2. wireplumber在pipewire-media-session未卸载之前，为masked状态无法enable</h2><blockquote>
+<p><code>mask</code> 是个比<code>disable</code>更彻底的状态。</p>
+<p>使用<code>disable</code>会删除服务相关的unit-file；</p>
+<p>使用<code>mask</code>则会将其link至<code>/dev/null</code>，其对比disable的优势是防止任何形式的激活，包括手动</p>
+<p><code>systemctl list-unit-files</code>命令来显示unit-files的状态，(static, enabled, disabled, masked, indirect)</p>
+<p><code>systemctl list-units</code>命令来显示服务的状态</p>
+</blockquote>
+<h2 id="3-恢复pulseaudio为音频处理"><a href="#3-恢复pulseaudio为音频处理" class="headerlink" title="3. 恢复pulseaudio为音频处理"></a>3. 恢复pulseaudio为音频处理</h2><p>要撤消更改，首先删除客户端库：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove pipewire-audio-client-libraries libspa-0.2-bluetooth libspa-0.2-jack</span><br></pre></td></tr></tbody></table></figure>
+
+<p>删除WirePlumber并安装以前的pipewire-media-session</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install pipewire-media-session wireplumber-</span><br></pre></td></tr></tbody></table></figure>
+
+<p>最后，重新启用PipeWire-Media-Session服务：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -f ~/.config/systemd/user/pipewire-session-manager.service</span><br><span class="line">systemctl --user --now <span class="built_in">enable</span> pipewire-media-session</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果声音仍无法正常工作，尝试通过命令禁用PipeWire-Pulse服务：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前用户</span></span><br><span class="line">systemctl --user --now <span class="built_in">disable</span> pipewire-pulse.service pipewire-pulse.socket</span><br><span class="line"><span class="comment"># 全局</span></span><br><span class="line">sudo systemctl --global --now <span class="built_in">disable</span> pipewire-pulse.service pipewire-pulse.socket</span><br></pre></td></tr></tbody></table></figure>
+
+<p>重新启用re-enable  pulseaudio服务：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前用户</span></span><br><span class="line">systemctl --user --now reenable pulseaudio.service pulseaudio.socket</span><br><span class="line"><span class="comment"># 全局</span></span><br><span class="line">sudo systemctl --global --now reenable pulseaudio.service pulseaudio.socket</span><br></pre></td></tr></tbody></table></figure>
+
+<p>重启</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl --user restart pulseaudio</span><br><span class="line"></span><br><span class="line">reboot</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>上下文：</p>
+<p><a target="_blank" rel="noopener" href="https://www.omgubuntu.co.uk/2022/05/ubuntu-22-10-makes-pipewire-default">PipeWire is the default audio server in Ubuntu 22.10.</a></p>
+<p><a target="_blank" rel="noopener" href="https://pipewire.org/">PipeWire</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitlab.freedesktop.org/pipewire/wireplumber">wireplumber</a></p>
+<p>配置：</p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/the-spyke/2de98b22ff4f978ebf0650c90e82027e?permalink_comment_id=3976215#enable-pipewire-on-ubuntu-2204">Enable PipeWire on Ubuntu 22.04</a></p>
+<p><a target="_blank" rel="noopener" href="https://ubuntuhandbook.org/index.php/2022/04/pipewire-replace-pulseaudio-ubuntu-2204/">How to Use PipeWire to replace PulseAudio in Ubuntu 22.04</a></p>
+<p>其他</p>
+<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/710420/why-are-some-systemd-services-in-the-masked-state">Why are some systemd services in the “masked” state?</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.ruanbekker.com/blog/2017/12/09/unmask-a-masked-service-in-systemd/">Unmask a Masked Service in Systemd</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/09/19/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-19-Ubuntu-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E5%8F%8A%E4%BF%9D%E5%AD%98%E8%B7%AF%E5%BE%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/19/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-19-Ubuntu-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E5%8F%8A%E4%BF%9D%E5%AD%98%E8%B7%AF%E5%BE%84/" class="post-title-link" itemprop="url">Ubuntu:个性化配置及保存路径</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-09-19 08:57:28" itemprop="dateCreated datePublished" datetime="2022-09-19T08:57:28+08:00">2022-09-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/09/19/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-19-Ubuntu-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E5%8F%8A%E4%BF%9D%E5%AD%98%E8%B7%AF%E5%BE%84/" class="post-meta-item leancloud_visitors" data-flag-title="Ubuntu:个性化配置及保存路径" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>记录Ubuntu工作机中，一些自定义系统配置所在目录。方便备份和恢复开发环境。</p>
+<ul>
+<li>install Ubuntu-22.04</li>
+<li>登录选择 ubuntu xorg</li>
+<li>apt update</li>
+<li>apt upgrade</li>
+<li>dpkg -i # 运行APPImage的依赖<code>sudo dpkg -i $HOME/apps/packages/libfuse2_2.9.9-5ubuntu3_amd64.deb</code></li>
+<li>bash get-docker.sh</li>
+<li>install sougou</li>
+<li>install chrome; restart computer</li>
+<li>拷贝个人配置<code>cp -r -p &lt;硬盘/home/hex/&gt; /home/hex/</code></li>
+<li>重启检查</li>
+</ul>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h2 id="1-1-文件夹书签-Nautilus-Add-Bookmarks"><a href="#1-1-文件夹书签-Nautilus-Add-Bookmarks" class="headerlink" title="1.1 文件夹书签(Nautilus Add Bookmarks)"></a>1.1 文件夹书签(Nautilus Add Bookmarks)</h2><p>配置文件所在目录<code> cat /home/hex/.config/gtk-3.0/bookmarks</code>，内容如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file:///home/hex/WeChatFiles/hexiang3941/FileStorage/File</span><br><span class="line">file:///home/hex/Desktop/github</span><br><span class="line">file:///home/hex/workspace</span><br><span class="line">file:///home/hex/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E4%BB%B6/%E5%85%AC%E5%8F%B8-4-%E8%BD%A6%E7%99%BE%E6%96%87%E6%A1%A3</span><br></pre></td></tr></tbody></table></figure>
+
+<p>注意：</p>
+<ul>
+<li>需要填绝对路径</li>
+<li>先后顺序为目录显示顺序</li>
+<li>文件保存退出，配置即生效</li>
+</ul>
+<h2 id="1-2-用户目录-xdg-user-dirs"><a href="#1-2-用户目录-xdg-user-dirs" class="headerlink" title="1.2 用户目录(xdg-user-dirs)"></a>1.2 用户目录(xdg-user-dirs)</h2><blockquote>
+<p>详细信息,请参考<code>man xdg-user-dirs-update</code></p>
+</blockquote>
+<p>配置文件所在目录<code>$HOME/.config/user-dirs.dirs</code>，内容如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># This file is written by xdg-user-dirs-update</span><br><span class="line"># If you want to change or add directories, just edit the line you're</span><br><span class="line"># interested in. All local changes will be retained on the next run.</span><br><span class="line"># Format is XDG_xxx_DIR="$HOME/yyy", where yyy is a shell-escaped</span><br><span class="line"># homedir-relative path, or XDG_xxx_DIR="/yyy", where /yyy is an</span><br><span class="line"># absolute path. No other format is supported.</span><br><span class="line"># </span><br><span class="line">XDG_DESKTOP_DIR="$HOME/Desktop"</span><br><span class="line">XDG_DOWNLOAD_DIR="$HOME/Downloads"</span><br><span class="line">XDG_TEMPLATES_DIR="$HOME/Templates"</span><br><span class="line">XDG_PUBLICSHARE_DIR="$HOME/Public"</span><br><span class="line">XDG_DOCUMENTS_DIR="$HOME/Documents"</span><br><span class="line">XDG_PICTURES_DIR="$HOME/Pictures"</span><br><span class="line">XDG_Apps_DIR="$HOME/apps"</span><br><span class="line">XDG_WORKSPACE_DIR="$HOME/workspace"</span><br><span class="line">XDG_MUSIC_DIR="$HOME/Music"</span><br><span class="line">XDG_VIDEOS_DIR="$HOME/Videos"</span><br></pre></td></tr></tbody></table></figure>
+
+<p>以上内容，为命令<code>xdg-user-dirs-update</code>生成。通常在用户会话开始时自动执行，来根据语言环境更新用户dirs。此逻辑由下面配置文件<code>/etc/xdg/user-dirs.conf</code>控制</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># This controls the behaviour of xdg-user-dirs-update which is run on user login</span><br><span class="line"># You can also have per-user config in ~/.config/user-dirs.conf, or specify</span><br><span class="line"># the XDG_CONFIG_HOME and/or XDG_CONFIG_DIRS to override this</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">enabled=True</span><br><span class="line"></span><br><span class="line"># This sets the filename encoding to use. You can specify an explicit</span><br><span class="line"># encoding, or "locale" which means the encoding of the users locale</span><br><span class="line"># will be used</span><br><span class="line">filename_encoding=UTF-8</span><br></pre></td></tr></tbody></table></figure>
+
+<p>有些目录像Music\Vedio不会经常使用，不想让系统自动创建，可以讲上面配置文件设置为<code>enabled=False</code>。但这样会导致部分问题</p>
+<p>比如Nautilus文件工具通过<code>$HOME/Template</code>目录中文件，显示<code>新建文件</code>时的选项。删除此目录会导致鼠标右键无<code>新建文件</code>选项。</p>
+<p>(但其他文件管理系统<code>Thunar[xfce默认]</code>、<code>Nemo[cinnamon默认]</code>没有这个问题)</p>
+<p>隐藏不需要目录方法：</p>
+<ul>
+<li>一种：删除目录，并执行命令<code>xdg-user-dirs-update</code></li>
+<li>另一种：改变位置</li>
+<li>最后一种：手动修改<code>文件，并讲</code>设置为false，禁止自动更新</li>
+</ul>
+<p>简单操作举例：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 创建默认目录</span></span><br><span class="line">xdg-user-dirs-update</span><br><span class="line"><span class="comment"># 2. 创建自定义目录</span></span><br><span class="line">xdg-user-dirs-update --<span class="built_in">set</span> DOWNLOAD ~/Internet</span><br><span class="line"><span class="comment"># 3. 查询</span></span><br><span class="line">xdg-user-dir TEMPLATES</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="1-3-本地Desktop存储目录"><a href="#1-3-本地Desktop存储目录" class="headerlink" title="1.3 本地Desktop存储目录"></a>1.3 本地Desktop存储目录</h2><p>配置文件目录<code>$HOME/.local/share/applications/</code>， 配置文件<code>jetbrains-goland.desktop</code>示例如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.0</span><br><span class="line">Type=Application</span><br><span class="line">Name=GoLand</span><br><span class="line">Icon=/home/hex/apps/GoLand-2021.1.3/bin/goland.svg</span><br><span class="line">Exec="/home/hex/apps/GoLand-2021.1.3/bin/goland.sh" %f</span><br><span class="line">Comment=Cross-platform IDE built specially for Go developers</span><br><span class="line">Categories=Development;IDE;</span><br><span class="line">Terminal=false</span><br><span class="line">StartupWMClass=jetbrains-goland</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="1-4-快捷键存储目录-keyboard"><a href="#1-4-快捷键存储目录-keyboard" class="headerlink" title="1.4 快捷键存储目录(keyboard)"></a>1.4 快捷键存储目录(keyboard)</h2><h2 id="1-5-运行appImage失败"><a href="#1-5-运行appImage失败" class="headerlink" title="1.5 运行appImage失败"></a>1.5 运行appImage失败</h2><blockquote>
+<p>原因：Ubuntu 22.04 不再默认安装 libfuse2，导致运行appImage时报错如下</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AppImages require FUSE to run.</span><br><span class="line">You might still be able to extract the contents of this AppImage</span><br><span class="line">if you run it with the --appimage-extract option.</span><br><span class="line">See https://github.com/AppImage/AppImageKit/wiki/FUSE</span><br><span class="line">for more information</span><br></pre></td></tr></tbody></table></figure>
+
+<p>需要安装libfuse2</p>
+<h2 id="1-5-截图工具flameshot无法使用-Gnome4-1"><a href="#1-5-截图工具flameshot无法使用-Gnome4-1" class="headerlink" title="1.5 截图工具flameshot无法使用(Gnome4.1+)"></a>1.5 截图工具flameshot无法使用(Gnome4.1+)</h2><p>在登录时，选择ubuntu xorg则解决问题</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libfuse2 </span><br></pre></td></tr></tbody></table></figure>
+
+<p>或者离线安装</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i <span class="variable">$HOME</span>/apps/packages/libfuse2_2.9.9-5ubuntu3_amd64.deb</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="1-6-压缩包安装Typora"><a href="#1-6-压缩包安装Typora" class="headerlink" title="1.6 压缩包安装Typora"></a>1.6 压缩包安装Typora</h2><ol>
+<li><p>解压安装包</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/typora</span><br><span class="line">tar -zxvf /home/hex/apps/packages/办公软件/Typora-linux-x64.tar.gz -C /tmp/typora</span><br><span class="line">mv /tmp/typora/bin/Typora-linux-x64 $HOME/apps/Typora</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>创建软连接</p>
+<blockquote>
+<p>是为了在命令行执行 <code>typora &lt;/md/file/path&gt;</code>, 打开命令行工具</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /home/hex/apps/Typora/Typora /usr/local/bin/typora</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>创建Desktop</p>
+<p>将以下内容拷贝至文件<code>/home/hex/.local/share/applications/self-typora.desktop</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=typora</span><br><span class="line">Exec=/home/hex/apps/Typora/Typora</span><br><span class="line">Icon=/home/hex/apps/Typora/resources/app/asserts/icon/icon_512x512.png</span><br><span class="line">Type=Application</span><br><span class="line">StartupNotify=true</span><br></pre></td></tr></tbody></table></figure>
+
+<p>文件保存即生效</p>
+</li>
+</ol>
+<h2 id="1-7-卸载软件"><a href="#1-7-卸载软件" class="headerlink" title="1.7 卸载软件"></a>1.7 卸载软件</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove --purge libreoffice*</span><br><span class="line">sudo apt clean</span><br><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="1-8-个性化设置"><a href="#1-8-个性化设置" class="headerlink" title="1.8 个性化设置"></a>1.8 个性化设置</h2><ul>
+<li><p>点击最小化</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'</span><br></pre></td></tr></tbody></table></figure>
+
+<p>执行后即时生效</p>
+</li>
+<li><p>显示电池电量百分比</p>
+<p><code>Settings</code> - <code>Power</code> - <code>Show Battery Percentage</code>  点击开启</p>
+</li>
+<li><p>改变图标大小</p>
+<ul>
+<li><code>Settings</code> - <code>Appearance</code> - <code>Dock</code>  <code>Icon size</code>  设置值 48</li>
+<li><code>Settings</code> - <code>Appearance</code> - <code>Dock</code>  <code>Icon size</code>  设置值 48</li>
+</ul>
+</li>
+<li><p>显示设置</p>
+<ul>
+<li><p>Ubuntu一般会自动识别<code>HI-DPI</code>屏幕并适当扩展。如果没有，需要手动进行调整。</p>
+<p><code>Settings</code> -&gt; <code>Displays</code> -&gt; enable <code>Fractional scaling</code> -&gt; 选择合适地比例</p>
+</li>
+<li><p>docker-run 地微信显示出现问题，调整DPI环境变量。此值计算方式为<a target="_blank" rel="noopener" href="https://askubuntu.com/questions/197828/how-to-find-and-change-the-screen-dpi">分别率/英寸</a>，例如200</p>
+</li>
+</ul>
+</li>
+<li><p>安装字体、编解码器</p>
+<blockquote>
+<p>微软字体、主流媒体格式</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ubuntu-restricted-extras</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h2 id="1-9-声音"><a href="#1-9-声音" class="headerlink" title="1.9 声音"></a>1.9 声音</h2><ul>
+<li><p>检查<code>pulseaudio</code>状态</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pulseaudio --check</span><br></pre></td></tr></tbody></table></figure>
+
+<p>它通常不打印输出，只需退出代码即可。0表示运行。</p>
+</li>
+<li><p>停止</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pulseaudio -k</span><br><span class="line"># or</span><br><span class="line">killall pulseaudio</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>后台期待</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pulseaudio -D</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/08/23/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-08-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6-vimium-%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/23/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-08-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6-vimium-%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">浏览器插件-vimium:使用和配置</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-08-23 06:08:34" itemprop="dateCreated datePublished" datetime="2022-08-23T06:08:34+08:00">2022-08-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/08/23/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-08-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6-vimium-%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE/" class="post-meta-item leancloud_visitors" data-flag-title="浏览器插件-vimium:使用和配置" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://ahead-red-0dc.notion.site/vimium-144e05839df3482bb96f3aac370fbb47">vimium进阶篇：高级技巧,高手必知</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/523549909">知乎-vimium常见问题及处理方式</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/08/04/devops-2022-08-04-k6%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7-%E5%83%8F%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%B8%80%E6%A0%B7%E5%81%9A%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/04/devops-2022-08-04-k6%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7-%E5%83%8F%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%B8%80%E6%A0%B7%E5%81%9A%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">k6压测工具-像单元测试一样做压力测试</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-08-04 08:50:38" itemprop="dateCreated datePublished" datetime="2022-08-04T08:50:38+08:00">2022-08-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/08/04/devops-2022-08-04-k6%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7-%E5%83%8F%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%B8%80%E6%A0%B7%E5%81%9A%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" class="post-meta-item leancloud_visitors" data-flag-title="k6压测工具-像单元测试一样做压力测试" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/481527374">k6-像单元测试一样做压力测试</a><br><a href="https://link.zhihu.com/?target=https://k6.io/blog/comparing-best-open-source-load-testing-tools/">Open source load testing tool review 2020</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/08/04/golang-2022-08-04-golangci-lint%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E8%AF%B4%E6%98%8E%E5%8F%8A%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/04/golang-2022-08-04-golangci-lint%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E8%AF%B4%E6%98%8E%E5%8F%8A%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/" class="post-title-link" itemprop="url">golangci-lint常见报错说明及修复建议</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-08-04 02:02:09" itemprop="dateCreated datePublished" datetime="2022-08-04T02:02:09+08:00">2022-08-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/08/04/golang-2022-08-04-golangci-lint%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E8%AF%B4%E6%98%8E%E5%8F%8A%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE/" class="post-meta-item leancloud_visitors" data-flag-title="golangci-lint常见报错说明及修复建议" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-Implicit-memory-aliasing-in-for-loop"><a href="#1-Implicit-memory-aliasing-in-for-loop" class="headerlink" title="1. Implicit memory aliasing in for loop"></a>1. Implicit memory aliasing in for loop</h2><blockquote>
+<p>报错意思是：在循环中重复使用变量的地址     <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/62446118/implicit-memory-aliasing-in-for-loop">参考链接</a><br>因为for语句中变量是被重用的，即变量内存地址不变，但值发生变化。当取消引用指针时，值可能发生改变，所以静态检查报错</p>
+</blockquote>
+<h3 id="1-1-错误写法"><a href="#1-1-错误写法" class="headerlink" title="1.1 错误写法"></a>1.1 错误写法</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i, v := <span class="keyword">range</span> versions {</span><br><span class="line">    res := createWorkerFor(&amp;v)</span><br><span class="line">    ...</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="1-2-正确写法"><a href="#1-2-正确写法" class="headerlink" title="1.2 正确写法"></a>1.2 正确写法</h3><ul>
+<li>for循环中使用元素的实际地址i,而非迭代变量取值（<strong>推荐</strong>）</li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> versions {</span><br><span class="line">    res := createWorkerFor(&amp;versions[i])</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>在每次循环时重新初始化迭代变量</li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _, v := <span class="keyword">range</span> versions {</span><br><span class="line">    v := v</span><br><span class="line">    res := createWorkerFor(&amp;v) <span class="comment">// this is now the address of the inner v</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>使用闭包</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for _, v := range versions { </span><br><span class="line">    go func(arg ObjectDescription) {</span><br><span class="line">        x := &amp;arg // safe</span><br><span class="line">    }(v)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="2-commentFormatting-put-a-space-between-and-comment-text"><a href="#2-commentFormatting-put-a-space-between-and-comment-text" class="headerlink" title="2. commentFormatting: put a space between // and comment text"></a>2. commentFormatting: put a space between <code>//</code> and comment text</h2><blockquote>
+<p>注释后面需要加空格</p>
+</blockquote>
+<h3 id="2-1-错误写法"><a href="#2-1-错误写法" class="headerlink" title="2.1 错误写法"></a>2.1 错误写法</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//UpdatePatch update patch - edit qlet`s information, and generate a new version patch</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-2-正确写法"><a href="#2-2-正确写法" class="headerlink" title="2.2 正确写法"></a>2.2 正确写法</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UpdatePatch update patch - edit qlet`s information, and generate a new version patch</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-3-IDE配置"><a href="#2-3-IDE配置" class="headerlink" title="2.3 IDE配置"></a>2.3 IDE配置</h3><p>goland中，可以点击<code>File</code> - <code>Settings</code> - <code>Editor</code> - <code>Code Style</code> - <code>Go</code> -<code>Other</code>下，勾选<code>Add a leading space to comments</code>。可以实现注释代码时自动在<code>//</code>后加空格。</p>
+<h2 id="3-Consider-preallocating-prealloc-lint"><a href="#3-Consider-preallocating-prealloc-lint" class="headerlink" title="3. Consider preallocating (prealloc) lint"></a>3. Consider preallocating (prealloc) lint</h2><blockquote>
+<p>考虑 预先分配问题        <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/59734706/how-to-resolve-consider-preallocating-prealloc-lint">参考链接</a></p>
+<p>使用make预先分配合理的内存空间，能减少复制和扩展。</p>
+</blockquote>
+<h3 id="3-1-错误写法"><a href="#3-1-错误写法" class="headerlink" title="3.1 错误写法"></a>3.1 错误写法</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> to []<span class="type">string</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> s.To {</span><br><span class="line">    to = <span class="built_in">append</span>(to, s.To[i].String())</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-2-正确写法"><a href="#3-2-正确写法" class="headerlink" title="3.2 正确写法"></a>3.2 正确写法</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">to := <span class="built_in">make</span>([]<span class="type">string</span>, <span class="number">0</span>, <span class="built_in">len</span>(s.To))</span><br><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> s.To {</span><br><span class="line">    to = <span class="built_in">append</span>(to, s.To[i].String())</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>或者干脆使用append，直接对切片对象赋值</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">to := <span class="built_in">make</span>([]<span class="type">string</span>, <span class="built_in">len</span>(s.To))</span><br><span class="line"><span class="keyword">for</span> i, t := <span class="keyword">range</span> s.To {</span><br><span class="line">    to[i] = t.String()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="4-should-replace-errors-New-fmt-Sprintf-…-with-fmt-Errorf-…"><a href="#4-should-replace-errors-New-fmt-Sprintf-…-with-fmt-Errorf-…" class="headerlink" title="4. should replace errors.New(fmt.Sprintf(…)) with fmt.Errorf(…)"></a>4. should replace errors.New(fmt.Sprintf(…)) with fmt.Errorf(…)</h2><blockquote>
+<p>go 1.13之后，推荐使用fmt.Errof(“%w”,err)来生成error</p>
+</blockquote>
+<h3 id="4-1-错误写法"><a href="#4-1-错误写法" class="headerlink" title="4.1 错误写法"></a>4.1 错误写法</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">errors.New(fmt.Sprintf(<span class="string">"error is %s"</span>, err.Error()))</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-2-正确写法"><a href="#4-2-正确写法" class="headerlink" title="4.2 正确写法"></a>4.2 正确写法</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Errorf(<span class="string">"error is %w"</span>, err)</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="5-error-strings-should-not-be-capitalized-or-end-with-punctuation-or-a-newline"><a href="#5-error-strings-should-not-be-capitalized-or-end-with-punctuation-or-a-newline" class="headerlink" title="5. error strings should not be capitalized or end with punctuation or a newline"></a>5. error strings should not be capitalized or end with punctuation or a newline</h2><blockquote>
+<p>error 信息不应该:  以大写字母开头 或 以标点符号\换行结尾。</p>
+</blockquote>
+<h2 id="6-don’t-use-MixedCaps-in-package-name"><a href="#6-don’t-use-MixedCaps-in-package-name" class="headerlink" title="6. don’t use MixedCaps in package name"></a>6. don’t use MixedCaps in package name</h2><blockquote>
+<p>包的名称不能大小写混写，应全小写</p>
+</blockquote>
+<h3 id="6-1-错误写法"><a href="#6-1-错误写法" class="headerlink" title="6.1 错误写法"></a>6.1 错误写法</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package fileUtils</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="6-2-正确写法"><a href="#6-2-正确写法" class="headerlink" title="6.2 正确写法"></a>6.2 正确写法</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package fileutils</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="7-exported-type-T-should-have-comment-or-be-unexported"><a href="#7-exported-type-T-should-have-comment-or-be-unexported" class="headerlink" title="7. exported type T should have comment or be unexported"></a>7. exported type T should have comment or be unexported</h2><blockquote>
+<p>暴露出去的结构体或方法，应该加注释或不对外暴露。</p>
+</blockquote>
+<h2 id="8-comment-on-exported-type-U-should-be-of-the-form-“U-”"><a href="#8-comment-on-exported-type-U-should-be-of-the-form-“U-”" class="headerlink" title="8. comment on exported type U should be of the form “U ..”"></a>8. comment on exported type U should be of the form “U ..”</h2><blockquote>
+<p>暴露出去的类型<code>U</code>的注释，应该为这种格式<code>// U xxx</code>。即以变量名开头</p>
+</blockquote>
+<h2 id="9-使用errors-Is方法替代"><a href="#9-使用errors-Is方法替代" class="headerlink" title="9. 使用errors.Is方法替代"></a>9. 使用errors.Is方法替代</h2><blockquote>
+<p>使用errors.Is方法替换错误信息校验</p>
+</blockquote>
+<h3 id="9-1-错误写法"><a href="#9-1-错误写法" class="headerlink" title="9.1 错误写法"></a>9.1 错误写法</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> fieldErr, ok := err.(validator.ValidationErrors); ok {</span><br><span class="line">    <span class="keyword">var</span> tagErrorMsg []<span class="type">string</span></span><br><span class="line">    <span class="keyword">for</span> key, value := <span class="keyword">range</span> fieldErr.Translate(validate.Trans) {</span><br><span class="line">        tagErrorMsg = <span class="built_in">append</span>(tagErrorMsg, fmt.Sprintf(<span class="string">"%s: %s"</span>, key, value))</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    respErr := errors.New(strings.Join(tagErrorMsg, <span class="string">","</span>))</span><br><span class="line">    <span class="keyword">return</span> respErr</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="9-2-正确写法"><a href="#9-2-正确写法" class="headerlink" title="9.2 正确写法"></a>9.2 正确写法</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fieldErr validator.ValidationErrors</span><br><span class="line"><span class="keyword">if</span> errors.Is(err, fieldErr) {</span><br><span class="line">    <span class="keyword">var</span> tagErrorMsg []<span class="type">string</span></span><br><span class="line">    <span class="keyword">for</span> key, value := <span class="keyword">range</span> fieldErr.Translate(validate.Trans) {</span><br><span class="line">        tagErrorMsg = <span class="built_in">append</span>(tagErrorMsg, fmt.Sprintf(<span class="string">"%s: %s"</span>, key, value))</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    respErr := errors.New(strings.Join(tagErrorMsg, <span class="string">","</span>))</span><br><span class="line">    <span class="keyword">return</span> respErr</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaocai_233/article/details/109527521">golint错误检查以及 min-confidence 不同等级的错误提示</a></li>
+</ul>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

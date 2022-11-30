@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="重要阅读nuclio源码，分析nuclio平台中java由源码到服务启动的全过程。 环境说明nuclio: 1.4.17kubernetes: 1.15.3 源码： 构建过程有nuctl的build command往下查看调用  pkg&#x2F;nuctl&#x2F;command&#x2F;build.go文件下，newBuildCommandeer函数内部调用了rootCommandeer.platform.Create">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nuclio[源码]-java构建部署流程">
+<meta property="og:url" content="https://hex-py.github.io/2021/02/02/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-2021-02-02-Nuclio-%E6%BA%90%E7%A0%81-java%E6%9E%84%E5%BB%BA%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="重要阅读nuclio源码，分析nuclio平台中java由源码到服务启动的全过程。 环境说明nuclio: 1.4.17kubernetes: 1.15.3 源码： 构建过程有nuctl的build command往下查看调用  pkg&#x2F;nuctl&#x2F;command&#x2F;build.go文件下，newBuildCommandeer函数内部调用了rootCommandeer.platform.Create">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-01T18:49:36.000Z">
+<meta property="article:modified_time" content="2022-11-30T03:22:28.025Z">
+<meta property="article:author" content="Hex">
+<meta property="article:tag" content="Source Code">
+<meta property="article:tag" content="Nuclio">
+<meta property="article:tag" content="待完善">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/2021/02/02/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-2021-02-02-Nuclio-%E6%BA%90%E7%A0%81-java%E6%9E%84%E5%BB%BA%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Nuclio[源码]-java构建部署流程 | Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/02/02/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-2021-02-02-Nuclio-%E6%BA%90%E7%A0%81-java%E6%9E%84%E5%BB%BA%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nuclio[源码]-java构建部署流程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-02-02 02:49:36" itemprop="dateCreated datePublished" datetime="2021-02-02T02:49:36+08:00">2021-02-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sourceCode/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/02/02/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-2021-02-02-Nuclio-%E6%BA%90%E7%A0%81-java%E6%9E%84%E5%BB%BA%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/" class="post-meta-item leancloud_visitors" data-flag-title="Nuclio[源码]-java构建部署流程" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>阅读nuclio源码，分析nuclio平台中java由源码到服务启动的全过程。</p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>nuclio: 1.4.17<br>kubernetes: 1.15.3</p>
+<h1 id="源码：-构建过程"><a href="#源码：-构建过程" class="headerlink" title="源码： 构建过程"></a>源码： 构建过程</h1><p>有<code>nuctl</code>的build command往下查看调用</p>
+<ol>
+<li><p><code>pkg/nuctl/command/build.go</code>文件下，<code>newBuildCommandeer</code>函数内部调用了<code>rootCommandeer.platform.CreateFunctionBuild</code></p>
+<blockquote>
+<p>走platform接口<code>pkg/platform/platform.go</code>，因为platform类型为<code>kube</code>，所以调用<code>pkg/platform/kube/platform.go</code>。</p>
+<p>其中kube的NewPlatform继承了<code>pkg/platform/abstract/platform.go</code>的实例，<code>CreateFunctionBuild</code>就在<code>abstract/</code>中具体定义的。</p>
+</blockquote>
+</li>
+<li><p><code>pkg/platform/abstract/platform.go</code>文件下，<code>CreateFunctionBuild</code>函数内部，实例化了一个builder，并执行<code>builder.Build</code>函数。</p>
+</li>
+<li><p><code>pkg/processor/build/builder.go</code>文件下：</p>
+<p><code>Build</code>                                                            函数调用<code>buildProcessorImage</code>函数</p>
+<p><code>buildProcessorImage</code>                               函数调用<code>createProcessorDockerfile</code>函数</p>
+<p><code>createProcessorDockerfile</code>                   函数调用<code>getRuntimeProcessorDockerfileInfo</code>函数</p>
+<p><code>getRuntimeProcessorDockerfileInfo</code>   函数调用<code>resolveProcessorDockerfileInfo</code>函数</p>
+<ul>
+<li><p><code>resolveProcessorDockerfileInfo</code>         函数调用<code>runtime.GetProcessorDockerfileInfo</code>函数</p>
+<blockquote>
+<p>走runtime接口<code>pkg/processor/build/runtime/runtime.go</code>，</p>
+<p>因为runtime类型为<code>java</code>，所以调用<code>pkg/processor/build/runtime/java/runtime.go</code>。</p>
+</blockquote>
+<ul>
+<li><code>pkg/processor/build/runtime/java/runtime.go</code>中，有具体的<code>GetProcessorDockerfileInfo</code>定义（包含onbuild信息）。</li>
+</ul>
+</li>
+<li><p><code>resolveProcessorDockerfileInfo</code>         函数调用<code>GenerateDockerfileContents</code>函数</p>
+<ul>
+<li><p><code>GenerateDockerfileContents</code>                  函数调用<code>platform.GetOnbuildStages</code>函数</p>
+<blockquote>
+<p>platform接口<code>pkg/platform/platform.go</code>，<code>GetOnbuildStages</code> 具体定义在 <code>pkg/platform/abstract/platform.go</code>。</p>
+</blockquote>
+<ul>
+<li><p><code>pkg/platform/abstract/platform.go</code>文件下：</p>
+<p><code>GetOnbuildStages</code>                                         函数内部调用<code>ContainerBuilder.GetOnbuildStages</code>函数。</p>
+<blockquote>
+<p>BuilderPusher接口<code>pkg/containerimagebuilderpusher/containerimagebuilder.go</code>，</p>
+<p>因为kind为<code>kaniko</code>，所以调用<code>pkg/containerimagebuilderpusher/kaniko.go</code></p>
+</blockquote>
+</li>
+<li><p><code>pkg/containerimagebuilderpusher/kaniko.go</code>文件下：</p>
+<p>GetOnbuildStages函数主要做以下操作</p>
+<p>将<code>onbuildArtifacts</code>转换为<code>"FROM %s(artifact.Image) AS %s(artifact.Name)" \n ARG NUCLIO_LABEL \n ARG NUCLIO_ARCH</code></p>
+</li>
+</ul>
+</li>
+<li><p><code>GenerateDockerfileContents</code>                  函数调用<code>platform.TransformOnbuildArtifactPaths</code>函数</p>
+<blockquote>
+<p>platform接口<code>pkg/platform/platform.go</code>，<code>GetOnbuildStages</code> 具体定义在 <code>pkg/platform/abstract/platform.go</code>。</p>
+</blockquote>
+<ul>
+<li><p><code>TransformOnbuildArtifactPaths</code>             函数内部调用<code>ContainerBuilder.GetOnbuildStages</code>函数。</p>
+<blockquote>
+<p>BuilderPusher接口<code>pkg/containerimagebuilderpusher/containerimagebuilder.go</code>，</p>
+<p><code>TransformOnbuildArtifactPaths</code>         具体定义在   <code>pkg/containerimagebuilderpusher/kaniko.go</code></p>
+</blockquote>
+</li>
+<li><p><code>pkg/containerimagebuilderpusher/kaniko.go</code>文件下：</p>
+<p><code>TransformOnbuildArtifactPaths</code> 函数主要做以下操作</p>
+<p>将<code>onbuildArtifacts</code>转换为<code>--from=%s(artifact.Name)  %s(artifat.Path[x])   </code></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>从后向前推，构建function函数最终镜像的Dockerfile在<code>pkg/processor/build/builder.go</code>, 函数<code>GenerateDockerfileContents</code>。</p>
+<p>内容如下：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GenerateDockerfileContents return function docker file</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Builder)</span></span> GenerateDockerfileContents(baseImage <span class="type">string</span>,</span><br><span class="line">	onbuildArtifacts []runtime.Artifact,</span><br><span class="line">	imageArtifactPaths <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>,</span><br><span class="line">	directives <span class="keyword">map</span>[<span class="type">string</span>][]functionconfig.Directive,</span><br><span class="line">	healthCheckRequired <span class="type">bool</span>) (<span class="type">string</span>, <span class="type">error</span>) {</span><br><span class="line"></span><br><span class="line">	<span class="comment">// now that all artifacts are in the artifacts directory, we can craft a Dockerfile</span></span><br><span class="line">	dockerfileTemplateContents := <span class="string">`# Multistage builds</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">{{ range $onbuildStage := .OnbuildStages }}</span></span><br><span class="line"><span class="string">{{ $onbuildStage }}</span></span><br><span class="line"><span class="string">{{ end }}</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># From the base image</span></span><br><span class="line"><span class="string">FROM {{ .BaseImage }}</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># Old(er) Docker support - must use all build args</span></span><br><span class="line"><span class="string">ARG NUCLIO_LABEL</span></span><br><span class="line"><span class="string">ARG NUCLIO_ARCH</span></span><br><span class="line"><span class="string">ARG NUCLIO_BUILD_LOCAL_HANDLER_DIR</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">{{ if .PreCopyDirectives }}</span></span><br><span class="line"><span class="string"># Run the pre-copy directives</span></span><br><span class="line"><span class="string">{{ range $directive := .PreCopyDirectives }}</span></span><br><span class="line"><span class="string">{{ $directive.Kind }} {{ $directive.Value }}</span></span><br><span class="line"><span class="string">{{ end }}</span></span><br><span class="line"><span class="string">{{ end }}</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># Copy required objects from the suppliers</span></span><br><span class="line"><span class="string">{{ range $localArtifactPath, $imageArtifactPath := .OnbuildArtifactPaths }}</span></span><br><span class="line"><span class="string">COPY {{ $localArtifactPath }} {{ $imageArtifactPath }}</span></span><br><span class="line"><span class="string">{{ end }}</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">{{ range $localArtifactPath, $imageArtifactPath := .ImageArtifactPaths }}</span></span><br><span class="line"><span class="string">COPY {{ $localArtifactPath }} {{ $imageArtifactPath }}</span></span><br><span class="line"><span class="string">{{ end }}</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">{{ if .HealthcheckRequired }}</span></span><br><span class="line"><span class="string"># Readiness probe</span></span><br><span class="line"><span class="string">HEALTHCHECK --interval=1s --timeout=3s CMD /usr/local/bin/uhttpc --url http://127.0.0.1:8082/ready || exit 1</span></span><br><span class="line"><span class="string">{{ end }}</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># Run the post-copy directives</span></span><br><span class="line"><span class="string">{{ range $directive := .PostCopyDirectives }}</span></span><br><span class="line"><span class="string">{{ $directive.Kind }} {{ $directive.Value }}</span></span><br><span class="line"><span class="string">{{ end }}</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># Run processor with configuration and platform configuration</span></span><br><span class="line"><span class="string">CMD [ "processor" ]</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line">	onbuildStages, err := b.platform.GetOnbuildStages(onbuildArtifacts)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="string">""</span>, errors.Wrap(err, <span class="string">"Failed to transform retrieve onbuild stages"</span>)</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Transform `onbuildArtifactPaths` depending on the builder being used</span></span><br><span class="line">	onbuildArtifactPaths, err := b.platform.TransformOnbuildArtifactPaths(onbuildArtifacts)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="string">""</span>, errors.Wrap(err, <span class="string">"Failed to transform onbuildArtifactPaths"</span>)</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	dockerfileTemplate, err := template.New(<span class="string">"singleStageDockerfile"</span>).</span><br><span class="line">		Parse(dockerfileTemplateContents)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="string">""</span>, errors.Wrap(err, <span class="string">"Failed to create onbuildImage template"</span>)</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> dockerfileTemplateBuffer bytes.Buffer</span><br><span class="line">	err = dockerfileTemplate.Execute(&amp;dockerfileTemplateBuffer, &amp;<span class="keyword">map</span>[<span class="type">string</span>]<span class="keyword">interface</span>{}{</span><br><span class="line">		<span class="string">"BaseImage"</span>:            baseImage,</span><br><span class="line">		<span class="string">"OnbuildStages"</span>:        onbuildStages,</span><br><span class="line">		<span class="string">"OnbuildArtifactPaths"</span>: onbuildArtifactPaths,</span><br><span class="line">		<span class="string">"ImageArtifactPaths"</span>:   imageArtifactPaths,</span><br><span class="line">		<span class="string">"PreCopyDirectives"</span>:    directives[<span class="string">"preCopy"</span>],</span><br><span class="line">		<span class="string">"PostCopyDirectives"</span>:   directives[<span class="string">"postCopy"</span>],</span><br><span class="line">		<span class="string">"HealthcheckRequired"</span>:  healthCheckRequired,</span><br><span class="line">	})</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="string">""</span>, errors.Wrap(err, <span class="string">"Failed to run template"</span>)</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	dockerfileContents := dockerfileTemplateBuffer.String()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> dockerfileContents, <span class="literal">nil</span></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p><code>b.platform.GetOnbuildStages(onbuildArtifacts)</code>调用了platform接口下的功能。</p>
+<p>platform说明如下: </p>
+<ul>
+<li><code>pkg\platform\platform.go</code>中定义接口</li>
+<li><code>pkg\platform\types.go</code>中定义数据结构</li>
+<li><code>pkg\platform\factory\factory.go</code>为工厂函数，根据platform参数<ol>
+<li><code>local</code>： 调用<code>pkg\platform\local\platform.go</code>中的<code>NewPlatform</code>创建platform 实例</li>
+<li><code>kube</code>： 调用<code>pkg\platform\kube\platform.go</code>中的<code>NewPlatform</code>创建platform 实例</li>
+</ol>
+</li>
+<li><code>pkg\platform\abstract\platform.go</code>为具体创建platform实例的。被<code>local</code>和<code>kube</code>下的<code>NewPlatform</code>调用。</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">pkg/platform</span><br><span class="line">├── abstract</span><br><span class="line">│&nbsp;&nbsp; ├── platform.go</span><br><span class="line">├── config</span><br><span class="line">│&nbsp;&nbsp; └── types.go</span><br><span class="line">├── errors.go</span><br><span class="line">├── factory</span><br><span class="line">│&nbsp;&nbsp; └── factory.go</span><br><span class="line">├── kube</span><br><span class="line">│&nbsp;&nbsp; ├── platform.go</span><br><span class="line">│&nbsp;&nbsp; ├── types.go</span><br><span class="line">├── <span class="built_in">local</span></span><br><span class="line">│&nbsp;&nbsp; ├── platform.go</span><br><span class="line">│&nbsp;&nbsp; └── types.go</span><br><span class="line">├── platform.go</span><br><span class="line">└── types.go</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>根据上面说明，函数执行了<code>kube/</code>下的<code>platform.go</code>，之后调用<code>abstract/platform.go</code>下的</p>
+<p>函数<code>GetProcessorDockerfileInfo</code>, <code>pkg/processor/build/runtime/</code>目录下，<code>java/runtime.go</code></p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(j *java)</span></span> GetProcessorDockerfileInfo(onbuildImageRegistry <span class="type">string</span>) (*runtime.ProcessorDockerfileInfo, <span class="type">error</span>) {</span><br><span class="line"></span><br><span class="line">	processorDockerfileInfo := runtime.ProcessorDockerfileInfo{}</span><br><span class="line">	processorDockerfileInfo.BaseImage = <span class="string">"openjdk:9-jre-slim"</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// fill onbuild artifact</span></span><br><span class="line">	artifact := runtime.Artifact{</span><br><span class="line">		Name: <span class="string">"java-onbuild"</span>,</span><br><span class="line">		Image: fmt.Sprintf(<span class="string">"%s/nuclio/handler-builder-java-onbuild:%s-%s"</span>,</span><br><span class="line">			onbuildImageRegistry,</span><br><span class="line">			j.VersionInfo.Label,</span><br><span class="line">			j.VersionInfo.Arch),</span><br><span class="line">		Paths: <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>{</span><br><span class="line">			<span class="string">"/home/gradle/bin/processor"</span>:                                  <span class="string">"/usr/local/bin/processor"</span>,</span><br><span class="line">			<span class="string">"/home/gradle/src/wrapper/build/libs/nuclio-java-wrapper.jar"</span>: <span class="string">"/opt/nuclio/nuclio-java-wrapper.jar"</span>,</span><br><span class="line">		},</span><br><span class="line">	}</span><br><span class="line">	processorDockerfileInfo.OnbuildArtifacts = []runtime.Artifact{artifact}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &amp;processorDockerfileInfo, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>调用关系</p>
+<ul>
+<li><code>createProcessorDockerfile</code>: <ol>
+<li>调用 <code>getRuntimeProcessorDockerfileInfo</code>函数，生成<code>content</code>和<code>DockerfilePath</code></li>
+</ol>
+</li>
+<li><code>getRuntimeProcessorDockerfileInfo</code>函数:</li>
+</ul>
+<ol>
+<li>调用<code>resolveProcessorDockerfileInfo</code>函数收集processor的dockerfile信息</li>
+<li>获取用户输入的指令<code>FunctionConfig.Spec.Build.Directives</code>，如果设置了command参数，则获取<code>FunctionConfig.Spec.Build.Commands</code>转换为指令并与构建过程的合并。</li>
+<li>调用<code>GenerateDockerfileContents</code>函数，将第一步获取的内容转换为<code>DockerfileContent</code>。</li>
+</ol>
+<ul>
+<li><code>resolveProcessorDockerfileInfo</code>函数：<ol>
+<li>调用<code>GetProcessorDockerfileInfo</code>函数，获取默认的runtime。</li>
+<li>调用<code>getProcessorDockerfileBaseImage</code>函数，a. 第一优先级FunctionConfig.Spec.Build.BaseImage；b. GetProcessorDockerfileInfo函数中格式为fmt.Sprintf(“%s/nuclio/handler-builder-java-onbuild:%s-%s”。</li>
+<li>调用函数<code>renderDependantImageURL</code></li>
+<li>调用函数<code>getProcessorDockerfileOnbuildImage</code></li>
+<li>增加health-check组件</li>
+</ol>
+</li>
+<li><code>GetProcessorDockerfileInfo</code>函数(meige)：<ol>
+<li>指定BaseImage和OnbuildArtifacts，其中OnbuildArtifacts包含onbuildImage和path。</li>
+</ol>
+</li>
+</ul>
+<p> <code>GetProcessorDockerfileInfo</code> -&gt; <code>resolveProcessorDockerfileInfo</code> -&gt; <code>getRuntimeProcessorDockerfileInfo</code> -&gt; <code>createProcessorDockerfile</code></p>
+<h1 id="源码：-部署过程"><a href="#源码：-部署过程" class="headerlink" title="源码： 部署过程"></a>源码： 部署过程</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://github.com/nuclio/nuclio">nuclio github</a></p>
+</body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢支持</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/../images/wx_reward.jpg" alt="Hex 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Source-Code/" rel="tag"><i class="fa fa-tag"></i> Source Code</a>
+              <a href="/tags/Nuclio/" rel="tag"><i class="fa fa-tag"></i> Nuclio</a>
+              <a href="/tags/%E5%BE%85%E5%AE%8C%E5%96%84/" rel="tag"><i class="fa fa-tag"></i> 待完善</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/27/kubernetes-2021-01-27-Kubernetes-%E4%BD%BF%E7%94%A8sidecar%E9%85%8D%E7%BD%AEfilebeat%E6%94%B6%E9%9B%86%E5%AE%B9%E5%99%A8%E6%97%A5%E5%BF%97/" rel="prev" title="Kubernetes-使用sidecar配置filebeat收集容器日志">
+      <i class="fa fa-chevron-left"></i> Kubernetes-使用sidecar配置filebeat收集容器日志
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/04/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2021-02-04-Ubuntu-18-04-%E5%AE%89%E8%A3%85cpu%E6%B8%A9%E5%BA%A6%E6%98%BE%E7%A4%BA%E5%B7%A5%E5%85%B7/" rel="next" title="Ubuntu--18.04-安装cpu温度显示工具">
+      Ubuntu--18.04-安装cpu温度显示工具 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%A6%81"><span class="nav-text">重要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E"><span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%EF%BC%9A-%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B"><span class="nav-text">源码： 构建过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%EF%BC%9A-%E9%83%A8%E7%BD%B2%E8%BF%87%E7%A8%8B"><span class="nav-text">源码： 部署过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

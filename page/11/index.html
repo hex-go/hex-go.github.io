@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="个人技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hex Blog">
+<meta property="og:url" content="https://hex-py.github.io/page/11/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="个人技术博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hex">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/page/11/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/29/kubernetes-2020-05-29-k8S-%E7%90%86%E8%A7%A3operator%E4%BB%A5%E5%8F%8AServiceCatalog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/29/kubernetes-2020-05-29-k8S-%E7%90%86%E8%A7%A3operator%E4%BB%A5%E5%8F%8AServiceCatalog/" class="post-title-link" itemprop="url">k8S-理解operator以及ServiceCatalog</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-29 01:00:16" itemprop="dateCreated datePublished" datetime="2020-05-29T01:00:16+08:00">2020-05-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/29/kubernetes-2020-05-29-k8S-%E7%90%86%E8%A7%A3operator%E4%BB%A5%E5%8F%8AServiceCatalog/" class="post-meta-item leancloud_visitors" data-flag-title="k8S-理解operator以及ServiceCatalog" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/67567555"><strong>Kubernetes Operator 快速入门教程</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/concepts/extend-kubernetes/service-catalog/#%e7%a4%ba%e4%be%8b%e7%94%a8%e4%be%8b">ServiceCatalog</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/service-catalog">ServiceCatalog-github</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.openservicebrokerapi.org/">open service broker API</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/29/kubernetes-2020-05-29-k8S-%E7%90%86%E8%A7%A3k8s%E6%8E%A5%E5%8F%A3CRI%E3%80%81CNI%E3%80%81CSI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/29/kubernetes-2020-05-29-k8S-%E7%90%86%E8%A7%A3k8s%E6%8E%A5%E5%8F%A3CRI%E3%80%81CNI%E3%80%81CSI/" class="post-title-link" itemprop="url">k8S-理解k8s接口CRI、CNI、CSI</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-29 00:52:19" itemprop="dateCreated datePublished" datetime="2020-05-29T00:52:19+08:00">2020-05-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/29/kubernetes-2020-05-29-k8S-%E7%90%86%E8%A7%A3k8s%E6%8E%A5%E5%8F%A3CRI%E3%80%81CNI%E3%80%81CSI/" class="post-meta-item leancloud_visitors" data-flag-title="k8S-理解k8s接口CRI、CNI、CSI" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><strong><a target="_blank" rel="noopener" href="https://caylent.com/understanding-kubernetes-interfaces-cri-cni-csi">Understanding Kubernetes Interfaces: CRI, CNI, &amp; CSI</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://jimmysong.io/kubernetes-handbook/concepts/csi.html">K8S-handbook–容器存储接口</a></strong></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/28/devops-2020-05-28-devops-%E6%8C%82%E8%BD%BDvolume%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/28/devops-2020-05-28-devops-%E6%8C%82%E8%BD%BDvolume%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">devops-挂载volume权限问题</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-28 12:36:47" itemprop="dateCreated datePublished" datetime="2020-05-28T12:36:47+08:00">2020-05-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/28/devops-2020-05-28-devops-%E6%8C%82%E8%BD%BDvolume%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="devops-挂载volume权限问题" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/woshimrf/p/understand-docker-uid.html">docker挂载volume的用户权限问题</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/47197493/docker-mounting-volume-permission-denied">Docker mounting volume. Permission denied</a></p>
+<p>k8s挂载宿主机卷解决权限问题：securityContext fsgroup</p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/28/kubernetes-2020-05-28-k8S-%E4%BD%BF%E7%94%A8client-go%E6%93%8D%E4%BD%9C%E9%9B%86%E7%BE%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/28/kubernetes-2020-05-28-k8S-%E4%BD%BF%E7%94%A8client-go%E6%93%8D%E4%BD%9C%E9%9B%86%E7%BE%A4/" class="post-title-link" itemprop="url">k8S-使用client-go操作集群</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-28 11:16:44" itemprop="dateCreated datePublished" datetime="2020-05-28T11:16:44+08:00">2020-05-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/28/kubernetes-2020-05-28-k8S-%E4%BD%BF%E7%94%A8client-go%E6%93%8D%E4%BD%9C%E9%9B%86%E7%BE%A4/" class="post-meta-item leancloud_visitors" data-flag-title="k8S-使用client-go操作集群" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h3 id="0-校验kubeconfig可用性"><a href="#0-校验kubeconfig可用性" class="headerlink" title="0. 校验kubeconfig可用性"></a>0. 校验kubeconfig可用性</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"k8s.io/client-go/tools/clientcmd"</span></span><br><span class="line">	clientcmdapi <span class="string">"k8s.io/client-go/tools/clientcmd/api"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">## 解析kubeConfig文件， 校验</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *K8S)</span></span> ParseConf(kubeConfig []<span class="type">byte</span>) (Conf clientcmdapi.Config, err <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> (</span><br><span class="line">		restConf clientcmd.ClientConfig</span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">if</span> restConf, err = clientcmd.NewClientConfigFromBytes(kubeConfig); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not load kube Config : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line">	Conf, _ = restConf.RawConfig()</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="1-初始化客户端clientSet"><a href="#1-初始化客户端clientSet" class="headerlink" title="1. 初始化客户端clientSet"></a>1. 初始化客户端clientSet</h2><h3 id="1-1-集群内初始化ClientSet"><a href="#1-1-集群内初始化ClientSet" class="headerlink" title="1.1 集群内初始化ClientSet"></a>1.1 集群内初始化ClientSet</h3><p><a target="_blank" rel="noopener" href="https://github.com/kubernetes/client-go/blob/v0.19.0/examples/in-cluster-client-configuration/main.go">官方Example</a></p>
+<h3 id="1-2-集群外初始化ClientSet"><a href="#1-2-集群外初始化ClientSet" class="headerlink" title="1.2 集群外初始化ClientSet"></a>1.2 集群外初始化ClientSet</h3><p><a target="_blank" rel="noopener" href="https://github.com/kubernetes/client-go/blob/v0.19.0/examples/out-of-cluster-client-configuration/main.go">官方Example</a></p>
+<h3 id="1-3-从字节流创建ClientSet"><a href="#1-3-从字节流创建ClientSet" class="headerlink" title="1.3 从字节流创建ClientSet"></a>1.3 从字节流创建ClientSet</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> k8s</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"k8s.io/client-go/rest"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/kubernetes"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/tools/clientcmd"</span></span><br><span class="line">	clientcmdapi <span class="string">"k8s.io/client-go/tools/clientcmd/api"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> K8S <span class="keyword">struct</span> {</span><br><span class="line">	clientSet *kubernetes.Clientset</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// Connect - 初始化k8s客户端</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *K8S)</span></span> Connect(kubeConfig []<span class="type">byte</span>) (err <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> (</span><br><span class="line">		restConf *rest.Config</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> restConf, err = clientcmd.RESTConfigFromKubeConfig(kubeConfig); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not load kube Config : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// 生成client-set配置</span></span><br><span class="line">	<span class="keyword">if</span> k.clientSet, err = kubernetes.NewForConfig(restConf); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not connect k8s : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	log.Info(<span class="string">"Successfully connected to k8s"</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-4-创建Dynamic-ClientSet"><a href="#1-4-创建Dynamic-ClientSet" class="headerlink" title="1.4 创建Dynamic ClientSet"></a>1.4 创建Dynamic ClientSet</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fleet</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"errors"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/dynamic"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/rest"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/tools/clientcmd"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Crd <span class="keyword">struct</span> {</span><br><span class="line">	Client dynamic.Interface</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// Connect 初始化Fleet客户端</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> Connect(kubeConfig []<span class="type">byte</span>) (err <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> (</span><br><span class="line">		restConf *rest.Config</span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">if</span> restConf, err = clientcmd.RESTConfigFromKubeConfig(kubeConfig); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not load kube Config : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> i.Client, err = dynamic.NewForConfig(restConf); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not connect FleetCrd-k8s : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	log.Info(<span class="string">"Successfully connected to FleetCrd"</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+
+<h2 id="3-根据Deployment-StatefulSet获取Pods"><a href="#3-根据Deployment-StatefulSet获取Pods" class="headerlink" title="3. 根据Deployment|StatefulSet获取Pods"></a>3. 根据Deployment|StatefulSet获取Pods</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"k8s.io/api/apps/v1"</span></span><br><span class="line">	coreV1 <span class="string">"k8s.io/api/core/v1"</span></span><br><span class="line">	metaV1 <span class="string">"k8s.io/apimachinery/pkg/apis/meta/v1"</span></span><br><span class="line">	<span class="string">"k8s.io/apimachinery/pkg/labels"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *K8S)</span></span> PodGetByStatefulSet(namespace <span class="type">string</span>, statefulSet v1.StatefulSet) ([]*coreV1.Pod, <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> podList []*coreV1.Pod</span><br><span class="line">	labelsMap := statefulSet.ObjectMeta.GetLabels()</span><br><span class="line"></span><br><span class="line">	log.DebugF(<span class="string">"[Middleware-K8s] StatefulSet:Labels: 	%#v"</span>, labelsMap)</span><br><span class="line">	labelSets := labels.SelectorFromSet(labelsMap)</span><br><span class="line">	options := metaV1.ListOptions{</span><br><span class="line">		LabelSelector: labelSets.String(),</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	podsClient := k.clientSet.CoreV1().Pods(namespace)</span><br><span class="line">	pods, err := podsClient.List(context.TODO(), options)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span> _, pod := <span class="keyword">range</span> pods.Items {</span><br><span class="line">		log.DebugF(<span class="string">"[Middleware-K8s] Pod:Labels: 		%#v, pod_name=%s"</span>, pod.ObjectMeta.GetLabels(), pod.ObjectMeta.Name)</span><br><span class="line">		podList = <span class="built_in">append</span>(podList, &amp;pod)</span><br><span class="line"></span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> podList, err</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="4-根据Job获取Pods"><a href="#4-根据Job获取Pods" class="headerlink" title="4. 根据Job获取Pods"></a>4. 根据Job获取Pods</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	batchV1 <span class="string">"k8s.io/api/batch/v1"</span></span><br><span class="line">	coreV1 <span class="string">"k8s.io/api/core/v1"</span></span><br><span class="line">	metaV1 <span class="string">"k8s.io/apimachinery/pkg/apis/meta/v1"</span></span><br><span class="line">	<span class="string">"k8s.io/apimachinery/pkg/labels"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *K8S)</span></span> PodGetByJob(namespace <span class="type">string</span>, job batchV1.Job) ([]*coreV1.Pod, <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> podList []*coreV1.Pod</span><br><span class="line"></span><br><span class="line">	labelsMap := <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>{</span><br><span class="line">		<span class="string">"job-name"</span>:       job.ObjectMeta.Name,</span><br><span class="line">		<span class="string">"controller-uid"</span>: <span class="type">string</span>(job.ObjectMeta.UID),</span><br><span class="line">	}</span><br><span class="line">	log.DebugF(<span class="string">"[Middleware-K8s] Jobs:Labels: 	%#v"</span>, labelsMap)</span><br><span class="line">	labelSets := labels.SelectorFromSet(labelsMap)</span><br><span class="line">	options := metaV1.ListOptions{</span><br><span class="line">		LabelSelector: labelSets.String(),</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	podsClient := k.clientSet.CoreV1().Pods(namespace)</span><br><span class="line">	pods, err := podsClient.List(context.TODO(), options)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span> _, pod := <span class="keyword">range</span> pods.Items {</span><br><span class="line">		log.DebugF(<span class="string">"[Middleware-K8s] Pod:Labels: 	%#v, pod_name=%s"</span>, </span><br><span class="line">			pod.ObjectMeta.GetLabels(), </span><br><span class="line">			pod.ObjectMeta.Name)</span><br><span class="line">		podList = <span class="built_in">append</span>(podList, &amp;pod)</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> podList, err</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="5-Dynamic-client-go操作CRD资源"><a href="#5-Dynamic-client-go操作CRD资源" class="headerlink" title="5. Dynamic-client-go操作CRD资源"></a>5. Dynamic-client-go操作CRD资源</h2><p>以rancher fleet项目的CRD <code>clusters.fleet.cattle.io</code>举例</p>
+<blockquote>
+<p>完整的包引用</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fleet</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"errors"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	fleet <span class="string">"github.com/rancher/fleet/pkg/apis/fleet.cattle.io/v1alpha1"</span></span><br><span class="line">	<span class="string">"icosdeploy/pkg/api/log"</span></span><br><span class="line">	metav1 <span class="string">"k8s.io/apimachinery/pkg/apis/meta/v1"</span></span><br><span class="line">	<span class="string">"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"</span></span><br><span class="line">	<span class="string">"k8s.io/apimachinery/pkg/runtime/schema"</span></span><br><span class="line">	<span class="string">"k8s.io/apimachinery/pkg/runtime/serializer/yaml"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/dynamic"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/rest"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/tools/clientcmd"</span></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-1-初始化ClientSet"><a href="#5-1-初始化ClientSet" class="headerlink" title="5.1 初始化ClientSet"></a>5.1 初始化ClientSet</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fleet</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"errors"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/dynamic"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/rest"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/tools/clientcmd"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Crd <span class="keyword">struct</span> {</span><br><span class="line">	Client dynamic.Interface</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// Connect 初始化Fleet客户端</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> Connect(kubeConfig []<span class="type">byte</span>) (err <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> (</span><br><span class="line">		restConf *rest.Config</span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">if</span> restConf, err = clientcmd.RESTConfigFromKubeConfig(kubeConfig); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not load kube Config : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> i.Client, err = dynamic.NewForConfig(restConf); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not connect FleetCrd-k8s : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	log.Info(<span class="string">"Successfully connected to FleetCrd"</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="5-2-Cluster-CRD的查询、删除操作"><a href="#5-2-Cluster-CRD的查询、删除操作" class="headerlink" title="5.2 Cluster CRD的查询、删除操作"></a>5.2 Cluster CRD的查询、删除操作</h3><p>资源定义</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clusterCRD = schema.GroupVersionResource{</span><br><span class="line">	Group:    <span class="string">"fleet.cattle.io"</span>,</span><br><span class="line">	Version:  <span class="string">"v1alpha1"</span>,</span><br><span class="line">	Resource: <span class="string">"clusters"</span>,</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>上面的值在CRD``中获取</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="comment"># group name to use for REST API: /apis/&lt;group&gt;/&lt;version&gt;</span></span><br><span class="line">  <span class="comment"># 对应 Group 字段的值</span></span><br><span class="line">  <span class="attr">group:</span> <span class="string">fleet.cattle.io</span></span><br><span class="line">  <span class="comment"># list of versions supported by this CustomResourceDefinition</span></span><br><span class="line">  <span class="attr">versions:</span></span><br><span class="line">    <span class="comment"># 对应 Version 字段的可选值</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">v1alpha1</span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="attr">names:</span></span><br><span class="line">  <span class="comment"># plural name to be used in the URL: /apis/&lt;group&gt;/&lt;version&gt;/&lt;plural&gt;</span></span><br><span class="line">  <span class="comment"># 对应 Resource 字段的值</span></span><br><span class="line">  <span class="attr">plural:</span> <span class="string">clusters</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="5-2-1-List查询资源"><a href="#5-2-1-List查询资源" class="headerlink" title="5.2.1 List查询资源"></a>5.2.1 List查询资源</h4><blockquote>
+<p>如果资源对象不是Namespace隔离的，则不指定Namespace:  <code>i.Client.Resource(xxxCRD).List(context.TODO(), metav1.ListOptions{})</code></p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> ListClusters(namespace <span class="type">string</span>) (clusters *fleet.ClusterList, err <span class="type">error</span>) {</span><br><span class="line">	list, err := i.Client.Resource(clusterCRD).Namespace(namespace).List(context.TODO(), metav1.ListOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := list.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err := json.Unmarshal(data, &amp;clusters); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> clusters, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-2-2-Get查询资源详情"><a href="#5-2-2-Get查询资源详情" class="headerlink" title="5.2.2 Get查询资源详情"></a>5.2.2 Get查询资源详情</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> GetCluster(namespace <span class="type">string</span>, name <span class="type">string</span>) (cluster *fleet.Cluster, err <span class="type">error</span>) {</span><br><span class="line">	list, err := i.Client.Resource(clusterCRD).</span><br><span class="line">		Namespace(namespace).Get(context.TODO(), name, metav1.GetOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := list.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err := json.Unmarshal(data, &amp;cluster); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> cluster, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-2-3-删除资源"><a href="#5-2-3-删除资源" class="headerlink" title="5.2.3 删除资源"></a>5.2.3 删除资源</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> DelCluster(namespace <span class="type">string</span>, name <span class="type">string</span>) (err <span class="type">error</span>) {</span><br><span class="line">	deletePolicy := metav1.DeletePropagationForeground</span><br><span class="line"></span><br><span class="line">	cluster, err := i.GetCluster(namespace, name)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(err.Error())</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> cluster == <span class="literal">nil</span> {</span><br><span class="line">		err = errors.New(fmt.Sprintf(<span class="string">"Cluster -- %s not exists"</span>, name))</span><br><span class="line">		log.Error(err.Error())</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	err = i.Client.Resource(clusterCRD).</span><br><span class="line">		Namespace(namespace).Delete(context.TODO(), name, metav1.DeleteOptions{PropagationPolicy: &amp;deletePolicy})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="5-3-Token-CRD的创建操作"><a href="#5-3-Token-CRD的创建操作" class="headerlink" title="5.3 Token CRD的创建操作"></a>5.3 Token CRD的创建操作</h3><p>资源定义</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tokenCRD = schema.GroupVersionResource{</span><br><span class="line">	Group:    <span class="string">"fleet.cattle.io"</span>,</span><br><span class="line">	Version:  <span class="string">"v1alpha1"</span>,</span><br><span class="line">	Resource: <span class="string">"clusterregistrationtokens"</span>,</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-3-1-List查询资源"><a href="#5-3-1-List查询资源" class="headerlink" title="5.3.1 List查询资源"></a>5.3.1 List查询资源</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> ListToken(namespace <span class="type">string</span>) (tokenList *fleet.ClusterRegistrationTokenList, err <span class="type">error</span>) {</span><br><span class="line">	list, err := i.Client.Resource(tokenCRD).Namespace(namespace).List(context.TODO(), metav1.ListOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := list.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err = json.Unmarshal(data, &amp;tokenList); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> tokenList, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-3-2-Get查询资源详情"><a href="#5-3-2-Get查询资源详情" class="headerlink" title="5.3.2 Get查询资源详情"></a>5.3.2 Get查询资源详情</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> GetToken(namespace <span class="type">string</span>, name <span class="type">string</span>) (token *fleet.ClusterRegistrationToken, err <span class="type">error</span>) {</span><br><span class="line">	list, err := i.Client.Resource(tokenCRD).Namespace(namespace).Get(context.TODO(), name, metav1.GetOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := list.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err = json.Unmarshal(data, &amp;token); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> token, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-3-3-创建资源"><a href="#5-3-3-创建资源" class="headerlink" title="5.3.3 创建资源"></a>5.3.3 创建资源</h4><blockquote>
+<p>注意: <code>yaml</code>包一定要用 <code>"k8s.io/apimachinery/pkg/runtime/serializer/yaml"</code>， 否则想资源部分数据解析会报错</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> CreateData = <span class="string">`</span></span><br><span class="line"><span class="string">kind: ClusterRegistrationToken</span></span><br><span class="line"><span class="string">apiVersion: "fleet.cattle.io/v1alpha1"</span></span><br><span class="line"><span class="string">metadata:</span></span><br><span class="line"><span class="string">    name: new-token</span></span><br><span class="line"><span class="string">    namespace: fleet-local</span></span><br><span class="line"><span class="string">spec:</span></span><br><span class="line"><span class="string">    ttl: 240h</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> CreateToken(namespace <span class="type">string</span>) (token *fleet.ClusterRegistrationToken, err <span class="type">error</span>) {</span><br><span class="line">	decoder := yaml.NewDecodingSerializer(unstructured.UnstructuredJSONScheme)</span><br><span class="line">	obj := &amp;unstructured.Unstructured{}</span><br><span class="line">	gvk := schema.GroupVersionKind{</span><br><span class="line">		Group:   <span class="string">"fleet.cattle.io"</span>,</span><br><span class="line">		Version: <span class="string">"v1alpha1"</span>,</span><br><span class="line">		Kind:    <span class="string">"ClusterRegistrationToken"</span>,</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> _, _, err := decoder.Decode([]<span class="type">byte</span>(CreateData), &amp;gvk, obj); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	one, err := i.Client.Resource(tokenCRD).Namespace(namespace).Create(context.TODO(), obj, metav1.CreateOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := one.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> err = json.Unmarshal(data, &amp;token); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> token, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="5-4-GitRepo-CRD的操作"><a href="#5-4-GitRepo-CRD的操作" class="headerlink" title="5.4 GitRepo CRD的操作"></a>5.4 GitRepo CRD的操作</h3><p>资源定义</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gitRepoCRD = schema.GroupVersionResource{</span><br><span class="line">	Group:    <span class="string">"fleet.cattle.io"</span>,</span><br><span class="line">	Version:  <span class="string">"v1alpha1"</span>,</span><br><span class="line">	Resource: <span class="string">"gitrepos"</span>,</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-4-1-List查询资源"><a href="#5-4-1-List查询资源" class="headerlink" title="5.4.1 List查询资源"></a>5.4.1 List查询资源</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> ListGitRepo(namespace <span class="type">string</span>) (repoList *fleet.GitRepoList, err <span class="type">error</span>) {</span><br><span class="line">	list, err := i.Client.Resource(gitRepoCRD).Namespace(namespace).List(context.TODO(), metav1.ListOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := list.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err := json.Unmarshal(data, &amp;repoList); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> repoList, <span class="literal">nil</span></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="6-查看容器日志"><a href="#6-查看容器日志" class="headerlink" title="6. 查看容器日志"></a>6. 查看容器日志</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PodLogs - pod  logs</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *K8S)</span></span> PodLogs(namespace <span class="type">string</span>, name <span class="type">string</span>) (<span class="type">string</span>, <span class="type">error</span>) {</span><br><span class="line">	podLogOpts := coreV1.PodLogOptions{}</span><br><span class="line"></span><br><span class="line">	jobsClient := k.clientSet.CoreV1().Pods(namespace)</span><br><span class="line">	result := jobsClient.GetLogs(name, &amp;podLogOpts)</span><br><span class="line"></span><br><span class="line">	podLogs, err := result.Stream(context.TODO())</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		log.ErrorF(<span class="string">"error in opening stream:  %v"</span>, err)</span><br><span class="line">		<span class="keyword">return</span> <span class="string">""</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">defer</span> podLogs.Close()</span><br><span class="line">	buf := <span class="built_in">new</span>(bytes.Buffer)</span><br><span class="line">	_, err = io.Copy(buf, podLogs)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		log.ErrorF(<span class="string">"error in copy information from podLogs to buf:  %v"</span>, err)</span><br><span class="line">		<span class="keyword">return</span> <span class="string">""</span>, err</span><br><span class="line">	}</span><br><span class="line">	logs := buf.String()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> logs, err</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><strong><a target="_blank" rel="noopener" href="https://www.huweihuang.com/kubernetes-notes/develop/client-go.html">第一参考 client-go简介</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/kubernetes/client-go/blob/master/examples/in-cluster-client-configuration/main.go">client-go官方实例–集群内client配置</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49953980/watch-customresourcedefinitions-crd-with-client-go">client-go针对crd资源，代码生成器</a></p>
+<p><strong><a target="_blank" rel="noopener" href="https://gianarb.it/blog/unit-testing-kubernetes-client-in-go">Unit test kubernetes client in Go</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://mozillazg.com/2020/07/k8s-kubernetes-client-go-list-get-create-update-patch-delete-crd-resource-without-generate-client-code-update-or-create-via-yaml.html#hidcreate">Dynamic-client-go操作CRD资源</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/eMDyXfPbeQmOOwTtLNsaOA">基于Dynamic-client, 开发第三方资源Informer和Controller</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/28/golang-2020-05-28-Gorm-%E4%BD%BF%E7%94%A8gormigrate%E4%BD%9C%E4%B8%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/28/golang-2020-05-28-Gorm-%E4%BD%BF%E7%94%A8gormigrate%E4%BD%9C%E4%B8%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">Gorm-使用gormigrate</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-28 11:11:41" itemprop="dateCreated datePublished" datetime="2020-05-28T11:11:41+08:00">2020-05-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/28/golang-2020-05-28-Gorm-%E4%BD%BF%E7%94%A8gormigrate%E4%BD%9C%E4%B8%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E7%AE%A1%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="Gorm-使用gormigrate" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>基于的gomigrate版本为<code>v1.6.0</code>注意与v2版本不兼容.</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="1-main函数中调用migrate"><a href="#1-main函数中调用migrate" class="headerlink" title="1. main函数中调用migrate"></a>1. main函数中调用migrate</h2><p>main函数</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"test/cmd"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">	cmd.Execute()</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>cmd包内的Execute函数</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cmd</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"github.com/spf13/cobra"</span></span><br><span class="line">	<span class="string">"test/cmd/api"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rootCmd = &amp;cobra.Command{</span><br><span class="line">	Use:               <span class="string">"heroku"</span>,</span><br><span class="line">	Short:             <span class="string">"heroku API server"</span>,</span><br><span class="line">	SilenceUsage:      <span class="literal">true</span>,</span><br><span class="line">	DisableAutoGenTag: <span class="literal">true</span>,</span><br><span class="line">	Long:              <span class="string">`Start heroku API server`</span>,</span><br><span class="line">	PersistentPreRunE: <span class="function"><span class="keyword">func</span><span class="params">(*cobra.Command, []<span class="type">string</span>)</span></span> <span class="type">error</span> { <span class="keyword">return</span> <span class="literal">nil</span> },</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="comment">// Add api start cmd</span></span><br><span class="line">	rootCmd.AddCommand(api.StartCmd)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//Execute : run commands</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Execute</span><span class="params">()</span></span> {</span><br><span class="line">	<span class="keyword">if</span> err := rootCmd.Execute(); err != <span class="literal">nil</span> {</span><br><span class="line">		os.Exit(<span class="number">-1</span>)</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>api包的start cmd 配置</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> api</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin/binding"</span></span><br><span class="line">	<span class="string">"github.com/rs/zerolog"</span></span><br><span class="line">	<span class="string">"github.com/spf13/cobra"</span></span><br><span class="line">	<span class="string">"github.com/spf13/viper"</span></span><br><span class="line">	<span class="string">"test/cmd/migrate"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">	<span class="string">"strconv"</span></span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	config   <span class="type">string</span></span><br><span class="line">	port     <span class="type">string</span></span><br><span class="line">	loglevel <span class="type">uint8</span></span><br><span class="line">	cors     <span class="type">bool</span></span><br><span class="line">	cluster  <span class="type">bool</span></span><br><span class="line">	<span class="comment">//StartCmd : set up restful api server</span></span><br><span class="line">	StartCmd = &amp;cobra.Command{</span><br><span class="line">		Use:     <span class="string">"server"</span>,</span><br><span class="line">		Short:   <span class="string">"Start test API server"</span>,</span><br><span class="line">		Example: <span class="string">"test server -p 8083"</span>,</span><br><span class="line">		PreRun: <span class="function"><span class="keyword">func</span><span class="params">(cmd *cobra.Command, args []<span class="type">string</span>)</span></span> {</span><br><span class="line">            <span class="comment">// 服务初始化配置</span></span><br><span class="line">			setup()</span><br><span class="line">		},</span><br><span class="line">		RunE: <span class="function"><span class="keyword">func</span><span class="params">(cmd *cobra.Command, args []<span class="type">string</span>)</span></span> <span class="type">error</span> {</span><br><span class="line">            <span class="comment">// 服务启动</span></span><br><span class="line">			<span class="keyword">return</span> run()</span><br><span class="line">		},</span><br><span class="line">	}</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> {</span><br><span class="line">	StartCmd.PersistentFlags().StringVarP(&amp;port, <span class="string">"port"</span>, <span class="string">"p"</span>, <span class="string">"8083"</span>, <span class="string">"Tcp port server listening on"</span>)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">setup</span><span class="params">()</span></span> {</span><br><span class="line">	<span class="comment">//1. database migrate</span></span><br><span class="line">	err = migrate.New()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		log.Fatal(fmt.Sprintf(<span class="string">"Migrate sql error: %s"</span>, err.Error()))</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">run</span><span class="params">()</span></span> <span class="type">error</span> {</span><br><span class="line">	engine := gin.Default()</span><br><span class="line">	binding.Validator = <span class="built_in">new</span>(validate.DefaultValidator)</span><br><span class="line"></span><br><span class="line">	router.SetUp(engine, cors)</span><br><span class="line">	<span class="keyword">return</span> engine.Run(<span class="string">":"</span> + port)</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="2-执行数据库初始化的migrate入口函数"><a href="#2-执行数据库初始化的migrate入口函数" class="headerlink" title="2. 执行数据库初始化的migrate入口函数"></a>2. 执行数据库初始化的migrate入口函数</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Initialize &amp; migrate departments &amp; users &amp; maybe other stuffs</span></span><br><span class="line"><span class="keyword">package</span> migrate</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"github.com/jinzhu/gorm"</span></span><br><span class="line">	<span class="string">"gopkg.in/gormigrate.v1"</span></span><br><span class="line">	<span class="string">"icosdeploy/pkg/api/dao"</span></span><br><span class="line">	<span class="string">"icosdeploy/pkg/api/model"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">()</span></span> <span class="type">error</span> {</span><br><span class="line">	db := dao.GetDb()</span><br><span class="line">	m := gormigrate.New(db, gormigrate.DefaultOptions, []*gormigrate.Migration{})</span><br><span class="line">	<span class="comment">// 1. 数据库表的初始化</span></span><br><span class="line">	m.InitSchema(<span class="function"><span class="keyword">func</span><span class="params">(tx *gorm.DB)</span></span> <span class="type">error</span> {</span><br><span class="line">		err := tx.AutoMigrate(</span><br><span class="line">			&amp;model.App{},</span><br><span class="line">			&amp;model.Log{},</span><br><span class="line">			&amp;model.Rule{},</span><br><span class="line">		).Error</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	})</span><br><span class="line">	_ = m.Migrate()</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 每次不同的migrate</span></span><br><span class="line">	m = gormigrate.New(db, gormigrate.DefaultOptions, []*gormigrate.Migration{</span><br><span class="line">		<span class="comment">// 插入初始化数据</span></span><br><span class="line">        SeedData,</span><br><span class="line">        <span class="comment">// 创建表</span></span><br><span class="line">		AddTable,</span><br><span class="line">        <span class="comment">// 表增加列</span></span><br><span class="line">		AddColumn,</span><br><span class="line">        <span class="comment">// 在此处以下逐次追加 migrate</span></span><br><span class="line">	})</span><br><span class="line">	<span class="keyword">return</span> m.Migrate()</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="3-迁移示例"><a href="#3-迁移示例" class="headerlink" title="3. 迁移示例"></a>3. 迁移示例</h2><h3 id="3-1-插入初始化数据SeedSizes"><a href="#3-1-插入初始化数据SeedSizes" class="headerlink" title="3.1 插入初始化数据SeedSizes"></a>3.1 插入初始化数据<code>SeedSizes</code></h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> migrate</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"github.com/jinzhu/gorm"</span></span><br><span class="line">	<span class="string">"gopkg.in/gormigrate.v1"</span></span><br><span class="line">	<span class="string">"icosdeploy/pkg/api/model"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	SizeSmall = &amp;model.QletSize{Name: <span class="string">"small"</span>, Cpu: <span class="string">"1"</span>, Memory: <span class="string">"2"</span>, Status: <span class="string">"1"</span>}</span><br><span class="line">	SizeLarge = &amp;model.QletSize{Name: <span class="string">"large"</span>, Cpu: <span class="string">"2"</span>, Memory: <span class="string">"4"</span>, Status: <span class="string">"1"</span>}</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Sizes insert</span></span><br><span class="line"><span class="keyword">var</span> SeedData = &amp;gormigrate.Migration{</span><br><span class="line">	ID: <span class="string">"SEED_DATA"</span>,</span><br><span class="line">	Migrate: <span class="function"><span class="keyword">func</span><span class="params">(db *gorm.DB)</span></span> <span class="type">error</span> {</span><br><span class="line">		err := db.Create(&amp;SizeSmall).Error</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		}</span><br><span class="line">		err = db.Create(&amp;SizeLarge).Error</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	},</span><br><span class="line">	Rollback: <span class="function"><span class="keyword">func</span><span class="params">(db *gorm.DB)</span></span> <span class="type">error</span> {</span><br><span class="line">		err := db.Delete(&amp;SizeSmall).Error</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		}</span><br><span class="line">		err = db.Delete(&amp;SizeLarge).Error</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	},</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="3-2-创建表"><a href="#3-2-创建表" class="headerlink" title="3.2 创建表"></a>3.2 创建表</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> migrate</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"github.com/jinzhu/gorm"</span></span><br><span class="line">	<span class="string">"gopkg.in/gormigrate.v1"</span></span><br><span class="line">	<span class="string">"icosdeploy/pkg/api/model"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// AddTable create</span></span><br><span class="line"><span class="keyword">var</span> AddTable = &amp;gormigrate.Migration{</span><br><span class="line">	ID: <span class="string">"Add_TABLE"</span>,</span><br><span class="line">	Migrate: <span class="function"><span class="keyword">func</span><span class="params">(db *gorm.DB)</span></span> <span class="type">error</span> {</span><br><span class="line">		<span class="comment">//if db.HasTable(&amp;model.Job{}){</span></span><br><span class="line">		<span class="comment">//</span></span><br><span class="line">		<span class="comment">//}</span></span><br><span class="line">		err := db.CreateTable(&amp;model.Job{}).Error</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	},</span><br><span class="line">	Rollback: <span class="function"><span class="keyword">func</span><span class="params">(db *gorm.DB)</span></span> <span class="type">error</span> {</span><br><span class="line">		err := db.DropTableIfExists(&amp;model.Job{}).Error</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	},</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="3-3-表添加字段"><a href="#3-3-表添加字段" class="headerlink" title="3.3 表添加字段"></a>3.3 表添加字段</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> migrate</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"github.com/jinzhu/gorm"</span></span><br><span class="line">	<span class="string">"gopkg.in/gormigrate.v1"</span></span><br><span class="line">	<span class="string">"icosdeploy/pkg/api/model"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// create column</span></span><br><span class="line"><span class="keyword">var</span> AddColumn = &amp;gormigrate.Migration{</span><br><span class="line">	ID: <span class="string">"ADD_COLUMN"</span>,</span><br><span class="line">	Migrate: <span class="function"><span class="keyword">func</span><span class="params">(db *gorm.DB)</span></span> <span class="type">error</span> {</span><br><span class="line">		<span class="comment">// when table already exists, it just adds fields as columns</span></span><br><span class="line">		<span class="keyword">return</span> db.AutoMigrate(&amp;model.Algo{}).Error</span><br><span class="line">	},</span><br><span class="line">	Rollback: <span class="function"><span class="keyword">func</span><span class="params">(db *gorm.DB)</span></span> <span class="type">error</span> {</span><br><span class="line">		<span class="keyword">return</span> db.Model(&amp;model.Algo{}).DropColumn(<span class="string">"sub_path"</span>).Error</span><br><span class="line">	},</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="3-4-添加一个路由"><a href="#3-4-添加一个路由" class="headerlink" title="3.4 添加一个路由"></a>3.4 添加一个路由</h3><ul>
+<li>创建此路由存储数据的表</li>
+<li>在casbin中增加此路由相关<code>rule</code></li>
+<li>修改role, 以后增加的用户,自动在Casbin中增加规则</li>
+</ul>
+<p>创建表,参考<code>3.2创建表</code></p>
+<p>修改casbin-rule和修改role</p>
+<ul>
+<li>casbin 中剔除用户(v3=’’)和系统管理员(v0=’adminRole’),剩余的为角色+路由+方法+租户的数据,再根据: <code>角色</code>+<code>租户</code>分组,添加规则数据,  插入新数据, 其他信息保持不变, 路由为新插入路由.</li>
+<li>role 在每个role数据中增加<code>{"object":"/api/v1/jobs","action":"*"}</code>, 路由为新插入路由, 方法admin为*,其他为<code>GET</code>.</li>
+<li>注意角色的回滚,要将数据update为上一次修改role的数据.</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">package migrate</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	"fmt"</span><br><span class="line">	"github.com/jinzhu/gorm"</span><br><span class="line">	"gopkg.in/gormigrate.v1"</span><br><span class="line">	"icosdeploy/pkg/api/log"</span><br><span class="line">	"icosdeploy/pkg/api/model"</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">var (</span><br><span class="line">	roleAddJobs1 = &amp;model.Role{Name: "admin", Policy: model.JSON(`[{"object":"/api/v1/jobs","action":"*"},{"object":"/api/v1/pvcs","action":"*"},{"object":"/api/v1/qlet/start","action":"*"},{"object":"/api/v1/qlet/stop","action":"*"},{"object":"/api/v1/application","action":"*"},{"object":"/api/v1/qlet","action":"*"},{"object":"/api/v1/qletSize","action":"GET"},{"object":"/api/v1/results","action":"*"},{"object":"/api/v1/dbaas","action":"*"},{"object":"/api/v1/registry","action":"*"},{"object":"/api/v1/scan","action":"*"},{"object":"/api/v1/chart","action":"*"}]`)}</span><br><span class="line">	roleAddJobs2 = &amp;model.Role{Name: "observer", Policy: model.JSON(`[{"object":"/api/v1/jobs","action":"GET"},{"object":"/api/v1/pvcs","action":"GET"},{"object":"/api/v1/application","action":"GET"},{"object":"/api/v1/qlet","action":"GET"},{"object":"/api/v1/qletSize","action":"GET"},{"object":"/api/v1/results","action":"GET"},{"object":"/api/v1/dbaas","action":"GET"},{"object":"/api/v1/registry","action":"GET"},{"object":"/api/v1/scan","action":"GET"},{"object":"/api/v1/chart","action":"GET"}]`)}</span><br><span class="line">	roleAddJobs3 = &amp;model.Role{Name: "ops", Policy: model.JSON(`[{"object":"/api/v1/jobs","action":"GET"},{"object":"/api/v1/pvcs","action":"GET"},{"object":"/api/v1/qlet/start","action":"*"},{"object":"/api/v1/qlet/stop","action":"*"},{"object":"/api/v1/application","action":"GET"},{"object":"/api/v1/qlet","action":"GET"},{"object":"/api/v1/qletSize","action":"GET"},{"object":"/api/v1/results","action":"GET"},{"object":"/api/v1/dbaas","action":"GET"},{"object":"/api/v1/registry","action":"GET"},{"object":"/api/v1/scan","action":"GET"},{"object":"/api/v1/chart","action":"GET"}]`)}</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// PermJobs create</span><br><span class="line">var PermJobs = &amp;gormigrate.Migration{</span><br><span class="line">	ID: "Perm_JOBS",</span><br><span class="line">	Migrate: func(db *gorm.DB) (err error) {</span><br><span class="line">		err = db.Model(&amp;model.Role{}).Where("name = ?", "admin").Update("Policy", roleAddJobs1.Policy).Error</span><br><span class="line">		if err != nil {</span><br><span class="line">			return err</span><br><span class="line">		}</span><br><span class="line">		err = db.Model(&amp;model.Role{}).Where("name = ?", "observer").Update("Policy", roleAddJobs2.Policy).Error</span><br><span class="line">		if err != nil {</span><br><span class="line">			return err</span><br><span class="line">		}</span><br><span class="line">		err = db.Model(&amp;model.Role{}).Where("name = ?", "ops").Update("Policy", roleAddJobs3.Policy).Error</span><br><span class="line">		if err != nil {</span><br><span class="line">			return err</span><br><span class="line">		}</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		var rules []model.CasbinRule</span><br><span class="line">		// v0=角色\用户 v1=路由 v2=租户 v3=方法()</span><br><span class="line">		// group by v2 and v0 &amp;&amp; v3 != ''  raw-sql</span><br><span class="line">		//db.Where("id = ?", id).Group().Find(&amp;rules)</span><br><span class="line">		db.Raw("SELECT * FROM casbin_rule where v3 &lt;&gt; '' and v0 &lt;&gt; 'adminRole' GROUP BY v2, v0").Scan(&amp;rules)</span><br><span class="line">		for _, r := range rules {</span><br><span class="line">			newRule := &amp;model.CasbinRule{</span><br><span class="line">				PType: r.PType,</span><br><span class="line">				V0:    r.V0,</span><br><span class="line">				V1:    "/api/v1/jobs",</span><br><span class="line">				V2:    r.V2,</span><br><span class="line">				V3:    r.V3,</span><br><span class="line">				V4:    r.V4,</span><br><span class="line">				V5:    r.V5,</span><br><span class="line">			}</span><br><span class="line">			log.Debug(fmt.Sprintf("%#v", newRule))</span><br><span class="line">			db.Create(newRule)</span><br><span class="line">		}</span><br><span class="line">		return err</span><br><span class="line">	},</span><br><span class="line">	Rollback: func(db *gorm.DB) error {</span><br><span class="line">		err := db.DropTableIfExists(&amp;model.Job{}).Error</span><br><span class="line">		if err != nil {</span><br><span class="line">			return err</span><br><span class="line">		}</span><br><span class="line">		err = db.Model(&amp;model.Role{}).Where("name = ?", "admin").Update("Policy", role1.Policy).Error</span><br><span class="line">		if err != nil {</span><br><span class="line">			return err</span><br><span class="line">		}</span><br><span class="line">		err = db.Model(&amp;model.Role{}).Where("name = ?", "observer").Update("Policy", role2.Policy).Error</span><br><span class="line">		if err != nil {</span><br><span class="line">			return err</span><br><span class="line">		}</span><br><span class="line">		err = db.Model(&amp;model.Role{}).Where("name = ?", "ops").Update("Policy", role3.Policy).Error</span><br><span class="line">		if err != nil {</span><br><span class="line">			return err</span><br><span class="line">		}</span><br><span class="line">		err = db.Exec("DELETE FROM casbin_rule WHERE v1 = '/api/v1/jobs'").Error</span><br><span class="line">		err = db.Delete(&amp;role3).Where("v1 = ?", "/api/v1/jobs").Error</span><br><span class="line">		if err != nil {</span><br><span class="line">			return err</span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		return err</span><br><span class="line">	},</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://blog.depado.eu/post/gorm-gotchas">Gorm Gotchas–gorm+migrate+uuid</a></p>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10213461">gorm–gormigrate–uuid</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/28/golang-2020-05-28-Gorm-%E4%BD%BF%E7%94%A8UUID%E4%BD%9C%E4%B8%BA%E4%B8%BB%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/28/golang-2020-05-28-Gorm-%E4%BD%BF%E7%94%A8UUID%E4%BD%9C%E4%B8%BA%E4%B8%BB%E9%94%AE/" class="post-title-link" itemprop="url">Gorm-使用UUID作为主键</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-28 11:11:24" itemprop="dateCreated datePublished" datetime="2020-05-28T11:11:24+08:00">2020-05-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/28/golang-2020-05-28-Gorm-%E4%BD%BF%E7%94%A8UUID%E4%BD%9C%E4%B8%BA%E4%B8%BB%E9%94%AE/" class="post-meta-item leancloud_visitors" data-flag-title="Gorm-使用UUID作为主键" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><strong><a target="_blank" rel="noopener" href="https://medium.com/@the.hasham.ali/how-to-use-uuid-key-type-with-gorm-cc00d4ec7100">How to Use UUID Key Type with Gorm</a></strong></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/28/golang-2020-05-28-Gorm-%E6%94%AF%E6%8C%81json%E5%AD%97%E6%AE%B5%E6%A0%BC%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/28/golang-2020-05-28-Gorm-%E6%94%AF%E6%8C%81json%E5%AD%97%E6%AE%B5%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">Gorm-支持json字段格式</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-28 11:10:53" itemprop="dateCreated datePublished" datetime="2020-05-28T11:10:53+08:00">2020-05-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/28/golang-2020-05-28-Gorm-%E6%94%AF%E6%8C%81json%E5%AD%97%E6%AE%B5%E6%A0%BC%E5%BC%8F/" class="post-meta-item leancloud_visitors" data-flag-title="Gorm-支持json字段格式" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><strong><a target="_blank" rel="noopener" href="https://github.com/jinzhu/gorm/issues/1935#issue-330200769">第一参考 Github-Issue support JSON column for mysql</a></strong></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/26/golang-2020-05-26-Go-HttpClien%E7%BC%96%E5%86%99%E8%AE%BF%E9%97%AErest%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/26/golang-2020-05-26-Go-HttpClien%E7%BC%96%E5%86%99%E8%AE%BF%E9%97%AErest%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF/" class="post-title-link" itemprop="url">Go-HttpClien编写访问rest服务的客户端</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-26 02:05:14" itemprop="dateCreated datePublished" datetime="2020-05-26T02:05:14+08:00">2020-05-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/26/golang-2020-05-26-Go-HttpClien%E7%BC%96%E5%86%99%E8%AE%BF%E9%97%AErest%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF/" class="post-meta-item leancloud_visitors" data-flag-title="Go-HttpClien编写访问rest服务的客户端" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><strong><a target="_blank" rel="noopener" href="http://polyglot.ninja/golang-making-http-requests/">Golang: Making HTTP Requests</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://www.scaledrone.com/blog/creating-an-api-client-in-go/">^Creating an API Client in Go</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://polyglot.ninja/golang-making-http-requests/">^^golang-making-http-requests</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://medium.com/@nate510/don-t-use-go-s-default-http-client-4804cb19f779">Don’t use Go’s default HTTP client (in production)</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.thegreatcodeadventure.com/mocking-http-requests-in-golang/">博客 - 接口创建共享的http.client</a></p>
+<p>工具<br><a target="_blank" rel="noopener" href="https://github.com/gojek/heimdall#making-a-simple-get-request">heimdall - go 增强型http.client 1.6K</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/26/persistence-2020-05-26-Registry%E9%85%8D%E7%BD%AEkeycloak%E4%BD%9C%E4%B8%BA%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/26/persistence-2020-05-26-Registry%E9%85%8D%E7%BD%AEkeycloak%E4%BD%9C%E4%B8%BA%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1/" class="post-title-link" itemprop="url">Registry配置keycloak作为认证服务</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-26 02:01:46" itemprop="dateCreated datePublished" datetime="2020-05-26T02:01:46+08:00">2020-05-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Persistence/" itemprop="url" rel="index">
+                    <span itemprop="name">Persistence</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/26/persistence-2020-05-26-Registry%E9%85%8D%E7%BD%AEkeycloak%E4%BD%9C%E4%B8%BA%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1/" class="post-meta-item leancloud_visitors" data-flag-title="Registry配置keycloak作为认证服务" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h1 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2.环境准备"></a>2.环境准备</h1><h1 id="3-部署"><a href="#3-部署" class="headerlink" title="3.部署"></a>3.部署</h1><h1 id="4-使用"><a href="#4-使用" class="headerlink" title="4.使用"></a>4.使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><strong><a target="_blank" rel="noopener" href="https://developers.redhat.com/blog/2017/10/31/docker-authentication-keycloak/">Docker Authentication with Keycloak</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/client-registration.adoc">Keycloak-doc client registration</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/25/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-05-25-Gland-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/25/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-05-25-Gland-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">Gland使用技巧</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-25 12:53:50" itemprop="dateCreated datePublished" datetime="2020-05-25T12:53:50+08:00">2020-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/25/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-05-25-Gland-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" class="post-meta-item leancloud_visitors" data-flag-title="Gland使用技巧" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>+<br>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><ul>
+<li>goland激活</li>
+<li>golang创建桌面图标</li>
+<li>goland配置go-template</li>
+<li>goland使用live-template生成Swagger的注解</li>
+<li>goland使用git-bash作为Terminal</li>
+</ul>
+<h1 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://blog.jetbrains.com/go/2018/12/14/go-templates-made-easy/?_ga=2.92277531.766463060.1589277937-434880970.1582637428">Go templates made easy</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.jetbrains.com/go/2020/05/19/video-recording-and-qa-of-build-a-microservice-in-go-with-goland-in-an-hour-webinar/">Video Recording and Q&amp;A of Build a Microservice in Go with GoLand in an Hour webinar</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40596063/article/details/90897864">Idea 配置Live Templet 自动生成swagger注释模板</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lqyy/p/9390441.html">IntelliJ IDEA 如何设置类头注释和方法注释</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

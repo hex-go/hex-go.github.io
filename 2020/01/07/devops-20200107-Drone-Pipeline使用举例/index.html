@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="重点  如果使用multi-pipeline， 则在---之后不能跟注释。而且multi-pipeline之间的无法共通数据，每个新的pipeline就是一个完全新的环境。 能在DockerFile中处理的，就不要放在drone中处理。 同一Pipeline不同step可以相互引用生成的文件，不同Pipeline完全独立。都是重新的目录，新的clone文件。 Drone Pipeline的构建命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Drone-Pipeline使用举例">
+<meta property="og:url" content="https://hex-py.github.io/2020/01/07/devops-20200107-Drone-Pipeline%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="重点  如果使用multi-pipeline， 则在---之后不能跟注释。而且multi-pipeline之间的无法共通数据，每个新的pipeline就是一个完全新的环境。 能在DockerFile中处理的，就不要放在drone中处理。 同一Pipeline不同step可以相互引用生成的文件，不同Pipeline完全独立。都是重新的目录，新的clone文件。 Drone Pipeline的构建命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva4.sinaimg.cn/large/006hT4w1ly1gaq5l7x3baj31i00pgwgb.jpg">
+<meta property="article:published_time" content="2020-01-07T00:48:41.000Z">
+<meta property="article:modified_time" content="2022-11-30T03:22:28.021Z">
+<meta property="article:author" content="Hex">
+<meta property="article:tag" content="Devops">
+<meta property="article:tag" content="Drone">
+<meta property="article:tag" content="Dockerfile">
+<meta property="article:tag" content="Pipeline">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva4.sinaimg.cn/large/006hT4w1ly1gaq5l7x3baj31i00pgwgb.jpg">
+
+<link rel="canonical" href="https://hex-py.github.io/2020/01/07/devops-20200107-Drone-Pipeline%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Drone-Pipeline使用举例 | Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/01/07/devops-20200107-Drone-Pipeline%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Drone-Pipeline使用举例
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-01-07 08:48:41" itemprop="dateCreated datePublished" datetime="2020-01-07T08:48:41+08:00">2020-01-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/01/07/devops-20200107-Drone-Pipeline%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/" class="post-meta-item leancloud_visitors" data-flag-title="Drone-Pipeline使用举例" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html><head></head><body><h1 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h1><blockquote>
+<ol>
+<li>如果使用multi-pipeline， 则在<code>---</code>之后不能跟注释。而且multi-pipeline之间的无法共通数据，每个新的pipeline就是一个完全新的环境。</li>
+<li>能在DockerFile中处理的，就不要放在drone中处理。</li>
+<li>同一Pipeline不同step可以相互引用生成的文件，不同Pipeline完全独立。都是重新的目录，新的clone文件。</li>
+<li><code>Drone Pipeline</code>的构建命令都是在一个容器中去执行的，比如要使用<code>Helm</code>来部署应用，就需要容器有<code>helm</code>，并能够目标<code>Kubernetes</code>集群联通。一种方式：可以自己做一个镜像，把 helm 命令和连接集群的配置文件都内置到里面去，但这样不是很灵活，不具有通用性。另一种方法： Drone 的插件机制，使用插件配置。</li>
+</ol>
+</blockquote>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="go项目"><a href="#go项目" class="headerlink" title="go项目"></a>go项目</h2><h3 id="项目-go代码："><a href="#项目-go代码：" class="headerlink" title="项目 go代码："></a>项目 go代码：</h3><p>下面是用<code>go-web</code>框架<code>gin</code>创建一个简单的 web 服务，在 GitHub 上创建一个名为 drone-demo 的代码仓库，Clone 到本地，添加名为 main.go 的文件，内容如下：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">"net/http"</span></span><br><span class="line"></span><br><span class="line">  <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">  <span class="string">"github.com/sirupsen/logrus"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">  r := gin.Default()</span><br><span class="line"></span><br><span class="line">  r.GET(<span class="string">"/health"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> {</span><br><span class="line">    c.JSON(http.StatusOK, gin.H {</span><br><span class="line">      <span class="string">"health"</span>: <span class="literal">true</span>,</span><br><span class="line">    })</span><br><span class="line">  })</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> err := r.Run(<span class="string">":8080"</span>); err != <span class="literal">nil</span> {</span><br><span class="line">    logrus.WithError(err).Fatal(<span class="string">"Couldn't listen"</span>)</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>服务监听在 8080 端口，提供了一个简单的/health路由，返回一个简单的 JSON 消息表示应用状态状态，本地我们使用的是 go1.11.4 版本，所以可以通过 Go Modules 来管理应用的依赖，在项目目录下面执行 mod init：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod init dronek8s</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="项目DockerFile："><a href="#项目DockerFile：" class="headerlink" title="项目DockerFile："></a>项目DockerFile：</h3><blockquote>
+<p>生产环境，建议在DockerFile中多阶段构建来将项目的构建和打包工作放在同一个 <code>Dockerfile</code>， 此处为了研究Drone的Pipeline使用，将两步分开。</p>
+</blockquote>
+<p>在项目根目录下面创建 Dockerfile 文件，内容如下：</p>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /home</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改alpine源为阿里云</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed -i <span class="string">'s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g'</span> /etc/apk/repositories &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">  apk update &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">  apk upgrade &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">  apk add ca-certificates &amp;&amp; update-ca-certificates &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">  apk add --update tzdata &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">  <span class="built_in">rm</span> -rf /var/cache/apk/*</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> demo-app /home/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> TZ=Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> ./demo-app</span></span><br></pre></td></tr></tbody></table></figure>
+<p>构建结果文件<code>demo-app</code>拷贝到镜像中去执行来构建镜像，手动构建生成该文件命令是在根目录下面执行 go build 命令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># build</span></span><br><span class="line">CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o demo-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># docker image</span></span><br><span class="line">docker build -t hex/drone-demo .</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="项目-drone-yml"><a href="#项目-drone-yml" class="headerlink" title="项目 .drone.yml"></a>项目 <code>.drone.yml</code></h3><p>项目根目录下创建一个名为<code>.drone.yml</code>文件，文件内容如下：</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kind:</span> <span class="string">pipeline</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">default</span></span><br><span class="line"></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">linter</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">golang:latest</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">GOPROXY:</span> <span class="string">https://mirrors.aliyun.com/goproxy/</span></span><br><span class="line">    <span class="attr">commands:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">go</span> <span class="string">get</span> <span class="string">-u</span> <span class="string">github.com/golangci/golangci-lint/cmd/golangci-lint</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">golangci-lint</span> <span class="string">run</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">build</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">golang:latest</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">GOPROXY:</span> <span class="string">https://mirrors.aliyun.com/goproxy/</span></span><br><span class="line">    <span class="attr">commands:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">CGO_ENABLED=0</span> <span class="string">go</span> <span class="string">build</span> <span class="string">-o</span> <span class="string">demo-app</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">docker</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">plugins/docker</span></span><br><span class="line">    <span class="attr">settings:</span></span><br><span class="line">      <span class="attr">repo:</span> <span class="string">hex/drone-demo</span></span><br><span class="line">      <span class="attr">use_cache:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">username:</span></span><br><span class="line">        <span class="attr">from_secret:</span> <span class="string">docker_username</span></span><br><span class="line">      <span class="attr">password:</span></span><br><span class="line">        <span class="attr">from_secret:</span> <span class="string">docker_password</span></span><br><span class="line">    <span class="attr">tags:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">latest</span></span><br><span class="line">    <span class="attr">when:</span></span><br><span class="line">      <span class="attr">event:</span> <span class="string">push</span></span><br><span class="line">      <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">      </span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">deploy</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">quay.io/ipedrazas/drone-helm</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">STABLE_REPO_URL:</span> <span class="string">https://mirror.azure.cn/kubernetes/charts/</span></span><br><span class="line">      <span class="attr">SERVICE_ACCOUNT:</span> <span class="string">tiller</span></span><br><span class="line">      <span class="attr">API_SERVER:</span></span><br><span class="line">        <span class="attr">from_secret:</span> <span class="string">api_server</span></span><br><span class="line">      <span class="attr">KUBERNETES_TOKEN:</span></span><br><span class="line">        <span class="attr">from_secret:</span> <span class="string">kubernetes_token</span></span><br><span class="line">      <span class="attr">KUBERNETES_CERTIFICATE:</span></span><br><span class="line">        <span class="attr">from_secret:</span> <span class="string">kubernetes_ca</span></span><br><span class="line">    <span class="attr">settings:</span></span><br><span class="line">      <span class="attr">client-only:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">wait:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">recreate_pods:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">chart:</span> <span class="string">./helm</span></span><br><span class="line">      <span class="attr">release:</span> <span class="string">drk8d</span></span><br><span class="line">      <span class="attr">values_files:</span> [<span class="string">"./helm/my-values.yaml"</span>]</span><br><span class="line">      <span class="attr">namespace:</span> <span class="string">kube-ops</span></span><br></pre></td></tr></tbody></table></figure>
+<p>说明: </p>
+<blockquote>
+<ol>
+<li>linter: 在<code>golang:latest</code>镜像中执行任务<code>commands</code>中的命令</li>
+<li>build: 在<code>golang:latest</code>镜像中执行任务<code>commands</code>中的命令</li>
+<li>docker: 使用官方插件<code>plugins/docker</code>，该镜像可以指定<code>Dockerfile</code> 的路径，镜像的<code>tag</code>，以及镜像仓库的用户名和密码。<br>此处用户名密码通过<code>secret</code>的方式传入。该secret可以通过<code>drone-cli</code>创建，也可以Drone网页配置。</li>
+</ol>
+</blockquote>
+<p><img alt="drone-add-secret" data-src="https://tva4.sinaimg.cn/large/006hT4w1ly1gaq5l7x3baj31i00pgwgb.jpg"></p>
+<blockquote>
+<ol start="4">
+<li>deploy: 使用官方插件<code>drone-helm</code><br>Drone 的插件页面找到和 Helm 相关的插件：<a target="_blank" rel="noopener" href="http://plugins.drone.io/ipedrazas/drone-helm/%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%8F%92%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E5%A6%82%E4%B8%8B">http://plugins.drone.io/ipedrazas/drone-helm/，这个插件的基本用法如下</a>:</li>
+</ol>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pipeline:</span></span><br><span class="line">  <span class="attr">helm_deploy:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">quay.io/ipedrazas/drone-helm</span></span><br><span class="line">    <span class="attr">skip_tls_verify:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">chart:</span> <span class="string">./charts/my-chart</span></span><br><span class="line">    <span class="attr">release:</span> <span class="string">${DRONE_BRANCH}</span></span><br><span class="line">    <span class="attr">values:</span> <span class="string">secret.password=${SECRET_PASSWORD},image.tag=${TAG}</span></span><br><span class="line">    <span class="attr">prefix:</span> <span class="string">STAGING</span></span><br><span class="line">    <span class="attr">namespace:</span> <span class="string">development</span></span><br></pre></td></tr></tbody></table></figure>
+<p>上面Pipeline相当于：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">helm upgrade --install <span class="variable">${DRONE_BRANCH}</span> ./charts/my-chart --namespace development --<span class="built_in">set</span> secret.password=<span class="variable">${SECRET_PASSWORD}</span>,image.tag=<span class="variable">${TAG}</span></span><br></pre></td></tr></tbody></table></figure>
+<p>helm连接<code>Kubernetes</code>集群可以通过<code>API_SERVER</code>、<code>KUBERNETES_TOKEN</code>、<code>KUBERNETES_CERTIFICATE</code> 三个环境变量来指定。<br><code>API_SERVER</code>就是集群的APIServer服务地址；<code>KUBERNETES_TOKEN</code>获取通过创建一个 <code>ServiceAccount</code>，去绑定一个的集群角色权限(比如<code>cluster-admin</code>)，然后获取<code>ServiceAccount</code> 对应的<code>TOKEN</code>。比如我们 Helm 的服务端 Tiller 服务对应的 ServiceAccount，我们可以这样来获取：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl -n kube-system get secrets | grep tiller</span><br><span class="line">tiller-token-z4f6k                               kubernetes.io/service-account-token   3      115d</span><br><span class="line">$ kubectl get secret tiller-token-z4f6k -o jsonpath={.data.token} -n kube-system | <span class="built_in">base64</span> --decode</span><br><span class="line">eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.xxxxx.jO7vEZCzLbtBg</span><br></pre></td></tr></tbody></table></figure>
+<p>证书信息同样可以通过上面的 secret 来获取：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get secret tiller-token-z4f6k -o jsonpath={.data.ca\\.crt} -n kube-system</span><br></pre></td></tr></tbody></table></figure>
+<p>注意： 证书信息不需要用 base64 解码。</p>
+<h2 id="node项目"><a href="#node项目" class="headerlink" title="node项目"></a>node项目</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">workspace:</span><br><span class="line">  base: /data/apps/opt</span><br><span class="line">  path: web-im</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">pipeline:</span><br><span class="line"> </span><br><span class="line">  restore-cache:</span><br><span class="line">    image: drillster/drone-volume-cache</span><br><span class="line">    restore: <span class="literal">true</span></span><br><span class="line">    mount:</span><br><span class="line">      - node_modules</span><br><span class="line">      - tag</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/apps/opt/web-im:/cache</span><br><span class="line"> </span><br><span class="line">  build:</span><br><span class="line">    image: node:7.8</span><br><span class="line">    privileged: <span class="literal">true</span></span><br><span class="line">    commands:</span><br><span class="line">      - npm run build</span><br><span class="line">      - <span class="built_in">mkdir</span> -p publish/demo/javascript</span><br><span class="line">      - <span class="built_in">cp</span> -r demo/images publish/demo</span><br><span class="line">      - <span class="built_in">cp</span> -r demo/stylesheet publish/demo</span><br><span class="line">      - <span class="built_in">cp</span> -r demo/javascript/dist publish/demo/javascript/</span><br><span class="line">      - <span class="built_in">cp</span> -r demo/javascript/src publish/demo/javascript/</span><br><span class="line">      - <span class="built_in">mkdir</span> publish/sdk</span><br><span class="line">      - <span class="built_in">cp</span> -r sdk/dist publish/sdk</span><br><span class="line">      - <span class="built_in">cp</span> -r sdk/src publish/sdk</span><br><span class="line">      - <span class="built_in">cp</span> sdk/*.* publish/sdk</span><br><span class="line">      - <span class="built_in">cp</span> -r webrtc  publish</span><br><span class="line">      - <span class="built_in">cp</span> favicon.ico publish/</span><br><span class="line">      - <span class="built_in">cp</span> index.html publish/</span><br><span class="line">      - <span class="built_in">cp</span> CHANGELOG.md publish/</span><br><span class="line">      - <span class="built_in">cp</span> package.json publish/</span><br><span class="line">      - <span class="built_in">cp</span> webpack.config.js publish/</span><br><span class="line">      - <span class="built_in">cp</span> README.md publish/</span><br><span class="line">      - <span class="built_in">cp</span> .babelrc publish/</span><br><span class="line">      - <span class="built_in">cp</span> -rf publish image/docker/webim/webim</span><br><span class="line">      - <span class="built_in">echo</span> <span class="string">'build success'</span></span><br><span class="line">    when:</span><br><span class="line">      branch: [ dev, online ]</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">  dockerize-latest:</span><br><span class="line">    image: plugins/docker</span><br><span class="line">    environment:</span><br><span class="line">      - DOCKER_LAUNCH_DEBUG=<span class="literal">true</span></span><br><span class="line">    debug: <span class="literal">true</span></span><br><span class="line">    repo: docker-registry-cn.easemob.com/kubernetes/im/webim</span><br><span class="line">    tags: latest</span><br><span class="line">    registry: docker-registry-cn.easemob.com</span><br><span class="line">    secrets: [ docker_username, docker_password ]</span><br><span class="line">    dockerfile: image/docker/webim/Dockerfile</span><br><span class="line">    context: image/docker/webim/</span><br><span class="line">    when:</span><br><span class="line">      branch: dev</span><br><span class="line"> </span><br><span class="line">  deploy-latest:</span><br><span class="line">    image: docker-registry-cn.easemob.com/kubernetes/im/webim-deploy:latest</span><br><span class="line">    pull: <span class="literal">true</span></span><br><span class="line">    environment:</span><br><span class="line">      - DOCKER_LAUNCH_DEBUG=<span class="literal">true</span></span><br><span class="line">      - TAG=latest</span><br><span class="line">    secrets: [ ssh_key, jumpserver_host, jumpserver_port, sandbox_host ]</span><br><span class="line">    debug: <span class="literal">true</span></span><br><span class="line">    when:</span><br><span class="line">      branch: dev</span><br><span class="line"> </span><br><span class="line">  dockerize-online:</span><br><span class="line">    image: plugins/docker</span><br><span class="line">    environment:</span><br><span class="line">      - DOCKER_LAUNCH_DEBUG=<span class="literal">true</span></span><br><span class="line">    debug: <span class="literal">true</span></span><br><span class="line">    repo: docker-registry-cn.easemob.com/kubernetes/im/webim</span><br><span class="line">    tags: <span class="variable">${DRONE_COMMIT:0:7}</span></span><br><span class="line">    registry: docker-registry-cn.easemob.com</span><br><span class="line">    secrets: [ docker_username, docker_password ]</span><br><span class="line">    dockerfile: image/docker/webim/Dockerfile</span><br><span class="line">    context: image/docker/webim/</span><br><span class="line">    when:</span><br><span class="line">      branch: online</span><br><span class="line"> </span><br><span class="line">  deploy-online:</span><br><span class="line">    image: docker-registry-cn.easemob.com/kubernetes/im/webim-online:latest</span><br><span class="line">    pull: <span class="literal">true</span></span><br><span class="line">    environment:</span><br><span class="line">      - DOCKER_LAUNCH_DEBUG=<span class="literal">true</span></span><br><span class="line">      - TAG=<span class="variable">${DRONE_COMMIT:0:7}</span></span><br><span class="line">    secrets: [ ssh_key, jumpserver_host, jumpserver_port, online_host ]</span><br><span class="line">    debug: <span class="literal">true</span></span><br><span class="line">    when:</span><br><span class="line">      branch: online</span><br><span class="line"> </span><br><span class="line">  rollback-online:</span><br><span class="line">    image: docker-registry-cn.easemob.com/kubernetes/im/webim-rollback:latest</span><br><span class="line">    pull: <span class="literal">true</span></span><br><span class="line">    environment:</span><br><span class="line">      - DOCKER_LAUNCH_DEBUG=<span class="literal">true</span></span><br><span class="line">    secrets: [ ssh_key, jumpserver_host, jumpserver_port, online_host ]</span><br><span class="line">    debug: <span class="literal">true</span></span><br><span class="line">    when:</span><br><span class="line">      branch: rollback</span><br><span class="line"> </span><br><span class="line">  rebuild-cache:</span><br><span class="line">      image: drillster/drone-volume-cache</span><br><span class="line">      rebuild: <span class="literal">true</span></span><br><span class="line">      mount:</span><br><span class="line">        - node_modules</span><br><span class="line">        - tag</span><br><span class="line">      volumes:</span><br><span class="line">        - /data/apps/opt/web-im:/cache</span><br><span class="line"> </span><br><span class="line">  notify:</span><br><span class="line">    image: drillster/drone-email</span><br><span class="line">    port: 25</span><br><span class="line">    secrets: [ plugin_host, plugin_from, plugin_username, plugin_password ]</span><br><span class="line">    when:</span><br><span class="line">      status:  [ failure, success ]</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢支持</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/../images/wx_reward.jpg" alt="Hex 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Devops/" rel="tag"><i class="fa fa-tag"></i> Devops</a>
+              <a href="/tags/Drone/" rel="tag"><i class="fa fa-tag"></i> Drone</a>
+              <a href="/tags/Dockerfile/" rel="tag"><i class="fa fa-tag"></i> Dockerfile</a>
+              <a href="/tags/Pipeline/" rel="tag"><i class="fa fa-tag"></i> Pipeline</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/07/devops-20200107-Jenkins-Pipeline%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/" rel="prev" title="Jenkins-Pipeline使用举例">
+      <i class="fa fa-chevron-left"></i> Jenkins-Pipeline使用举例
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/01/08/python-20200108-LDAP-Python%E6%93%8D%E4%BD%9C%E5%BA%93/" rel="next" title="LDAP-Python 操作库">
+      LDAP-Python 操作库 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E7%82%B9"><span class="nav-text">重点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#go%E9%A1%B9%E7%9B%AE"><span class="nav-text">go项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE-go%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-text">项目 go代码：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AEDockerFile%EF%BC%9A"><span class="nav-text">项目DockerFile：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE-drone-yml"><span class="nav-text">项目 .drone.yml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node%E9%A1%B9%E7%9B%AE"><span class="nav-text">node项目</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

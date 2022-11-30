@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="个人技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hex Blog">
+<meta property="og:url" content="https://hex-py.github.io/page/9/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="个人技术博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hex">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/page/9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/07/29/devops-2020-07-29-LDAP-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C%E4%BA%8C-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/29/devops-2020-07-29-LDAP-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C%E4%BA%8C-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/" class="post-title-link" itemprop="url">LDAP-部署手册二-集群部署</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-07-29 04:08:22" itemprop="dateCreated datePublished" datetime="2020-07-29T04:08:22+08:00">2020-07-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/07/29/devops-2020-07-29-LDAP-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C%E4%BA%8C-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/" class="post-meta-item leancloud_visitors" data-flag-title="LDAP-部署手册二-集群部署" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/07/24/golang-2020-07-24-Go-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB-grafana-v7-1-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/24/golang-2020-07-24-Go-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB-grafana-v7-1-0/" class="post-title-link" itemprop="url">Go-源码解读--grafana-v7.1.0</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-07-24 10:08:57" itemprop="dateCreated datePublished" datetime="2020-07-24T10:08:57+08:00">2020-07-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/07/24/golang-2020-07-24-Go-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB-grafana-v7-1-0/" class="post-meta-item leancloud_visitors" data-flag-title="Go-源码解读--grafana-v7.1.0" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最近研究grafana与keycloak集成，能正常解决认证问题，但用户只会在grafana通过keycloak用户登录时，才会在grafana的数据库中创建用户。<br>需要研究如何通过API触发此操作，为后续在grafana中给此用户授权做准备。grafana本身无此API，相近的功能Openldap与grafana用户同步也是在企业版。<br>由此需要研究grafana源码，首选API实现，无法成功则研究API背后的逻辑，直接操作数据库实现。</p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>grafana: v7.1.0<br>keycloak: 10.0.2</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/07/23/golang-2020-07-23-Go-Module%E5%AE%9E%E7%8E%B0go%E8%AF%AD%E8%A8%80%E7%9A%84%E6%8F%92%E4%BB%B6%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/23/golang-2020-07-23-Go-Module%E5%AE%9E%E7%8E%B0go%E8%AF%AD%E8%A8%80%E7%9A%84%E6%8F%92%E4%BB%B6%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">Go-Module实现go语言的插件机制</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-07-23 07:43:17" itemprop="dateCreated datePublished" datetime="2020-07-23T07:43:17+08:00">2020-07-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/07/23/golang-2020-07-23-Go-Module%E5%AE%9E%E7%8E%B0go%E8%AF%AD%E8%A8%80%E7%9A%84%E6%8F%92%E4%BB%B6%E6%9C%BA%E5%88%B6/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Module实现go语言的插件机制" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最近由于工作需求，需要统一调用各个系统的相同逻辑。并不想每集成一个服务就修改调用的代码，而是想实现插件机制。</p>
+<p>利用go包的init特性，将示例插件注册，并在主程序中调用。</p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>代码结构如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">└── src</span><br><span class="line">    └── test</span><br><span class="line">        ├── main.go</span><br><span class="line">        └── adaptor</span><br><span class="line">            ├── init.go</span><br><span class="line">            └── standard</span><br><span class="line">                └── imports.go</span><br><span class="line">            └── cls1</span><br><span class="line">                └── base.go</span><br><span class="line">            └── cls2</span><br><span class="line">                └── base.go</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/hex-py/example-adaptor">项目代码</a></p>
+</blockquote>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="类工厂"><a href="#类工厂" class="headerlink" title="类工厂"></a>类工厂</h2><blockquote>
+<p>具体文件: ./example-adaptor/adaptor/init.go</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> adaptor</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义接口</span></span><br><span class="line"><span class="keyword">type</span> Adaptors <span class="keyword">interface</span> {</span><br><span class="line">	CreateUser(user <span class="type">string</span>) (status <span class="type">bool</span>, err <span class="type">error</span>)</span><br><span class="line">	DeleteUser(user <span class="type">string</span>) (status <span class="type">bool</span>, err <span class="type">error</span>)</span><br><span class="line">	Policies() (status <span class="type">bool</span>, err <span class="type">error</span>)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	<span class="comment">// 插件字典</span></span><br><span class="line">	FactoryByName = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="function"><span class="keyword">func</span><span class="params">()</span></span> Adaptors)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册插件</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Register</span><span class="params">(name <span class="type">string</span>, factory <span class="keyword">func</span>()</span></span> Adaptors) {</span><br><span class="line">	FactoryByName[name] = factory</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="插件类-cls1-cls2"><a href="#插件类-cls1-cls2" class="headerlink" title="插件类 cls1 cls2"></a>插件类 <code>cls1</code> <code>cls2</code></h2><blockquote>
+<p>具体文件： <code>adaptor/cls1/base.go</code> 和 <code>adaptor/cls2/base.go</code><br>以cls1举例</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cls1</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"example/adaptor"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 Cls1</span></span><br><span class="line"><span class="keyword">type</span> Cls1 <span class="keyword">struct</span> {</span><br><span class="line">	Name <span class="type">string</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现Class接口， 分别为 CreateUser DeleteUser Policies</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(g *Cls1)</span></span> CreateUser(user <span class="type">string</span>) (status <span class="type">bool</span>, err <span class="type">error</span>) {</span><br><span class="line">	fmt.Println(<span class="string">"Cls1 - create user: "</span>, user)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>, <span class="literal">nil</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(g *Cls1)</span></span> DeleteUser(user <span class="type">string</span>) (status <span class="type">bool</span>, err <span class="type">error</span>) {</span><br><span class="line">	fmt.Println(<span class="string">"Cls1 - Delete user: "</span>, user)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>, <span class="literal">nil</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(g *Cls1)</span></span> Policies() (status <span class="type">bool</span>, err <span class="type">error</span>) {</span><br><span class="line">	fmt.Println(<span class="string">"Cls1 - get policies"</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>, <span class="literal">nil</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入时注册插件的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> {</span><br><span class="line">	<span class="comment">// 导入包时 注册 cls1</span></span><br><span class="line">	adaptor.Register(<span class="string">"Cls1"</span>, <span class="function"><span class="keyword">func</span><span class="params">()</span></span> adaptor.Adaptors {</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">new</span>(Cls1)</span><br><span class="line">	})</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="导入包-实现插件自动注册到-Struct-FactoryByName"><a href="#导入包-实现插件自动注册到-Struct-FactoryByName" class="headerlink" title="导入包,实现插件自动注册到 Struct FactoryByName"></a>导入包,实现插件自动注册到 Struct <code>FactoryByName</code></h2><blockquote>
+<p>具体文件： ./example-adaptor/adaptor/standard/imports.go</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> standard</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="comment">// 统一导入， 触发init() 实现自动注册</span></span><br><span class="line">	_ <span class="string">"example/adaptor/cls1"</span> <span class="comment">// 匿名引用cls1包, 自动注册</span></span><br><span class="line">	_ <span class="string">"example/adaptor/cls2"</span> <span class="comment">// 匿名引用cls2包, 自动注册</span></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后在项目入口文件处，导入<code>adaptor/standard</code>包即可</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	_ <span class="string">"example/adaptor/standard"</span> <span class="comment">// 统一导入，实现插件注册</span></span><br><span class="line">	<span class="string">"example/api"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">	engine := api.Routers()</span><br><span class="line">	_ = engine.Run(<span class="string">":8887"</span>)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="写新的插件"><a href="#写新的插件" class="headerlink" title="写新的插件"></a>写新的插件</h1><ol>
+<li>创建插件类<br>创建包<code>cls-new</code>，并在包内做到这几件事：</li>
+</ol>
+<ul>
+<li>创建 struct <code>Cls-new</code></li>
+<li>实现在adaptor中interface的方法</li>
+<li>在init方法中注册</li>
+</ul>
+<ol start="2">
+<li>在<code>adaptor/standard</code>包处进行导入<blockquote>
+<p>文件路径: <code>adaptor/standard/imports.go</code></p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> standard</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="comment">// 统一导入， 触发init() 实现自动注册</span></span><br><span class="line">	_ <span class="string">"example/adaptor/cls1"</span></span><br><span class="line">	_ <span class="string">"example/adaptor/cls2"</span></span><br><span class="line">    _ <span class="string">"example/adaptor/cls-new"</span></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>Useful <a target="_blank" rel="noopener" href="http://c.biancheng.net/view/92.html">Go语言工厂模式自动注册</a><br><a target="_blank" rel="noopener" href="https://mritd.me/2018/10/23/golang-code-plugin/">借鉴caddy插件机制博客</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ad19dbc25e6c">Go-Plugin机制说明、简单示例</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/07/08/devops-2020-07-08-PKI-%E8%87%AA%E7%AD%BE%E5%8F%91%E8%AF%81%E4%B9%A6%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/08/devops-2020-07-08-PKI-%E8%87%AA%E7%AD%BE%E5%8F%91%E8%AF%81%E4%B9%A6%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">PKI-自签发证书说明</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-07-08 09:16:33" itemprop="dateCreated datePublished" datetime="2020-07-08T09:16:33+08:00">2020-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/07/08/devops-2020-07-08-PKI-%E8%87%AA%E7%AD%BE%E5%8F%91%E8%AF%81%E4%B9%A6%E8%AF%B4%E6%98%8E/" class="post-meta-item leancloud_visitors" data-flag-title="PKI-自签发证书说明" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="生成自签发证书"><a href="#生成自签发证书" class="headerlink" title="生成自签发证书"></a>生成自签发证书</h1><ol>
+<li><p>生成CA根证书以及根证书私钥.</p>
+<blockquote>
+<p>output: <code>ca.crt</code>和 <code>ca.key</code>, pem格式. input ‘’</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Generate a CA private key</span></span><br><span class="line">openssl genrsa -out ca.key 4096</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a self signed Certificate, valid for 10yrs with the 'signing' option set</span></span><br><span class="line">openssl req -x509 -new -nodes -key ca.key -subj <span class="string">"/CN=QLOUDFIN.COM"</span> -days 3650 -reqexts v3_req -extensions v3_ca -out ca.crt</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>生成<code>*.service.consul</code>通配符证书私钥 </p>
+<blockquote>
+<p>output: <code>service.consul.key</code>, pem格式. input: ‘’</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out service.consul.key 4096</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>根据<code>*.service.consul</code>通配符证书私钥，生成证书请求文件(csr)<code>service.consul.csr</code> </p>
+<blockquote>
+<p>output: <code>service.consul.csr</code>, pem格式. input: <code>service.consul.key</code>.</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -sha256 -key service.consul.key -out service.consul.csr -subj <span class="string">"/CN=obp-qmspdp-service-pditdap.service.consul"</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>根据证书请求文件通过根证书、根证书私钥签发证书。</p>
+<blockquote>
+<p>output: <code>service.consul.crt</code>, pem格式. input: <code>service.consul.csr</code>和<code>ca.crt</code>和<code>ca.key</code> 以及配置文件<code>service.consul.ini</code>.<br>其中，配置文件<code>service.consul.ini</code>的内容如下：</p>
+</blockquote>
+<figure class="highlight ini"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[ ext ]</span></span><br><span class="line"><span class="attr">subjectAltName</span> = @dns</span><br><span class="line"></span><br><span class="line"><span class="section">[ dns ]</span></span><br><span class="line"><span class="attr">DNS.1</span> = *.service.consul</span><br></pre></td></tr></tbody></table></figure>
+<p>执行下面命令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -req -<span class="keyword">in</span> service.consul.csr -CA ca.crt -CAkey ca.key -CAcreateserial -days 3560 -out service.consul.crt -extfile service.consul.ini -extensions ext</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>生成k8s中的secret. </p>
+<blockquote>
+<p>output: k8s-secret <code>ambassador-certs</code>, pem格式. input: <code>service.consul.crt</code> 和 <code>service.consul.key</code> pem格式.</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create secret tls ambassador-certs --cert=service.consul.crt --key=service.consul.key</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guogangj/p/4118605.html">概念说明</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiangyuecn/article/details/79179684">生成证书</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/06/29/kubernetes-2020-06-29-ServiceCatalog%E5%92%8COperator%E7%BB%93%E5%90%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/29/kubernetes-2020-06-29-ServiceCatalog%E5%92%8COperator%E7%BB%93%E5%90%88/" class="post-title-link" itemprop="url">ServiceCatalog和Operator结合</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-06-29 03:11:43" itemprop="dateCreated datePublished" datetime="2020-06-29T03:11:43+08:00">2020-06-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/06/29/kubernetes-2020-06-29-ServiceCatalog%E5%92%8COperator%E7%BB%93%E5%90%88/" class="post-meta-item leancloud_visitors" data-flag-title="ServiceCatalog和Operator结合" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><blockquote>
+<p>当下流行两种方式来为云原生应用提供后台服务： <code>Operators</code>和<code>Open Services Broker API</code>。本文比较两种技术，并针对性研究如何整合两者协同工作。</p>
+</blockquote>
+<blockquote>
+<p>运行在Kubernetes集群上的工作负载，需要访问许多相同的服务集。因此，Kubernetes社区构建了对OSBAPI规范，并创建了<code>ServiceCatalog</code>项目<br>来提供Kubernetes集群内的服务市场。云计算服务API规范变成了OSBAPI(Open Service Broker API)。<code>Operator</code>是这一领域出现的新技术。</p>
+</blockquote>
+<h1 id="Operators介绍"><a href="#Operators介绍" class="headerlink" title="Operators介绍"></a>Operators介绍</h1><p>最近一段时间，<code>Operator</code>的人气飙升。原因很简单。<code>Operators</code>允许使用Kubernetes的开发人员直接使用Kubernetes集群中的托管服务。<br>随后，<code>Operator</code>模式经常被用作构建符合<code>OSBAPI</code>的<code>service broker</code>的替代方案。</p>
+<p>Operator：</p>
+<ol>
+<li>是一组自定义资源定义(crd)，具有对其进行操作的自定义控制器。</li>
+<li></li>
+</ol>
+<h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://thenewstack.io/kubernetes-operators-and-the-open-service-broker-api-a-perfect-marriage/">Operator和OSBAPI的最佳结合</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/06/28/devops-2020-06-28-Docker-%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid-%E4%B8%80-Linux%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/28/devops-2020-06-28-Docker-%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid-%E4%B8%80-Linux%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid/" class="post-title-link" itemprop="url">Kubernetes中的uid和gid</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-06-28 09:36:19" itemprop="dateCreated datePublished" datetime="2020-06-28T09:36:19+08:00">2020-06-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/06/28/devops-2020-06-28-Docker-%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid-%E4%B8%80-Linux%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid/" class="post-meta-item leancloud_visitors" data-flag-title="Kubernetes中的uid和gid" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>问题：<a target="_blank" rel="noopener" href="https://nvd.nist.gov/vuln/detail/CVE-2019-11245">安全漏洞 CVE-2019-11245 </a><br>容器中的进程默认以 root 用户权限运行，<br>Docker默认不启用user namespace, 所有的容器共用一个内核，所以内核控制的 uid 和 gid 则仍然只有一套。<br>如果容器内使用root用户，则容器内的进程与宿主机的root具有相同权限。会有很大的安全隐患，一旦容器有权限访问宿主机资源，则将具备宿主机root相同权限。</p>
+<p>解决方法：</p>
+<ul>
+<li><ol>
+<li>为容器中的进程指定一个具有合适权限的用户，而不要使用默认的 root 用户。</li>
+</ol>
+</li>
+</ul>
+<h1 id="uid说明"><a href="#uid说明" class="headerlink" title="uid说明"></a>uid说明</h1><p>uid: 范围为0<del>65535（Ubuntu中为65533），0</del>999留给系统用户，普通用户为1000~65533. </p>
+<p>进程如果不声明uid，启动时以登录用户uid启动进程；进程可以声明任一存在或不存在的uid启动进程。<br>创建用户时若不指定uid, 默认就是直接从已存在的uid中找到最大的那个加1。</p>
+<p>综上，</p>
+<ul>
+<li>每个uid不一定有对应的用户名</li>
+<li>每个用户一定有自己的uid</li>
+<li>每个进程必定有uid</li>
+<li>进程uid不指定，则与启动命令的用户uid一致</li>
+<li>创建用户uid不指定，则每多一个用户，uid会max+1递增。</li>
+</ul>
+<p>容器中的进程uid\gid与宿主机的一致</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>Ubuntu下的用户权限</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012668018/article/details/37727517">Ubuntu下的用户权限</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/loryliu/article/details/24228045">/etc/passwd下的uid范围说明</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37605642/article/details/97136282?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.pc_relevant_is_cache&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.pc_relevant_is_cache">/etc/passwd详细解释</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/06/28/devops-2020-06-28-Docker-%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid-%E4%B8%89-Kubernetes%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/28/devops-2020-06-28-Docker-%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid-%E4%B8%89-Kubernetes%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid/" class="post-title-link" itemprop="url">Docker-理解容器中的uid和gid(二)-Kubernetes中使用uid</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-06-28 09:36:19" itemprop="dateCreated datePublished" datetime="2020-06-28T09:36:19+08:00">2020-06-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/06/28/devops-2020-06-28-Docker-%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid-%E4%B8%89-Kubernetes%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid/" class="post-meta-item leancloud_visitors" data-flag-title="Docker-理解容器中的uid和gid(二)-Kubernetes中使用uid" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>问题：<a target="_blank" rel="noopener" href="https://nvd.nist.gov/vuln/detail/CVE-2019-11245">安全漏洞 CVE-2019-11245 </a><br>容器中的进程默认以 root 用户权限运行，<br>Docker默认不启用user namespace, 所有的容器共用一个内核，所以内核控制的 uid 和 gid 则仍然只有一套。<br>如果容器内使用root用户，则容器内的进程与宿主机的root具有相同权限。会有很大的安全隐患，一旦容器有权限访问宿主机资源，则将具备宿主机root相同权限。</p>
+<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a href="">理解容器中的uid和gid(一)-Linux中的uid和gid.md</a></p>
+<p><a href="">理解容器中的uid和gid(二)-Docker容器中的uid和gid.md</a></p>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="1-pod中uid与宿主机冲突产生问题"><a href="#1-pod中uid与宿主机冲突产生问题" class="headerlink" title="1. pod中uid与宿主机冲突产生问题"></a>1. pod中uid与宿主机冲突产生问题</h2><p>因为一个原因：</p>
+<p>当pod设置<code>runAsNoneroot</code>，容器uid与宿主机uid一样，但username不一致时。会触发报错<br><code>Error: container has runAsNonRoot and image has non-numeric user (kong), cannot verify user is non-root</code><br>原因待定位，现猜测 pod设置<code>runAsNoneroot</code>会获取容器uid,此时的user会变成宿主机的用户名，之后根据宿主机用户名在容器内获取uid时</p>
+<p>尽量要避免容器内的uid与宿主机的uid重复。所以建议在指定uid时，使用20000~65533的数值。</p>
+<h1 id="3-使用securityContext设置挂卷文件权限"><a href="#3-使用securityContext设置挂卷文件权限" class="headerlink" title="3. 使用securityContext设置挂卷文件权限"></a>3. 使用securityContext设置挂卷文件权限</h1><p>当设置runAsNoneRoot后，往往会带来权限问题。比如有些私有云挂卷后，权限默认给的755权限。此时普通用户没有写权限，导致无法使用。所以需要</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>还有一种方式，解决uid未隔离导致的安全问题问题。但未做测试。</p>
+<ul>
+<li>docker 开启<code>user namespace</code>隔离用户</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sparkdev/p/9614326.html">隔离 docker 容器中的用户</a></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>理解 k8s 中 SecurityContext</p>
+<p><a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tasks/configure-pod-container/security-context/">k8s文档–为pod配置安全性上下文</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/777651">源码剖析–SecurityContext</a></p>
+<p><strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/woshimrf/p/understand-docker-uid.html">docker挂载volume的用户权限问题</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/47197493/docker-mounting-volume-permission-denied">Docker mounting volume. Permission denied</a></p>
+<p>k8s挂载宿主机卷解决权限问题：securityContext fsgroup</p>
+<p>为非root用户启动的pod挂卷</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/moby/moby/issues/2259">Add ability to mount volume as user other than root</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kubernetes/issues/2630">Volumes are created in container with root ownership and strict permissions</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/43544370/kubernetes-how-to-set-volumemount-user-group-and-file-permissions">stack overflow k8s 设置挂卷的userGroup和文件权限</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/06/28/devops-2020-06-28-Docker-%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid-%E4%BA%8C-Docker%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/28/devops-2020-06-28-Docker-%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid-%E4%BA%8C-Docker%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid/" class="post-title-link" itemprop="url">Docker-理解容器中的uid和gid(一)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-06-28 09:36:19" itemprop="dateCreated datePublished" datetime="2020-06-28T09:36:19+08:00">2020-06-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/06/28/devops-2020-06-28-Docker-%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid-%E4%BA%8C-Docker%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84uid%E5%92%8Cgid/" class="post-meta-item leancloud_visitors" data-flag-title="Docker-理解容器中的uid和gid(一)" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>问题：<a target="_blank" rel="noopener" href="https://nvd.nist.gov/vuln/detail/CVE-2019-11245">安全漏洞 CVE-2019-11245 </a><br>容器中的进程默认以 root 用户权限运行，<br>Docker默认不启用user namespace, 所有的容器共用一个内核，所以内核控制的<code>uid</code>和<code>gid</code>则仍然只有一套（可通过容器与宿主机执行此命令<code>ps --pid 25138 -O uid,uname,gid,group,ppid</code>测试）。<br>如果容器内使用root用户，则容器内的进程与宿主机的root具有相同权限。会有很大的安全隐患，一旦容器有权限访问宿主机资源，则将具备宿主机root相同权限。</p>
+<p>解决方法：</p>
+<ul>
+<li><ol>
+<li>为容器中的进程指定一个具有合适权限的用户，而不要使用默认的 root 用户。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>应用 Linux 的 user namespace 技术，配置 docker 开启 user namespace 隔离用户。</li>
+</ol>
+</li>
+</ul>
+<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a href="">理解容器中的uid和gid(一)-Linux中的uid和gid.md</a></p>
+<h1 id="1-配置合适的用户"><a href="#1-配置合适的用户" class="headerlink" title="1. 配置合适的用户"></a>1. 配置合适的用户</h1><p>此处只讨论为进程指定合适用户，指定合适用户的方法有以下两种：</p>
+<blockquote>
+<p>kubernetes中，PodSecurityContext要求用户必须为数字。<a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/#users-and-groups">详细信息参考此链接。</a><br><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kubernetes/issues/59819">Issue with mustrunasnonroot implementation PR:56503 #59819</a></p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>避免容器内的uid与宿主机的uid重复。建议指定uid时使用20000~65533的数值</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>在 <code>Dockerfile</code> 中指定用户身份</li>
+</ul>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># alpine 举例</span></span><br><span class="line"><span class="comment"># 3. 设定非ROOT的用户</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> addgroup -S icos &amp;&amp; adduser icos -u 2001 -S icos -G icos &amp;&amp; su icos -s /bin/sh -c <span class="string">"mkdir -p /home/icos/config"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">USER</span> <span class="number">2001</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --<span class="built_in">chown</span>=icos:icos --from=builder /build/app /home/icos/app</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>在 <code>Pod Security Policies</code> 中指定用户身份<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># deployment 举例</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="attr">securityContext:</span></span><br><span class="line">          <span class="attr">runAsUser:</span> <span class="number">2001</span>                </span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<blockquote>
+<p><code>Pod Security Policies</code>中的配置优先级更高，可以覆盖<code>Dockerfile</code>中的参数。</p>
+</blockquote>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>容器这种uid说明</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sparkdev/p/9614164.html">理解 docker 容器中的 uid 和 gid</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sparkdev/p/9614326.html">隔离 docker 容器中的用户</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/kubernetes-tutorials/defining-privileges-and-access-control-settings-for-pods-and-containers-in-kubernetes-2cef08fc62b7">为pod设置权限和AccessControl</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/06/22/golang-2020-06-22-Go-Vault%E9%85%8D%E7%BD%AE%E8%B0%83%E7%94%A8vault%E7%9B%B8%E5%85%B3api/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/22/golang-2020-06-22-Go-Vault%E9%85%8D%E7%BD%AE%E8%B0%83%E7%94%A8vault%E7%9B%B8%E5%85%B3api/" class="post-title-link" itemprop="url">Go-Vault配置调用vault相关api</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-06-22 10:17:50" itemprop="dateCreated datePublished" datetime="2020-06-22T10:17:50+08:00">2020-06-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/06/22/golang-2020-06-22-Go-Vault%E9%85%8D%E7%BD%AE%E8%B0%83%E7%94%A8vault%E7%9B%B8%E5%85%B3api/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Vault配置调用vault相关api" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span><span class="attr">"kind"</span><span class="punctuation">:</span><span class="string">"Config"</span><span class="punctuation">,</span><span class="attr">"apiVersion"</span><span class="punctuation">:</span><span class="string">"v1"</span><span class="punctuation">,</span><span class="attr">"preferences"</span><span class="punctuation">:</span><span class="punctuation">{</span><span class="punctuation">}</span><span class="punctuation">,</span><span class="attr">"clusters"</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">{</span><span class="attr">"name"</span><span class="punctuation">:</span><span class="string">"internalCluster"</span><span class="punctuation">,</span><span class="attr">"cluster"</span><span class="punctuation">:</span><span class="punctuation">{</span><span class="attr">"server"</span><span class="punctuation">:</span><span class="string">"https://10.15.6.59:5443"</span><span class="punctuation">,</span><span class="attr">"certificate-authority-data"</span><span class="punctuation">:</span><span class="string">"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMxakNDQWI2Z0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFiTVJrd0Z3WURWUVFLRXhCRFEwVWcKVkdWamFHNXZiRzluYVdWek1DQVhEVEl3TURReE9URXhORGswTkZvWUR6SXdOVEF3TkRFeU1URTBPVFEwV2pBYgpNUmt3RndZRFZRUUtFeEJEUTBVZ1ZHVmphRzV2Ykc5bmFXVnpNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DCkFROEFNSUlCQ2dLQ0FRRUF4cS85eS96VmhPVVVwV2p6NnVQZTZqVVl5YWdXR3dFNmJvVktXMzE3R0p4aGNQL1IKWnVOOVFORXhZRFdhSEhsRGkyY0NLYjJlK2U0M1pPejhKV3hxZk5lb1pMMmlETnVoRG41d2hTVm4vYmV4d2dTZgp5UXJ0UnpqZ1dHRjF3UWhBWjdnVWVLdHcweDNXUWZCUHFFWnJmVUlMMEkrTnNoRW1PZ1BUdlQwTzZyaktOSSt2CllPcC9ONjh4cEY4aFFRZDB4WnFpUWhzRzNyVFJ1R3lWalltRk9POG9oa0pUS3VtZTVGc1VZQ0k5UVRlMVkwc0EKM1AyTzBqbU1rVk5xdGN6YmJnNkx3NVhPWlZHT3BLbFJWUFJ5aDZ2VmlCRmVXNGl3U0xUL3RaTDJ4bjlORXZxQwpDVVdiZWhkcW1CMVFtLzhueERKVGl3ME5TR1hKSFE0SW1yaHhFd0lEQVFBQm95TXdJVEFPQmdOVkhROEJBZjhFCkJBTUNBcVF3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBY0R2ZWsxQVoKMEpHMTl2SUNPNUtFcXozTndlcC92MmVZWmgzZVpyb3VhL0VYMVM0aUQxaFFwMFBtczNtK2N2NDVLZ1pBMDJ1WQpadGppaWR5T21pNkJJZ2dSOFp3L2hwNmJ4SE8rcUV2MHpLK3NFdEM2WTBaTkJoT09vRGxZdkRjTVJFQ0dvbGtSClMxRDZDUzZoS1U3UUVPZHRuMlhHNHJwNUdKMm9XMGpoTTVCVW1wUE5nekw0WDJjeVBIU2JRb05wTk5ldisyOGMKSnY1bXlwV0tUcU8veVZvaE9MbkNIb255bnFlSk04V1FXUmM0WUVsSzhDTmJrR0l5L1RvRjhZb01hTng0OS84YgpLcVVQL1Y5Z1B5Wnk4Z25lSE9iRXBjNVFzRTU4MzUxNi9qU1JCWkJwS2grRTFxbjNCaGNyTDYvanlQKzBzMkdPCkxVWXhPbmFJYWJZS3lnPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="</span><span class="punctuation">}</span><span class="punctuation">}</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">"users"</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">{</span><span class="attr">"name"</span><span class="punctuation">:</span><span class="string">"user"</span><span class="punctuation">,</span><span class="attr">"user"</span><span class="punctuation">:</span><span class="punctuation">{</span><span class="attr">"client-certificate-data"</span><span class="punctuation">:</span><span class="string">"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUQrekNDQXVPZ0F3SUJBZ0lJWllJL3lhUmhuUFl3RFFZSktvWklodmNOQVFFTEJRQXdHekVaTUJjR0ExVUUKQ2hNUVEwTkZJRlJsWTJodWIyeHZaMmxsY3pBZ0Z3MHlNREEwTVRreE1UUTVORFJhR0E4eU1EVXdNRFF4TWpFeApORGswTmxvd01qRVhNQlVHQTFVRUNoTU9jM2x6ZEdWdE9tMWhjM1JsY25NeEZ6QVZCZ05WQkFNVERuTjVjM1JsCmJUcHRZWE4wWlhKek1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBeHEvOXkvelYKaE9VVXBXano2dVBlNmpVWXlhZ1dHd0U2Ym9WS1czMTdHSnhoY1AvUlp1TjlRTkV4WURXYUhIbERpMmNDS2IyZQorZTQzWk96OEpXeHFmTmVvWkwyaUROdWhEbjV3aFNWbi9iZXh3Z1NmeVFydFJ6amdXR0Yxd1FoQVo3Z1VlS3R3CjB4M1dRZkJQcUVacmZVSUwwSStOc2hFbU9nUFR2VDBPNnJqS05JK3ZZT3AvTjY4eHBGOGhRUWQweFpxaVFoc0cKM3JUUnVHeVZqWW1GT084b2hrSlRLdW1lNUZzVVlDSTlRVGUxWTBzQTNQMk8wam1Na1ZOcXRjemJiZzZMdzVYTwpaVkdPcEtsUlZQUnloNnZWaUJGZVc0aXdTTFQvdFpMMnhuOU5FdnFDQ1VXYmVoZHFtQjFRbS84bnhESlRpdzBOClNHWEpIUTRJbXJoeEV3SURBUUFCbzRJQktEQ0NBU1F3RGdZRFZSMFBBUUgvQkFRREFnV2dNQjBHQTFVZEpRUVcKTUJRR0NDc0dBUVVGQndNQ0JnZ3JCZ0VGQlFjREFUQ0I4Z1lEVlIwUkJJSHFNSUhuZ2hacmRXSmxjbTVsZEdWegpMbVJsWm1GMWJIUXVjM1pqZ2lScmRXSmxjbTVsZEdWekxtUmxabUYxYkhRdWMzWmpMbU5zZFhOMFpYSXViRzlqCllXeUNFbXQxWW1WeWJtVjBaWE11WkdWbVlYVnNkSUlLYTNWaVpYSnVaWFJsYzRJbmFYTjBhVzh0YzJsa1pXTmgKY2kxcGJtcGxZM1J2Y2k1cGMzUnBieTF6ZVhOMFpXMHVjM1pqaHhEOUFCSTBBQUFBQUFBQUFBQUFBQUFCaHdSLwpBQUFCaHdRSzl3QUNod1FLOXdBQmh3UmtSa0wwaHdUQXFPeGxod1JrUnJFU2h3VEFxT3ppaHdSa1JoY3pod1RBCnFPelRod1FLRHdiNWh3UUtEd2JhaHdRS0R3Wmpod1FLRHdZN01BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQmUKTmlqLzhYS29DbGYzbXFwVVplVzNmZW1JOVlDTkJzQW5FcEhBcWdrOWoveTB3RVU4b1F5d3NnbkdRUDdZREhuawpZRUJsWjYvOEVXZEFpSzFJa1VWSlRGcHpiWDlMd25yRXYreFc2L1ZNWXd5Mm1lR1lkMkVtUFcrb0ZsZkRrdDNSClBrTGJPeE1FYzJXaUd6MW1NT0UxMWRYQ3dLZ2dSUDhRZnhDeU5DZ0JCS3JEK1RyYUROb2FBSGJCRVR3YXlMRWkKck53RkpOdmh2QnFZK3lkZU8zVlFsamxaRm9KMlo0cStBQ3l1b1hUZnNkcnB2M0h3WkFYa2Y4Q0ZlSzdXV1lnWAptSzVYa1BobkNaWm9RV2RWU3Z1RjlicUN4eTVocWRuVGpLUVNETmNBWkdzVlRmQVpwYitKRjhGMHdIbzk0NGtNCmp1TUp5VzJwenJ3OXM4Z1ZIYXZ0Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"</span><span class="punctuation">,</span><span class="attr">"client-key-data"</span><span class="punctuation">:</span><span class="string">"LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcFFJQkFBS0NBUUVBeHEvOXkvelZoT1VVcFdqejZ1UGU2alVZeWFnV0d3RTZib1ZLVzMxN0dKeGhjUC9SClp1TjlRTkV4WURXYUhIbERpMmNDS2IyZStlNDNaT3o4Sld4cWZOZW9aTDJpRE51aERuNXdoU1ZuL2JleHdnU2YKeVFydFJ6amdXR0Yxd1FoQVo3Z1VlS3R3MHgzV1FmQlBxRVpyZlVJTDBJK05zaEVtT2dQVHZUME82cmpLTkkrdgpZT3AvTjY4eHBGOGhRUWQweFpxaVFoc0czclRSdUd5VmpZbUZPTzhvaGtKVEt1bWU1RnNVWUNJOVFUZTFZMHNBCjNQMk8wam1Na1ZOcXRjemJiZzZMdzVYT1pWR09wS2xSVlBSeWg2dlZpQkZlVzRpd1NMVC90WkwyeG45TkV2cUMKQ1VXYmVoZHFtQjFRbS84bnhESlRpdzBOU0dYSkhRNEltcmh4RXdJREFRQUJBb0lCQVFDMGZjWFIzRUhmY3ZjNQplRWswMVlKNFFubmRIeHZOdG1UdFo1cHYyR0xOcmFuN0svbC9QU05Za1hFSVZFbEdtb1pZaWQvMktUTFZHcWtwCnZ2c2p5QVJJbXVSM2Q2bFJndWNoTW8xbTl0OHNKZ2FPR1FOS2IrbXpMS0RveU1oZTdlOE1DYlpYRkc3dTZnanMKWjdFRlRjdHh3MkRXT3NKZXc2TjFTbXE4VzA1RXZMT0RtbEF0dGsxcXlZMWdwYzlEa0d5Z1RPaEpQdWd2Vng0WgorUXh4YU9PUXNDN08rV3RMbkIxR0hnNmt2MDc0UzZLeVdKbkdXWnhKdHY5SEZ1dENTVkpqMjh5RXhobDBlSHkvCjU1a2E2SzVrak9FTnNMQTd0U2VlUUMwN3BsQUxIV2JCcm5yRGxOMlZ2NjkxR0wzVXV2VllaQnU4RG5QK0l5WUwKY3JsOHl3RHhBb0dCQVB1a3lOM0pBN2ZFT1BxUmNlQjVydUV5eHBxUVg2U1pjSmZSV1lXTW1hbWF6ZTdIOGcwNgozVko0dkhYdnRrcGVTVjRkbTdMQnVxRGZJNHkrWjRpVUhaTmozQVd4c3ZoNk9hMDNxUEtZMnYybzVDOXBQYlBHCjE3dld3eXJtazdmOGZoQjg0RjdkYXhVb2FHNW0zbS9FMDFaUU93RmhGaDF2cUwvVGdZQ1NCQXNwQW9HQkFNb2cKaFBjZGI0Ymh5RkdHMEtaZVluR3g4ZXF4eUdHQ0p6RFVTcHpBMlRPS20rRjBqeU5PTUxjMGxBcTlWTjgzTjRPTwowbkxMVXF4ZWRiVmtBK09BblBUTHB6WUJnQjJNcURqRCtkTlBSWmxVTUtLSlBFdEhSY05sekUyZEFNVFBNNXlUCkh3Wkp1aXpWWjIyV29DdVNoTFlwNnhVbnFjMnVQK1dxKzhPTExWM2JBb0dBVVhPMEpMMjArMTJEUisrZUdaZXAKZUhFMEFjR3JnNTY2NkJrMlRka0Z2L1ZBcFFLSklha2xERlhTUXFaVnJkcTVDc0t3cS9xekN2RlBFM1pxRXJaRwpvSGVaTnlxZWtIa1hoQzdZKzdWb1pPU3UvMzJrSURYRGpLUm1SZE9laXRZcWcvRzN1bDBYRlNFZ05HUU5xY1hlCjFqaGY4UUZZNUN4SlJkWVRPK2VIY1lrQ2dZRUFtVks3cWZ2eEtwN0FabDllaktUU0JpNldOSkp4VHMzOHpvUnEKcUtkODJ5VU1nNlA0SkM3ZXMwbzE5a09TU3RSR3p3dWF4YXRINWlxdEhWQmx4c0E3ejFGZ1lJNFkwZEZ0bGNuTApDeWg1d2dwajdoY3QzbWlOR2VCeGJucG5KK09JNGYrVHJDQm5FalU3QkowYW1KTEhDcXVYZ0crYTFjT1ZBckdGCjB0b1RLcnNDZ1lFQWpVZk5PQ3c1T1ZIanoyZGk2ZTRwV2J5azFLYjIramw2Y25EeGtGTUU2dDBxbXpWd1pId1kKNlRXb1JSakNROXd5WEhCL2JYaUtJQVl0b3NvWjVwT3c1MTdjZWhQS3JUaE5YSU1WdVBVWDBrZ0E1cWpqWmJSeQpTZVg2VGYveTM0NnQ0d0wrVFR6Y3F0WWViTnRwMG8yeWw0RDl1VWcyRjNNVWNjZUtJNnB2QmswPQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo="</span><span class="punctuation">}</span><span class="punctuation">}</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">"contexts"</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">{</span><span class="attr">"name"</span><span class="punctuation">:</span><span class="string">"internal"</span><span class="punctuation">,</span><span class="attr">"context"</span><span class="punctuation">:</span><span class="punctuation">{</span><span class="attr">"cluster"</span><span class="punctuation">:</span><span class="string">"internalCluster"</span><span class="punctuation">,</span><span class="attr">"user"</span><span class="punctuation">:</span><span class="string">"user"</span><span class="punctuation">}</span><span class="punctuation">}</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="attr">"current-context"</span><span class="punctuation">:</span><span class="string">"internal"</span><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://github.com/hashicorp/vault-helm/tree/v0.6.0"><strong>Vault官方部署Chart</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.hashicorp.com/vault/kubernetes/minikube"><strong>Vault官方部署说明</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hashicorp/docker-vault/blob/master/0.X/Dockerfile">Vault官方镜像GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle/">Vault官方博客–AppRole Auth</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vaultproject.io/docs/auth/approle">Vault官方文档-AppRole Auth</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.hashicorp.com/vault/identity-access-management/approle#auth-methods"><strong>Vault-AppRole配置使用说明</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vaultproject.io/api-docs/auth/approle"><strong>Vault-AuthMethod-AppRole-API说明</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vaultproject.io/docs/secrets/databases">Vault-SecretsEngine-Databases</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vaultproject.io/docs/secrets/databases/cassandra">Vault-SecretsEngine-Cassandra</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vaultproject.io/docs/secrets/databases/mongodb">Vault-SecretsEngine-MongoDB</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vaultproject.io/docs/secrets/databases/mongodbatlas">Vault-SecretsEngine-MongoDBAtlas</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vaultproject.io/docs/secrets/databases/mysql-maria">Vault-SecretsEngine-MySQL/MariaDB</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vaultproject.io/docs/secrets/databases/elasticdb">Vault-SecretsEngine-ElasticSearch</a></p>
+<p>Vault配置数据库秘钥引擎的三种方式，以postgresql举例:</p>
+<p><a target="_blank" rel="noopener" href="https://learn.hashicorp.com/vault/secrets-management/sm-dynamic-secrets#step-3-create-a-role"><strong>Vault-SecretsEngine-PostgreSQL-DynamicSecret</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.hashicorp.com/vault/secrets-management/db-creds-rotation"><strong>Vault-SecretsEngine-PostgreSQL-StaticRoles</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.hashicorp.com/vault/secrets-management/db-root-rotation"><strong>Vault-SecretsEngine-PostgreSQL-RootCredentialRotation</strong></a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/06/22/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-06-22-hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/22/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-06-22-hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/" class="post-title-link" itemprop="url">hexo常用命令备忘录</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-06-22 03:39:50" itemprop="dateCreated datePublished" datetime="2020-06-22T03:39:50+08:00">2020-06-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/06/22/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-06-22-hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/" class="post-meta-item leancloud_visitors" data-flag-title="hexo常用命令备忘录" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><strong><a target="_blank" rel="noopener" href="https://oakland.github.io/2016/05/02/hexo-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E4%B8%80%E7%AF%87%E6%96%B0%E7%9A%84post/">Hexo生成Post: post、page、draft</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://novnan.github.io/Hexo/hexo-draft/">Hexo文章保存为草稿</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35668237">Hexo+Github博客搭建小白教程</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

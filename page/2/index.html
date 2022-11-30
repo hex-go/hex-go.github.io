@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="个人技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hex Blog">
+<meta property="og:url" content="https://hex-py.github.io/page/2/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="个人技术博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hex">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/08/04/kubernetes-2022-08-04-sealer%E4%BD%9C%E4%B8%BAPaaS%E6%95%B4%E4%BD%93%E6%89%93%E5%8C%85%E6%96%B9%E6%A1%88%E8%B0%83%E7%A0%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/04/kubernetes-2022-08-04-sealer%E4%BD%9C%E4%B8%BAPaaS%E6%95%B4%E4%BD%93%E6%89%93%E5%8C%85%E6%96%B9%E6%A1%88%E8%B0%83%E7%A0%94/" class="post-title-link" itemprop="url">sealer作为PaaS整体打包方案调研</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-08-04 01:58:28" itemprop="dateCreated datePublished" datetime="2022-08-04T01:58:28+08:00">2022-08-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/08/04/kubernetes-2022-08-04-sealer%E4%BD%9C%E4%B8%BAPaaS%E6%95%B4%E4%BD%93%E6%89%93%E5%8C%85%E6%96%B9%E6%A1%88%E8%B0%83%E7%A0%94/" class="post-meta-item leancloud_visitors" data-flag-title="sealer作为PaaS整体打包方案调研" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/07/29/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-29-%E7%BB%88%E7%AB%AF%E5%B7%A5%E5%85%B7WindTerm%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/29/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-29-%E7%BB%88%E7%AB%AF%E5%B7%A5%E5%85%B7WindTerm%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">终端工具WindTerm使用</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-07-29 03:03:26" itemprop="dateCreated datePublished" datetime="2022-07-29T03:03:26+08:00">2022-07-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/07/29/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-29-%E7%BB%88%E7%AB%AF%E5%B7%A5%E5%85%B7WindTerm%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="终端工具WindTerm使用" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h2 id="1-2-本地模式"><a href="#1-2-本地模式" class="headerlink" title="1.2 本地模式"></a>1.2 本地模式</h2><p>WindTerm有两种模式:</p>
+<ul>
+<li><p>远程模式<br>WindTerm的远程模式是默认的模式。 在远程模式下,每个键按下发送到服务器就像其他终端。</p>
+</li>
+<li><p>本地模式<br>本地模式主要用于浏览文本。 在本地模式下,每个键按下将解析本地,而不是发送到服务器。</p>
+<p>支持大多数本地模式 <a target="_blank" rel="noopener" href="https://kingtoolbox.github.io/2020/06/21/keyboard-navigation-keys/">导航 </a>， <a target="_blank" rel="noopener" href="https://kingtoolbox.github.io/2020/06/21/keyboard-scrolling-keys/">滚动 </a>， <a target="_blank" rel="noopener" href="https://kingtoolbox.github.io/2020/06/21/keyboard-searching-keys/">搜索 </a>， <a target="_blank" rel="noopener" href="https://kingtoolbox.github.io/2020/06/21/keyboard-copypaste-keys/">复制和粘贴 </a>， <a target="_blank" rel="noopener" href="https://kingtoolbox.github.io/2020/06/21/keyboard-selection-keys/">选择 </a>和 <a target="_blank" rel="noopener" href="https://kingtoolbox.github.io/2020/06/21/keyboard-folding-keys/">折叠 </a>Vim的捷径。</p>
+<p>当WindTerm在本地模式下,它就像一个只读的文本编辑器,这是非常方便的文本浏览。 特别是,快速滚动,不断输出时,切换到本地模式可以输出的立即停止滚动,方便阅读。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">快捷方式</th>
+<th align="left">行动</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Alt + Enter</td>
+<td align="left">远程和本地模式切换（Toggle the remote and local mode）</td>
+</tr>
+<tr>
+<td align="left">i</td>
+<td align="left">切换回远程模式（Switch back to remote mode from local mode）</td>
+</tr>
+<tr>
+<td align="left">p</td>
+<td align="left">粘贴、切换回远程模式（Paste and switch back to remote mode from local mode）</td>
+</tr>
+<tr>
+<td align="left">Ctrl + v</td>
+<td align="left">粘贴、切换回远程模式（Paste and switch back to remote mode from local mode）</td>
+</tr>
+</tbody></table>
+<p>本地模式Vim导航键说明</p>
+<table>
+<thead>
+<tr>
+<th align="left">Shortcut</th>
+<th align="left">Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">h</td>
+<td align="left">左移（Move left）</td>
+</tr>
+<tr>
+<td align="left">j</td>
+<td align="left">下移（Move down）</td>
+</tr>
+<tr>
+<td align="left">k</td>
+<td align="left">上移（Move up）</td>
+</tr>
+<tr>
+<td align="left">l</td>
+<td align="left">右移（Move right）</td>
+</tr>
+<tr>
+<td align="left">0</td>
+<td align="left">行首（Move to the begining of the line）</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">行尾（Move to the end of the line）</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">行首非空字符（Move to the first non-blank character of the line）</td>
+</tr>
+<tr>
+<td align="left">w</td>
+<td align="left">下一个单词（Move to next word）</td>
+</tr>
+<tr>
+<td align="left">W</td>
+<td align="left">下一个空白分隔词（Move to next blank delimited word）</td>
+</tr>
+<tr>
+<td align="left">b</td>
+<td align="left">词首（Move to the beginning of the word）</td>
+</tr>
+<tr>
+<td align="left">B</td>
+<td align="left">空白分隔词首（Move to the beginning of the blank delimted word）</td>
+</tr>
+<tr>
+<td align="left">e</td>
+<td align="left">词尾（Move to the end of the word）</td>
+</tr>
+<tr>
+<td align="left">E</td>
+<td align="left">空白分隔词尾（Move to the end of the blank delimited word）</td>
+</tr>
+<tr>
+<td align="left">1G</td>
+<td align="left">首行（Move to the first line of the session）</td>
+</tr>
+<tr>
+<td align="left"><em>n</em>G</td>
+<td align="left">N行（Move to nth line of the session）</td>
+</tr>
+<tr>
+<td align="left">G</td>
+<td align="left">尾行（Move to the last line of the session）</td>
+</tr>
+<tr>
+<td align="left">gg</td>
+<td align="left">开头（move to the beginning of the session）</td>
+</tr>
+<tr>
+<td align="left">ge</td>
+<td align="left">行尾单词，词首（Move to the end of the previous word）</td>
+</tr>
+<tr>
+<td align="left">gE</td>
+<td align="left">Move to the end of the previous Blank delimited word</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">非空句首（Move to the previous non-blank sentence）</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">非空句尾（Move to the next non-blank sentence）</td>
+</tr>
+<tr>
+<td align="left">(</td>
+<td align="left">句首（Move to the previous sentence）</td>
+</tr>
+<tr>
+<td align="left">)</td>
+<td align="left">句尾（Move to the next sentence）</td>
+</tr>
+<tr>
+<td align="left">{</td>
+<td align="left">段首（Move to the previous paragraph）</td>
+</tr>
+<tr>
+<td align="left">}</td>
+<td align="left">段尾（Move to the next paragraph）</td>
+</tr>
+</tbody></table>
+<p>本地模式Vim文本复制说明</p>
+<blockquote>
+<p>在本地模式下，可以使用<code>y{motion}</code>复制，其中<code>{motion}</code>是上面导航快捷键或搜索快捷键。例如，<code>yw</code> 复制下一个单词的开头。其他有用的副本命令包括：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">快捷键</th>
+<th align="left">动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">yy</td>
+<td align="left">复制当前行，包括换行符、新行起始字符（如<code>hex@hex-ThinkPad:~$</code>）；复制选中内容</td>
+</tr>
+<tr>
+<td align="left">y$</td>
+<td align="left">复制当前行，不包括换行符、新行起始字符</td>
+</tr>
+<tr>
+<td align="left">yw</td>
+<td align="left">复制到下一个单词开头</td>
+</tr>
+<tr>
+<td align="left">ytx</td>
+<td align="left">当前光标位置<code>向后</code>复制至字符<code>x</code>,不包括<code>x</code></td>
+</tr>
+<tr>
+<td align="left">yfx</td>
+<td align="left">当前光标位置<code>向后</code>复制至字符<code>x</code>, 包括<code>x</code></td>
+</tr>
+<tr>
+<td align="left">p</td>
+<td align="left">粘贴、并返回<code>Remote模式</code></td>
+</tr>
+<tr>
+<td align="left">P</td>
+<td align="left">粘贴、并保留<code>Local模式(Vim文本)</code></td>
+</tr>
+<tr>
+<td align="left">“xy{motion}</td>
+<td align="left">复制内容、并注册给变量x</td>
+</tr>
+<tr>
+<td align="left">“xp</td>
+<td align="left">黏贴变量x中的内容、并返回<code>Remote模式</code></td>
+</tr>
+<tr>
+<td align="left">“xP</td>
+<td align="left">黏贴变量x中的内容、并保留<code>Local模式(Vim文本)</code></td>
+</tr>
+<tr>
+<td align="left">“+y{motion}</td>
+<td align="left">复制内容、至系统粘贴板</td>
+</tr>
+<tr>
+<td align="left">“+p</td>
+<td align="left">从系统粘贴板粘贴、并返回<code>Remote模式</code></td>
+</tr>
+<tr>
+<td align="left">“+P</td>
+<td align="left">从系统粘贴板粘贴、并保留<code>Local模式(Vim文本)</code></td>
+</tr>
+</tbody></table>
+<h2 id="1-2-快捷键记录"><a href="#1-2-快捷键记录" class="headerlink" title="1.2 快捷键记录"></a>1.2 快捷键记录</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+Shift+W</td>
+<td>关闭页签（Close tab）</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+T</td>
+<td>回复页签（Restore tab）</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Left</td>
+<td>转至前提示行（Goto the previous prompt line）</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Right</td>
+<td>转至后提示行（Goto the next prompt line）</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+L</td>
+<td>锁屏</td>
+</tr>
+<tr>
+<td>Alt+1</td>
+<td>选择1页签</td>
+</tr>
+<tr>
+<td>Alt+O</td>
+<td>打开页签</td>
+</tr>
+<tr>
+<td>Alt+S</td>
+<td>搜索页签</td>
+</tr>
+</tbody></table>
+<ul>
+<li>批量发送（Sender Pane）快捷键</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Alt+Enter</td>
+<td>发送（Send）</td>
+</tr>
+<tr>
+<td>Alt+Q</td>
+<td>停止（Stop）</td>
+</tr>
+<tr>
+<td>Alt+=</td>
+<td>增加新的发送记录（Add Sender）</td>
+</tr>
+<tr>
+<td>Alt+-</td>
+<td>删除发送（Remove Sender）</td>
+</tr>
+<tr>
+<td>Alt+X</td>
+<td>清空（Clear Sender）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>文件传输（Sftp）快捷键</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Alt+Enter</td>
+<td>发送（Send）</td>
+</tr>
+<tr>
+<td>Alt+Q</td>
+<td>停止（Stop）</td>
+</tr>
+<tr>
+<td>Alt+=</td>
+<td>增加新的发送记录（Add Sender）</td>
+</tr>
+<tr>
+<td>Alt+-</td>
+<td>删除发送（Remove Sender）</td>
+</tr>
+<tr>
+<td>Alt+X</td>
+<td>清空（Clear Sender）</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>F2</td>
+<td>文件重命名（Rename）</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>文件下载 （Download）</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>文件上传 （Upload）</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>目录刷新 （Refresh）</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>移动至  （Move to）</td>
+</tr>
+<tr>
+<td>Del</td>
+<td>删除    （Remove）</td>
+</tr>
+<tr>
+<td>Return</td>
+<td>打开    （Open）</td>
+</tr>
+<tr>
+<td>Backspace</td>
+<td>返回上一层（Cdup）</td>
+</tr>
+<tr>
+<td>Alt+D</td>
+<td>选中地址栏（Select the address bar）</td>
+</tr>
+<tr>
+<td>Alt+Left</td>
+<td>向前回滚 （Go backward）</td>
+</tr>
+<tr>
+<td>Alt+Right</td>
+<td>向后回滚 （Go forward）</td>
+</tr>
+<tr>
+<td>Alt+Return</td>
+<td>属性    （Show property）</td>
+</tr>
+<tr>
+<td>Ctrl+A</td>
+<td>全选    （Select all items）</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+N</td>
+<td>新建文件夹（Create a folder）</td>
+</tr>
+<tr>
+<td>Ctrl+N</td>
+<td>新建文件 （Create a file）</td>
+</tr>
+<tr>
+<td>Ctrl+L</td>
+<td>新建软链 （Create a link）</td>
+</tr>
+<tr>
+<td>Ctrl+C</td>
+<td>复制名称 （Copy names）</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+C</td>
+<td>复制路径 （Copy paths）</td>
+</tr>
+<tr>
+<td>Ctrl+P</td>
+<td>复制名称至终端（Copy names to terminal）</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+P</td>
+<td>复制名称至终端（Copy paths to terminal）</td>
+</tr>
+</tbody></table>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/07/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-28-%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Bitwarden%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-28-%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Bitwarden%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">密码管理工具Bitwarden使用</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-07-28 07:07:32" itemprop="dateCreated datePublished" datetime="2022-07-28T07:07:32+08:00">2022-07-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/07/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-28-%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Bitwarden%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="密码管理工具Bitwarden使用" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h2 id="1-1-从LastPass迁移至Bitwarden"><a href="#1-1-从LastPass迁移至Bitwarden" class="headerlink" title="1.1 从LastPass迁移至Bitwarden"></a>1.1 从LastPass迁移至Bitwarden</h2><p><a target="_blank" rel="noopener" href="https://bitwarden.com/help/import-from-lastpass/">import-from-lastpass</a></p>
+<ul>
+<li>lastPass导出 - Web端</li>
+</ul>
+<p>左下角 <code>Advanced Options</code> - <code>Export</code></p>
+<ul>
+<li>lastPass导出 - 浏览器插件</li>
+</ul>
+<p>navigate to <code>Account Options</code> → <code>Advanced</code> → <code>Export</code> → <code>LastPass CSV File</code></p>
+<ul>
+<li>Bitwarden导入</li>
+</ul>
+<p><code>Tools</code> - <code>Import Data</code> - <code>选择文件格式(lastPass CSV)</code> - <code>导入</code></p>
+<h2 id="1-2-设置浏览器自动填充"><a href="#1-2-设置浏览器自动填充" class="headerlink" title="1.2 设置浏览器自动填充"></a>1.2 设置浏览器自动填充</h2><p><a target="_blank" rel="noopener" href="https://bitwarden.com/help/auto-fill-browser/">auto-fill-browser</a></p>
+<ul>
+<li>快捷键</li>
+</ul>
+<p>Windows: <code>Ctrl + Shift + L</code></p>
+<p>MacOS: <code>Cmd + Shift + L</code></p>
+<p>Linux: <code>Ctrl + Shift + L</code></p>
+<ul>
+<li>页面加载时</li>
+</ul>
+<p>浏览器插件图标，点击左键。<code>Setting</code> - <code>Options</code> - <code>Enable Auto-fill on Page Load</code></p>
+<h2 id="1-3-Web端设置中文显示"><a href="#1-3-Web端设置中文显示" class="headerlink" title="1.3 Web端设置中文显示"></a>1.3 Web端设置中文显示</h2><p><code>账号设置</code> - <code>偏好设置</code> - <code>语言</code></p>
+<p><code>ACCOUNT SETTINGS</code> - <code>Preferences</code> - <code>Language</code></p>
+<h2 id="1-4-Web端创建多层级文件夹"><a href="#1-4-Web端创建多层级文件夹" class="headerlink" title="1.4 Web端创建多层级文件夹"></a>1.4 Web端创建多层级文件夹</h2><p>举例：<br>创建 <code>个人</code>， 再创建<code>个人/生活</code></p>
+<h2 id="1-5-URI说明"><a href="#1-5-URI说明" class="headerlink" title="1.5 URI说明"></a>1.5 URI说明</h2><p><a target="_blank" rel="noopener" href="https://bitwarden.com/help/uri-match-detection/">URI匹配说明</a></p>
+<blockquote>
+<p>如果子域名相同(*.icos.city)，尽量不选择默认规则，否则无法区分。<br>规则间关系是且，而非或， 所以可以通过正则实现多个域名用一个用户名密码访问。</p>
+</blockquote>
+<ul>
+<li>正则<blockquote>
+<p>只保证有唯一秘钥被匹配，下面正则并不严谨，但够用。这样自动填充就能、也只能填充唯一一个正确秘钥，节省时间。</p>
+</blockquote>
+</li>
+</ul>
+<p>URI规则： ^(http|https)://((gitlab|zentao|jenkins).icos.city|(nextcloud|icoswiki).chebai.org)<br>可匹配项：<br>    - <a target="_blank" rel="noopener" href="https://zentao.icos.city/">https://zentao.icos.city</a><br>    - <a target="_blank" rel="noopener" href="https://gitlab.icos.city/">https://gitlab.icos.city</a><br>    - <a target="_blank" rel="noopener" href="https://jenkins.icos.city/">https://jenkins.icos.city</a><br>    - <a target="_blank" rel="noopener" href="http://icoswiki.chebai.org/">http://icoswiki.chebai.org</a><br>    - <a target="_blank" rel="noopener" href="http://nextcloud.chebai.org/">http://nextcloud.chebai.org</a></p>
+<h2 id="1-6-Web修改未同步至浏览器插件"><a href="#1-6-Web修改未同步至浏览器插件" class="headerlink" title="1.6 Web修改未同步至浏览器插件"></a>1.6 Web修改未同步至浏览器插件</h2><p>手动同步</p>
+<p>左键点击插件图标，点击右下角<code>Setting</code> - 点击上方 <code>Sync</code>按钮 手动同步</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://vault.bitwarden.com/">Web端访问地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://bitwarden.com/help/">官方说明文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://help.ppgg.in/auto-fill/using-uris#regular-expression">Bitwarden 帮助中心中文版</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/07/08/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-08-Linux%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/08/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-08-Linux%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">Linux常用快捷键</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-07-08 02:47:38" itemprop="dateCreated datePublished" datetime="2022-07-08T02:47:38+08:00">2022-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/07/08/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-08-Linux%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-meta-item leancloud_visitors" data-flag-title="Linux常用快捷键" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-命令行快捷键"><a href="#1-命令行快捷键" class="headerlink" title="1. 命令行快捷键"></a>1. 命令行快捷键</h1><blockquote>
+<p>参见 <code>man readline</code> 来查看 Bash 中所有默认的键盘绑定, 可以使用 <code>set -o vi</code> 使用 <code>vi</code> 风格的键盘绑定。 </p>
+</blockquote>
+<blockquote>
+<p>命令行编辑：光标移动<br>##　1.1 行首、行尾<br><code>Ctrl</code> + <code>a</code>: 转到行的开头。 == <code>Home键</code> == <code>alt</code> + <code>shift</code> + <code>b</code></p>
+</blockquote>
+<p><code>Ctrl</code> + <code>e</code>: 转到行的结尾。 == <code>End键</code> == <code>alt</code> + <code>shift</code> + <code>f</code></p>
+<h2 id="1-2-前移、后移-1字符"><a href="#1-2-前移、后移-1字符" class="headerlink" title="1.2 前移、后移 1字符"></a>1.2 前移、后移 1字符</h2><p><code>Ctrl</code> + <code>b</code>: 左移动1个字符。 == 方向左键<code>&lt;-</code><br><code>Ctrl</code> + <code>f</code>: 右移动1个字符。 == 方向右键<code>-&gt;</code></p>
+<h2 id="1-3-前移、后移-1单词"><a href="#1-3-前移、后移-1单词" class="headerlink" title="1.3 前移、后移 1单词"></a>1.3 前移、后移 1单词</h2><p><code>Ctrl</code> + 方向左键<code>&lt;-</code>: 左移动1个单词。== <code>alt</code> + <code>b</code>(back)<br><code>Ctrl</code> + 方向左键<code>-&gt;</code>: 右移动1个单词。== <code>alt</code> + <code>f</code>(forward)</p>
+<blockquote>
+<p>命令行编辑：快捷删除</p>
+</blockquote>
+<h2 id="1-4-删除至行首、删除至行尾"><a href="#1-4-删除至行首、删除至行尾" class="headerlink" title="1.4 删除至行首、删除至行尾"></a>1.4 删除至行首、删除至行尾</h2><p><code>Ctrl</code> + <code>u</code>删除至行首，<code>Ctrl + k</code>删除至行尾。</p>
+<h2 id="1-5-删除前一项"><a href="#1-5-删除前一项" class="headerlink" title="1.5 删除前一项"></a>1.5 删除前一项</h2><p><code>Ctrl</code> + <code>w</code>删除删除光标处左边一个单词，或至单词首的内容。</p>
+<h2 id="1-6-删除后一项"><a href="#1-6-删除后一项" class="headerlink" title="1.6 删除后一项"></a>1.6 删除后一项</h2><p><code>Alt</code> + <code>d</code>: 删除光标处右边一个单词，或至单词末的内容</p>
+<h2 id="1-7-删除前一字符"><a href="#1-7-删除前一字符" class="headerlink" title="1.7 删除前一字符"></a>1.7 删除前一字符</h2><p><code>Ctrl</code> + <code>h</code>: 删除删除光标处左边一个字符。</p>
+<h2 id="1-8-删除后一字符"><a href="#1-8-删除后一字符" class="headerlink" title="1.8 删除后一字符"></a>1.8 删除后一字符</h2><p><code>Ctrl</code> + <code>d</code>: 删除光标处右边一个字符。</p>
+<h2 id="1-9-插入上次删除的内容"><a href="#1-9-插入上次删除的内容" class="headerlink" title="1.9 插入上次删除的内容"></a>1.9 插入上次删除的内容</h2><p><code>Ctrl</code> + <code>y</code>: 将上一次删除的内容插入到光标处。(光标不移动，等同于撤销操作)。</p>
+<blockquote>
+<p>命令行编辑：撤销</p>
+</blockquote>
+<h2 id="1-10-撤销修改"><a href="#1-10-撤销修改" class="headerlink" title="1.10 撤销修改"></a>1.10 撤销修改</h2><p><code>Ctrl</code>+<code>shift</code>+<code>-</code>：撤销，即恢复上一次操作，可撤销多次。<br>注意，这个快捷根据自己系统设定不一样，有的<code>Ctrl+shift+-</code>是撤销，<code>Ctrl+-</code>是命令行字体变小，而有的系统设置刚好相反。</p>
+<blockquote>
+<p>命令行编辑：屏幕调整</p>
+</blockquote>
+<h2 id="1-11-字体变小"><a href="#1-11-字体变小" class="headerlink" title="1.11 字体变小"></a>1.11 字体变小</h2><p><code>Ctrl</code>+<code>-</code>：命令行字体变小，注意看上面撤销修改<code>Ctrl+shift+-</code>的说明。</p>
+<h2 id="1-12-字体变大"><a href="#1-12-字体变大" class="headerlink" title="1.12 字体变大"></a>1.12 字体变大</h2><p><code>Ctrl</code>+<code>shift</code>+<code>+</code>：命令行字体变大。有的系统设置是<code>Ctrl</code>+<code>+</code>，<code>ctrl</code>和<code>+</code>的组合是命令行字体变大。</p>
+<h2 id="1-13-清屏"><a href="#1-13-清屏" class="headerlink" title="1.13 清屏"></a>1.13 清屏</h2><p><code>Ctrl</code>+<code>l</code>: 清屏，但是当前命令行内容保留</p>
+<h2 id="1-14-锁定"><a href="#1-14-锁定" class="headerlink" title="1.14 锁定"></a>1.14 锁定</h2><p><code>Ctrl</code>+<code>s</code>: 锁定命令行</p>
+<h2 id="1-14-解锁"><a href="#1-14-解锁" class="headerlink" title="1.14 解锁"></a>1.14 解锁</h2><p><code>Ctrl</code>+<code>Q</code>: 解锁命令行</p>
+<blockquote>
+<p>命令行编辑：快捷输入</p>
+</blockquote>
+<h2 id="1-15-使用上个命令最后一项"><a href="#1-15-使用上个命令最后一项" class="headerlink" title="1.15 使用上个命令最后一项"></a>1.15 使用上个命令最后一项</h2><p>参数: <code>!$</code> 或者 快捷键: <code>alt</code>+<code>.</code></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /home/hex/</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> !$</span><br></pre></td></tr></tbody></table></figure>
+<p>等同于 <code>cd /home/hex/</code></p>
+<h2 id="1-16-使用上一个命令"><a href="#1-16-使用上一个命令" class="headerlink" title="1.16 使用上一个命令"></a>1.16 使用上一个命令</h2><p>参数: <code>!!</code></p>
+<blockquote>
+<p>权限不足时 sudo !!</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/hosts</span><br><span class="line"></span><br><span class="line">sudo !!</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="1-17-使用上次删除的内容"><a href="#1-17-使用上次删除的内容" class="headerlink" title="1.17 使用上次删除的内容"></a>1.17 使用上次删除的内容</h2><p><code>Ctrl</code> + <code>y</code>: 将上一次删除的内容插入到光标处。(光标不移动，等同于撤销操作)。</p>
+<h1 id="2-vim快捷键"><a href="#2-vim快捷键" class="headerlink" title="2. vim快捷键"></a>2. vim快捷键</h1><h1 id="3-bash常用命令"><a href="#3-bash常用命令" class="headerlink" title="3. bash常用命令"></a>3. bash常用命令</h1><h2 id="3-1-文件擦除数据"><a href="#3-1-文件擦除数据" class="headerlink" title="3.1 文件擦除数据"></a>3.1 文件擦除数据</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; /root/test.md</span><br></pre></td></tr></tbody></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">''</span> &gt; /root/test.md</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-2-读取日志文件"><a href="#3-2-读取日志文件" class="headerlink" title="3.2 读取日志文件"></a>3.2 读取日志文件</h2><h3 id="3-2-1-实时读取日志文件"><a href="#3-2-1-实时读取日志文件" class="headerlink" title="3.2.1 实时读取日志文件"></a>3.2.1 实时读取日志文件</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tail</span> -F linuxidc_log</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-2-2-less读取文件"><a href="#3-2-2-less读取文件" class="headerlink" title="3.2.2 less读取文件"></a>3.2.2 less读取文件</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less -N linuxidc.txt</span><br></pre></td></tr></tbody></table></figure>
+<p>//按下v键来编辑文件<br>//退出编辑器后，可以继续用less浏览<br>可以在更少的范围内搜索字词，按页移动，高亮与行号等。</p>
+<h3 id="3-2-3-读取压缩日志而不解压缩"><a href="#3-2-3-读取压缩日志而不解压缩" class="headerlink" title="3.2.3 读取压缩日志而不解压缩"></a>3.2.3 读取压缩日志而不解压缩</h3><p>使用zless，zcat，zgrep等z命令查看压缩包的内容，甚至不必显式提取压缩文件</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zcat linuxidc_log.zip | more</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-3-文件查找"><a href="#3-3-文件查找" class="headerlink" title="3.3 文件查找"></a>3.3 文件查找</h2><h3 id="3-3-1-查找包含特定文本的文件"><a href="#3-3-1-查找包含特定文本的文件" class="headerlink" title="3.3.1 查找包含特定文本的文件"></a>3.3.1 查找包含特定文本的文件</h3><blockquote>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -Pri 要搜索的字符串 路径</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-3-2-精通find命令"><a href="#3-3-2-精通find命令" class="headerlink" title="3.3.2 精通find命令"></a>3.3.2 精通find命令</h3><p><a target="_blank" rel="noopener" href="https://www.linuxidc.com/Linux/2018-07/153205.htm">如何使用find命令在Linux中查找文件</a></p>
+<h2 id="3-4-输出查看-表格"><a href="#3-4-输出查看-表格" class="headerlink" title="3.4 输出查看-表格"></a>3.4 输出查看-表格</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount |column -t</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-5-SSH客户端配置优化"><a href="#3-5-SSH客户端配置优化" class="headerlink" title="3.5 SSH客户端配置优化"></a>3.5 SSH客户端配置优化</h2><p><code>~/.ssh/config</code> 包含了</p>
+<ul>
+<li>避免在特定网络环境中连接被断掉的情况的设置      <code>TCPKeepAlive=yes ServerAliveInterval=15 ServerAliveCountMax=6</code></li>
+<li>使用压缩（这对于通过低带宽连接使用 scp 很有用） <code>Compression=yes</code></li>
+<li>使用一个本地控制文件来开启到同一台服务器的多通道 <code>ControlMaster auto   ControlPath /tmp/%r@%h:%p   ControlPersist yes</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TCPKeepAlive=yes</span><br><span class="line">ServerAliveInterval=15</span><br><span class="line">ServerAliveCountMax=6</span><br><span class="line">Compression=yes</span><br><span class="line">ControlMaster auto</span><br><span class="line">ControlPath /tmp/%r@%h:%p</span><br><span class="line">ControlPersist yes</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><p>python2</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>caddy</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="操作不被history记录"><a href="#操作不被history记录" class="headerlink" title="操作不被history记录"></a>操作不被<code>history</code>记录</h2><ul>
+<li><p>关闭history</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">history</span> -c</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>操作命令前，加一个<code>空格</code></p>
+</li>
+</ul>
+<h2 id="清除指定history记录"><a href="#清除指定history记录" class="headerlink" title="清除指定history记录"></a>清除指定history记录</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">history</span> -d &lt;num&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="查看运行时间"><a href="#查看运行时间" class="headerlink" title="查看运行时间"></a>查看运行时间</h3><blockquote>
+<p>通过 <code>-o</code> 参数，指定只显示具体的某个字段，会得到更清晰的结果。<br>通过 <code>-o etime</code> 获取该进程的运行时间(etime格式 = %d-%h:%m:%s  etimes格式 = %s)</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -p 10167 -o etimes,etime</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><code>-o rss</code> 可以只获取该进程的内存信息</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="资源使用率排序"><a href="#资源使用率排序" class="headerlink" title="资源使用率排序"></a>资源使用率排序</h3><ul>
+<li><p>内存使用率 排序</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | <span class="built_in">sort</span> -rnk 4</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>CPU使用率 排序</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | <span class="built_in">sort</span> -nk 3</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h2 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h2><h3 id="查看本机公网IP"><a href="#查看本机公网IP" class="headerlink" title="查看本机公网IP"></a>查看本机公网IP</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl ip.sb</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">curl ifconfig.me</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://qianngchn.github.io/wiki/7.html">Linux常用命令行小技巧: 全面+有深度, 有点乱</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liwei0526vip/p/14624607.html">80%的人都不会的，15个Linux实用技巧: 清晰，量少</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/bbwangj/article/details/82806886">30个高效的Linux命令技巧: Bash语法</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/07/08/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-08-Ubuntu%E7%B3%BB%E7%BB%9Fdd%E5%91%BD%E4%BB%A4%E5%A4%87%E4%BB%BD%E5%92%8C%E6%81%A2%E5%A4%8D%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/08/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-08-Ubuntu%E7%B3%BB%E7%BB%9Fdd%E5%91%BD%E4%BB%A4%E5%A4%87%E4%BB%BD%E5%92%8C%E6%81%A2%E5%A4%8D%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">Ubuntu系统dd命令备份和恢复系统</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-07-08 01:48:22" itemprop="dateCreated datePublished" datetime="2022-07-08T01:48:22+08:00">2022-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/07/08/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-07-08-Ubuntu%E7%B3%BB%E7%BB%9Fdd%E5%91%BD%E4%BB%A4%E5%A4%87%E4%BB%BD%E5%92%8C%E6%81%A2%E5%A4%8D%E7%B3%BB%E7%BB%9F/" class="post-meta-item leancloud_visitors" data-flag-title="Ubuntu系统dd命令备份和恢复系统" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>dd指令是一个简单的复制指令，它不管源和目标的编码、格式、数据结构，简单粗暴的把二进制数据从A复制到B。<br>所以恢复的目标硬盘甚至不需要提前分区，因为dd会把分区信息也写入。<br>不管源数据是文件、分区、磁盘还是光盘，都可以进行数据备份。</p>
+<p>优点：</p>
+<ul>
+<li>操作简单</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>速度慢</li>
+<li>硬盘大小必须比源大</li>
+</ul>
+<h1 id="2-操作"><a href="#2-操作" class="headerlink" title="2. 操作"></a>2. 操作</h1><h2 id="2-1-整盘复制"><a href="#2-1-整盘复制" class="headerlink" title="2.1 整盘复制"></a>2.1 整盘复制</h2><blockquote>
+<p>目标磁盘需要比源磁盘大。<br><code>if=</code>表示源磁盘，<code>of=</code>表示目标磁盘</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/sda of=/dev/sdb</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-2-磁盘备份成文件再恢复"><a href="#2-2-磁盘备份成文件再恢复" class="headerlink" title="2.2 磁盘备份成文件再恢复"></a>2.2 磁盘备份成文件再恢复</h2><h3 id="2-2-1-磁盘-gt-文件"><a href="#2-2-1-磁盘-gt-文件" class="headerlink" title="2.2.1 磁盘->文件"></a>2.2.1 磁盘-&gt;文件</h3><blockquote>
+<p>bs参数: 一次拷贝的字节数。如：bs=4096。合理使用bs参数可优化dd执行速度，bs的合理范围要参考本机的性能进行具体设置。</p>
+</blockquote>
+<ul>
+<li><p>单备份</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/sda of=/home/sda.img bs=4096</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>备份并压缩</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/sda | gzip &gt; /home/sda.img</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h3 id="2-2-2-文件-gt-磁盘"><a href="#2-2-2-文件-gt-磁盘" class="headerlink" title="2.2.2 文件->磁盘"></a>2.2.2 文件-&gt;磁盘</h3><ul>
+<li><p>单备份</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=sdadisk.img of=/dev/sdb</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>从压缩文件恢复</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dc /home/sda.img | <span class="built_in">dd</span> of=/dev/sda</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h2 id="2-3-分区备份"><a href="#2-3-分区备份" class="headerlink" title="2.3 分区备份"></a>2.3 分区备份</h2><ol>
+<li><p>把分区直接备份到另一个分区，就需要生成一个新的分区，这个分区的大小不能比源分区小，只能和源分区大小一致或比它大。</p>
+</li>
+<li><p>查看磁盘sdb的分区表，查看所有分区uuid，此时各分区uuid各不相同。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br><span class="line">blkid</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<p>备份</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/sda1 of=/dev/sdb1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>恢复</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/sdb1 of=/dev/sda1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>修复还原到大小不一样的分区时的设置：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">dd</span> <span class="keyword">if</span>=/dev/sda1 of=/dev/sdb1</span><br><span class="line">sudo e2fsck -f /dev/sdb1</span><br><span class="line">sudo resize2fs /dev/sdb1</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="2-4-查看进度"><a href="#2-4-查看进度" class="headerlink" title="2.4 查看进度"></a>2.4 查看进度</h2><ul>
+<li>watch<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 5 killall -USR1 <span class="built_in">dd</span></span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h2 id="2-5-销毁磁盘数据"><a href="#2-5-销毁磁盘数据" class="headerlink" title="2.5 销毁磁盘数据"></a>2.5 销毁磁盘数据</h2><p>原磁盘包含有敏感数据，因为所有删除甚至格式化的内容都有可能使用技术手段进行还原。使用dd命令即可完全抹盘。</p>
+<p>使用0填充整个硬盘：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=/dev/sda1</span><br></pre></td></tr></tbody></table></figure>
+<p>或者，使用随机数填充整个硬盘，效果更佳：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/urandom of=/dev/sda1</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-6-磁盘测速"><a href="#2-6-磁盘测速" class="headerlink" title="2.6 磁盘测速"></a>2.6 磁盘测速</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero bs=1024 count=1000000 of=/root/1Gb.file</span><br><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/root/1Gb.file bs=64k | <span class="built_in">dd</span> of=/dev/null</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-7-磁盘修复"><a href="#2-7-磁盘修复" class="headerlink" title="2.7 磁盘修复"></a>2.7 磁盘修复</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/sda of=/dev/sda 或<span class="built_in">dd</span> <span class="keyword">if</span>=/dev/hda of=/dev/hda</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-8-制作系统盘"><a href="#2-8-制作系统盘" class="headerlink" title="2.8 制作系统盘"></a>2.8 制作系统盘</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=ubuntu-server-amd64.iso <span class="keyword">if</span>=/dev/sdb</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-0-写指定大小文件"><a href="#2-0-写指定大小文件" class="headerlink" title="2.0 写指定大小文件"></a>2.0 写指定大小文件</h2><blockquote>
+<p>如大文件测试上传或下载的速度。下面命令生成一个文件名为 file.img 大小为 1G 的文件。</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=file.img bs=1M count=1024</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><p><a target="_blank" rel="noopener" href="https://baize.cc/posts/58b2.html"><strong>Ubuntu 备份与恢复系统</strong></a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/peach-blossoms/p/15214180.html">linux使用dd命令备份系统</a></p>
+</li>
+</ul>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/05/17/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-05-17-%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98-WebDAV%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/17/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-05-17-%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98-WebDAV%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD/" class="post-title-link" itemprop="url">阿里云盘-WebDAV开机自动挂载</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-05-17 08:48:02" itemprop="dateCreated datePublished" datetime="2022-05-17T08:48:02+08:00">2022-05-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/05/17/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-05-17-%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98-WebDAV%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD/" class="post-meta-item leancloud_visitors" data-flag-title="阿里云盘-WebDAV开机自动挂载" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>目前主流的网盘系统都支持WebDAV连接方式，在windows系统下链接WebDAV以及是很常见的事情，如果能在Linux下链接WebDAV变成本地磁盘，那么可以把部分文件放置在WebDAV空间，甚至还可以通过网页转成外链链接。</p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>常用的文件共享协议有三种：FTP、Samba、WebDAV</p>
+<p>WebDAV 基于 HTTP 协议的通信协议，在广域网上共享文件有天然的优势，移动端文件管理APP也大多支持WebDAV协议。使用HTTPS还能保安全性。Apache和Nginx支持WebDAV，可作为WebDAV文件共享服务器软件。也可以使用专门的WebDAV软件部署。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hacdias/webdav">webdav</a> 是 GitHub 上开源的项目，基于 Go 语言实现，不仅跨平台，还支持 ARM 架构，可在㠌入式设备中部署 WebDAV 服务器。</p>
+<h2 id="2-操作"><a href="#2-操作" class="headerlink" title="2. 操作"></a>2. 操作</h2><h3 id="2-1-运行阿里云盘-webDAV"><a href="#2-1-运行阿里云盘-webDAV" class="headerlink" title="2.1 运行阿里云盘-webDAV"></a>2.1 运行阿里云盘-webDAV</h3><h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><h5 id="1-参数说明"><a href="#1-参数说明" class="headerlink" title="1. 参数说明"></a>1. 参数说明</h5><table>
+<thead>
+<tr>
+<th>变量名称</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ALIYUNPAN_REFRESH_TOKEN</td>
+<td>RefreshToken</td>
+<td>024534dbe2384807b24abfd1ab84fd7d</td>
+</tr>
+<tr>
+<td>ALIYUNPAN_AUTH_USER</td>
+<td>webdav登录用户名，随意设置，磁盘挂载的时候使用</td>
+<td>admin</td>
+</tr>
+<tr>
+<td>ALIYUNPAN_AUTH_PASSWORD</td>
+<td>webdav登录密码，随意设置，磁盘挂载的时候使用</td>
+<td>admin</td>
+</tr>
+<tr>
+<td>ALIYUNPAN_PAN_DIR</td>
+<td>网盘文件夹的webdav服务根目录</td>
+<td>/</td>
+</tr>
+<tr>
+<td>ALIYUNPAN_TRANSFER_URL_TYPE</td>
+<td>上传下载链接类型：1-默认 2-阿里ECS环境(ECS必须是经典网络类型)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ALIYUNPAN_BLOCK_SIZE</td>
+<td>上传数据块大小，单位为KB，默认为1024KB，建议范围1024KB~10240KB</td>
+<td>10240</td>
+</tr>
+</tbody></table>
+<h5 id="2-获取refresh-token"><a href="#2-获取refresh-token" class="headerlink" title="2. 获取refresh-token"></a>2. 获取refresh-token</h5><img width="60%" data-src="/images/post-image/how-to-get-refresh-token.png">
+
+<h5 id="3-https配置-可选"><a href="#3-https配置-可选" class="headerlink" title="3. https配置(可选)"></a>3. https配置(可选)</h5><p>nginx配置</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">server {</span><br><span class="line">       listen 443;</span><br><span class="line">       server_name your.host.com;</span><br><span class="line">       ssl on;</span><br><span class="line">       root html;</span><br><span class="line">       index index.html index.htm;</span><br><span class="line">       ssl_certificate /path/to/your/file.pem;</span><br><span class="line">       ssl_certificate_key /path/to/your/file.key;</span><br><span class="line"></span><br><span class="line">       ssl_session_timeout 5m;</span><br><span class="line">       ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">       ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">       ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">       # webdav server</span><br><span class="line">       location /{</span><br><span class="line">          root html;</span><br><span class="line">          proxy_pass http://127.0.0.1:23077;</span><br><span class="line">          proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">          proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">          proxy_set_header Host $http_host;</span><br><span class="line">          proxy_redirect off;</span><br><span class="line">        }</span><br><span class="line">   }</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><h5 id="1-docker-run部署"><a href="#1-docker-run部署" class="headerlink" title="1. docker-run部署"></a>1. docker-run部署</h5><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=aliyundisk \</span><br><span class="line">	--restart=always -p 23077:23077 \</span><br><span class="line">	-e TZ=<span class="string">"Asia/Shanghai"</span> \</span><br><span class="line">	-e ALIYUNPAN_REFRESH_TOKEN=<span class="string">"024534dbe2384807b24abfd1ab84fd7d"</span> \</span><br><span class="line">	-e ALIYUNPAN_AUTH_USER=<span class="string">"admin"</span> \</span><br><span class="line">	-e ALIYUNPAN_AUTH_PASSWORD=<span class="string">"admin"</span> \</span><br><span class="line">	-e ALIYUNPAN_PAN_DIR=<span class="string">"/"</span> tickstep/aliyunpan-webdav:v0.1.4</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="2-docker-compose部署"><a href="#2-docker-compose部署" class="headerlink" title="2. docker-compose部署"></a>2. docker-compose部署</h5><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">webdav:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">tickstep/aliyunpan-webdav:&lt;tag&gt;</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">aliyunpan-webdav</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">23077</span><span class="string">:23077</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">      <span class="comment"># refresh token用于登录</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ALIYUNPAN_REFRESH_TOKEN=b9123...13e66a1</span></span><br><span class="line">      <span class="comment"># webdav 登录用户名</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ALIYUNPAN_AUTH_USER=admin</span></span><br><span class="line">      <span class="comment"># webdav 登录密码</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ALIYUNPAN_AUTH_PASSWORD=admin</span></span><br><span class="line">      <span class="comment"># 指定网盘文件夹作为webdav服务根目录</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ALIYUNPAN_PAN_DIR=/</span></span><br><span class="line">      <span class="comment"># 上传下载链接类型：1-默认 2-阿里ECS环境(ECS必须是经典网络类型)</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ALIYUNPAN_TRANSFER_URL_TYPE=1</span></span><br><span class="line">      <span class="comment"># 上传数据块大小，单位为KB，默认为1024KB，建议范围1024KB~10240KB</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ALIYUNPAN_BLOCK_SIZE=10240</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="2-2-挂载webdav"><a href="#2-2-挂载webdav" class="headerlink" title="2.2 挂载webdav"></a>2.2 挂载webdav</h3><h4 id="1-安装davfs2工具"><a href="#1-安装davfs2工具" class="headerlink" title="1. 安装davfs2工具"></a>1. 安装davfs2工具</h4><p>centos</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install davfs2</span><br></pre></td></tr></tbody></table></figure>
+
+<p>ubuntu</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install davfs2</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="2-挂载磁盘"><a href="#2-挂载磁盘" class="headerlink" title="2. 挂载磁盘"></a>2. 挂载磁盘</h4><blockquote>
+<p>执行命令后，按提示输入用户名密码（ALIYUNPAN_AUTH_USER和ALIYUNPAN_AUTH_PASSWORD的值）</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /aliyun-disk</span><br><span class="line">mount -t davfs https://pan.cloud.com/dav /aliyun-disk</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="3-设置开机自动挂载"><a href="#3-设置开机自动挂载" class="headerlink" title="3. 设置开机自动挂载"></a>3. 设置开机自动挂载</h4><ul>
+<li>编辑davfs2.conf配置文件，将use_locks的1改为0</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/davfs2/davfs2.conf </span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><strong>修改secrets文件，添加账号信息</strong></li>
+</ul>
+<blockquote>
+<p>普通用户可以修改此文件<code>~/.davfs2/secrets</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/davfs2/secrets</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在底部添加账号信息，如</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://pan.cloud.com/dav user password</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>添加开机挂载命令</li>
+</ul>
+<blockquote>
+<p>在 <code>/etc/rc.d/rc.local</code>文件或者<code>/etc/profile.d/aliyundisk.sh</code>中追加下面内容</p>
+<p>开机自动运行的几种方法：</p>
+<p><code>/etc/rc.d/rc.local</code>： 文件会在 Linux 系统各项服务都启动完毕之后再被运行</p>
+<p><code>crontab @rebot</code>: 任务在系统重启之后自动运行某个命令</p>
+<p><code>systemd</code>：适用systemd系统</p>
+<p><code>/etc/profile.d/xx.sh</code>: /etc/profile会遍历/etc/profile.d/*.sh</p>
+<ul>
+<li><code>/etc/profile</code>： 此文件为系统的每个用户设置环境信息,<strong>当用户第一次登录时</strong>,该文件被执行. 并从<code>/etc/profile.d</code>目录的配置文件中搜集shell的设置。</li>
+<li><code>/etc/bashrc</code>: 为每一个运行bash shell的用户执行此文件.<strong>当bash shell被打开时</strong>,该文件被读取（即每次新开一个终端，都会执行bashrc）。</li>
+<li><code>~/.bash_profile</code>: 每个用户都可使用该文件输入专用于自己使用的shell信息,<strong>当用户登录时,该文件仅仅执行一次</strong>。默认情况下,设置一些<strong>环境变量</strong>,执行用户的<code>.bashrc</code>文件。</li>
+<li><code>~/.bashrc</code>: 该文件包含专用于你的bash shell的bash信息,<strong>当登录时以及每次打开新的shell时</strong>,该文件被读取。你可以在这里设置你的个性化终端了.</li>
+<li><code>~/.bash_logout</code>: 当每次退出系统(退出bash shell)时,执行该文件. 另外,<code>/etc/profile</code>中设定的变量(全局)的可以作用于任何用户,而~/.bashrc等中设定的变量(局部)只能继承 /etc/profile中的变量,他们是<strong>”父子”关系</strong>。</li>
+<li><code>~/.bash_profile</code>: 是<strong>交互式、login 方式</strong>进入 bash 运行的。<code>~/.bashrc 是交互式 non-login 方式</code>进入 bash 运行的通常二者设置大致相同，所以通常前者会调用后者。</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t davfs http://127.0.0.1:23077 /aliyundisk/</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="4-逼坑"><a href="#4-逼坑" class="headerlink" title="4. 逼坑"></a>4. 逼坑</h4><p>不能通过<code>/etc/fstab</code>的auto选项, 实现开机自动挂载</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:23077 /aliyundisk/  davfs   noauto,user   0   0</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>因为<code>/etc/fstab</code>在网络初始化之前执行，只有在建立网络连接之后才能装载webDAV共享，所以不能auto在/etc/fstab文件中使用该选项。自动挂载将失败。</strong></p>
+<h2 id="3-可视化管理工具推荐"><a href="#3-可视化管理工具推荐" class="headerlink" title="3. 可视化管理工具推荐"></a>3. 可视化管理工具推荐</h2><p><a target="_blank" rel="noopener" href="https://github.com/liupan1890/aliyunpan">阿里云盘可视化管理工具-小白羊版</a></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://engr-z.com/238.html">网络存储文件共享之WebDAV</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.lincloud.pro/archives/36.html">Linux配置WebDAV-server为共享存储</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tickstep/aliyunpan">阿里云盘命令行客户端，支持webdav文件服务</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/liupan1890/aliyunpan">阿里云盘可视化管理工具-小白羊版</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/05/07/golang-2022-05-07-%E5%86%85%E7%BD%91%E6%90%AD%E5%BB%BAgoproxy%E7%A7%81%E4%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/07/golang-2022-05-07-%E5%86%85%E7%BD%91%E6%90%AD%E5%BB%BAgoproxy%E7%A7%81%E4%BB%93/" class="post-title-link" itemprop="url">内网搭建goproxy私仓</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-05-07 06:57:41" itemprop="dateCreated datePublished" datetime="2022-05-07T06:57:41+08:00">2022-05-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/05/07/golang-2022-05-07-%E5%86%85%E7%BD%91%E6%90%AD%E5%BB%BAgoproxy%E7%A7%81%E4%BB%93/" class="post-meta-item leancloud_visitors" data-flag-title="内网搭建goproxy私仓" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>由于生产环境的函数服务需要编译go包，但内网无法访问互联网。所以需要搭建代理私仓，缓存第三方包。主要考虑的技术选型有两种: nexus和goproxy.<br>nexus是能满足需求，但太重,并且go不支持认证,必须开启nexus的匿名模式。go-proxy功能比较简单。下面分别介绍nexus和goproxy的搭建方式，针对 不通场景进行选择。</p>
+<h1 id="nexus搭建go私仓库"><a href="#nexus搭建go私仓库" class="headerlink" title="nexus搭建go私仓库"></a>nexus搭建go私仓库</h1><h1 id="goproxy搭建go私仓库"><a href="#goproxy搭建go私仓库" class="headerlink" title="goproxy搭建go私仓库"></a>goproxy搭建go私仓库</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/04f6814a-5ef7-4cd4-9ea3-0135b62a0cb6#">nexus搭建</a><br><a target="_blank" rel="noopener" href="https://goproxy.io/zh/docs/enterprise-goproxyio.html">goproxy 官方文档</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/03/30/bash-2022-03-30-bash%E8%84%9A%E6%9C%ACset%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/30/bash-2022-03-30-bash%E8%84%9A%E6%9C%ACset%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">bash脚本set命令说明</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-03-30 07:40:03" itemprop="dateCreated datePublished" datetime="2022-03-30T07:40:03+08:00">2022-03-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Bash/" itemprop="url" rel="index">
+                    <span itemprop="name">Bash</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/03/30/bash-2022-03-30-bash%E8%84%9A%E6%9C%ACset%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E/" class="post-meta-item leancloud_visitors" data-flag-title="bash脚本set命令说明" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p><code>set</code> 命令是 Bash 脚本的重要环节，却常常被忽视，导致脚本的安全性和可维护性出问题。此处记录基本用法。</p>
+<h1 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h1><p>set命令用来修改 Shell 环境的运行参数，也就是定制环境。</p>
+<blockquote>
+<p>顺便提一下，如果命令行下不带任何参数，直接运行set，会显示所有的环境变量和 Shell 函数</p>
+</blockquote>
+<p>常用的四个命令如下</p>
+<ul>
+<li>u, 忽略空变量</li>
+<li>x, 调试 结果前打印命令</li>
+<li>e, 发生错误，立即终止</li>
+<li>o pipefail, 管道子命令发生错误，立即终止</li>
+</ul>
+<h2 id="2-1-忽略不存在变量"><a href="#2-1-忽略不存在变量" class="headerlink" title="2.1 忽略不存在变量"></a>2.1 忽略不存在变量</h2><blockquote>
+<p>忽略 执行脚本 中 不存在的变量。</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -u</span><br></pre></td></tr></tbody></table></figure>
+<p>等同于</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -o nounset</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-2-在打印结果之前，先打印命令。"><a href="#2-2-在打印结果之前，先打印命令。" class="headerlink" title="2.2 在打印结果之前，先打印命令。"></a>2.2 在打印结果之前，先打印命令。</h2><blockquote>
+<p>在运行结果之前，先输出执行的命令。</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -x</span><br></pre></td></tr></tbody></table></figure>
+<p>等同于</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -o xtrace</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-3-错误处理"><a href="#2-3-错误处理" class="headerlink" title="2.3 错误处理"></a>2.3 错误处理</h2><blockquote>
+<p>Bash 命令执行失败，默认会继续执行后面的命令。</p>
+</blockquote>
+<p>通过下面写法，当<code>command</code>有非零返回值，脚本就会停止执行。防止错误累积</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> || <span class="built_in">exit</span> 1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>退出时，执行额外操作</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> || { <span class="built_in">echo</span> <span class="string">"command failed"</span>; <span class="built_in">exit</span> 1; }</span><br></pre></td></tr></tbody></table></figure>
+<p>等同于</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ! <span class="built_in">command</span>; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"command failed"</span>; <span class="built_in">exit</span> 1; <span class="keyword">fi</span></span><br></pre></td></tr></tbody></table></figure>
+<p>等同于</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="string">"$?"</span> -ne 0 ]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"command failed"</span>; <span class="built_in">exit</span> 1; <span class="keyword">fi</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-4-命令依赖"><a href="#2-4-命令依赖" class="headerlink" title="2.4 命令依赖"></a>2.4 命令依赖</h2><p><code>command1</code>执行成功，再执行<code>command2</code>。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command1 &amp;&amp; command2</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-5-发生错误，立即终止"><a href="#2-5-发生错误，立即终止" class="headerlink" title="2.5 发生错误，立即终止"></a>2.5 发生错误，立即终止</h2><blockquote>
+<p>脚本只要发生错误，就终止执行。但对<code>|</code>管道失效，具体原因看 2.6 小节</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -e</span><br></pre></td></tr></tbody></table></figure>
+<p>等同于</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -o errexit</span><br></pre></td></tr></tbody></table></figure>
+
+<p>脚本后续命令，非空返回为执行成功。则需要临时关闭<code>set -e</code>，来让命令正常执行</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"初始设置 set -e 并执行命令"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 临时关闭 set -e</span></span><br><span class="line"><span class="built_in">set</span> +e</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"执行正常返回为非空的命令"</span></span><br><span class="line"><span class="comment"># 重新打开 set -e</span></span><br><span class="line"><span class="built_in">set</span> -e</span><br></pre></td></tr></tbody></table></figure>
+<p>也可以通过<code>command || true</code>的方式解决</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"></span><br><span class="line"><span class="built_in">command</span> || <span class="literal">true</span></span><br><span class="line"><span class="built_in">echo</span> bar</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-6-子命令失败，整个管道命令就失败，脚本就会终止执行。"><a href="#2-6-子命令失败，整个管道命令就失败，脚本就会终止执行。" class="headerlink" title="2.6 子命令失败，整个管道命令就失败，脚本就会终止执行。"></a>2.6 子命令失败，整个管道命令就失败，脚本就会终止执行。</h2><blockquote>
+<p><code>管道命令</code>，就是多个子命令通过管道运算符<code>|</code>组合成为一个大的命令。<code>Bash</code>会把最后一个子命令的返回值，作为整个命令的返回值。<br> 也就是说，只要最后一个子命令不失败，管道命令总是会执行成功，因此它后面命令依然会执行，set -e 就失效了。<br>例如</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"><span class="comment"># 由于下面`echo "test"`成功，命令永远不会中断</span></span><br><span class="line">mc | <span class="built_in">echo</span> <span class="string">"test"</span></span><br><span class="line"><span class="built_in">echo</span> bar</span><br></pre></td></tr></tbody></table></figure>
+<p>改为如下写法，解决管道问题</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="built_in">set</span> -eo pipefail</span><br><span class="line"></span><br><span class="line">foo | <span class="built_in">echo</span> a</span><br><span class="line"><span class="built_in">echo</span> bar</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>上面参数总会一起使用</p>
+<ul>
+<li>u, 忽略空变量</li>
+<li>x, 调试 结果前打印命令</li>
+<li>e, 发生错误，立即终止</li>
+<li>o pipefail, 管道子命令发生错误，立即终止</li>
+</ul>
+<p>比如</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -euxo pipefail</span><br></pre></td></tr></tbody></table></figure>
+<p>等同于</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -eux</span><br><span class="line"><span class="built_in">set</span> -o pipefail</span><br></pre></td></tr></tbody></table></figure>
+<p>等同于</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -euxo pipefail script.sh</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html">官方手册</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2017/11/bash-set.html">Bash脚本set命令教程-阮一峰</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/03/25/devops-2022-03-25-FeatMap-UserStory%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E5%92%8C%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/25/devops-2022-03-25-FeatMap-UserStory%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E5%92%8C%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">FeatMap-UserStory地图服务配置和搭建</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-03-25 02:17:47" itemprop="dateCreated datePublished" datetime="2022-03-25T02:17:47+08:00">2022-03-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/03/25/devops-2022-03-25-FeatMap-UserStory%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E5%92%8C%E6%90%AD%E5%BB%BA/" class="post-meta-item leancloud_visitors" data-flag-title="FeatMap-UserStory地图服务配置和搭建" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p><a target="_blank" rel="noopener" href="https://github.com/amborle/featmap">Featmap</a>是一个用户故事映射工具，用于构建，计划和传达产品积压。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/amborle/featmap/raw/master/screenshot.png">Featmap Picture</a></p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>服务依赖 Postgresql<br><a target="_blank" rel="noopener" href="https://github.com/hex-py/featmap-deploy">个人部署记录</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>目录结构</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── charts</span><br><span class="line">│   └── featmap</span><br><span class="line">│       ├── Chart.yaml</span><br><span class="line">│       ├── config</span><br><span class="line">│       │   └── conf.json           # 配置文件： chart部署时， 运行环境的真实配置</span><br><span class="line">│       ├── templates               </span><br><span class="line">│       │   ├── configmap.yaml</span><br><span class="line">│       │   ├── deployment.yaml</span><br><span class="line">│       │   ├── _helpers.tpl</span><br><span class="line">│       │   ├── ingress.yaml</span><br><span class="line">│       │   └── svc.yaml</span><br><span class="line">│       └── values.yaml             # chart值配置文件</span><br><span class="line">├── conf.json                       # 配置文件： 构建镜像时， 打进镜像的默认配置</span><br><span class="line">├── Dockerfile</span><br><span class="line">├── Makefile</span><br><span class="line">└── README.md</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="1-构建Docker镜像"><a href="#1-构建Docker镜像" class="headerlink" title="1. 构建Docker镜像"></a>1. 构建Docker镜像</h2><h3 id="1-1-Dockerfile-内容如下"><a href="#1-1-Dockerfile-内容如下" class="headerlink" title="1.1 Dockerfile 内容如下:"></a>1.1 Dockerfile 内容如下:</h3><figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> self.registry.com/ubuntu:<span class="number">20.04</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /opt/featmap</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> conf.json .</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> https://github.com/amborle/featmap/releases/download/v2.1.0/featmap-2.1.0-linux-amd64 /usr/local/bin/featmap</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">chmod</span> 775 /usr/local/bin/featmap</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">5000</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">"featmap"</span>]</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>其中配置文件内容<code>conf.json</code>如下:</p>
+<blockquote>
+<p>不支持环境变量，只能通过此配置文件修改环境配置</p>
+</blockquote>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"appSiteURL"</span><span class="punctuation">:</span> <span class="string">"https://localhost:5000"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"dbConnectionString"</span><span class="punctuation">:</span> <span class="string">"postgresql://gitea:gitea@pgsql-host:5432/postgres?sslmode=disable"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"jwtSecret"</span><span class="punctuation">:</span> <span class="string">"ChangeMeForProductionXXX"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"port"</span><span class="punctuation">:</span> <span class="string">"5000"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"emailFrom"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"smtpServer"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"smtpPort"</span><span class="punctuation">:</span> <span class="string">"587"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"smtpUser"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"smtpPass"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"environment"</span><span class="punctuation">:</span> <span class="string">"development"</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="1-2-构建镜像-命令"><a href="#1-2-构建镜像-命令" class="headerlink" title="1.2 构建镜像 命令"></a>1.2 构建镜像 命令</h3><blockquote>
+<p>镜像地址: self.registry.com/featmap:2.1.0</p>
+</blockquote>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">TAG := 2.1.0</span><br><span class="line">IMAGE_PATH := self.registry.com/featmap</span><br><span class="line">IMAGE := <span class="variable">$(IMAGE_PATH)</span>:<span class="variable">$(TAG)</span></span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: docker-clean</span></span><br><span class="line"><span class="section">docker-clean:</span></span><br><span class="line">	@echo <span class="string">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;docker clean&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;"</span></span><br><span class="line">	for i in $<span class="variable">$(docker ps -a  |grep <span class="variable">$(IMAGE_PATH)</span> |awk '{print$$1}')</span> ; do docker rm  -f $$i ; done</span><br><span class="line">	for i in $<span class="variable">$(docker images |grep <span class="variable">$(IMAGE_PATH)</span> |awk '{print$$3}')</span> ; do docker rmi -f $$i ; done</span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: build</span></span><br><span class="line"><span class="section">build: docker-clean</span></span><br><span class="line">	@echo <span class="string">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;docker build&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;"</span></span><br><span class="line">	docker build -t <span class="variable">$(IMAGE)</span> .</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-部署"><a href="#2-部署" class="headerlink" title="2. 部署"></a>2. 部署</h2><p>安装命令<br>线上配置通过<code>charts/featmap/config/conf.json</code>修改</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">TAG := 2.1.0</span><br><span class="line">IMAGE_PATH := hub.icos.city/icos/icospaas/featmap</span><br><span class="line">IMAGE := <span class="variable">$(IMAGE_PATH)</span>:<span class="variable">$(TAG)</span></span><br><span class="line"></span><br><span class="line">INSTANCE := featmap</span><br><span class="line">CHART := charts/featmap</span><br><span class="line"></span><br><span class="line">NAMESPACE := default</span><br><span class="line">KUBECONFIG := /home/hex/.kube/config</span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: push</span></span><br><span class="line"><span class="section">push: build</span></span><br><span class="line">	@echo <span class="string">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;docker push &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;"</span></span><br><span class="line">	docker push <span class="variable">$(IMAGE)</span></span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: helm-uninstall</span></span><br><span class="line"><span class="section">helm-uninstall:</span></span><br><span class="line">	@echo <span class="string">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;helm uninstall&lt;&lt;&lt;&lt;&lt;&lt;"</span></span><br><span class="line">	helm --kubeconfig=<span class="variable">$(KUBECONFIG)</span> -n <span class="variable">$(NAMESPACE)</span> uninstall <span class="variable">$(INSTANCE)</span></span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: helm-install</span></span><br><span class="line"><span class="section">helm-install: push</span></span><br><span class="line">	@echo <span class="string">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;helm install&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;"</span></span><br><span class="line">	helm --kubeconfig=<span class="variable">$(KUBECONFIG)</span> -n <span class="variable">$(NAMESPACE)</span> install <span class="variable">$(INSTANCE)</span> <span class="variable">$(CHART)</span></span><br><span class="line">	</span><br></pre></td></tr></tbody></table></figure>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/11/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-12-os%E7%B3%BB%E7%BB%9F%E7%AE%80%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-12-os%E7%B3%BB%E7%BB%9F%E7%AE%80%E6%9E%90/" class="post-title-link" itemprop="url">os系统简析以及 Golang GPM调度</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-11-12 02:29:12" itemprop="dateCreated datePublished" datetime="2021-11-12T02:29:12+08:00">2021-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/11/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-12-os%E7%B3%BB%E7%BB%9F%E7%AE%80%E6%9E%90/" class="post-meta-item leancloud_visitors" data-flag-title="os系统简析以及 Golang GPM调度" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h1 id="虚拟地址空间"><a href="#虚拟地址空间" class="headerlink" title="虚拟地址空间"></a>虚拟地址空间</h1><ol>
+<li>存在的原因<blockquote>
+<p>dos时代，进程可以任意修改物理内存，会发生进程间占用其他进程内存的情况，甚至出现进程覆盖操作系统使用的内存。</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>进程间内存安全，相同虚拟地址空间 线性地址 映射不同的物理地址。</li>
+<li>进程间共享内存通信，不同的虚拟地址空间 线性地址 映射相同的物理地址。</li>
+</ul>
+<ol start="2">
+<li>实现的原理</li>
+</ol>
+<ul>
+<li><p>内存分页机制， 32位操作系统 一页4kb 虚拟地址 -&gt; 物理地址 以页为单位映射</p>
+</li>
+<li><p>操作系统会以链表的形式存储<code>进程的控制信息</code>(win: PCB+TCB linux: task_struct), 进程控制信息中有一个指针，<br>存储当前进程页目录的物理地址。</p>
+</li>
+<li><p>页目录， 也是一个内存页。存储一系列指针，指向页。  1个页目录= 1024页 = 10位</p>
+</li>
+<li><p>页，也是一个内存页。存储一系列指针，指向物理地址。 1个页    = 1024条 = 10位</p>
+</li>
+<li><p>线性地址，10+10+12 32位</p>
+</li>
+</ul>
+<ol start="3">
+<li>寻址过程</li>
+</ol>
+<ul>
+<li>虚拟内存地址与物理地址的映射，通过MMU控制，页目录的地址保存在特定的寄存器</li>
+</ul>
+<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>一个可执行文件被加载到内存执行时，就成了一个运行的程序，也就是进程。</p>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><h1 id="进程间切换，成本高的原因"><a href="#进程间切换，成本高的原因" class="headerlink" title="进程间切换，成本高的原因"></a>进程间切换，成本高的原因</h1><ol>
+<li>进程切换的过程</li>
+</ol>
+<p>进程会被加载到内存中，分配一个虚拟地址空间。再由CPU中的MMU(内存管理单元)，和保存在特定寄存器中的页目录来定位到真实的物理地址。<br>被查询过的地址会在TLB(Translation loadside buffer)中保存。进程会先到TLB中查询地址，如果没有则去页目录中查询并将结果保存<br>至TLB.</p>
+<p>当切换至新的内存，在寄存器中的页目录地址会发生改变，再TLB中的地址缓存会被全部清空，重新缓存。所以进程间切换的开销很大</p>
+<h1 id="线程间切换"><a href="#线程间切换" class="headerlink" title="线程间切换"></a>线程间切换</h1><ol>
+<li>线程分配的用户态+内核态的内存空间(大约4MB 32位)导致大量线程，内存存在压力</li>
+<li>线程切换是cpu调度下的时间片抢占式，会给cpu调度带来压力</li>
+</ol>
+<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><ol>
+<li>协程 m*n 只占用几kb的内存</li>
+<li>协程由用户态调度是协作式的(runtime 调度)，一个协程让出CPU后，才执行下一个协程。<br>（这是指croutine, goroutine 不太一样，goroutine最多占用 cpu 10ms。</li>
+</ol>
+<h1 id="GPM"><a href="#GPM" class="headerlink" title="GPM"></a>GPM</h1><ol>
+<li>代码段</li>
+</ol>
+<p>golang程序 –(编译)–&gt; 可执行文件<br>可执行文件执行时，程序被加载到虚拟内存，具体函数被加载到栈的代码段<br>程序执行入口 ！= <code>main.main()</code> 不同平台下 程序执行入口不同，在执行一系列准备工作(检查、初始化)后，<br>会以runtime.main为执行入口，创建 <code>main goroutine</code>. <code>main goroutine</code>执行起来以后才会调用<br>编写的 <code>main.mian()</code>.</p>
+<ol start="2">
+<li><p>数据段</p>
+<p>全局变量:<br>g0<br>m0<br>allgs<br>allm<br>sched<br>allp</p>
+</li>
+</ol>
+<p>协程 –&gt; 数据结构 runtime.g<br>runtime.g := {<br>    stack.hi<br>    stack.lo<br>    …<br>    m=&amp;m0<br>}</p>
+<p>线程 –&gt; 数据结构 runtime.m<br>runtime.m := {<br>    g0   = &amp;g0<br>    curg = g0<br>    …<br>}</p>
+<p>g0  –&gt; 主协程对应的g  与其他协程不同，它的协程栈实际上是在主线程栈上分配的<br>m0  –&gt; 主线程对应的m<br>m0和g0的联系: <code>g0</code>持有<code>m0</code>的指针，<code>m0</code>里也记录着<code>g0</code>的指针，而且一开始<code>m0</code>上执行的协程就是<code>g0</code></p>
+<p>全局变量 allgs 记录所有的g<br>全局变量 allm  记录所有的m</p>
+<blockquote>
+<p>最初go语言的调度模型里只有m和g, 所以该执行的g排排坐，每个m来这里获取一个g时都要加锁。<br>多个m分担着多个g执行任务就会因频繁加锁和解锁发生等待，而影响程序并发性能，所以在M和G以外引入了P。</p>
+</blockquote>
+<p>p  –&gt; 数据结构 runtime.p 他有一个本地<code>G run queue</code><br>runtime.p := {<br>    runq [256]guintptr  // 本地队列<br>    …<br>    m    *m             // 一个 p 关联 到一个 m<br>}<br>m 可以从p这里直接获取待执行g，m就不用每次和众多的m从一个全局队列中争抢任务 </p>
+<p>虽然p有个本地runq,但还有个全局runq,这个全局runq保存在<code>sched</code>中， 这个全局变量代表的是调度器，</p>
+<p>全局变量 sched –&gt; 数据结构 runtime.schedt<br>runtime.schedt := {     // 记录许多和调度相关的内容<br>    midle               // 所有空闲的m<br>    …<br>    pidle               // 所有空闲的p<br>    …<br>    runq                // 全局的runq<br>}</p>
+<p>如果p中的等待队列已满，那个g会被放到全局的runq中<br>m优先从关联的p持有的本地队列runq中获取待执行的g<br>没有的话，再到调度器(sched)持有的全局队列runq获取任务<br>如果全局也没有，则从别的p那里分担任务</p>
+<p>全局变量 allp 记录所有的p</p>
+<p>程序初始化时会进行调度器初始化，这时会按照gomaxprocs环境变量决定创建多少个p,<br>保存在全局变量allp中，并将第一个p与m0关联起来</p>
+<p>在<code>main goroutine</code>创建之前，GMP的关系如下图<br>g0  —- m0<br>          |<br>       allp[0]</p>
+<p>在<code>main goroutine</code>创建之后，<br>g0  —- m0<br>          |<br>        allp[0] G</p>
+<ol>
+<li>G被加入当前p的本地队列allp[0].runq</li>
+<li>然后通过mstart函数(所有工作线程的入口)开启调度循环，主要是调用schedule函数，也就是执行调度循环。<br>其实对于一个活跃的m来说，不是在执行某一个G,就是在执行调度程序获取某一个G</li>
+</ol>
+<p>队列里只有<code>main goroutine</code>等待执行， 所以m0切换到<code>main goroutine</code>,执行入口自然是runtime.main<br>runtime.main:   1. 创建监控线程<br>                2. 进行包初始化<br>                …<br>                n. main.mian  //main.main放回之后，runtime.main就会调用exit()函数结束进程<br>                exit()</p>
+<p>如果main.main中增加一个协程，hello-goroutine, 流程如下</p>
+<p>关键字 go 创建协程，会被编译器转化为newproc函数调用。上面的<code>main goroutine</code>也是由newproc函数创建的<br>创建goroutine时我们主负责提供入口、参数。而newproc函数会给G构造一个栈帧，目的是让协程任务结束后，返回到<br><code>goexit()</code> 进行协程资源回收处理等工作</p>
+<p>一个协程工作结束后，是该放到空闲G队列里备用，还是该释放</p>
+<p>gopark 函数</p>
+<p>协程状态<br>_Grunning<br>_Gwaiting<br>_Grunable</p>
+<p>协程创建、调度，监控线程</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/66794639">Linux的进程地址空间[一]</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/342241598">Go线程安全 - 一个被忽略的问题</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/356739568">Go 并发之三种线程安全的 map</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/70256971">【面试高频问题】线程、进程、协程</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/78478567">堆和栈的区别</a><br><a target="_blank" rel="noopener" href="https://learnku.com/articles/41728">Golang 调度器 GMP 原理与调度全分析</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

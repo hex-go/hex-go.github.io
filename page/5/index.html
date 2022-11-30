@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="个人技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hex Blog">
+<meta property="og:url" content="https://hex-py.github.io/page/5/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="个人技术博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hex">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/page/5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/01/25/devops-2021-01-25-Keycloak-%E9%85%8D%E7%BD%AEgatekeeper%E4%BF%9D%E6%8A%A4%E6%B2%A1%E6%9C%89%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83%E7%9A%84%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/25/devops-2021-01-25-Keycloak-%E9%85%8D%E7%BD%AEgatekeeper%E4%BF%9D%E6%8A%A4%E6%B2%A1%E6%9C%89%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83%E7%9A%84%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">Keycloak-配置gatekeeper保护没有认证授权的应用功能</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-01-25 08:46:16" itemprop="dateCreated datePublished" datetime="2021-01-25T08:46:16+08:00">2021-01-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/01/25/devops-2021-01-25-Keycloak-%E9%85%8D%E7%BD%AEgatekeeper%E4%BF%9D%E6%8A%A4%E6%B2%A1%E6%9C%89%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83%E7%9A%84%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD/" class="post-meta-item leancloud_visitors" data-flag-title="Keycloak-配置gatekeeper保护没有认证授权的应用功能" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>虽然louketo-proxy停止开发，转向<code>oauth2proxy</code>。但由于<code>oauth2proxy</code>功能太弱。不适用此场景。继续选用louketo-proxy实现。</p>
+<p>部署配置， 一共有三个组件（以nuclio举例）：</p>
+<ol>
+<li>keycloak:    提供oauth2的认证源。在此处配置client、redirect_url、scope等</li>
+<li>louketo-proxy: 作为proxy，代理所有走向<code>nuclio</code>的流量。与keycloak集成，没有权限的请求将被<code>proxy</code>拦截。</li>
+<li>nuclio:        没有登录、授权的应用（一种faas平台）。</li>
+</ol>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>keycloak:  10.0.2</p>
+<p>louketo-proxy: v2.3.0</p>
+<p>nuclio: 1.5.12</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><blockquote>
+<p>louketo-proxy启动的ingress地址对用户开放，名字应为proxy后面服务的真实地址，如代理proxy服务，则需设置为<code>faas.icos.city</code>。</p>
+</blockquote>
+<h2 id="1-配置louketo-proxy"><a href="#1-配置louketo-proxy" class="headerlink" title="1. 配置louketo-proxy"></a>1. 配置louketo-proxy</h2><ul>
+<li><p><code>client-id</code>: 配置为keycloak服务中创建的<code>client-name</code></p>
+</li>
+<li><p><code>client-secret</code>: 配置为keycloak服务中创建的<code>client</code>, 点击<code>credentials</code>获取。</p>
+</li>
+<li><p><code>discovery-url</code>: 注意修改keycloak地址和realm名。<code>&lt;keycloak-address&gt;/auth/realms/&lt;realm-name&gt;</code></p>
+</li>
+<li><p><code>redirection-url</code>: 认证完成后，返回的访问地址，即<code>louketo-proxy</code>的ingress地址。注意，不带<code>oauth/callback</code>。</p>
+</li>
+<li><p><code>upstream-url</code>: louketo-proxy 后面的真实应用地址。</p>
+</li>
+<li><p><code>enable-refresh-tokens</code>: 允许refresh-token刷新token。</p>
+<blockquote>
+<p>用户访问应用，会重定向到Keycloak。 那里获得授权代码。 前端<code>louketo-proxy</code>将此授权代码交换为<code>access token</code>、<code>refresh token</code>，<br>这些token放在前端的cookie中。 当使用过期的<code>access token</code>调用后端时，<code>refresh token</code>将被解密并用于获取新的<code>access token</code>。<br><code>refresh token</code>可以过期或无效。 当返回401时，前端应刷新页面，以便将用户重定向到Keycloak。<br>更安全的做法是将token存储在redis中, 而不是存储在前端Cookie中。</p>
+</blockquote>
+</li>
+<li><p><code>skip-upstream-tls-verify</code>: 跳过证书校验</p>
+</li>
+<li><p><code>skip-openid-provider-tls-verify</code>: 跳过证书校验</p>
+</li>
+</ul>
+<blockquote>
+<p>proxy的chart  <code>value.yaml</code>如下：(<a href="/images/charts/nuclio-proxy-1.0.0.tgz">proxy-chart文件</a>)</p>
+</blockquote>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#【----------------全局变量--------------------】</span></span><br><span class="line"><span class="attr">global:</span></span><br><span class="line">  <span class="comment">#  # 镜像仓库名称</span></span><br><span class="line">  <span class="attr">imageRepositoryName:</span> <span class="string">reg.chebai.org</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#【----------------镜像配置--------------------】</span></span><br><span class="line"><span class="comment"># 镜像</span></span><br><span class="line"><span class="attr">imageRepository:</span> <span class="string">paas/louketo-proxy</span></span><br><span class="line">  <span class="comment">#版本要求3位数,不写默认从.Chart.appVersion拿</span></span><br><span class="line"><span class="comment">#imageTag: 5.6.10</span></span><br><span class="line">  <span class="comment"># 拉取镜像策略</span></span><br><span class="line"><span class="attr">imagePullPolicy:</span> <span class="string">Always</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#容器启动命令和参数</span></span><br><span class="line"><span class="attr">containersCommand:</span> {}</span><br><span class="line"><span class="attr">containersArgs:</span> <span class="string">'[</span></span><br><span class="line"><span class="string">  "--client-id=&lt;client-id&gt;",</span></span><br><span class="line"><span class="string">  "--client-secret=&lt;client-secret&gt;",</span></span><br><span class="line"><span class="string">  "--discovery-url=&lt;keycloak-address&gt;/auth/realms/&lt;realm-name&gt;",</span></span><br><span class="line"><span class="string">  "--enable-default-deny=true",</span></span><br><span class="line"><span class="string">  "--secure-cookie=false",</span></span><br><span class="line"><span class="string">  "--encryption-key=AgXa7xRcoClDEU0ZDSH4X0XhL5Qy2Z2j",</span></span><br><span class="line"><span class="string">  "--enable-json-logging=true",</span></span><br><span class="line"><span class="string">  "--enable-logging=true",</span></span><br><span class="line"><span class="string">  "--enable-request-id=true",</span></span><br><span class="line"><span class="string">  "--enable-security-filter=true",</span></span><br><span class="line"><span class="string">  "--http-only-cookie=true",</span></span><br><span class="line"><span class="string">  "--listen=0.0.0.0:8080",</span></span><br><span class="line"><span class="string">  "--preserve-host=true",</span></span><br><span class="line"><span class="string">  "--enable-logging",</span></span><br><span class="line"><span class="string">  "--redirection-url=http://faas.example.com",</span></span><br><span class="line"><span class="string">  "--upstream-url=http://nuclio-dashboard:8070",</span></span><br><span class="line"><span class="string">  "--skip-openid-provider-tls-verify",</span></span><br><span class="line"><span class="string">  "--skip-upstream-tls-verify",</span></span><br><span class="line"><span class="string">  "--resources=uri=/*|methods=GET,POST,DELETE,PUT,HEAD|roles=nuclio:viewer"</span></span><br><span class="line"><span class="string">  ]'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#【----------------服务配置--------------------】</span></span><br><span class="line"><span class="comment">#是否启动服务</span></span><br><span class="line"><span class="attr">serviceEnabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 服务映射端口类型ClusterIP、NodePort</span></span><br><span class="line"><span class="attr">serviceType:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="comment"># 服务</span></span><br><span class="line"><span class="attr">serviceName:</span> <span class="string">nuclio-proxy</span></span><br><span class="line"><span class="attr">servicePorts:</span></span><br><span class="line"><span class="comment"># 容器内端口</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line">  <span class="attr">protocol:</span> <span class="string">"TCP"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">ingressEnabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">ingressAnnotations:</span></span><br><span class="line">  <span class="attr">kubernetes.io/ingress.class:</span> <span class="string">nginx</span></span><br><span class="line"></span><br><span class="line"><span class="attr">ingressAddns:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="attr">ingressHosts:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">host:</span> <span class="string">faas</span></span><br><span class="line">  <span class="attr">domain:</span> <span class="string">example.com</span></span><br><span class="line">  <span class="attr">paths:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">path:</span> <span class="string">/</span></span><br><span class="line">    <span class="attr">servicePort:</span> <span class="number">8080</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-配置keycloak"><a href="#2-配置keycloak" class="headerlink" title="2. 配置keycloak"></a>2. 配置keycloak</h2><ol>
+<li><p>配置client</p>
+ <img width="60%" data-src="/images/post-image/gatekeeper-keycloakclient-config.png">
+</li>
+<li><p>配置Scope</p>
+<blockquote>
+<p>也可以直接通过Mappers配置audience,  ClientScope只是多封装了一层，好处是便于多个client共用。</p>
+</blockquote>
+<p> 2.1 选择<code>icos</code>realm – 点击<code>Client Scopes</code> – 点击<code>Settings</code></p>
+<ul>
+<li><code>name: </code> 设置名字为<code>nuclio-service</code></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p><code>Protocol: </code> 设置名字为<code>openid-connect</code></p>
+  <img width="60%" data-src="/images/post-image/gatekeeper-ClientScope-1.png">
+  
+<p>  2.2 在<code>Client Scope</code>页面 – 点击<code>Mappers</code></p>
+<ul>
+<li><code>name: </code> 设置名字为<code>nuclio-audience</code></li>
+<li><code>Mapper Type: </code> 设置为<code>Audience</code></li>
+<li><code>Included Client: </code> 输入<code>nuclio</code>，选择所要关联的client</li>
+<li><code>Add to access token: </code> 将状态设置为<code>ON</code></li>
+</ul>
+  <img width="60%" data-src="/images/post-image/gatekeeper-ClientScope-2.png">
+  
+<p>  2.3 返回<code>Clients</code>页面 – 点击<code>nuclio</code> client – 选择<code>Client Scopes</code>标签页 – 选择<code>Setup</code></p>
+<p>  在<code>Available Client Scopes</code> 中选择刚创建的<code>nuclio-service</code> – 点击<code>Add selected</code></p>
+</li>
+</ul>
+<img width="60%" data-src="/images/post-image/gatekeeper-ClientScope-3.png">
+
+   
+
+<ol start="3">
+<li>创建用户</li>
+</ol>
+<p>并将</p>
+<h2 id="3-部署nuclio"><a href="#3-部署nuclio" class="headerlink" title="3. 部署nuclio"></a>3. 部署nuclio</h2><p>将<code>nuclio</code>的集群外部访问都删除，比如<code>ingress</code>、<code>nodeport</code>等，用户只能通过代理访问<code>nuclio-dashboard:8070</code>服务。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h1><ol>
+<li><code>error redirect_url</code>报错：</li>
+</ol>
+<blockquote>
+<p>keycloak-client配置<code>redirect_url</code> 缺少<code>oauth/callback</code>,导致出现报错（keycloak端报错）</p>
+</blockquote>
+<ul>
+<li>keycloak中需要设置为<code>http://&lt;nuclio.acme.com&gt;/oauth/callback</code>（也可以直接使用通配符，配置为<code>http://&lt;nuclio.acme.com&gt;/*</code>）</li>
+<li>louketo-proxy启动时配置为<code>http://&lt;nuclio.acme.com&gt;/</code>。</li>
+</ul>
+<ol start="2">
+<li><p>登录成功，但由于未配置<code>audience</code>字段aud，claim中的字段无法对应<br>导致如下报错(louketo-proxy 端报错)</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'aud'</span> claim and <span class="string">'client_id'</span> <span class="keyword">do</span> not match</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>使用镜像supervisor启动，导致针对role的鉴权一直失败。</p>
+</li>
+</ol>
+<p>  换成<code>reg.chebai.org/paas/louketo-proxy:v1.0.0</code>之后一切正常。</p>
+<ol start="4">
+<li>keycloak服务端，注销session，需要重新无痕模式打开新的窗口生效。</li>
+</ol>
+<p>  过期时间在生成accessToken时被服务端根据配置生成（服务端默认5分钟过期），并保存在cookie中。<br>  在无refreshToken干预的条件下，只有等过期时间（默认5分钟）结束才会过期，返回keycloak登录页面。</p>
+<ol start="5">
+<li>nuclio会在请求header中<code>x-nuclio-project-namespace: &lt;namespace: eg. nuclio&gt;</code>,来区分不同命名空间下的function, 后期可以结合<code>User Group</code>，来进行租户划分和授权管理。</li>
+</ol>
+<h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1><p>nuclio使用<code>louketo-proxy</code>进行鉴权，多租户管理。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://github.com/louketo/louketo-proxy">gatekeeper git 仓库</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/louketo/louketo-proxy/blob/master/docs/user-guide.md">gatekeeper 用户手册</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/53550321/keycloak-gatekeeper-aud-claim-and-client-id-do-not-match">Keycloak-gatekeeper: ‘aud’ claim and ‘client_id’ do not match</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/audience.adoc">Keycloak 文档 - Audience support</a></p>
+<p>参考，理解类似gatekeepr、oauth2proxy这类工具的实现</p>
+<p><a target="_blank" rel="noopener" href="https://www.openpolicyagent.org/docs/latest/">Open Policy Agent 文档</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/01/22/kubernetes-2021-01-22-%E9%83%A8%E7%BD%B2%E7%BB%84%E4%BB%B6-IngressController%E5%90%AF%E7%94%A8%E8%AF%81%E4%B9%A6%E9%80%8F%E4%BC%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/22/kubernetes-2021-01-22-%E9%83%A8%E7%BD%B2%E7%BB%84%E4%BB%B6-IngressController%E5%90%AF%E7%94%A8%E8%AF%81%E4%B9%A6%E9%80%8F%E4%BC%A0/" class="post-title-link" itemprop="url">部署组件--IngressController启用证书透传</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-01-22 11:44:08" itemprop="dateCreated datePublished" datetime="2021-01-22T11:44:08+08:00">2021-01-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/01/22/kubernetes-2021-01-22-%E9%83%A8%E7%BD%B2%E7%BB%84%E4%BB%B6-IngressController%E5%90%AF%E7%94%A8%E8%AF%81%E4%B9%A6%E9%80%8F%E4%BC%A0/" class="post-meta-item leancloud_visitors" data-flag-title="部署组件--IngressController启用证书透传" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>ingress controller 启用证书透传需要做两步操作</p>
+<ol>
+<li>部署IngressController时，需要增加参数<code>--enable-ssl-passthrough</code></li>
+<li>在ingress对象中设置<code>annotation</code>，值为<code>nginx.ingress.kubernetes.io/ssl-redirect: "false"</code></li>
+</ol>
+<blockquote>
+<p><code>--enable-ssl-passthrough</code>标志启用SSLPassthrough功能，​​此功能默认情况下处于禁用状态。</p>
+</blockquote>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>kubernetes 1.15.6</p>
+<p>nginx-ingress-controller:3.21.0</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="1-获取chart"><a href="#1-获取chart" class="headerlink" title="1. 获取chart"></a>1. 获取chart</h2><p><a href="/images/charts/ingress-nginx-3.21.0.tgz">离线备份</a></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx</span><br><span class="line">helm repo update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取 最新 版本chart</span></span><br><span class="line"><span class="comment"># 建议拉取chart,而不是在线安装</span></span><br><span class="line">helm pull ingress-nginx/ingress-nginx --version=3.21.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># helm install </span></span><br><span class="line">helm install --name ingress-nginx --namespace ingress-nginx ingress-nginx-3.21.0.tgz</span><br><span class="line"></span><br><span class="line">helm install ingress-nginx ingress-nginx/ingress-nginx</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-配置ingress-nginx-增加参数-enable-ssl-passthrough"><a href="#2-配置ingress-nginx-增加参数-enable-ssl-passthrough" class="headerlink" title="2. 配置ingress-nginx,增加参数--enable-ssl-passthrough"></a>2. 配置<code>ingress-nginx</code>,增加参数<code>--enable-ssl-passthrough</code></h2><ol>
+<li>ingress-nginx的未在values文件中分离变量控制透传，需要改动<code>template/controller-deployment.yaml#77</code>：<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">{{<span class="bullet">-</span> <span class="string">if</span> <span class="string">or</span> <span class="string">(eq</span> <span class="string">.Values.controller.kind</span> <span class="string">"Deployment"</span><span class="string">)</span> <span class="string">(eq</span> <span class="string">.Values.controller.kind</span> <span class="string">"Both"</span><span class="string">)</span> <span class="string">-</span>}}</span><br><span class="line">{{<span class="bullet">-</span> <span class="string">include</span>  <span class="string">"isControllerTagValid"</span> <span class="string">.</span> <span class="string">-</span>}}</span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> {{ <span class="string">include</span> <span class="string">"ingress-nginx.controller.fullname"</span> <span class="string">.</span> }}</span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">revisionHistoryLimit:</span> {{ <span class="string">.Values.revisionHistoryLimit</span> }}</span><br><span class="line">  <span class="attr">minReadySeconds:</span> {{ <span class="string">.Values.controller.minReadySeconds</span> }}</span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">    {{<span class="bullet">-</span> <span class="string">if</span> <span class="string">.Values.controller.podAnnotations</span> }}</span><br><span class="line">      <span class="attr">annotations:</span></span><br><span class="line">      {{<span class="bullet">-</span> <span class="string">range</span> <span class="string">$key</span>, <span class="string">$value</span> <span class="string">:=</span> <span class="string">.Values.controller.podAnnotations</span> }}</span><br><span class="line">        {{ <span class="string">$key</span> }}<span class="string">:</span> {{ <span class="string">$value</span> <span class="string">|</span> <span class="string">quote</span> }}</span><br><span class="line">      {{<span class="bullet">-</span> <span class="string">end</span> }}</span><br><span class="line">    {{<span class="bullet">-</span> <span class="string">end</span> }}</span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        {{<span class="bullet">-</span> <span class="string">include</span> <span class="string">"ingress-nginx.selectorLabels"</span> <span class="string">.</span> <span class="string">|</span> <span class="string">nindent</span> <span class="number">8</span> }}</span><br><span class="line">        <span class="attr">app.kubernetes.io/component:</span> <span class="string">controller</span></span><br><span class="line">      {{<span class="bullet">-</span> <span class="string">if</span> <span class="string">.Values.controller.podLabels</span> }}</span><br><span class="line">        {{<span class="bullet">-</span> <span class="string">toYaml</span> <span class="string">.Values.controller.podLabels</span> <span class="string">|</span> <span class="string">nindent</span> <span class="number">8</span> }}</span><br><span class="line">      {{<span class="bullet">-</span> <span class="string">end</span> }}</span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">dnsPolicy:</span> {{ <span class="string">.Values.controller.dnsPolicy</span> }}</span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">controller</span></span><br><span class="line">          {{<span class="bullet">-</span> <span class="string">with</span> <span class="string">.Values.controller.image</span> }}</span><br><span class="line">          <span class="attr">image:</span> <span class="string">"<span class="template-variable">{{.repository}}</span>:<span class="template-variable">{{ .tag }}</span><span class="template-variable">{{- if (.digest) -}}</span> @<span class="template-variable">{{.digest}}</span> <span class="template-variable">{{- end -}}</span>"</span></span><br><span class="line">          {{<span class="bullet">-</span> <span class="string">end</span> }}</span><br><span class="line">          <span class="attr">imagePullPolicy:</span> {{ <span class="string">.Values.controller.image.pullPolicy</span> }}</span><br><span class="line">        {{<span class="bullet">-</span> <span class="string">if</span> <span class="string">.Values.controller.lifecycle</span> }}</span><br><span class="line">          <span class="attr">lifecycle:</span> {{ <span class="string">toYaml</span> <span class="string">.Values.controller.lifecycle</span> <span class="string">|</span> <span class="string">nindent</span> <span class="number">12</span> }}</span><br><span class="line">        {{<span class="bullet">-</span> <span class="string">end</span> }}</span><br><span class="line">          <span class="attr">args:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">/nginx-ingress-controller</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">--enable-ssl-passthrough</span></span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h2 id="3-配置-ingress-object-的注解"><a href="#3-配置-ingress-object-的注解" class="headerlink" title="3. 配置 ingress-object 的注解"></a>3. 配置 ingress-object 的注解</h2><p> 创建的需要透传的ingress对象举例：</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Ingress</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">annotations:</span></span><br><span class="line">  <span class="attr">nginx.ingress.kubernetes.io/ssl-redirect:</span> <span class="string">"false"</span></span><br><span class="line">  <span class="attr">kubernetes.io/ingress.class:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">creationTimestamp:</span> <span class="string">"2020-08-18T07:35:48Z"</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">paas-sample-ingress</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">rules:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">host:</span> <span class="string">paassample.icos.city</span></span><br><span class="line">  <span class="attr">http:</span></span><br><span class="line">    <span class="attr">paths:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">backend:</span></span><br><span class="line">        <span class="attr">serviceName:</span> <span class="string">paas-sample-svc</span></span><br><span class="line">        <span class="attr">servicePort:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://kubernetes.github.io/ingress-nginx/user-guide/tls/#ssl-passthrough">IngressNginx设置SSL Passthrough</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/01/22/devops-2021-01-22-Git-%E4%B8%AD%E6%96%87%E5%90%8D%E4%B9%B1%E7%A0%81%E5%AF%BC%E8%87%B4cloc%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E9%87%8F%E5%87%BA%E9%94%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/22/devops-2021-01-22-Git-%E4%B8%AD%E6%96%87%E5%90%8D%E4%B9%B1%E7%A0%81%E5%AF%BC%E8%87%B4cloc%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E9%87%8F%E5%87%BA%E9%94%99/" class="post-title-link" itemprop="url">Git--中文名乱码导致cloc统计代码量出错</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-01-22 10:21:18" itemprop="dateCreated datePublished" datetime="2021-01-22T10:21:18+08:00">2021-01-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/01/22/devops-2021-01-22-Git-%E4%B8%AD%E6%96%87%E5%90%8D%E4%B9%B1%E7%A0%81%E5%AF%BC%E8%87%B4cloc%E7%BB%9F%E8%AE%A1%E4%BB%A3%E7%A0%81%E9%87%8F%E5%87%BA%E9%94%99/" class="post-meta-item leancloud_visitors" data-flag-title="Git--中文名乱码导致cloc统计代码量出错" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>由于领导想通过代码量衡量外包的工作量，需要每周提供当前周的代码增量。</p>
+<p>规程中遇到以下问题：</p>
+<ol>
+<li>使用什么工具，cloc</li>
+<li>如何统计最近一周代码增量</li>
+<li>解决中文文件名导致cloc报错</li>
+</ol>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>Ubuntu 18.04</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>版本较老，如果想使用最新版，参考<a target="_blank" rel="noopener" href="https://github.com/AlDanial/cloc/releases/latest">此处安装</a></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install cloc</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ol>
+<li>git 获取距今一周的 Commit ID</li>
+</ol>
+<ul>
+<li><code>--reverse</code>           : 将git log 倒序</li>
+<li><code>-1</code>                  : 只取一行日志</li>
+<li><code>--pretty=format:"%h"</code>: 日志只输出commit-id</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取最近一周日志</span></span><br><span class="line">date_str=$(<span class="built_in">date</span>  --<span class="built_in">date</span>=<span class="string">"1 weeks ago"</span> +<span class="string">"%Y-%m-%d"</span>)</span><br><span class="line">logs=$(git <span class="built_in">log</span> --after=<span class="string">"<span class="variable">${date_str}</span>"</span>  --pretty=format:<span class="string">"%h"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># --reverse 与 --pretty 一起使用未反转日志。以下命令会取最新的一次commit-id</span></span><br><span class="line"><span class="comment"># commit_id=$(git log --after="${date_str}" --reverse -1 --pretty=format:"%h")</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取最后一条commit-id 与 HEAD的差异</span></span><br><span class="line">cloc --git --diff <span class="string">"<span class="variable">${logs##*$'\n'}</span>"</span> HEAD </span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>如果git仓库中，存在中文，则有可能遇到以下报错<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cloc --git --diff c9df9mf09df HEAD</span><br><span class="line">fatal: pathspec '"road/Road/\346\265\213\350\257\225\345\234\271\2.sql"' did not match any files</span><br><span class="line">Failed to create tarfile of files from git. at /usr/bin/cloc line 3811.</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<p>将中文名显示乱码问题解决，则能正常统计</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath <span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.cyberciti.biz/tips/linux-unix-get-yesterdays-tomorrows-date.html">bash-date</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/AlDanial/cloc">cloc</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/linx/p/9765016.html">git中文显示乱码问题</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/01/22/persistence-2021-01-22-Registry-%E9%83%A8%E7%BD%B2%E8%87%B3k8s%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/22/persistence-2021-01-22-Registry-%E9%83%A8%E7%BD%B2%E8%87%B3k8s%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Registry--部署至k8s集群并使用</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-01-22 10:13:28" itemprop="dateCreated datePublished" datetime="2021-01-22T10:13:28+08:00">2021-01-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Persistence/" itemprop="url" rel="index">
+                    <span itemprop="name">Persistence</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/01/22/persistence-2021-01-22-Registry-%E9%83%A8%E7%BD%B2%E8%87%B3k8s%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="Registry--部署至k8s集群并使用" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: 操作记录 </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>nuclio平台部署，需要一个镜像仓库提供两个功能</p>
+<ol>
+<li>构建时，提供build-base-image;</li>
+<li>存储每个function构建后的结果镜像。</li>
+</ol>
+<p>所以需要： 1. 部署带认证的registry； 2. 将基础依赖镜像(包括各个语言的build-handler镜像等)推送registry</p>
+<h1 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2.环境准备"></a>2.环境准备</h1><p>获取, 基于<br><a target="_blank" rel="noopener" href="https://github.com/helm/charts/tree/master/stable/docker-registry">此chart</a> 修改的registry。<br><a href="/images/charts/prebaked-registry-0.0.1.tgz">离线chart</a></p>
+<h1 id="3-部署"><a href="#3-部署" class="headerlink" title="3.部署"></a>3.部署</h1><h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><p><code>prebaked-registry/values.yaml</code>：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>secrets.htpasswd</td>
+<td>kaniko pull prebaked-registry时认证用的密码</td>
+</tr>
+</tbody></table>
+<h2 id="生成prebaked-registry认证密码"><a href="#生成prebaked-registry认证密码" class="headerlink" title="生成prebaked-registry认证密码"></a>生成prebaked-registry认证密码</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --entrypoint htpasswd registry:2 -Bbn icos 123456</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="部署prebaked-registry"><a href="#部署prebaked-registry" class="headerlink" title="部署prebaked-registry"></a>部署prebaked-registry</h2><p>把上一步生成的密码粘贴到 prebaked-registry/values.yaml secrets.htpasswd</p>
+<p>执行命令部署服务：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl create ns nuclio</span><br><span class="line">helm install prebaked-registry ./prebaked-registry/ -n nuclio</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="创建registry-credentials-secret"><a href="#创建registry-credentials-secret" class="headerlink" title="创建registry credentials secret"></a>创建registry credentials secret</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入registry密码，同prebaked-registry保持一致</span></span><br><span class="line"><span class="built_in">read</span> -s mypassword</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意修改 &lt;user&gt;</span></span><br><span class="line">kubectl -n nuclio create secret docker-registry registry-credentials --docker-username icos --docker-password <span class="variable">$mypassword</span> --docker-server prebaked-registry.nuclio:5000 --docker-email admin@icos.city</span><br><span class="line"><span class="comment"># 注销变量</span></span><br><span class="line"><span class="built_in">unset</span> mypassword</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="4-使用"><a href="#4-使用" class="headerlink" title="4.使用"></a>4.使用</h1><blockquote>
+<p>参考chart的Note内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1. Get the application URL by running these commands:</span><br><span class="line">{{- if .Values.ingress.enabled }}</span><br><span class="line">{{- range .Values.ingress.hosts }}</span><br><span class="line">  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ . }}{{ $.Values.ingress.path }}</span><br><span class="line">{{- end }}</span><br><span class="line">{{- else if contains "NodePort" .Values.service.type }}</span><br><span class="line">  export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ template "docker-registry.fullname" . }})</span><br><span class="line">  export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")</span><br><span class="line">  echo http://$NODE_IP:$NODE_PORT</span><br><span class="line">{{- else if contains "LoadBalancer" .Values.service.type }}</span><br><span class="line">     NOTE: It may take a few minutes for the LoadBalancer IP to be available.</span><br><span class="line">           You can watch the status of by running 'kubectl get svc -w {{ template "docker-registry.fullname" . }}'</span><br><span class="line">  export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ template "docker-registry.fullname" . }} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')</span><br><span class="line">  echo http://$SERVICE_IP:{{ .Values.service.externalPort }}</span><br><span class="line">{{- else if contains "ClusterIP" .Values.service.type }}</span><br><span class="line">  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app={{ template "docker-registry.name" . }},release={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")</span><br><span class="line">  echo "Visit http://127.0.0.1:8080 to use your application"</span><br><span class="line">  kubectl -n {{ .Release.Namespace }} port-forward $POD_NAME 8080:5000</span><br><span class="line">{{- end }}</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://blinkeye.github.io/post/public/2019-05-28-private-docker-registry/">Blog-private-docker-registry</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nearform.com/blog/how-to-run-a-public-docker-registry-in-kubernetes/">Blog-在k8s中部署registry</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/01/21/kubernetes-2021-01-21-%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5-ExternalDNS%E5%8F%AA%E5%BC%80%E6%94%BEUDP53%E4%B8%8D%E5%BC%80%E6%94%BETCP53%E5%AF%BC%E8%87%B4%E7%BD%91%E7%BB%9C%E8%B6%85%E6%97%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/21/kubernetes-2021-01-21-%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5-ExternalDNS%E5%8F%AA%E5%BC%80%E6%94%BEUDP53%E4%B8%8D%E5%BC%80%E6%94%BETCP53%E5%AF%BC%E8%87%B4%E7%BD%91%E7%BB%9C%E8%B6%85%E6%97%B6/" class="post-title-link" itemprop="url">故障排查--ExternalDNS只开放UDP53不开放TCP53导致网络超时</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-01-21 10:02:19" itemprop="dateCreated datePublished" datetime="2021-01-21T10:02:19+08:00">2021-01-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/01/21/kubernetes-2021-01-21-%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5-ExternalDNS%E5%8F%AA%E5%BC%80%E6%94%BEUDP53%E4%B8%8D%E5%BC%80%E6%94%BETCP53%E5%AF%BC%E8%87%B4%E7%BD%91%E7%BB%9C%E8%B6%85%E6%97%B6/" class="post-meta-item leancloud_visitors" data-flag-title="故障排查--ExternalDNS只开放UDP53不开放TCP53导致网络超时" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>记同事一次奇葩问题拍错过程。</p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>presto 服务部署在k8s集群内部，并与集成了集群外的kerbos认证。</p>
+<p><em>现象：</em><br>    集群内部访问presto一切正常，但集群外部访问会阻塞5分钟，之后访问正常。</p>
+<p><em>排错过程：</em><br>    抓包，抓client与kerbos之间包。发现客户端像<code>DNS-Server</code>发起了对域``的解析，返回的解析结果中包含36个主机IP,包大小超过了512字节，导致消息被截断，<br>    然后重新发起了TCP请求，但<code>DNS-Server</code>的TCP-53端口没有开放，客户端重试5分钟，超时。但presto还继续了后面正常的逻辑。</p>
+<p><em>造成问题原因：</em><br>    1. 集群外部使用<code>DNS-Server</code>,安全组中中开放了<code>TCP-53</code>，未开放<code>UDP-53</code>端口。</p>
+<p><em>导致问题难以定位原因：</em><br>    1. 之前主机较少，解析的包未超过512。集群内外状态皆正常。<br>    2. 集群内部使用的<code>CoreDNS</code>，<code>TCP-53</code>与<code>UDP-53</code>端口开放；但集群外部使用的外部的<code>DNS-Server</code>,安全组中只开放了<code>TCP-53</code>。<br>    3. 以为presto服务存在问题，只抓了客户端与presto之间的网路包。后期观察presto日志发现阻塞时，日志停留在与kerbos认证过程中。<br>    4. presto处理机制存在问题，即dns解析异常未做处理(比如抛错或退出)；未收到期望的解析结果仍走了后面正常逻辑，导致只是等待5分钟，但后续逻辑正常。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>抓取的包文件可从<a href="/images/files/presto-dns-53.cap">此处获取</a></p>
+<p>包通过<code>wireshark</code>打开，如下：</p>
+<img width="60%" data-src="/images/post-image/dns-TCP53-not-export.png">
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ldw662523/article/details/79564884">DNS使用TCP和UDP的53端口</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/01/14/bash-2021-01-14-shell%E5%9F%BA%E7%A1%80%E4%B9%8BEOF%E7%9A%84%E7%94%A8%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/14/bash-2021-01-14-shell%E5%9F%BA%E7%A1%80%E4%B9%8BEOF%E7%9A%84%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">shell基础之EOF的用法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-01-14 07:25:14" itemprop="dateCreated datePublished" datetime="2021-01-14T07:25:14+08:00">2021-01-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Bash/" itemprop="url" rel="index">
+                    <span itemprop="name">Bash</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/01/14/bash-2021-01-14-shell%E5%9F%BA%E7%A1%80%E4%B9%8BEOF%E7%9A%84%E7%94%A8%E6%B3%95/" class="post-meta-item leancloud_visitors" data-flag-title="shell基础之EOF的用法" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>EOF是（END Of File）的缩写，表示自定义终止符。既然自定义，那么EOF就不是固定的，可以随意设置别名，在linux按ctrl-d 就代表EOF。</p>
+<p>EOF一般会配合cat能够多行文本输出。</p>
+<h1 id="2-用法说明"><a href="#2-用法说明" class="headerlink" title="2. 用法说明"></a>2. 用法说明</h1><p>其用法如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;<span class="string">EOF        #开始</span></span><br><span class="line"><span class="string">....         #输入内容</span></span><br><span class="line"><span class="string">EOF</span>          <span class="comment">#结束</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>还可以自定义，比如自定义：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开始</span></span><br><span class="line">&lt;&lt;<span class="string">ABC        </span></span><br><span class="line"><span class="string">....</span></span><br><span class="line"><span class="string"># 结束</span></span><br><span class="line"><span class="string">ABC</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>通过cat配合重定向能够生成文件并追加操作，在它之前先熟悉几个特殊符号<br><code>&lt;</code>:  输入重定向<br><code>&gt;</code>:  输出重定向<br><code>&gt;&gt;</code>: 输出重定向,进行追加,不会覆盖之前内容<br><code>&lt;&lt;</code>: 标准输入来自命令行的一对分隔号的中间内容</p>
+<p>例子1：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">hello</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></tbody></table></figure>
+<p>输出为：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我们知道cat的操作对象是文件，但是例1中cat的操作对象不是文件，而是用户输入；那么我们可以这样理解例1：先在文件file中输入“Hello”，再用cat file输出其中的内容。<br>也就是说我们可以用一个文件来替代”&lt;&lt; EOF EOF”。</p>
+<p>反过来说，如果操作命令中的文件是输入对象，也可以用”&lt;&lt; EOF EOF”来替代的。</p>
+<p>例子2：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 创建1.txt文件，文件中有字段`abc`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"abc"</span> &gt; 1.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 向文件1.txt输入覆盖内容（也可以：cat &gt; 1.txt &lt;&lt;EOF）</span></span><br><span class="line"><span class="built_in">cat</span> &lt;&lt;<span class="string">EOF &gt; 1.txt </span></span><br><span class="line"><span class="string">11</span></span><br><span class="line"><span class="string">aa</span></span><br><span class="line"><span class="string">bb</span></span><br><span class="line"><span class="string">lol</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># "&lt;&lt; EOF EOF" 的作用是在命令执行过程中用户自定义输入，它类似于起到一个临时文件的作用，只是比使用文件更方便灵活。</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="3-cat-lt-lt-EOF-与-cat-lt-lt-EOF-的区别"><a href="#3-cat-lt-lt-EOF-与-cat-lt-lt-EOF-的区别" class="headerlink" title="3. cat <<EOF 与 cat <<-EOF 的区别"></a>3. <code>cat &lt;&lt;EOF</code> 与 <code>cat &lt;&lt;-EOF</code> 的区别</h1><p>两个都是获取stdin，并在EOF处结束stdin，输出stdout。</p>
+<p>使用<code>cat &lt;&lt;EOF</code>时，输入完成后，需要在一个新的一行输入EOF结束stdin的输入。EOF必须顶行写，前面不能用制表符或者空格。<br>使用<code>cat &lt;&lt;-EOF</code>时，分界符（EOF）所在行的开头部分的制表符（Tab）都将被去除。这可以解决由于脚本中的自然缩进产生的制表符。</p>
+<p>如果结束分解符EOF前有制表符或者空格，则EOF不会被当做结束分界符，只会继续被当做stdin来输入。所以会报如下报错</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.sh: line 5: warning: here-document at line 1 delimited by end-of-file (wanted `EOF')</span><br></pre></td></tr></tbody></table></figure>
+<p>脚本内容如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">你好，EOF</span>！</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
+<p>正确写法如下 - 2种：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 虽然最后的EOF前面有多个制表符和空格，但仍然会被当做结束分界符，表示stdin的结束。</span></span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">你好，EOF</span>！</span><br><span class="line"></span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 虽然最后的EOF前面有多个制表符和空格，但仍然会被当做结束分界符，表示stdin的结束。</span></span><br><span class="line"><span class="built_in">cat</span> &lt;&lt;-<span class="string">EOF</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">你好，EOF</span>！</span><br><span class="line"></span><br><span class="line">      EOF</span><br></pre></td></tr></tbody></table></figure>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/12/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-12-28-GIT-%E9%85%8D%E7%BD%AEproxy%E5%B9%B6%E5%BF%BD%E7%95%A5%E5%86%85%E7%BD%91%E4%BB%93%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-12-28-GIT-%E9%85%8D%E7%BD%AEproxy%E5%B9%B6%E5%BF%BD%E7%95%A5%E5%86%85%E7%BD%91%E4%BB%93%E5%BA%93/" class="post-title-link" itemprop="url">GIT-配置proxy并忽略内网仓库</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-12-28 04:13:36" itemprop="dateCreated datePublished" datetime="2020-12-28T04:13:36+08:00">2020-12-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/12/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-12-28-GIT-%E9%85%8D%E7%BD%AEproxy%E5%B9%B6%E5%BF%BD%E7%95%A5%E5%86%85%E7%BD%91%E4%BB%93%E5%BA%93/" class="post-meta-item leancloud_visitors" data-flag-title="GIT-配置proxy并忽略内网仓库" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>实现的状态</p>
+<ul>
+<li>github仓库走代理</li>
+<li>内网仓库不走代理</li>
+</ul>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>由于github仓库拉取缓慢，所以配置了代理； 但内网仓库拉取也走了代理，导致出现以下报错</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hex@hex-pc:~/example-repo$ git pull </span><br><span class="line">fatal: unable to access <span class="string">'https://git.service.rd/plugins/git/example-repo.git/'</span>: gnutls_handshake() failed: The TLS connection was non-properly terminated.</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="解决办法-推荐"><a href="#解决办法-推荐" class="headerlink" title="解决办法(推荐)"></a>解决办法(推荐)</h1><p>git是可以根据环境变量的配置，声明代理并将内网地址配置不走代理，实现此功能，但要注意格式。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:10800/</span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:10800/</span><br><span class="line"><span class="built_in">export</span> all_proxy=socks://127.0.0.1:1088/</span><br><span class="line"><span class="built_in">export</span> ftp_proxy=http://127.0.0.1:10800</span><br><span class="line"></span><br><span class="line"><span class="comment"># 声明内网不走proxy的服务 声明域名作为通配，以空格分隔。</span></span><br><span class="line"><span class="built_in">export</span> no_proxy=<span class="string">".service.rd .icos.city 127.0.0.1 localhost"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="修改本地库-local配置"><a href="#修改本地库-local配置" class="headerlink" title="修改本地库-local配置"></a>修改本地库-local配置</h1><p>也可以针对仓库设置git config。可以设置本地库全局配置，也可以只设置单一远端。</p>
+<ol>
+<li><p>已有仓库,进入仓库目录下，并添加一个“空”代理（仓库级别）。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> --add http.proxy <span class="string">""</span></span><br></pre></td></tr></tbody></table></figure>
+<p>在仓库目录下<code>&lt;repo_path&gt;/.git/config</code>，会出现以下内容</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = 0</span><br><span class="line">	filemode = true</span><br><span class="line">	bare = false</span><br><span class="line">	logallrefupdates = true</span><br><span class="line">[remote "origin"]</span><br><span class="line">	url = https://git.service.rd/plugins/git/example.git</span><br><span class="line">	fetch = +refs/heads/*:refs/remotes/origin/*</span><br><span class="line">[branch "master"]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br><span class="line">[http]</span><br><span class="line">	proxy = </span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>已有仓库，进入仓库目录下，添加一个”空“代理（固定remote级别）。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> --add remote.&lt;name&gt;.proxy <span class="string">""</span></span><br></pre></td></tr></tbody></table></figure>
+<p>执行下面命令查看</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> --get remote.&lt;name&gt;.proxy</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h1 id="修改全局配置（只能针对单库）"><a href="#修改全局配置（只能针对单库）" class="headerlink" title="修改全局配置（只能针对单库）"></a>修改全局配置（只能针对单库）</h1><p>修改 <code>~/.gitconfig</code>文件，增加以下内容</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[http]</span><br><span class="line">   sslVerify = true</span><br><span class="line">[http "https://git.service.rd/plugins/git/example-repo.git"]</span><br><span class="line">   sslVerify = false</span><br><span class="line">   ptoxy = </span><br></pre></td></tr></tbody></table></figure>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/11/18/persistence-2020-11-18-S3fs-%E5%88%A9%E7%94%A8s3%E4%BD%9C%E4%B8%BA%E5%BC%B9%E6%80%A7%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/18/persistence-2020-11-18-S3fs-%E5%88%A9%E7%94%A8s3%E4%BD%9C%E4%B8%BA%E5%BC%B9%E6%80%A7%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">S3fs-利用s3作为弹性文件存储方案</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-11-18 07:29:37" itemprop="dateCreated datePublished" datetime="2020-11-18T07:29:37+08:00">2020-11-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Persistence/" itemprop="url" rel="index">
+                    <span itemprop="name">Persistence</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/11/18/persistence-2020-11-18-S3fs-%E5%88%A9%E7%94%A8s3%E4%BD%9C%E4%B8%BA%E5%BC%B9%E6%80%A7%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%96%B9%E6%A1%88/" class="post-meta-item leancloud_visitors" data-flag-title="S3fs-利用s3作为弹性文件存储方案" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>s3fs使用fuse挂载s3 bucket到Linux或Mac系统,并且支持在Docker容器内部以非特权用户挂载s3 bucket。</p>
+<h1 id="安装s3fs"><a href="#安装s3fs" class="headerlink" title="安装s3fs"></a>安装s3fs</h1><p>在容器内使用s3fs,需要在Docker镜像中安装s3fs,以下是主流发行版安装方法:</p>
+<ul>
+<li><p>Debian 9 and Ubuntu 16.04 or newer:</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install s3fs</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>RHEL and CentOS 7 or newer through via EPEL:</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release</span><br><span class="line">sudo yum install s3fs-fuse</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h1 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h1><ol>
+<li><p>/etc/fuse.conf文件中配置说明</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>user_allow_other</td>
+<td>允许非root用户使用allow_other 挂载选项</td>
+<td>no value</td>
+</tr>
+</tbody></table>
+<hr>
+</li>
+<li><p>挂载选项说明</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>use_path_request_style</td>
+<td>非AWS实现的S3服务,设置此参数,配合url使用</td>
+<td>no value</td>
+</tr>
+<tr>
+<td>url</td>
+<td>S3服务的URL</td>
+<td><a target="_blank" rel="noopener" href="http://obs.cn-north-4.myhuaweicloud.com/">http://obs.cn-north-4.myhuaweicloud.com</a></td>
+</tr>
+<tr>
+<td>allow_other</td>
+<td>允许非root用户挂载</td>
+<td>no vaule</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<hr>
+
+<h1 id="部署服务"><a href="#部署服务" class="headerlink" title="部署服务"></a>部署服务</h1><ul>
+<li><p>通过fstab挂载</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo ACCESS_KEY_ID:SECRET_ACCESS_KEY &gt; ~/.passwd-s3fs</span><br><span class="line">sed -i 's/\#user_allow_other/user_allow_other/g' /etc/fuse.conf</span><br><span class="line">mkdir /mnt/s3</span><br><span class="line">rke-test /mnt/s3 fuse.s3fs _netdev,allow_other,use_path_request_style,url=http://obs.cn-north-4.myhuaweicloud.com / 0 0</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>通过命令挂载</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo ACCESS_KEY_ID:SECRET_ACCESS_KEY &gt; ~/.passwd-s3fs</span><br><span class="line">sed -i 's/\#user_allow_other/user_allow_other/g' /etc/fuse.conf</span><br><span class="line">mkdir /mnt/s3</span><br><span class="line">s3fs rke-test /mnt/s3 -o _netdev -o allow_other -o use_path_request_style -o url=http://obs.cn-north-4.myhuaweicloud.com</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>容器内命令挂载</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name ranger  --cap-add mknod --cap-add sys_admin --security-opt apparmor:unconfined --device=/dev/fuse reg.chebai.org/paas/ranger:latest</span><br><span class="line">docker exec -it -u 1000 ranger bash</span><br><span class="line">echo ACCESS_KEY_ID:SECRET_ACCESS_KEY &gt; ~/.passwd-s3fs</span><br><span class="line">sed -i 's/\#user_allow_other/user_allow_other/g' /etc/fuse.conf</span><br><span class="line">mkdir /mnt/s3</span><br><span class="line">s3fs rke-test /mnt/s3 -o _netdev -o allow_other -o use_path_request_style -o url=http://obs.cn-north-4.myhuaweicloud.com</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><ol>
+<li><p>确定已成功挂载</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount | grep s3</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>复制文件到挂载点</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp file /mnt/s3</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>在华为云控制台检查bucket中是否存在该文件</li>
+</ol>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><ol>
+<li><p>fuse: device not found, try ‘modprobe fuse’ first<br><a target="_blank" rel="noopener" href="https://github.com/s3fs-fuse/s3fs-fuse/issues/1314#issuecomment-647482118">k8s中，容器需要设置特权模式。否则会引起此报错</a></p>
+</li>
+<li><p>启用此功能需要节点安装fuse组件么<br>不需要，只需要容器安装<code>s3fs</code>，调用容器内的fuse组件。fuse是user-space的组件，只需要容器内安装。之后需要特权模式sys-admin。则能正常使用。<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/106719192?utm_source=wechat_session">用户空间文件系统FUSE工作原理</a></p>
+</li>
+<li><p>s3fs: credentials file /root/.passwd-s3fs should not have others permissions.<br>文件权限问题，为是s3认证信息保密，将权限由644改为600。<code>chmod 600 ～/.passwd-s3fs</code>。</p>
+</li>
+<li><p>文件只读性能还可以，但一点有写操作，性能很差。<br>a服务修改了文件，会重新上传文件至s3，其他节点则是从s3同步下修改的文件。</p>
+</li>
+</ol>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a target="_blank" rel="noopener" href="https://github.com/s3fs-fuse">s3fs-fuse github</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/106719192?utm_source=wechat_session">fuse 概念扫盲</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/11/13/persistence-2020-11-13-MongoDB-sharded%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BB%B4%E6%8A%A4%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/13/persistence-2020-11-13-MongoDB-sharded%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BB%B4%E6%8A%A4%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">MongoDB-sharded集群搭建及维护使用</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-11-13 04:02:02" itemprop="dateCreated datePublished" datetime="2020-11-13T04:02:02+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Persistence/" itemprop="url" rel="index">
+                    <span itemprop="name">Persistence</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/11/13/persistence-2020-11-13-MongoDB-sharded%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BB%B4%E6%8A%A4%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="MongoDB-sharded集群搭建及维护使用" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>mongodb的搭建主要分<code>sharded-cluster</code>,<code>ha</code>, <code>single-node</code>, 一个<code>ha</code>可以包含primary(1),secondary(0~2),ab</p>
+<ol>
+<li><p>mongodb使用偶数版本(稳定版本)。比如4.4.1， 而非奇数版本(开发版本)，比如4.3.0。具体详见<a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/versioning/#mongodb-versioning">mongodb versioning</a></p>
+</li>
+<li><p>mongodb关于bitnami的sharded部署，普通用户的创建不能使用。因为</p>
+</li>
+</ol>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h1 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2.环境准备"></a>2.环境准备</h1><h1 id="3-部署"><a href="#3-部署" class="headerlink" title="3.部署"></a>3.部署</h1><h1 id="4-使用"><a href="#4-使用" class="headerlink" title="4.使用"></a>4.使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>官方文档</p>
+<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/sharding/">mongodb官方文档-sharding</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/tutorial/deploy-shard-cluster/">mongodb官方文档-sharding部署</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/administration/sharded-cluster-administration/">mongodb官方文档-sharded-Cluster管理员文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/v3.0/administration/sharded-clusters/">mongodb官方文档-sharded-Cluster管理员文档v3版本</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/versioning/#mongodb-versioning">mongodb官方文档-版本说明</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/release-notes/4.4/">mongodb官方文档-Release Notes</a></p>
+<p>部署chart(注意，helm/charts下的mongodb和mongodb-replicaset已不再维护)</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/bitnami/charts/tree/master/bitnami/mongodb-sharded">mongodb-部署chart-Mongodb-sharded</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/bitnami/charts/issues/1655#issuecomment-704064736">数据库初始化，需要等集群正确分片后执行</a><br><a target="_blank" rel="noopener" href="https://github.com/bitnami/charts/issues/1655">(bitnami/mongodb-sharded)custom用户和数据库变量被忽略</a></p>
+<p>扫盲博客</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xybaby/p/6832296.html#_label_0">博客–mongodb部署了解mongodb-sharded</a></p>
+<p>其他<br><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/64561.html">阿里云mongodb-sharding 注意事项</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.mongodb.com/blog/post/performance-best-practices-sharding">Performance Best Practices: Sharding</a></p>
+<p><a target="_blank" rel="noopener" href="https://geekflare.com/mongodb-sharding-best-practices/">What is MongoDB Sharding and the Best Practices?</a></p>
+<p><a target="_blank" rel="noopener" href="https://orangematter.solarwinds.com/2017/09/06/the-basics-of-sharding-in-mongodb/">The Basics of Sharding in MongoDB</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/11/12/golang-2020-11-12-Go-Struct-tag%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-%E4%B8%89-%E4%B8%BAstruct%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8Cvalidator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/12/golang-2020-11-12-Go-Struct-tag%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-%E4%B8%89-%E4%B8%BAstruct%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8Cvalidator/" class="post-title-link" itemprop="url">Go-Struct-tag深入理解[三]为struct设置参数校验validator</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-11-12 03:38:14" itemprop="dateCreated datePublished" datetime="2020-11-12T03:38:14+08:00">2020-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/11/12/golang-2020-11-12-Go-Struct-tag%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-%E4%B8%89-%E4%B8%BAstruct%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8Cvalidator/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Struct-tag深入理解[三]为struct设置参数校验validator" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

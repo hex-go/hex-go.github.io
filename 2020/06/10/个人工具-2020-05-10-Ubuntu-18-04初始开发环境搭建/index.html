@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="重要最重要的事: 本文包括  初始包安装； 安装翻墙软件； 安装docker； 安装Goland开发环境gvm+golang-1.13； 安装前端环境npm-nodejs-yarn； docker运行微信； 安装finalshell； 安装Goland并激活； 安装其他，postman、typora、git-client、docker-compose等；  初始包安装必备工具 1sudo apt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu18.04初始开发环境搭建">
+<meta property="og:url" content="https://hex-py.github.io/2020/06/10/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-05-10-Ubuntu-18-04%E5%88%9D%E5%A7%8B%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="重要最重要的事: 本文包括  初始包安装； 安装翻墙软件； 安装docker； 安装Goland开发环境gvm+golang-1.13； 安装前端环境npm-nodejs-yarn； docker运行微信； 安装finalshell； 安装Goland并激活； 安装其他，postman、typora、git-client、docker-compose等；  初始包安装必备工具 1sudo apt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-09T22:03:00.000Z">
+<meta property="article:modified_time" content="2022-11-30T03:22:28.025Z">
+<meta property="article:author" content="Hex">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Go">
+<meta property="article:tag" content="个人工具">
+<meta property="article:tag" content="Ubuntu">
+<meta property="article:tag" content="GVM">
+<meta property="article:tag" content="Goland">
+<meta property="article:tag" content="Nodejs">
+<meta property="article:tag" content="Postman">
+<meta property="article:tag" content="Typora">
+<meta property="article:tag" content="Finalshell">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/2020/06/10/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-05-10-Ubuntu-18-04%E5%88%9D%E5%A7%8B%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>ubuntu18.04初始开发环境搭建 | Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/06/10/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-05-10-Ubuntu-18-04%E5%88%9D%E5%A7%8B%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ubuntu18.04初始开发环境搭建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-06-10 06:03:00" itemprop="dateCreated datePublished" datetime="2020-06-10T06:03:00+08:00">2020-06-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/06/10/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-05-10-Ubuntu-18-04%E5%88%9D%E5%A7%8B%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="post-meta-item leancloud_visitors" data-flag-title="ubuntu18.04初始开发环境搭建" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: 本文包括</p>
+<ol>
+<li>初始包安装；</li>
+<li>安装翻墙软件；</li>
+<li>安装docker；</li>
+<li>安装Goland开发环境gvm+golang-1.13；</li>
+<li>安装前端环境npm-nodejs-yarn；</li>
+<li>docker运行微信；</li>
+<li>安装finalshell；</li>
+<li>安装Goland并激活；</li>
+<li>安装其他，postman、typora、git-client、docker-compose等；</li>
+</ol>
+<h1 id="初始包安装"><a href="#初始包安装" class="headerlink" title="初始包安装"></a>初始包安装</h1><p>必备工具</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server curl unrar net-tools </span><br></pre></td></tr></tbody></table></figure>
+
+<p>为Gland准备</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcanberra-gtk-module openjdk-11-jre-headless</span><br></pre></td></tr></tbody></table></figure>
+
+<p>为前端和Golang编译安装</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install curl git mercurial make binutils bison gcc build-essential</span><br></pre></td></tr></tbody></table></figure>
+
+<p>为搜狗输入法准备</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx-bin fcitx-table</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="显卡驱动（draft）"><a href="#显卡驱动（draft）" class="headerlink" title="显卡驱动（draft）"></a>显卡驱动（draft）</h1><p>卸载已存在驱动旧组件</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge nvidia*</span><br><span class="line">sudo apt-get autoremove</span><br><span class="line"><span class="comment"># 删除/etc/apt/sources.list.d下的相关记录</span></span><br><span class="line">sudo dpkg -P cuda-repo-ubuntu1404</span><br></pre></td></tr></tbody></table></figure>
+
+<p>下载驱动</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">wget http://us.download.nvidia.com/XFree86/Linux-x86_64/384.69/NVIDIA-Linux-x86_64-384.69.run</span><br></pre></td></tr></tbody></table></figure>
+
+<p>安装依赖</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用来编译驱动</span></span><br><span class="line">sudo apt install build-essential</span><br><span class="line"><span class="comment"># 用来支持32位系统(可选)</span></span><br><span class="line">sudo apt install gcc-multilib</span><br><span class="line"><span class="comment"># 用来提供dkms支持</span></span><br><span class="line">sudo apt install dkms</span><br><span class="line"><span class="comment"># 带图形显示的系统必须装，但一般都装过了(因为你已经能看到桌面，说明已经装好了)。server版的机器不用装(可选)</span></span><br><span class="line">sudo apt install xorg xorg-dev</span><br></pre></td></tr></tbody></table></figure>
+
+<p>安装驱动</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get nvidia-375 nvidia-modprobe</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="安装配置翻墙软件"><a href="#安装配置翻墙软件" class="headerlink" title="安装配置翻墙软件"></a>安装配置翻墙软件</h1><ol>
+<li>下载Qv2ray软件包</li>
+<li>下载v2ray核心软件包</li>
+<li>集成并配置订阅地址</li>
+<li>chrome配置</li>
+</ol>
+<h1 id="安装配置Docker"><a href="#安装配置Docker" class="headerlink" title="安装配置Docker"></a>安装配置Docker</h1><ol>
+<li>卸载机器上docker组件</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>安装Docker</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>解决Docker命令和socket文件权限问题</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将操作的用户加入docker组中</span></span><br><span class="line">sudo usermod -aG docker <span class="variable">${USER}</span></span><br><span class="line"><span class="comment"># 注销重新登录，或者执行下面命令来使改变生效</span></span><br><span class="line">newgrp docker</span><br><span class="line"><span class="comment"># 执行下面命令测试</span></span><br><span class="line">docker run hello-world</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li><p>配置国内镜像加速</p>
+<p>创建或修改 <code>/etc/docker/daemon.json</code>：</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"registry-mirrors"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">"https://1nj0zren.mirror.aliyuncs.com"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"https://docker.mirrors.ustc.edu.cn"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"http://f1361db2.m.daocloud.io"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"https://registry.docker-cn.com"</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>重启docker服务</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></tbody></table></figure>
+
+<p>执行<code>docker info</code>命令，查看配置是否已生效。</p>
+</li>
+</ol>
+<h1 id="GVM-Go1-13"><a href="#GVM-Go1-13" class="headerlink" title="GVM+Go1.13"></a>GVM+Go1.13</h1><ol>
+<li>安装GVM</li>
+</ol>
+<blockquote>
+<p>如果下载超时的话，就尝试下搭个梯子。系统proxy不想配的话，就chrome配置好SwitchOMG，通过浏览器下载脚本。</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>安装go1.4</li>
+</ol>
+<blockquote>
+<p>Go 1.5+从工具链中删除了C编译器，并用Go编写的代码替换了它们。 实现了自举。为了编译Go 1.5+，请确保先安装Go 1.4</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gvm install go1.4 -B</span><br><span class="line">gvm use go1.4</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>安装go1.13</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GOROOT_BOOTSTRAP=<span class="variable">$GOROOT</span></span><br><span class="line">gvm intall go1.13</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>others</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看本地版本</span></span><br><span class="line">gvm list</span><br><span class="line"><span class="comment"># 查看所有版本</span></span><br><span class="line">gvm listall</span><br><span class="line"><span class="comment"># 卸载gvm和所有go</span></span><br><span class="line">gvm implode</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="前端环境"><a href="#前端环境" class="headerlink" title="前端环境"></a>前端环境</h1><ol>
+<li>安装nvm</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载脚本并执行</span></span><br><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash</span><br><span class="line"><span class="comment"># 使修改在当前回话生效</span></span><br><span class="line"><span class="built_in">source</span> ~/.profile</span><br><span class="line"><span class="comment"># 检查nvm安装</span></span><br><span class="line">nvm --version</span><br><span class="line"><span class="comment"># list所有可用的nodejs版本(安装lts版本)</span></span><br><span class="line">nvm ls-remote</span><br><span class="line"><span class="comment"># list所有已安装的nodejs</span></span><br><span class="line">nvm list</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>安装nodejs</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nvm install 10.15</span><br><span class="line"><span class="comment"># select 安装的nodejs</span></span><br><span class="line">nvm use 10.15</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查</span></span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>安装yarn，npm</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm i -g npm --registry https://registry.npm.taobao.org</span><br><span class="line">npm i -g yarn --registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置yarn</span></span><br><span class="line">yarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org -g</span><br><span class="line">yarn config <span class="built_in">set</span> sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g</span><br><span class="line"><span class="comment"># 设置npm</span></span><br><span class="line"><span class="built_in">export</span> NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node</span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="运行微信"><a href="#运行微信" class="headerlink" title="运行微信"></a>运行微信</h1><blockquote>
+<p>运行时有报错<code>MIT-SHM</code>，增加参数–ipc=host解决问题。</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">docker container run -d wechat \</span><br><span class="line">  --device /dev/snd \</span><br><span class="line">  -v /tmp/.X11-unix:/tmp/.X11-unix \</span><br><span class="line">  -v <span class="variable">${XDG_RUNTIME_DIR}</span>/pulse/native:<span class="variable">${XDG_RUNTIME_DIR}</span>/pulse/native \</span><br><span class="line">  -v <span class="variable">$HOME</span>:<span class="variable">$HOME</span> \</span><br><span class="line">  -v <span class="variable">$HOME</span>/WeChatFiles:/WeChatFiles \</span><br><span class="line">  -e DISPLAY=unix<span class="variable">${DISPLAY}</span> \</span><br><span class="line">  -e XMODIFIERS=@im=fcitx \</span><br><span class="line">  -e QT_IM_MODULE=fcitx \</span><br><span class="line">  -e GTK_IM_MODULE=fcitx \</span><br><span class="line">  -e AUDIO_GID=`getent group audio | <span class="built_in">cut</span> -d: -f3` \</span><br><span class="line">  -e VIDEO_GID=`getent group video | <span class="built_in">cut</span> -d: -f3` \</span><br><span class="line">  -e GID=`<span class="built_in">id</span> -g` \</span><br><span class="line">  -e UID=`<span class="built_in">id</span> -u` \</span><br><span class="line">  -e DPI=120 \</span><br><span class="line">  --ipc=host \</span><br><span class="line">  hoking007/wechat:latest</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="终端管理工具-–-FinalShell"><a href="#终端管理工具-–-FinalShell" class="headerlink" title="终端管理工具 – FinalShell"></a>终端管理工具 – FinalShell</h1><p>一键安装</p>
+<blockquote>
+<p>安装路径<code>/usr/lib/FinalShell/</code></p>
+<p>配置文件路径<code>/home/$USER/.finalshell/</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -f finalshell_install_linux.sh</span><br><span class="line">wget www.hostbuf.com/downloads/finalshell_install_linux.sh</span><br><span class="line"><span class="built_in">chmod</span> +x finalshell_install_linux.sh</span><br><span class="line">./finalshell_install_linux.sh</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="安装配置Goland（draft）"><a href="#安装配置Goland（draft）" class="headerlink" title="安装配置Goland（draft）"></a>安装配置Goland（draft）</h1><p>下载安装包</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ol>
+<li>安装最新git-client</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-add-repository ppa:git-core/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install git</span><br><span class="line"></span><br><span class="line"><span class="comment"># if `add-apt-repository` not found</span></span><br><span class="line"><span class="comment">## ubuntu 14.04</span></span><br><span class="line">sudo apt-get install software-properties-common</span><br><span class="line"><span class="comment">## ubuntu 13.10 or earlier</span></span><br><span class="line">sudo apt-get install python-software-properties</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>安装最新docker-compose</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. remove the old version:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## If installed via apt-get</span></span><br><span class="line">sudo apt-get remove docker-compose</span><br><span class="line"><span class="comment">## If installed via curl</span></span><br><span class="line">sudo <span class="built_in">rm</span> /usr/local/bin/docker-compose</span><br><span class="line"><span class="comment">## If installed via pip</span></span><br><span class="line">pip uninstall docker-compose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. install latest docker-compose</span></span><br><span class="line"></span><br><span class="line">VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name -r)</span><br><span class="line">DESTINATION=/usr/local/bin/docker-compose</span><br><span class="line">sudo curl -L https://github.com/docker/compose/releases/download/<span class="variable">${VERSION}</span>/docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) -o <span class="variable">$DESTINATION</span></span><br><span class="line">sudo <span class="built_in">chmod</span> 755 <span class="variable">$DESTINATION</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>安装typora</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install typora</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>安装postman</li>
+</ol>
+<p>通过软件中心安装。</p>
+<ol start="5">
+<li>安装wps</li>
+</ol>
+<p>通过软件中心安装。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>显卡驱动</p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/wangruohui/df039f0dc434d6486f5d4d098aa52d07">安装NVIDIA驱动和CUDA在Linux上</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.maketecheasier.com/install-nvidia-drivers-ubuntu/">安装最新版NVIDIA驱动在Ubuntu上</a></p>
+<p>GVM+GO</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/moovweb/gvm/tree/6ecd46d8b58c18f2a7bd5a1ab604cb57443cd35c#a-note-on-compiling-go-15">GVM-github</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/moovweb/gvm/tree/6ecd46d8b58c18f2a7bd5a1ab604cb57443cd35c#debianubuntu">安装golang的依赖-linux</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/moovweb/gvm#a-note-on-compiling-go-15">GVM安装go1.4报错”go: command not found”</a></p>
+<p>Qv2ray</p>
+<p><a target="_blank" rel="noopener" href="https://qv2ray.github.io/getting-started/step1.html">Qv2ray-git博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Alvin9999/new-pac/wiki">翻墙相关的git项目  new-pac</a></p>
+<p>Docker</p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">官方文档-在Ubuntu上安装Docker-Engine</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user">官方文档-在Ubuntu非root用户相关配置</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ternence_hsu/article/details/103949074">Docker hub 设置代理服务器</a></p>
+<p>前端</p>
+<p><a target="_blank" rel="noopener" href="https://hackernoon.com/how-to-install-node-js-on-ubuntu-16-04-18-04-using-nvm-node-version-manager-668a7166b854">使用nvm安装nodejs</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jaket5219999/article/details/87882747#commentBox">apt安装nodejs并配置</a></p>
+<p>微信</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91327545?utm_source=wechat_session">知乎-wine安装微信和QQ</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/bestwu/docker-wechat">微信docker镜像-github</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Hoking007/docker-deepin-wechat">微信docker镜像-github-高分屏显示问题</a></p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/jessfraz/dockerfiles/issues/359">微信docker镜像-github-<code>MIT-SHM</code> error solutions</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://newtoypia.blogspot.com/2018/07/docker-gui.html">使用docker运行GUI工具</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16296753/can-you-run-gui-applications-in-a-docker-container">使用docker运行GUI应用-stack-overflow</a></p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/osrf/docker_images/issues/21">GUI不工作–报错<code>MIT-SHM</code></a></strong></p>
+<p>终端管理工具</p>
+<p><a target="_blank" rel="noopener" href="http://www.hostbuf.com/t/1059.html">FinalShell官网-Linux安装</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/byx1024/p/12144199.html">FinalShell博客–使用说明</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mandagod/article/details/103663763">FinalShell博客–建立隧道</a></p>
+<p>gotty+ssh/tmux实现web-xshell,并协同</p>
+</body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢支持</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/../images/wx_reward.jpg" alt="Hex 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+              <a href="/tags/Go/" rel="tag"><i class="fa fa-tag"></i> Go</a>
+              <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" rel="tag"><i class="fa fa-tag"></i> 个人工具</a>
+              <a href="/tags/Ubuntu/" rel="tag"><i class="fa fa-tag"></i> Ubuntu</a>
+              <a href="/tags/GVM/" rel="tag"><i class="fa fa-tag"></i> GVM</a>
+              <a href="/tags/Goland/" rel="tag"><i class="fa fa-tag"></i> Goland</a>
+              <a href="/tags/Nodejs/" rel="tag"><i class="fa fa-tag"></i> Nodejs</a>
+              <a href="/tags/Postman/" rel="tag"><i class="fa fa-tag"></i> Postman</a>
+              <a href="/tags/Typora/" rel="tag"><i class="fa fa-tag"></i> Typora</a>
+              <a href="/tags/Finalshell/" rel="tag"><i class="fa fa-tag"></i> Finalshell</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/29/persistence-2020-05-29-Vault%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2%E5%B9%B6%E9%9B%86%E6%88%90consul/" rel="prev" title="Vault集群部署并集成consul">
+      <i class="fa fa-chevron-left"></i> Vault集群部署并集成consul
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/22/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-06-22-hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/" rel="next" title="hexo常用命令备忘录">
+      hexo常用命令备忘录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%A6%81"><span class="nav-text">重要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%85%E5%AE%89%E8%A3%85"><span class="nav-text">初始包安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%EF%BC%88draft%EF%BC%89"><span class="nav-text">显卡驱动（draft）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6"><span class="nav-text">安装配置翻墙软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEDocker"><span class="nav-text">安装配置Docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GVM-Go1-13"><span class="nav-text">GVM+Go1.13</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83"><span class="nav-text">前端环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%BE%AE%E4%BF%A1"><span class="nav-text">运行微信</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-%E2%80%93-FinalShell"><span class="nav-text">终端管理工具 – FinalShell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEGoland%EF%BC%88draft%EF%BC%89"><span class="nav-text">安装配置Goland（draft）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="个人技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hex Blog">
+<meta property="og:url" content="https://hex-py.github.io/page/3/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="个人技术博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hex">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/11/11/golang-2021-11-11-Go-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/11/golang-2021-11-11-Go-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">Go-设计模式</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-11-11 09:02:47" itemprop="dateCreated datePublished" datetime="2021-11-11T09:02:47+08:00">2021-11-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/11/11/golang-2021-11-11-Go-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-meta-item leancloud_visitors" data-flag-title="Go-设计模式" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="http://tmrts.com/go-patterns/">Go Patterns</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/silsuer/golang-design-patterns">使用golang实现各种设计模式</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/add-two-numbers/">leetcode 官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://books.halfrost.com/leetcode/ChapterTwo/Array/">leetcode Golang实现</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/11/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-11-Raft%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-11-Raft%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">Raft共识算法说明</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-11-11 08:57:45" itemprop="dateCreated datePublished" datetime="2021-11-11T08:57:45+08:00">2021-11-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/11/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-11-Raft%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95%E8%AF%B4%E6%98%8E/" class="post-meta-item leancloud_visitors" data-flag-title="Raft共识算法说明" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://acehi.github.io/raft-algorithm-cn/">Raft说明官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://acehi.github.io/thesecretlivesofdata-cn/raft/">raft演示动画</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hashicorp/raft">go语言实现raft - hashicorp</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/goraft/raft">go语言实现raft - goraft(不维护)</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/11/10/kubernetes-2021-11-10-sonobuoy%E5%AF%B9kubernetes%E8%BF%9B%E8%A1%8C%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/10/kubernetes-2021-11-10-sonobuoy%E5%AF%B9kubernetes%E8%BF%9B%E8%A1%8C%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">sonobuoy对kubernetes进行端到端测试</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-11-10 08:21:32" itemprop="dateCreated datePublished" datetime="2021-11-10T08:21:32+08:00">2021-11-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/11/10/kubernetes-2021-11-10-sonobuoy%E5%AF%B9kubernetes%E8%BF%9B%E8%A1%8C%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B5%8B%E8%AF%95/" class="post-meta-item leancloud_visitors" data-flag-title="sonobuoy对kubernetes进行端到端测试" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><p><code>sonobuoy images</code>      : list 相关的镜像列表<br><code>sonobuoy images pull</code> :<br><code>sonobuoy images push</code> : 推送镜像至私有仓库<br>    –e2e-repo-config<br><code>sonobuoy gen default-image-config</code>: 生成默认镜像仓库配置<br><code>sonobuoy run</code>         : 启动测试<br>–systemd-logs-image     #指定日志采集镜像<br>–sonobuoy-image         # 指定Sonobuoy镜像<br>–e2e-repo-config        # 指定Sonobuoy用例镜像配置</p>
+<p><code>sonobuoy run \ --mode=certified-conformance \ --sonobuoy-image=xxx.yyy.zzz/library/sonobuoy:v0.53.2 \ --kubernetes-version=v1.18.16 \ --systemd-logs-image=xxx.yyy.zzz/library/systemd-logs:v0.3 \ --e2e-repo-config=./conformance-image-config.yaml</code></p>
+<p><code>sonobuoy delete</code>      : 清理环境 </p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/11/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-09-RSA%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-09-RSA%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">RSA算法原理</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-11-09 11:07:58" itemprop="dateCreated datePublished" datetime="2021-11-09T11:07:58+08:00">2021-11-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/11/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-09-RSA%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="RSA算法原理" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html">RSA算法原理（一）</a><br><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html">RSA算法原理（二）</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/11/09/leetcode-2021-11-09-%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/09/leetcode-2021-11-09-%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">算法的时间和空间复杂度说明</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-11-09 06:27:48" itemprop="dateCreated datePublished" datetime="2021-11-09T06:27:48+08:00">2021-11-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/11/09/leetcode-2021-11-09-%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E8%AF%B4%E6%98%8E/" class="post-meta-item leancloud_visitors" data-flag-title="算法的时间和空间复杂度说明" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>算法（Algorithm）是指用来操作数据、解决程序问题的一组方法。对于同一个问题，<br>使用不同的算法，也许最终得到的结果是一样的，但在过程中消耗的资源和时间却会有很大的区别。</p>
+<p>衡量算法性能优劣的度量：</p>
+<ul>
+<li>时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。</li>
+<li>空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。</li>
+</ul>
+<p>大O符号表示法</p>
+<h2 id="1-时间复杂度"><a href="#1-时间复杂度" class="headerlink" title="1. 时间复杂度"></a>1. 时间复杂度</h2><blockquote>
+<p>算法基本操作的重复执行次数为问题规模n的某个函数，也就是用时间频度T(n)表示。<br>如果存在某个函数f(n)，使得当n趋于无穷大时，T(n)/f(n)的极限值是不为零的常数，<br>那么f(n)是T(n)的同数量级函数，记作<code>T(n)=O(f(n))</code>，称<code>O(f(n))</code>为算法的渐进时间复杂度，简称为时间复杂度。</p>
+</blockquote>
+<h3 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h3><p>算法的渐进时间复杂度: <code>T(n) = O(f(n))</code></p>
+<p>T(n): 表示时间频度<br>f(n): 表示每行代码执行次数之和<br>n   : 表示着问题的规模<br>O   : 表示正比例关系</p>
+<p>常见的算法时间复杂度由小到大依次为：Ο(1)＜Ο(log n)＜Ο(n)＜Ο(nlog n)＜Ο(n2)＜Ο(n3)＜…＜Ο(2^n)＜Ο(n!)</p>
+<h3 id="1-2-求解算法复杂度"><a href="#1-2-求解算法复杂度" class="headerlink" title="1.2 求解算法复杂度"></a>1.2 求解算法复杂度</h3><p>求解算法复杂度分以下几个步骤：</p>
+<ul>
+<li>找出算法中的基本语句：算法中执行次数最多的语句就是基本语句，通常是最内层循环的循环体。</li>
+<li>计算基本语句的执行次数的数量级：只需计算基本语句执行次数的数量级，即只要保证函数中的最高次幂正确即可，可以忽略所有低次幂和最高次幂的系数。这样能够简化算法分析，使注意力集中在最重要的一点上：增长率。</li>
+<li>用大Ο表示算法的时间性能：将基本语句执行次数的数量级放入大Ο记号中。</li>
+</ul>
+<p>其中用大O表示法通常有三种规则：</p>
+<ul>
+<li>用常数1取代运行时间中的所有加法常数；</li>
+<li>只保留时间函数中的最高阶项；</li>
+<li>如果最高阶项存在，则省去最高阶项前面的系数；</li>
+</ul>
+<h3 id="1-3-举例说明"><a href="#1-3-举例说明" class="headerlink" title="1.3 举例说明"></a>1.3 举例说明</h3><ul>
+<li><p>常数阶O(1)</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int i = 1;</span><br><span class="line">int j = 2;</span><br><span class="line">++i;</span><br><span class="line">j++;</span><br><span class="line">int m = i + j;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>线性阶O(n)</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(i=1; i&lt;=n; ++i)</span><br><span class="line">{</span><br><span class="line">   j = i;</span><br><span class="line">   j++;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>对数阶O(logN)</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int i = 1;</span><br><span class="line">while(i&lt;n)</span><br><span class="line">{</span><br><span class="line">    i = i * 2;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>线性对数阶O(nlogN)</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for(m=1; m&lt;n; m++)</span><br><span class="line">{</span><br><span class="line">    i = 1;</span><br><span class="line">    while(i&lt;n)</span><br><span class="line">    {</span><br><span class="line">        i = i * 2;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>平方阶O(n²)</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for(x=1; i&lt;=n; x++)</span><br><span class="line">{</span><br><span class="line">   for(i=1; i&lt;=n; i++)</span><br><span class="line">    {</span><br><span class="line">       j = i;</span><br><span class="line">       j++;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>立方阶O(n³)、K次方阶O(n^k)</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">三层、k层for循环嵌套</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<p><img alt="排序算法时间复杂度对比图" data-src="https://tva4.sinaimg.cn/large/006hT4w1ly1gw91a326l8j30fm08o75t.jpg"></p>
+<h1 id="2-空间复杂度"><a href="#2-空间复杂度" class="headerlink" title="2. 空间复杂度"></a>2. 空间复杂度</h1><p>算法的渐进空间复杂度: <code>S(n)=O(f(n))</code></p>
+<p>S(n): 表示空间复杂度<br>f(n): 表示一个算法所需的存储空间<br>n   : 表示问题的规模<br>O   : 表示正比例关系</p>
+<ul>
+<li><p>O(1)</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int i = 1;</span><br><span class="line">int j = 2;</span><br><span class="line">int k = 1 + 2;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>O(n)</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int j = 0;</span><br><span class="line">int[] m = new int[n];</span><br><span class="line">for (int i = 1; i &lt;= n; ++i) {</span><br><span class="line">   j = i;</span><br><span class="line">   j++;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/50479555">算法的时间与空间复杂度</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1769988">LeetCode0：学习算法必备知识：时间复杂度与空间复杂度的计算</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/11/08/kubernetes-2021-11-08-%E8%B7%A8%E7%BA%A7%E7%BE%A4DNS%E6%96%B9%E6%A1%88-%E8%A7%A3%E6%9E%90%E5%90%84%E9%9B%86%E7%BE%A4ingress%E4%B8%8Ecustom-dns%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/08/kubernetes-2021-11-08-%E8%B7%A8%E7%BA%A7%E7%BE%A4DNS%E6%96%B9%E6%A1%88-%E8%A7%A3%E6%9E%90%E5%90%84%E9%9B%86%E7%BE%A4ingress%E4%B8%8Ecustom-dns%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">跨级群DNS方案-解析各集群ingress与custom-dns记录</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-11-08 02:36:40" itemprop="dateCreated datePublished" datetime="2021-11-08T02:36:40+08:00">2021-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/11/08/kubernetes-2021-11-08-%E8%B7%A8%E7%BA%A7%E7%BE%A4DNS%E6%96%B9%E6%A1%88-%E8%A7%A3%E6%9E%90%E5%90%84%E9%9B%86%E7%BE%A4ingress%E4%B8%8Ecustom-dns%E8%AE%B0%E5%BD%95/" class="post-meta-item leancloud_visitors" data-flag-title="跨级群DNS方案-解析各集群ingress与custom-dns记录" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p><img alt="image" data-src="https://tva2.sinaimg.cn/large/006hT4w1ly1gw8ppmvt2jj31280t6gwd.jpg"></p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>部署的external-dns包括以下组件:</p>
+<ul>
+<li>external-dns: k3s集群内部，kube-system命名空间 <a href="/images/charts/dns/external-dns.tar.gz">下载</a></li>
+<li>etcd        : k3s集群内部，paas命名空间        <a href="/images/charts/dns/etcd.tar.gz">下载</a></li>
+<li>coredns     : k3s集群内部，paas命名空间        <a href="/images/charts/dns/coredns-1.16.0.tgz">下载</a></li>
+</ul>
+<p>external-dns 可以将<code>ingress</code>和<code>external-service</code>对象存储至etcd中，CoreDNS使用此etcd作为后端，解析所注册的服务。</p>
+<p>例如它解决了 registry，openldap、cassandra(headless) 、keycloak(loadbalancer) 这些服务的域名注册问题。</p>
+<p>external-dns可以通过设置coredns前缀,同时为不通的域名提供解析服务.</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="1-部署-etcd"><a href="#1-部署-etcd" class="headerlink" title="1. 部署 etcd"></a>1. 部署 etcd</h3><h4 id="1-1-边缘使用local-storage部署"><a href="#1-1-边缘使用local-storage部署" class="headerlink" title="1.1 边缘使用local storage部署"></a>1.1 边缘使用<code>local storage</code>部署</h4><ol>
+<li><p>在运行etcd的节点创建本地目录</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> <span class="string">"/opt/etcd-dns"</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>创建pv</p>
+<blockquote>
+<p>pv创建修改详情，参考<code>etcd/chart/etcd-pv/README.md</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f etcd/chart/etcd-pv/pv.yaml </span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>部署etcd</p>
+<blockquote>
+<p>auth.rbac.enabled 设置为false, 不启用认证<br>service.type      设置为 LoadBalancer<br>service.loadBalancerIP   设置为”192.168.83.10”<br>persistence.enable       设置为 true<br>persistence.storageClass 设置为 paas-storage , 值与上一步创建pv时的sc一致<br>persistence.size         设置为 8Gi , 值与上一步创建的pv大小一致</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">helm install etcd etcd/chart/etcd -n paas</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>检测是否组成集群</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">etcdctl endpoint status --cluster -w table</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h3 id="2-部署coredns"><a href="#2-部署coredns" class="headerlink" title="2. 部署coredns"></a>2. 部署coredns</h3><h4 id="2-1-部署"><a href="#2-1-部署" class="headerlink" title="2.1 部署"></a>2.1 部署</h4><ol>
+<li>chart配置说明</li>
+</ol>
+<p>部署配置：</p>
+<blockquote>
+<p>service.loadBalancerIP  设置dns服务的loadBalanceIP, 默认为 “192.168.83.5”</p>
+</blockquote>
+<p>corefile相关配置：</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">servers:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">zones:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">zone:</span> <span class="string">.</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">53</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">  <span class="comment"># bugsize 由默认 512 设置为 1232 (loadBalance 只能代理TCP或UDP一种，此处coredns设置为UDP. </span></span><br><span class="line">  <span class="comment"># 为防止大数据记录数据超过512，走TCP协议,故将默认大小调大)</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">bufsize</span></span><br><span class="line">    <span class="attr">parameters:</span> <span class="number">1232</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">errors</span></span><br><span class="line">  <span class="comment"># health 会启动一个监听 :8080/health 的服务 , 此chart中的 livenessProbe 检查此端口</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">health</span></span><br><span class="line">    <span class="attr">configBlock:</span> <span class="string">|-</span></span><br><span class="line"><span class="string">      lameduck 5s</span></span><br><span class="line"><span class="string"></span>  <span class="comment"># ready 会启动一个监听 :8181/ready 的服务 , 此chart中的 readinessProbe 检查此端口</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ready</span></span><br><span class="line">  <span class="comment"># </span></span><br><span class="line">  <span class="comment"># prometheus 会启动一个监听 :9153/metrics 的服务 , 此chart中的 serviceMonitor 检查此端口</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">prometheus</span></span><br><span class="line">    <span class="attr">parameters:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span><span class="string">:9153</span></span><br><span class="line">  <span class="comment"># 转发，配置上游DNS地址</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">forward</span></span><br><span class="line">    <span class="attr">parameters:</span> <span class="string">.</span> <span class="number">114.114</span><span class="number">.114</span><span class="number">.114</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">log</span></span><br><span class="line">  <span class="comment"># 自定义 zone 配置，需要与下面 zonefile 对应</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">file</span></span><br><span class="line">    <span class="attr">parameters:</span> <span class="string">/etc/coredns/example.db</span> <span class="string">deploy.org</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># adp租户 zone 配置，</span></span><br><span class="line"><span class="comment"># 1. 设置 bufsize; 2. path 设置 /edge 取决与external-dns启动的设置，如果多个external-dns，则通过此处区分</span></span><br><span class="line"><span class="comment"># 2. endpoint 设置的地址为ETCD的LoadBalance IP和端口号</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">zones:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">zone:</span> <span class="string">adp.icos.city</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">53</span></span><br><span class="line">  <span class="attr">bufsize:</span> <span class="number">1232</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">errors</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">log</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">etcd</span></span><br><span class="line">      <span class="attr">configBlock:</span> <span class="string">|-</span></span><br><span class="line"><span class="string">        path /edge</span></span><br><span class="line"><span class="string">        endpoint http://192.168.83.10:2379</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>自定义zone配置</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">zoneFiles:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">filename:</span> <span class="string">example.db</span></span><br><span class="line">    <span class="attr">domain:</span> <span class="string">deploy.org</span></span><br><span class="line">    <span class="attr">contents:</span> <span class="string">|</span></span><br><span class="line"><span class="string">      deploy.org.         IN  SOA  ns.deploy.org. root.deploy.org. 2015082541 7200 3600 1209600 3600</span></span><br><span class="line"><span class="string">      deploy.org.         IN  NS   ns.deploy.org.</span></span><br><span class="line"><span class="string">      license.deploy.org. IN  TXT  "QClDmn9IdX50gDN59UXNpb4oR733jsk05zLuCAkj0="</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>部署<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">helm install coredns coredns/chart/coredns -n paas</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h3 id="3-部署external-dns"><a href="#3-部署external-dns" class="headerlink" title="3. 部署external-dns"></a>3. 部署external-dns</h3><p>Deployment中的配置</p>
+<blockquote>
+<p>spec.template.spec.containers.[0].args<br><code>--coredns-prefix=/edge/</code>参数决定数据存储在etcd的目录前缀，此处不同可区分不同集群内的external-dns;<br>而集群内部不同租户的服务，通过ingress中的租户名可以区分开</p>
+</blockquote>
+<p>部署</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f external-dns.yaml</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="禁用节点DNS缓存"><a href="#禁用节点DNS缓存" class="headerlink" title="禁用节点DNS缓存"></a>禁用节点DNS缓存</h3><p>所有节点执行一下操作，注意IP地址设置正确</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> systemd-resolved</span><br><span class="line">systemctl stop systemd-resolved</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'</span></span><br><span class="line"><span class="string">network:</span></span><br><span class="line"><span class="string">  bonds:</span></span><br><span class="line"><span class="string">    bond0:</span></span><br><span class="line"><span class="string">      addresses:</span></span><br><span class="line"><span class="string">      - 192.168.82.11/23</span></span><br><span class="line"><span class="string">      gateway4: 192.168.82.1</span></span><br><span class="line"><span class="string">      interfaces:</span></span><br><span class="line"><span class="string">      - ens3f0</span></span><br><span class="line"><span class="string">      - ens3f1</span></span><br><span class="line"><span class="string">      nameservers:</span></span><br><span class="line"><span class="string">        addresses:</span></span><br><span class="line"><span class="string">        - 192.168.83.5</span></span><br><span class="line"><span class="string">        search: []  </span></span><br><span class="line"><span class="string">      parameters:</span></span><br><span class="line"><span class="string">        mode: balance-rr</span></span><br><span class="line"><span class="string">  ethernets:</span></span><br><span class="line"><span class="string">    ens3f0: {}</span></span><br><span class="line"><span class="string">    ens3f1: {}</span></span><br><span class="line"><span class="string">  version: 2'</span> &gt; /etc/netplan/01-netcfg.yaml</span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf /etc/resolv.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"nameserver 192.168.83.5"</span> &gt; /etc/resolv.conf</span><br><span class="line"></span><br><span class="line">netplan apply</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="常用修改说明"><a href="#常用修改说明" class="headerlink" title="常用修改说明"></a>常用修改说明</h2><h3 id="license配置DNS-TXT记录说明"><a href="#license配置DNS-TXT记录说明" class="headerlink" title="license配置DNS-TXT记录说明"></a>license配置DNS-TXT记录说明</h3><ol>
+<li>在zone为<code>.</code>的域的plugins参数增加name为file的参数，值为<code>/etc/coredns/example.db deploy.org</code><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">servers:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">zones:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">zone:</span> <span class="string">.</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">53</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">file</span></span><br><span class="line">    <span class="attr">parameters:</span> <span class="string">/etc/coredns/example.db</span> <span class="string">deploy.org</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>在zoneFiles增加如下配置，<code>license.deploy.org. IN  TXT</code>行的值为从QA获取的由私钥签名过的ou名Signature<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">zoneFiles:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">filename:</span> <span class="string">example.db</span></span><br><span class="line">    <span class="attr">domain:</span> <span class="string">deploy.org</span></span><br><span class="line">    <span class="attr">contents:</span> <span class="string">|</span></span><br><span class="line"><span class="string">      deploy.org.         IN  SOA  ns.deploy.org. root.deploy.org. 2015082541 7200 3600 1209600 3600</span></span><br><span class="line"><span class="string">      deploy.org.         IN  NS   ns.deploy.org.</span></span><br><span class="line"><span class="string">      license.deploy.org. IN  TXT  "QCUEsCx70xK2u9pdrm6y0hf4up8C9S44tvekF9LVODBPHbryRQGqh9dUyb8VcN11IlPXcl7hVdqC3qsIgYUo5/KBdNCX+edFYquOeKEyEfnkHRzoi8hjR6NIzOQoHh518EJClDmn9IdX50gDN59UXNpb4oR733jsk05zLuCAkj0="</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h2 id="冒烟测试"><a href="#冒烟测试" class="headerlink" title="冒烟测试"></a>冒烟测试</h2><ul>
+<li>集群中创建external-svc</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'</span></span><br><span class="line"><span class="string">apiVersion: v1</span></span><br><span class="line"><span class="string">kind: Service</span></span><br><span class="line"><span class="string">metadata:</span></span><br><span class="line"><span class="string">  annotations:</span></span><br><span class="line"><span class="string">    external-dns.alpha.kubernetes.io/hostname: reg.chebai.org</span></span><br><span class="line"><span class="string">  name: reg-chebai-org</span></span><br><span class="line"><span class="string">  namespace: paas</span></span><br><span class="line"><span class="string">spec:</span></span><br><span class="line"><span class="string">  externalName: 10.90.0.11</span></span><br><span class="line"><span class="string">  type: ExternalName'</span> &gt; test-svc.yaml</span><br><span class="line">kubectl apply -f test-svc.yaml</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>检查 ETCD 中是否有正确写入的数据</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">etcdctl --prefix --keys-only=<span class="literal">true</span> get /</span><br><span class="line"><span class="comment"># etcdctl --user="root" --password="OH4dQD4Cww" --prefix --keys-only=true get /</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>检查各个节点的测试数据域名解析</li>
+</ul>
+<blockquote>
+<p>1.如果etcd中能查询到数据，但解析出错；则检查CoreDNS是否配置域adp.icos.city<br>2.注意仔细看存储路径的prefix, 是否与CoreDNS中配置的保持一致</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nslookup reg.chebai.org &lt;NODEIP&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>或</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig @192.168.83.5 reg.chebai.org</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li>DNS相关</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kevingrace/p/9359989.html">DNS之BIND使用小结(Forward转发)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/emilyyoucan/articles/8118173.html">Linux系统解析域名的先后顺序files(/etc/hosts)OR dns(/etc/resolv.conf)</a></p>
+<p><a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man5/resolv.conf.5.html">resolv.conf(5) — Linux manual page</a></p>
+<p><a target="_blank" rel="noopener" href="https://serverfault.com/questions/398837/second-nameserver-in-etc-resolv-conf-not-picked-up-by-wget">/etc/resolv.conf 中的第二个nameserver未被 wget 拾取</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/11/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-05-TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E5%A4%87%E5%BF%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-05-TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E5%A4%87%E5%BF%98/" class="post-title-link" itemprop="url">TCP三次握手四次挥手备忘</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-11-05 11:54:57" itemprop="dateCreated datePublished" datetime="2021-11-05T11:54:57+08:00">2021-11-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/11/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-05-TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E5%A4%87%E5%BF%98/" class="post-meta-item leancloud_visitors" data-flag-title="TCP三次握手四次挥手备忘" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事:</p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>seq: 序号，TCP连接中传送的字节流中的每个字节都按顺序编号。</p>
+<p>ack: 确认号，是期望收到对方下一个报文的第一个数据字节的序号。</p>
+<p>SYN: 同步SYN，在连接建立时用来同步序号。当SYN=1，ACK=0，表明是连接请求报文，若同意连接，则响应报文中应该使SYN=1，ACK=1</p>
+<p>ACK: 确认ACK，仅当ACK=1时，确认号字段才有效。TCP规定，在连接建立后所有报文的传输都必须把ACK置1；</p>
+<p>FIN: 终止FIN，用来释放连接。当FIN=1，表明此报文的发送方的数据已经发送完毕，并且要求释放；</p>
+<h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p>过程：</p>
+<blockquote>
+<p>x= 随机生成序列号<br>y= 随机生成序列号</p>
+</blockquote>
+<p>客户端[SYN_SENT   ]—-SYN=1,seq=x              (请求连接)——————-&gt;[           ]服务端<br>客户端[           ]&lt;—SYN=1,ACK=1,ack=x+1,seq=y(应答客户端SYN，并请求建立连接)–&gt;[SYN_RCVD   ]服务端<br>客户端[ESTABLISHED]–ACK=1,ack=Y+1              (应答服务端SYN)—————&gt;[ESTABLISHED]服务端</p>
+<p>三次握手而非两次的原因：</p>
+<p>如果客户端发送<code>请求连接-1</code>，由于网络原因超时，客户端重试再次发出<code>请求连接-2</code>，此时正常建立连接并完成通信；<br>之后网络回复<code>请求连接-1</code>再次送达服务端, 此时服务端响应的<code>应答客户端SYN请求</code>被返回客户端，此时客户端不会再<br>发出<code>应答服务端端SYN请求</code>，server收不到确认请求，则不会建立连接。</p>
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><p>过程：</p>
+<blockquote>
+<p>断开过程由客户端或服务端任一方执行close来触发。TCP连接是全双工的，因此，每个方向都必须要单独进行关闭<br>x=等于前面已经传送过来的数据的最后一个字节的序号加1<br>y=自身序列号<br>z=服务端释放的报文可能携带数据</p>
+</blockquote>
+<p>客户端[FIN_WAIT_1]—-FIN=1,seq=x                (client请求释放)———–&gt;[           ]服务端<br>客户端[FIN_WAIT_1]&lt;—ACK=1,ack=x+1,seq=y        (释放确认报文)————–&gt;[CLOSE-WAIT ]服务端<br>客户端[FIN_WAIT_2]&lt;—FIN=1,ACK=1,ack=y+1,seq=z  (server请求释放)————[LAST-ACK   ]服务端<br>客户端[TIME-WAIT ]—-ACK=1,ack=z+1,seq=y+1      (最终释放确认报文)———–&gt;[CLOSE      ]服务端<br>2∗MSL（最长报文段寿命）的时间后，当客户端撤销相应的TCB后，才进入CLOSED状态。<br>客户端[CLOSE]</p>
+<p>为什么客户端最后还要等待2MSL？</p>
+<p>MSL（Maximum Segment Lifetime）, 报文段最大生存时间，它是任何报文段被丢弃前在网络内的最长时间。<br>第一，<code>保证TCP协议的全双工连接能够可靠关闭</code>保证客户端发送的最后一个ACK报文能够到达服务器，因为这个ACK报文可能丢失，<br>     站在服务器的角度看来，我已经发送了FIN+ACK报文请求断开了，客户端还没有给我回应，<br>     应该是我发送的请求断开报文它没有收到，于是服务器又会重新发送一次，<br>     而客户端就能在这个2MSL时间段内收到这个重传的报文，接着给出回应报文，并且会重启2MSL计时器。</p>
+<p>第二，<code>保证这次连接的重复数据段从网络中消失</code> 防止类似与“三次握手”中提到了的“已经失效的连接请求报文段”出现在本连接中。<br>     客户端发送完最后一个确认报文后，在这个2MSL时间中，就可以使本连接持续的时间内所产生的所有报文段都从网络中消失。<br>     这样新的连接中不会出现旧连接的请求报文。</p>
+<p>为什么建立连接是三次握手，关闭连接确是四次挥手呢？</p>
+<p>建立连接的时候，服务器在LISTEN状态下，收到建立连接请求的SYN报文后，把ACK和SYN放在一个报文里发送给客户端。<br>而关闭连接时，服务器收到对方的FIN报文时，仅仅表示对方不再发送数据了但是还能接收数据，而自己也未必全部数据都发送给对方了，<br>所以己方可以立即关闭，也可以发送一些数据给对方后，再发送FIN报文给对方来表示同意现在关闭连接，<br>因此，己方ACK和FIN一般都会分开发送，从而导致多了一次。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qzcsu/article/details/72861891">两张动图-彻底明白TCP的三次握手与四次挥手</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/11/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-05-Https%E6%B5%81%E7%A8%8B%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-05-Https%E6%B5%81%E7%A8%8B%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">Https流程说明</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-11-05 06:31:57" itemprop="dateCreated datePublished" datetime="2021-11-05T06:31:57+08:00">2021-11-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/11/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-2021-11-05-Https%E6%B5%81%E7%A8%8B%E8%AF%B4%E6%98%8E/" class="post-meta-item leancloud_visitors" data-flag-title="Https流程说明" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><ol>
+<li>单向TLS加密<br>流程：</li>
+</ol>
+<ul>
+<li><ol>
+<li>浏览器 –(request.明文)–&gt; 服务器</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>服务器 –(response.明文)–&gt; 浏览器</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>服务器 –(公钥.server)–&gt; 浏览器</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>浏览器 –(request.密文-公钥加密)–&gt; 服务器</li>
+</ol>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>服务器发出的请求仍然是明文，即使用私钥加密，公钥是公开的，也相当于是明文</li>
+</ul>
+<ol start="2">
+<li>双向TLS加密<br>流程：</li>
+</ol>
+<ul>
+<li><ol>
+<li>浏览器 –(request.明文)&gt;&gt;&gt; 服务器</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>浏览器 &lt;&lt;(response.明文)– 服务器</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>浏览器 &lt;&lt;(公钥.server)—- 服务器</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>浏览器 –(公钥.client)&gt;&gt;&gt;&gt; 服务器</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>浏览器 –(request.密文-公钥.server加密)&gt;&gt;&gt; 服务器</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>浏览器 &lt;&lt;(request.密文-公钥.client加密)— 服务器</li>
+</ol>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>非对称机密给服务端和客户端性能带来巨大影响（加解密费时，费资源）</li>
+</ul>
+<ol start="3">
+<li>对称加密+非对称加密结合<blockquote>
+<p>随机数1= client random<br>随机数2= server random<br>随机数3= premaster secret</p>
+</blockquote>
+</li>
+</ol>
+<p>流程：</p>
+<ul>
+<li><ol>
+<li>[          ]浏览器[随机数1    ] –(随机数1.明文)&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; [         ]服务器[私+公钥.server]</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>[          ]浏览器[随机数1    ] &lt;&lt;(随机数2.明文)——————- [随机数1+2 ]服务器[私+公钥.server]</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>[          ]浏览器[随机数1+2  ] &lt;&lt;(公钥.server)——————- [随机数1+2 ]服务器[私钥.server]</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>[公钥.server]浏览器[随机数1+2+3] –(随机数3.密文-公钥.server加密)&gt;&gt;&gt;&gt; [随机数1+2 ]服务器[私钥.server]</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>[公钥.server]浏览器[随机数1+2+3] –(finish.密文-随机数计算秘钥)&gt;&gt;&gt;&gt;&gt;&gt; [随机数1+2+3]服务器[私钥.server]</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>[公钥.server]浏览器[随机数1+2+3] &lt;&lt;(finish.密文-随机数计算秘钥)—— [随机数1+2+3]服务器[私钥.server]</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>[公钥.server]浏览器[随机数1+2+3] –(request.密文-随机数计算秘钥)&gt;&gt;&gt;&gt;&gt; [随机数1+2+3]服务器[私钥.server]</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>[公钥.server]浏览器[随机数1+2+3] &lt;&lt;(response.密文-随机数计算秘钥)—- [随机数1+2+3]服务器[私钥.server]</li>
+</ol>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>中间人攻击</li>
+</ul>
+<ol start="4">
+<li>数字证书</li>
+<li>服务器上传公钥+名字</li>
+<li>ca用这些信息计算hash,办法证书给服务器</li>
+<li>服务器将证书发给浏览器验证</li>
+</ol>
+<p>剩余证书签名、验证过程待完善</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/zNC6qnW3DXD6B8eHlL1tjw">为了一个HTTPS，浏览器操碎了心…</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/03/01/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-2021-03-01-ChirpStack-ApplicationServer-%E6%BA%90%E7%A0%81-oidc%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/01/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-2021-03-01-ChirpStack-ApplicationServer-%E6%BA%90%E7%A0%81-oidc%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">ChirpStack-ApplicationServer[源码]-oidc认证流程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-03-01 10:19:09" itemprop="dateCreated datePublished" datetime="2021-03-01T10:19:09+08:00">2021-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sourceCode/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/03/01/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-2021-03-01-ChirpStack-ApplicationServer-%E6%BA%90%E7%A0%81-oidc%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B/" class="post-meta-item leancloud_visitors" data-flag-title="ChirpStack-ApplicationServer[源码]-oidc认证流程" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>ChirpStack是一个开源的lora设备管理平台，其中ApplicationServer是设备管理页面，<br>支持简单认证，也支持oauth2认证，但oauth2认证与正常的不太一样，可以简单总结为</p>
+<ol>
+<li>依靠sso做统一<code>认证</code></li>
+<li>本地数据库存储用户信息进行<code>鉴权</code></li>
+</ol>
+<p>优点： 依靠本地鉴权管理体系，更好跟local模式兼容。<br>缺点： 无法统一在sso中进行权限分配。</p>
+<p><img alt="chirpstack oidc流程说明" data-src="https://tvax4.sinaimg.cn/large/006hT4w1ly1gw3817us8tj30ku0nmwgh.jpg"></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2021/02/23/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-2021-02-23-Nuclio-%E6%BA%90%E7%A0%81-kafka-trigger/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/23/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-2021-02-23-Nuclio-%E6%BA%90%E7%A0%81-kafka-trigger/" class="post-title-link" itemprop="url">Nuclio[源码]-kafka-trigger流程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2021-02-23 10:19:09" itemprop="dateCreated datePublished" datetime="2021-02-23T10:19:09+08:00">2021-02-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sourceCode/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/02/23/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-2021-02-23-Nuclio-%E6%BA%90%E7%A0%81-kafka-trigger/" class="post-meta-item leancloud_visitors" data-flag-title="Nuclio[源码]-kafka-trigger流程" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><ol>
+<li><p>入口函数 <code>nuclio: pkg/processor/trigger/kafka/trigger.go</code>   <code>k.consumerGroup.Consume</code>函数</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *kafka)</span></span> Start(checkpoint functionconfig.Checkpoint) <span class="type">error</span> {</span><br><span class="line">	<span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line"></span><br><span class="line">	k.consumerGroup, err = k.newConsumerGroup()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> errors.Wrap(err, <span class="string">"Failed to create consumer"</span>)</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	k.shutdownSignal = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">struct</span>{}, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// start consumption in the background</span></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {</span><br><span class="line">		<span class="keyword">for</span> {</span><br><span class="line">			k.Logger.DebugWith(<span class="string">"Starting to consume from broker"</span>, <span class="string">"topics"</span>, k.configuration.Topics)</span><br><span class="line"></span><br><span class="line">			<span class="comment">// start consuming. this will exit without error if a rebalancing occurs</span></span><br><span class="line">			err = k.consumerGroup.Consume(context.Background(), k.configuration.Topics, k)</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">				k.Logger.WarnWith(<span class="string">"Failed to consume from group, waiting before retrying"</span>, <span class="string">"err"</span>, errors.GetErrorStackString(err, <span class="number">10</span>))</span><br><span class="line"></span><br><span class="line">				time.Sleep(<span class="number">1</span> * time.Second)</span><br><span class="line">			} <span class="keyword">else</span> {</span><br><span class="line">				k.Logger.DebugWith(<span class="string">"Consumer session closed (possibly due to a rebalance), re-creating"</span>)</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>sarama consume 函数<code>sarama:consumer_group.go</code>    <code>c.newSession</code>函数</p>
+</li>
+</ol>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Consume implements ConsumerGroup.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *consumerGroup)</span></span> Consume(ctx context.Context, topics []<span class="type">string</span>, handler ConsumerGroupHandler) <span class="type">error</span> {</span><br><span class="line">	<span class="comment">// Ensure group is not closed</span></span><br><span class="line">	<span class="keyword">select</span> {</span><br><span class="line">	<span class="keyword">case</span> &lt;-c.closed:</span><br><span class="line">		<span class="keyword">return</span> ErrClosedConsumerGroup</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	c.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> c.lock.Unlock()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Quick exit when no topics are provided</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(topics) == <span class="number">0</span> {</span><br><span class="line">		<span class="keyword">return</span> fmt.Errorf(<span class="string">"no topics provided"</span>)</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Refresh metadata for requested topics</span></span><br><span class="line">	<span class="keyword">if</span> err := c.client.RefreshMetadata(topics...); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Init session</span></span><br><span class="line">	sess, err := c.newSession(ctx, topics, handler, c.config.Consumer.Group.Rebalance.Retry.Max)</span><br><span class="line">	<span class="keyword">if</span> err == ErrClosedClient {</span><br><span class="line">		<span class="keyword">return</span> ErrClosedConsumerGroup</span><br><span class="line">	} <span class="keyword">else</span> <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="comment">// loop check topic partition numbers changed</span></span><br><span class="line">	<span class="comment">// will trigger rebalance when any topic partitions number had changed</span></span><br><span class="line">	<span class="keyword">go</span> c.loopCheckPartitionNumbers(topics, sess)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Wait for session exit signal</span></span><br><span class="line">	&lt;-sess.ctx.Done()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Gracefully release session claims</span></span><br><span class="line">	<span class="keyword">return</span> sess.release(<span class="literal">true</span>)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>3. </p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

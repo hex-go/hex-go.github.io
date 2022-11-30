@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="个人技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hex Blog">
+<meta property="og:url" content="https://hex-py.github.io/page/7/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="个人技术博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hex">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/page/7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/22/kubernetes-2020-09-22-Kubernetes-GPU-Operator%E9%83%A8%E7%BD%B2centos7-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/kubernetes-2020-09-22-Kubernetes-GPU-Operator%E9%83%A8%E7%BD%B2centos7-8/" class="post-title-link" itemprop="url">Kubernetes-GPU-Operator部署centos7.8</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-22 07:44:55" itemprop="dateCreated datePublished" datetime="2020-09-22T07:44:55+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/22/kubernetes-2020-09-22-Kubernetes-GPU-Operator%E9%83%A8%E7%BD%B2centos7-8/" class="post-meta-item leancloud_visitors" data-flag-title="Kubernetes-GPU-Operator部署centos7.8" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/overview.html">英伟达官方文档</a><br><a target="_blank" rel="noopener" href="https://nvidia.github.io/gpu-operator/">gpu-operator文档地址</a><br><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/nvidia-gpu-operator-simplifying-gpu-management-in-kubernetes/">gpu-operator官方架构说明</a><br><a target="_blank" rel="noopener" href="https://egallen.com/gpu-operator-openshift-43-openstack-13/">gpu-operator架构博客</a><br><a target="_blank" rel="noopener" href="https://github.com/NVIDIA/gpu-operator">gpu-operator GitHub地址</a><br><a target="_blank" rel="noopener" href="https://github.com/NVIDIA/gpu-operator/issues/73">gpu-operator issue 在CentOS8部署失败</a><br><a target="_blank" rel="noopener" href="https://github.com/NVIDIA/gpu-operator/issues/72">CentOS 7.8 Support - GLIBC_2.27</a></p>
+<p><a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tasks/manage-gpus/scheduling-gpus/#deploying-nvidia-gpu-device-plugin">k8s-gpu-device-plugin</a><br><a target="_blank" rel="noopener" href="https://www.kubernetes.org.cn/6574.html">GPU管理 和 DevicePlugin工作机制</a><br><a target="_blank" rel="noopener" href="https://github.com/NVIDIA/k8s-device-plugin/blob/v0.7.0-rc.6/docker/amd64/Dockerfile.centos7">k8s-device-plugin dockerfile.centos7</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/22/golang-2020-09-22-Go-Slice-%E5%88%87%E7%89%87%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/golang-2020-09-22-Go-Slice-%E5%88%87%E7%89%87%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">Go-Slice-切片操作汇总</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-22 07:23:34" itemprop="dateCreated datePublished" datetime="2020-09-22T07:23:34+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/22/golang-2020-09-22-Go-Slice-%E5%88%87%E7%89%87%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Slice-切片操作汇总" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="删除切片中元素"><a href="#删除切片中元素" class="headerlink" title="删除切片中元素"></a>删除切片中元素</h1><h2 id="Fast版本-改变顺序"><a href="#Fast版本-改变顺序" class="headerlink" title="Fast版本,改变顺序"></a>Fast版本,改变顺序</h2><blockquote>
+<p>此代码复制单个元素，元素长度增加, 运行时间不变。仍是复制单个元素的时间。</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a := []<span class="type">string</span>{<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>, <span class="string">"D"</span>, <span class="string">"E"</span>}</span><br><span class="line">i := <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Remove the element at index i from a.</span></span><br><span class="line">a[i] = a[<span class="built_in">len</span>(a)<span class="number">-1</span>] <span class="comment">// Copy last element to index i.</span></span><br><span class="line">a[<span class="built_in">len</span>(a)<span class="number">-1</span>] = <span class="string">""</span>   <span class="comment">// Erase last element (write zero value).</span></span><br><span class="line">a = a[:<span class="built_in">len</span>(a)<span class="number">-1</span>]   <span class="comment">// Truncate slice.</span></span><br><span class="line"></span><br><span class="line">fmt.Println(a) <span class="comment">// [A B E D]</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Slow版本-保持顺序"><a href="#Slow版本-保持顺序" class="headerlink" title="Slow版本,保持顺序"></a>Slow版本,保持顺序</h2><blockquote>
+<p>此代码复制len(a) - i - 1元素，元素长度增加, 运行时间呈线性增长。</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a := []<span class="type">string</span>{<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>, <span class="string">"D"</span>, <span class="string">"E"</span>}</span><br><span class="line">i := <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Remove the element at index i from a.</span></span><br><span class="line"><span class="built_in">copy</span>(a[i:], a[i+<span class="number">1</span>:]) <span class="comment">// Shift a[i+1:] left one index.</span></span><br><span class="line">a[<span class="built_in">len</span>(a)<span class="number">-1</span>] = <span class="string">""</span>     <span class="comment">// Erase last element (write zero value).</span></span><br><span class="line">a = a[:<span class="built_in">len</span>(a)<span class="number">-1</span>]     <span class="comment">// Truncate slice.</span></span><br><span class="line"></span><br><span class="line">fmt.Println(a) <span class="comment">// [A B D E]</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://yourbasic.org/golang/delete-element-slice/">Slice中删除元素的两种方式</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/37334119/how-to-delete-an-element-from-a-slice-in-golang">How to delete an element from a Slice in Golang</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/22/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-09-22-Ubuntu-18-04-grub%E5%AF%BC%E8%87%B4%E5%BC%80%E6%9C%BA%E5%BC%82%E5%B8%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-09-22-Ubuntu-18-04-grub%E5%AF%BC%E8%87%B4%E5%BC%80%E6%9C%BA%E5%BC%82%E5%B8%B8/" class="post-title-link" itemprop="url">Go-Ubuntu18.04-grub导致开机异常</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-22 07:12:17" itemprop="dateCreated datePublished" datetime="2020-09-22T07:12:17+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/22/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2020-09-22-Ubuntu-18-04-grub%E5%AF%BC%E8%87%B4%E5%BC%80%E6%9C%BA%E5%BC%82%E5%B8%B8/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Ubuntu18.04-grub导致开机异常" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>最重要的事: </p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/adf1fbbadff5">ubuntu出现”/dev/disk/by-uuid/xxxxxxxxx does not exist. Dropping to a shell “的恢复之路</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qinxinger/article/details/94589521">ALERT! UUID=xxxxxxxxx does not exist. Dropping to a shell!</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013066730/article/details/82497631">卸载不能用的grub image</a></p>
+<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1273121/ubuntu-20-04-does-not-boot-after-kernel-grub-update">https://askubuntu.com/questions/1273121/ubuntu-20-04-does-not-boot-after-kernel-grub-update</a><br><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1273758/kernel-panic-after-update-from-16-04-lts-to-18-04-lts-virtual-machine-lubuntu">https://askubuntu.com/questions/1273758/kernel-panic-after-update-from-16-04-lts-to-18-04-lts-virtual-machine-lubuntu</a><br><a target="_blank" rel="noopener" href="https://www.reddit.com/r/zfs/comments/ilthfp/zfs_zvols_and_lvm_partitions_created_thru_libvirt/">https://www.reddit.com/r/zfs/comments/ilthfp/zfs_zvols_and_lvm_partitions_created_thru_libvirt/</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/22/golang-2020-09-22-Go-Keycloak-BearerOnlyToken%E6%A0%A1%E9%AA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/golang-2020-09-22-Go-Keycloak-BearerOnlyToken%E6%A0%A1%E9%AA%8C/" class="post-title-link" itemprop="url">Go-Keycloak-BearerOnlyToken校验</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-22 04:05:11" itemprop="dateCreated datePublished" datetime="2020-09-22T04:05:11+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/22/golang-2020-09-22-Go-Keycloak-BearerOnlyToken%E6%A0%A1%E9%AA%8C/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Keycloak-BearerOnlyToken校验" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p><strong>keycloak AccessToken验证过程</strong></p>
+<p>1、解码 token（注意是解码，不是解密，因为token是不加密的，只是按照一定规则进行编码，并签名）。</p>
+<p>2、取得配置的 publickey（含 kid），或根据配置的keycloak地址和realm信息，调用keycloak的Rest接口（ /realms/{realm-name}/protocol/openid-connect/certs）查询publicKey(含kid)。</p>
+<p>3、从步骤2中得到的publicKey中，查找与步骤1中得到的kid匹配的publicKey。</p>
+<p>4、如果找不到对应的publicKey，则报异常：Didn’t find publicKey for specified kid。</p>
+<p>5、使用publicKey验证签名</p>
+<p>6、检查Token中的subject属性是否为空，为空则报异常：Subject missing in token</p>
+<p>7、检查配置realm url 与 token中的issuer是否匹配，不匹配则报异常：Invalid token issuer. Expected {realm url}, but was {issuer}</p>
+<p>7、检查token是否已过期，已过期，则报异常：Token is not active</p>
+<p>token 中的内容</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"exp"</span><span class="punctuation">:</span> <span class="number">1600417728</span><span class="punctuation">,</span>       							# Expiration time Token过期时间</span><br><span class="line">  <span class="attr">"iat"</span><span class="punctuation">:</span> <span class="number">1600417428</span><span class="punctuation">,</span>								# Issued at Token签发时间</span><br><span class="line">  <span class="attr">"jti"</span><span class="punctuation">:</span> <span class="string">"541da01d-5fb8-4985-8ef7-9ebd6939c129"</span><span class="punctuation">,</span>	# JWT ID</span><br><span class="line">  <span class="attr">"iss"</span><span class="punctuation">:</span> <span class="string">"http://192.168.10.240:8082/auth/realms/icos"</span><span class="punctuation">,</span>	# Issuer 签发者</span><br><span class="line">  <span class="attr">"aud"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">"realm-management"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"keycloakos"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"account"</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"sub"</span><span class="punctuation">:</span> <span class="string">"605b699b-65b9-4f63-87ae-fd1f14ff45a7"</span><span class="punctuation">,</span>		# Subject </span><br><span class="line">  <span class="attr">"typ"</span><span class="punctuation">:</span> <span class="string">"Bearer"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"azp"</span><span class="punctuation">:</span> <span class="string">"icosdeploy"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"session_state"</span><span class="punctuation">:</span> <span class="string">"9b6c82bf-785a-4975-98bb-d5b1f7c04c03"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"acr"</span><span class="punctuation">:</span> <span class="string">"1"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"realm_access"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"roles"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="string">"admin"</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"resource_access"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"realm-management"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"roles"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">"query-groups"</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"keycloakos"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"roles"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">"admin"</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"account"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"roles"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">"view-profile"</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"scope"</span><span class="punctuation">:</span> <span class="string">"openid profile email"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"email_verified"</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"name"</span><span class="punctuation">:</span> <span class="string">"a dmin"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"groups"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"preferred_username"</span><span class="punctuation">:</span> <span class="string">"admin"</span><span class="punctuation">,</span>							# 用户名</span><br><span class="line">  <span class="attr">"given_name"</span><span class="punctuation">:</span> <span class="string">"a"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"family_name"</span><span class="punctuation">:</span> <span class="string">"dmin"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"email"</span><span class="punctuation">:</span> <span class="string">"admin@123.com"</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://vikaspogu.dev/posts/sso-jwt-golang/"><strong>Go 使用keycloak进行jwt认证</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58911507/keycloak-bearer-only-clients-why-do-they-exist"><strong>keycloak bearer-only clients: why do they exist?</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/54884938/generate-jwt-token-in-keycloak-and-get-public-key-to-verify-the-jwt-token-on-a-t">在Keycloak中生成JWT令牌并获取公钥在第三方平台上验证JWT令牌</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.janua.fr/keycloak-access-token-verification-example/">Keycloak AccessToken 验证示例</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/@bcarunmail/securing-rest-api-using-keycloak-and-spring-oauth2-6ddf3a1efcc2">使用Keycloak和Spring Oauth2保护REST API</a></p>
+<p><a target="_blank" rel="noopener" href="https://auth0.com/blog/authentication-in-golang/#Authorization-with-Golang"><strong>golang使用jwt做身份验证</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc6749#section-4.4">OAuth 2.0授权框架</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48855122/keycloak-adaptor-for-golang-application">Keycloak adaptor for golang application  (OIDC package)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/louketo/louketo-proxy/blob/master/docs/user-guide.md">github OIDC Proxy</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/markbates/goth">github goth - 为编写身份验证提供了一种简单、干净和惯用的方法</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/16/golang-2020-09-16-Go-Tekton%E4%BD%BF%E7%94%A8-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%9D%91%E5%B0%8F%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/16/golang-2020-09-16-Go-Tekton%E4%BD%BF%E7%94%A8-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%9D%91%E5%B0%8F%E8%AE%B0/" class="post-title-link" itemprop="url">Go-Tekton使用-使用示例以及遇坑小记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-16 09:17:15" itemprop="dateCreated datePublished" datetime="2020-09-16T09:17:15+08:00">2020-09-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/16/golang-2020-09-16-Go-Tekton%E4%BD%BF%E7%94%A8-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%9D%91%E5%B0%8F%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Tekton使用-使用示例以及遇坑小记" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>打算依托Tekton,作为工作流工具，将以下业务场景用task实现：</p>
+<ol>
+<li>镜像部署</li>
+<li>源码构建+镜像部署</li>
+<li>源码文件上传hdfs</li>
+<li>微服务依赖关系</li>
+</ol>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>k8s集群： </p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Tekton安装，通过官方GitHub仓库中的release.yaml文件部署服务。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://github.com/tektoncd/pipeline/releases/download/v0.16./release.yaml</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>需要检查这几项, workspace</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline#read-the-docs">官方文档入口-select-version</a></p>
+<h2 id="nuctl"><a href="#nuctl" class="headerlink" title="nuctl"></a>nuctl</h2><blockquote>
+<p>nuctl 是<code>nuclio</code>的客户端, nuctl使用时需要访问docker-daemon, </p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ nuctl get project --verbose</span><br><span class="line">20.10.20 16:53:48.316            nuctl.platform (D) Using kubeconfig {<span class="string">"kubeconfigPath"</span>: <span class="string">"/home/hex/.kube/config"</span>}</span><br><span class="line">20.10.20 16:53:48.324 tl.platform.docker.runner (D) Executing {<span class="string">"command"</span>: <span class="string">"docker version"</span>}</span><br><span class="line">20.10.20 16:53:48.388 tl.platform.docker.runner (D) Command executed successfully {<span class="string">"output"</span>: <span class="string">"Client: Docker Engine - Community\n Version:           19.03.4\n API version:       1.40\n Go version:        go1.12.10\n Git commit:        9013bf583a\n Built:             Fri Oct 18 15:54:09 2019\n OS/Arch:           linux/amd64\n Experimental:      false\n\nServer: Docker Engine - Community\n Engine:\n  Version:          19.03.4\n  API version:      1.40 (minimum version 1.12)\n  Go version:       go1.12.10\n  Git commit:       9013bf583a\n  Built:            Fri Oct 18 15:52:40 2019\n  OS/Arch:          linux/amd64\n  Experimental:     false\n containerd:\n  Version:          1.2.10\n  GitCommit:        b34a5c8af56e510852c35414db4c1f4fa6172339\n runc:\n  Version:          1.0.0-rc8+dev\n  GitCommit:        3e425f80a8c931f88e6d94a8c831b9d5aa481657\n docker-init:\n  Version:          0.18.0\n  GitCommit:        fec3683\n"</span>, <span class="string">"stderr"</span>: <span class="string">""</span>, <span class="string">"exitCode"</span>: 0}</span><br></pre></td></tr></tbody></table></figure>
+<p>所以需要创建<code>docker-in-docker</code>的服务<br><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline/blob/master/examples/v1beta1/taskruns/dind-sidecar.yaml">task docker-in-docker</a><br><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline/issues/1929">dind issue</a></p>
+<h2 id="构建镜像-kaniko"><a href="#构建镜像-kaniko" class="headerlink" title="构建镜像(kaniko)"></a>构建镜像(kaniko)</h2><p><a target="_blank" rel="noopener" href="https://hub-preview.tekton.dev/detail/55">task kaniko</a></p>
+<h2 id="task之间传递数据-通过-result-配置"><a href="#task之间传递数据-通过-result-配置" class="headerlink" title="task之间传递数据(通过 result 配置)"></a><code>task</code>之间传递数据(通过 result 配置)</h2><p><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#emitting-results">传出result</a><br><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline/blob/master/docs/pipelines.md#configuring-execution-results-at-the-task-level">传出result – task级别</a><br><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline/blob/master/docs/pipelines.md#configuring-execution-results-at-the-pipeline-level">传出result – pipe级别</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline/blob/master/docs/pipelines.md#passing-one-tasks-results-into-the-parameters-or-whenexpressions-of-another">传入result – task级别</a></p>
+<h2 id="使用when做任务编排"><a href="#使用when做任务编排" class="headerlink" title="使用when做任务编排"></a>使用<code>when</code>做任务编排</h2><p><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline/blob/master/docs/pipelines.md#guard-task-execution-using-whenexpressions">任务编排 – when</a></p>
+<h2 id="使用runAfter做任务编排"><a href="#使用runAfter做任务编排" class="headerlink" title="使用runAfter做任务编排"></a>使用<code>runAfter</code>做任务编排</h2><p><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline/blob/master/docs/pipelines.md#using-the-runafter-parameter">任务编排 – runAfter</a></p>
+<h2 id="workspace"><a href="#workspace" class="headerlink" title="workspace"></a>workspace</h2><p><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline/blob/master/docs/pipelines.md#specifying-workspaces">工作空间使用</a></p>
+<h2 id="auth"><a href="#auth" class="headerlink" title="auth"></a>auth</h2><p><a target="_blank" rel="noopener" href="https://github.com/tektoncd/pipeline/blob/master/docs/auth.md">Authorization at RunTime</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/04/golang-2020-09-04-Go-fmt%E6%A0%BC%E5%BC%8F%E5%8C%96IO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/04/golang-2020-09-04-Go-fmt%E6%A0%BC%E5%BC%8F%E5%8C%96IO/" class="post-title-link" itemprop="url">Go-fmt格式化IO</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-04 13:11:57" itemprop="dateCreated datePublished" datetime="2020-09-04T13:11:57+08:00">2020-09-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/04/golang-2020-09-04-Go-fmt%E6%A0%BC%E5%BC%8F%E5%8C%96IO/" class="post-meta-item leancloud_visitors" data-flag-title="Go-fmt格式化IO" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/03/golang-2020-09-03-Go-Defer%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/03/golang-2020-09-03-Go-Defer%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">Go-Defer说明</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-03 11:04:46" itemprop="dateCreated datePublished" datetime="2020-09-03T11:04:46+08:00">2020-09-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/03/golang-2020-09-03-Go-Defer%E8%AF%B4%E6%98%8E/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Defer说明" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>defer语句是Go中一个非常有用的特性，可以将一个方法延迟到包裹<code>defer</code>的方法返回时执行，在实际应用中，<code>defer</code>可以充当其他语言中<code>try…catch…</code>的角色，<br>也可以用来处理关闭文件句柄等收尾操作。</p>
+<h1 id="1-defer使用"><a href="#1-defer使用" class="headerlink" title="1. defer使用"></a>1. defer使用</h1><h2 id="1-1-defer触发的时机"><a href="#1-1-defer触发的时机" class="headerlink" title="1.1 defer触发的时机"></a>1.1 defer触发的时机</h2><blockquote>
+<p>A “defer” statement invokes a function whose execution is deferred to the moment the surrounding function returns, either because the surrounding function executed a return statement, reached the end of its function body, or because the corresponding goroutine is panicking.</p>
+</blockquote>
+<p>官方文档指出，执行defer的时机为：</p>
+<ul>
+<li>包裹<code>defer</code>的函数返回时</li>
+<li>包裹<code>defer</code>的函数执行到末尾时</li>
+<li>所在的<code>goroutine</code>发生<code>panic</code>时</li>
+</ul>
+<h2 id="1-2-defer执行顺序"><a href="#1-2-defer执行顺序" class="headerlink" title="1.2 defer执行顺序"></a>1.2 defer执行顺序</h2><p>当一个方法中有多个defer时， defer会将要延迟执行的方法<code>压栈</code>，当defer被触发时，将所有<code>压栈</code>的方法<code>出栈</code>并执行。<br>所以defer的执行顺序是LIFO的。<br>例如</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">stackingDefers</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {</span><br><span class="line">        fmt.Println(<span class="string">"1"</span>)</span><br><span class="line">    }()</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {</span><br><span class="line">        fmt.Println(<span class="string">"2"</span>)</span><br><span class="line">    }()</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {</span><br><span class="line">        fmt.Println(<span class="string">"3"</span>)</span><br><span class="line">    }()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>结果为：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
+<h1 id="2-坑"><a href="#2-坑" class="headerlink" title="2. 坑"></a>2. 坑</h1><h2 id="2-1-返回值是否匿名表现不同"><a href="#2-1-返回值是否匿名表现不同" class="headerlink" title="2.1 返回值是否匿名表现不同"></a>2.1 返回值是否匿名表现不同</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 匿名返回值 (int)，输出 0</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">returnValues</span><span class="params">()</span></span> <span class="type">int</span> {</span><br><span class="line">    <span class="keyword">var</span> result <span class="type">int</span></span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {</span><br><span class="line">        result++</span><br><span class="line">        fmt.Println(<span class="string">"defer"</span>)</span><br><span class="line">    }()</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 命名返回值（result int）， 输出 1</span></span><br><span class="line"><span class="comment">// 因为return与defer是同时触发。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">namedReturnValues</span><span class="params">()</span></span> (result <span class="type">int</span>) {</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {</span><br><span class="line">        result++</span><br><span class="line">        fmt.Println(<span class="string">"defer"</span>)</span><br><span class="line">    }()</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>匿名返回执行顺序为：</p>
+<ol>
+<li><p>将result赋值给返回值(相当于， returnValue=result=0)；</p>
+</li>
+<li><p>检查到<code>defer</code>，执行defer的语句，变量result值+1(result=1)；</p>
+</li>
+<li><p>返回函数返回值，returnValue(returnValue=0)。</p>
+</li>
+</ol>
+<p>命名返回值执行顺序为：</p>
+<ol>
+<li>返回值被声明为<code>result</code>；</li>
+<li>检查到<code>defer</code>，执行defer的语句，变量result值+1(result=1)；</li>
+<li>返回函数返回值，result(result=1)。</li>
+</ol>
+<blockquote>
+<p>注意与python的浅拷贝区分开</p>
+</blockquote>
+<h2 id="2-2-for循环中使用可能导致的性能问题"><a href="#2-2-for循环中使用可能导致的性能问题" class="headerlink" title="2.2 for循环中使用可能导致的性能问题"></a>2.2 for循环中使用可能导致的性能问题</h2><p>比如：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deferInLoops</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ {</span><br><span class="line">        f, _ := os.Open(<span class="string">"/etc/hosts"</span>)</span><br><span class="line">        <span class="keyword">defer</span> f.Close()</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>此处<code>defer f.Close()</code>在创建文件对象后声明，看起来没有什么问题。但是和直接调用<code>f.Close()</code>相比，defer的执行存在着额外的开销。</p>
+<p><code>defer</code>会存在两方面的资源开销：</p>
+<ul>
+<li><code>defer</code>对其后需要的参数进行内存拷贝；</li>
+<li>还需要对<code>defer</code>结构进行压栈出栈操作。</li>
+</ul>
+<p>可以将<code>f.Close()</code>语句前的<code>defer</code>去掉，直接调用<code>f.close()</code>来减少大量<code>defer</code>导致的额外资源消耗。</p>
+<h2 id="2-3-必须判断执行成功，再defer释放资源"><a href="#2-3-必须判断执行成功，再defer释放资源" class="headerlink" title="2.3 必须判断执行成功，再defer释放资源"></a>2.3 必须判断执行成功，再defer释放资源</h2><p>如果获取资源的操作返回err参数：</p>
+<ul>
+<li><p>不使用<code>defer</code>, 可以选择忽略返回的err参数;</p>
+</li>
+<li><p>使用defer进行延迟释放, 在使用defer之前先判断是否存在err。</p>
+</li>
+</ul>
+<blockquote>
+<p>资源没有获取成功，对资源执行释放操作会导致释放方法执行报错。必须判断是否获取成功，再释放资源。</p>
+</blockquote>
+<p>正确写法：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">resp, err := http.Get(url)</span><br><span class="line"><span class="comment">// 先判断操作是否成功</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 如果操作成功，再进行Close操作</span></span><br><span class="line"><span class="keyword">defer</span> resp.Body.Close()</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-4-调用os-Exit时defer不会被执行"><a href="#2-4-调用os-Exit时defer不会被执行" class="headerlink" title="2.4 调用os.Exit时defer不会被执行"></a>2.4 调用os.Exit时defer不会被执行</h2><p>当发生panic时，所在goroutine的所有defer会被执行，但是当调用os.Exit()方法退出程序时，defer不会执行。</p>
+<p>下面例子中<code>defer</code>不会输出：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deferExit</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {</span><br><span class="line">        fmt.Println(<span class="string">"defer"</span>)</span><br><span class="line">    }()</span><br><span class="line">    os.Exit(<span class="number">0</span>)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/79c029c0bd58">Go语言中defer的一些坑</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/03/golang-2020-09-03-Go-%E5%B9%B6%E5%8F%91%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/03/golang-2020-09-03-Go-%E5%B9%B6%E5%8F%91%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">Go-并发实践</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-03 08:58:06" itemprop="dateCreated datePublished" datetime="2020-09-03T08:58:06+08:00">2020-09-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/03/golang-2020-09-03-Go-%E5%B9%B6%E5%8F%91%E5%AE%9E%E8%B7%B5/" class="post-meta-item leancloud_visitors" data-flag-title="Go-并发实践" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><em>内存内实现任务队列</em><br><a target="_blank" rel="noopener" href="http://marcio.io/2015/07/handling-1-million-requests-per-minute-with-golang/">国外(原创)</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jeanphorn/article/details/79018205?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.add_param_isCf&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.add_param_isCf">国内(第一抄)</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lys07962000/article/details/105645638#commentBox">国内(第二)</a></p>
+<p><em>基于redis实现消息队列</em><br>harbor-trivy-scanner</p>
+<p><em>原理</em><br><a target="_blank" rel="noopener" href="http://www.shangdixinxi.com/detail-1213119.html">go语言并发</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/02/golang-2020-09-02-Go-Strings-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/02/golang-2020-09-02-Go-Strings-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">Go-Strings-字符串操作汇总</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-02 07:16:56" itemprop="dateCreated datePublished" datetime="2020-09-02T07:16:56+08:00">2020-09-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/02/golang-2020-09-02-Go-Strings-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Strings-字符串操作汇总" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><p>字符串常见操作有：</p>
+<ul>
+<li><p>字符串长度；</p>
+</li>
+<li><p>求子串；</p>
+</li>
+<li><p>是否存在某个字符或子串；</p>
+</li>
+<li><p>子串出现的次数（字符串匹配）；</p>
+</li>
+<li><p>字符串分割（切分）为[]string；</p>
+</li>
+<li><p>字符串是否有某个前缀或后缀；</p>
+</li>
+<li><p>字符或子串在字符串中首次出现的位置或最后一次出现的位置；</p>
+</li>
+<li><p>通过某个字符串将[]string 连接起来；</p>
+</li>
+<li><p>字符串重复几次；</p>
+</li>
+<li><p>字符串中子串替换；</p>
+</li>
+<li><p>大小写转换；</p>
+</li>
+<li><p>Trim 操作；</p>
+</li>
+<li><p>…</p>
+</li>
+</ul>
+<blockquote>
+<p> <code>string</code> 类型可以看成是一种特殊的 <code>slice</code> 类型，因此获取长度可以用内置的函数 <code>len</code>；同时支持 切片 操作，因此，子串获取很容易。</p>
+</blockquote>
+<blockquote>
+<p>说明：这里说的<code>String</code>，指得是 rune 类型，即一个 UTF-8 字符（Unicode 代码点）。</p>
+</blockquote>
+<h1 id="1-正文"><a href="#1-正文" class="headerlink" title="1. 正文"></a>1. 正文</h1><h2 id="1-1-字符串长度"><a href="#1-1-字符串长度" class="headerlink" title="1.1 字符串长度"></a>1.1 字符串长度</h2><p>string 类型可以看成是一种特殊的 slice 类型，因此获取长度可以用内置的函数 len；同时支持 切片 操作，因此，子串获取很容易。</p>
+<h2 id="1-2-字符串比较"><a href="#1-2-字符串比较" class="headerlink" title="1.2  字符串比较"></a>1.2  字符串比较</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Compare 函数，用于比较两个字符串的大小，如果两个字符串相等，返回为 0。如果 a 小于 b ，返回 -1 ，反之返回 1 。不推荐使用这个函数，直接使用 == != &gt; &lt; &gt;= &lt;= 等一系列运算符更加直观。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Compare</span><span class="params">(a, b <span class="type">string</span>)</span></span> <span class="type">int</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">//   EqualFold 函数，计算 s 与 t 忽略字母大小写后是否相等。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">EqualFold</span><span class="params">(s, t <span class="type">string</span>)</span></span> <span class="type">bool</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>示例：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a := <span class="string">"gopher"</span></span><br><span class="line">b := <span class="string">"hello world"</span></span><br><span class="line">fmt.Println(strings.Compare(a, b))</span><br><span class="line">fmt.Println(strings.Compare(a, a))</span><br><span class="line">fmt.Println(strings.Compare(b, a))</span><br><span class="line"></span><br><span class="line">fmt.Println(strings.EqualFold(<span class="string">"GO"</span>, <span class="string">"go"</span>))</span><br><span class="line">fmt.Println(strings.EqualFold(<span class="string">"壹"</span>, <span class="string">"一"</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">-1</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-3-是否存在某个字符或子串"><a href="#1-3-是否存在某个字符或子串" class="headerlink" title="1.3.  是否存在某个字符或子串"></a>1.3.  是否存在某个字符或子串</h2><p>有三个函数做这件事：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 子串 substr 在 s 中，返回 true</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Contains</span><span class="params">(s, substr <span class="type">string</span>)</span></span> <span class="type">bool</span></span><br><span class="line"><span class="comment">// chars 中任何一个 Unicode 代码点在 s 中，返回 true</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ContainsAny</span><span class="params">(s, chars <span class="type">string</span>)</span></span> <span class="type">bool</span></span><br><span class="line"><span class="comment">// Unicode 代码点 r 在 s 中，返回 true</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ContainsRune</span><span class="params">(s <span class="type">string</span>, r <span class="type">rune</span>)</span></span> <span class="type">bool</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>这里对 <code>ContainsAny </code>函数进行一下说明，看如下例子：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(strings.ContainsAny(<span class="string">"team"</span>, <span class="string">"i"</span>))</span><br><span class="line">fmt.Println(strings.ContainsAny(<span class="string">"failure"</span>, <span class="string">"u &amp; i"</span>))</span><br><span class="line">fmt.Println(strings.ContainsAny(<span class="string">"in failure"</span>, <span class="string">"s g"</span>))</span><br><span class="line">fmt.Println(strings.ContainsAny(<span class="string">"foo"</span>, <span class="string">""</span>))</span><br><span class="line">fmt.Println(strings.ContainsAny(<span class="string">""</span>, <span class="string">""</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>说明，第二个参数 chars 中任意一个字符（Unicode Code Point）如果在第一个参数 s 中存在，则返回 true。</p>
+<p>查看这三个函数的源码，发现它们只是调用了相应的 Index 函数（子串出现的位置），然后和 0 作比较返回 true 或 fale。如，<code>Contains</code>：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Contains</span><span class="params">(s, substr <span class="type">string</span>)</span></span> <span class="type">bool</span> {</span><br><span class="line">  <span class="keyword">return</span> Index(s, substr) &gt;= <span class="number">0</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>关于 Index 相关函数的实现，我们后面介绍。</p>
+<h2 id="1-3-子串出现次数-字符串匹配"><a href="#1-3-子串出现次数-字符串匹配" class="headerlink" title="1.3. 子串出现次数 ( 字符串匹配 )"></a>1.3. 子串出现次数 ( 字符串匹配 )</h2><p>在数据结构与算法中，可能会讲解以下字符串匹配算法：</p>
+<ul>
+<li>朴素匹配算法</li>
+<li>KMP 算法</li>
+<li>Rabin-Karp 算法</li>
+<li>Boyer-Moore 算法</li>
+<li>…</li>
+</ul>
+<p>在 Go 中，查找子串出现次数(字符串模式匹配)，是通过 <code>Rabin-Karp</code> 算法实现的。Count 函数的签名如下：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Count</span><span class="params">(s, sep <span class="type">string</span>)</span></span> <span class="type">int</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>在 Count 函数中，处理了几种特殊情况，属于字符匹配预处理的一部分。要注意：当 <code>sep</code> 为空时，Count 的返回值是：<code>utf8.RuneCountInString(s) + 1</code></p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(strings.Count(<span class="string">"cheese"</span>, <span class="string">"e"</span>))</span><br><span class="line">fmt.Println(<span class="built_in">len</span>(<span class="string">"谷歌中国"</span>))</span><br><span class="line">fmt.Println(strings.Count(<span class="string">"谷歌中国"</span>, <span class="string">""</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">12</span>  </span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Count 是计算子串在字符串中出现的无重叠的次数，比如：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(strings.Count(<span class="string">"fivevev"</span>, <span class="string">"vev"</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-4-字符串分割为-string"><a href="#1-4-字符串分割为-string" class="headerlink" title="1.4. 字符串分割为[]string"></a>1.4. 字符串分割为[]string</h2><p><code>Strings</code>包提供了六个三组函数：Fields 和 FieldsFunc、Split 和 SplitAfter、SplitN 和 SplitAfterN。</p>
+<h3 id="1-4-1-Fields-和-FieldsFunc"><a href="#1-4-1-Fields-和-FieldsFunc" class="headerlink" title="1.4.1 Fields 和 FieldsFunc"></a>1.4.1 Fields 和 FieldsFunc</h3><p>这两个函数的签名如下：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Fields</span><span class="params">(s <span class="type">string</span>)</span></span> []<span class="type">string</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">FieldsFunc</span><span class="params">(s <span class="type">string</span>, f <span class="keyword">func</span>(<span class="type">rune</span>)</span></span> <span class="type">bool</span>) []<span class="type">string</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p><code>Fields</code> 用一个或多个连续的空格分隔字符串 s，返回子字符串的数组（slice）。如果字符串 s 只包含空格，则返回空列表 ([]string 的长度为 0）。其中，空格的定义是 unicode.IsSpace。</p>
+<p>常见间隔符包括：’\t’, ‘\n’, ‘\v’, ‘\f’, ‘\r’, ‘ ‘, U+0085 (NEL), U+00A0 (NBSP)</p>
+<p>由于是用空格分隔，因此结果中不会含有空格或空子字符串，例如：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Printf(<span class="string">"Fields are: %q"</span>, strings.Fields(<span class="string">"  foo bar  baz   "</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fields are: [<span class="string">"foo"</span> <span class="string">"bar"</span> <span class="string">"baz"</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p><code>FieldsFunc</code> 用这样的 Unicode 代码点 c 进行分隔：满足 f(c) 返回 true。该函数返回[]string。如果字符串 s 中所有的代码点 (unicode code points) 都满足 f(c) 或者 s 是空，则 FieldsFunc 返回空 slice。</p>
+<p>也就是说，我们可以通过实现一个回调函数来指定分隔字符串 s 的字符。比如上面的例子，我们通过 FieldsFunc 来实现：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(strings.FieldsFunc(<span class="string">"  foo bar  baz   "</span>, unicode.IsSpace))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>实际上，Fields 函数就是调用 FieldsFunc 实现的：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Fields</span><span class="params">(s <span class="type">string</span>)</span></span> []<span class="type">string</span> {</span><br><span class="line">  <span class="keyword">return</span> FieldsFunc(s, unicode.IsSpace)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="1-4-2-Split-和-SplitAfter、-SplitN-和-SplitAfterN"><a href="#1-4-2-Split-和-SplitAfter、-SplitN-和-SplitAfterN" class="headerlink" title="1.4.2. Split 和 SplitAfter、 SplitN 和 SplitAfterN"></a>1.4.2. Split 和 SplitAfter、 SplitN 和 SplitAfterN</h3><p>四个函数通过调用同一个内部函数实现：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Split</span><span class="params">(s, sep <span class="type">string</span>)</span></span> []<span class="type">string</span> { <span class="keyword">return</span> genSplit(s, sep, <span class="number">0</span>, <span class="number">-1</span>) }</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SplitAfter</span><span class="params">(s, sep <span class="type">string</span>)</span></span> []<span class="type">string</span> { <span class="keyword">return</span> genSplit(s, sep, <span class="built_in">len</span>(sep), <span class="number">-1</span>) }</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SplitN</span><span class="params">(s, sep <span class="type">string</span>, n <span class="type">int</span>)</span></span> []<span class="type">string</span> { <span class="keyword">return</span> genSplit(s, sep, <span class="number">0</span>, n) }</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SplitAfterN</span><span class="params">(s, sep <span class="type">string</span>, n <span class="type">int</span>)</span></span> []<span class="type">string</span> { <span class="keyword">return</span> genSplit(s, sep, <span class="built_in">len</span>(sep), n) }</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>都调用了 genSplit 函数。</p>
+<p>这四个函数都是通过 sep 进行分割，返回[]string。如果 sep 为空，相当于分成一个个的 UTF-8 字符，如 ：</p>
+<p><code>Split("abc","")</code>，得到的是<code>[a b c]</code>。</p>
+<p><code>Split(s, sep)</code> 和<code>SplitN(s, sep, -1)</code>等价；</p>
+<p><code>SplitAfter(s, sep)</code> 和 <code>SplitAfterN(s, sep, -1)</code> 等价。</p>
+<p><code>Split</code> 和 <code>SplitAfter</code>的区别是 Split 会将 s 中的 sep 去掉，而 SplitAfter 会保留 sep。</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fmt.Printf(<span class="string">"%q\n"</span>, strings.Split(<span class="string">"foo,bar,baz"</span>, <span class="string">","</span>))</span><br><span class="line">fmt.Printf(<span class="string">"%q\n"</span>, strings.SplitAfter(<span class="string">"foo,bar,baz"</span>, <span class="string">","</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">"foo"</span> <span class="string">"bar"</span> <span class="string">"baz"</span>]</span><br><span class="line">[<span class="string">"foo,"</span> <span class="string">"bar,"</span> <span class="string">"baz"</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>带 N 的方法可以通过最后一个参数 n 控制返回的结果中的 slice 中的元素个数： </p>
+<p>当 n &lt; 0 时，返回所有的子字符串；</p>
+<p>当 n == 0 时，返回的结果是 nil；</p>
+<p>当 n &gt; 0 时，表示返回的 slice 中最多只有 n 个元素；</p>
+<p>其中，最后一个元素不会分割，比如：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Printf(<span class="string">"%q\n"</span>, strings.SplitN(<span class="string">"foo,bar,baz"</span>, <span class="string">","</span>, <span class="number">2</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">"foo"</span> <span class="string">"bar,baz"</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>官方文档提供的例子，输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fmt.Printf(<span class="string">"%q\n"</span>, strings.Split(<span class="string">"a,b,c"</span>, <span class="string">","</span>))</span><br><span class="line">fmt.Printf(<span class="string">"%q\n"</span>, strings.Split(<span class="string">"a man a plan a canal panama"</span>, <span class="string">"a "</span>))</span><br><span class="line">fmt.Printf(<span class="string">"%q\n"</span>, strings.Split(<span class="string">" xyz "</span>, <span class="string">""</span>))</span><br><span class="line">fmt.Printf(<span class="string">"%q\n"</span>, strings.Split(<span class="string">""</span>, <span class="string">"Bernardo O'Higgins"</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">"a"</span> <span class="string">"b"</span> <span class="string">"c"</span>]</span><br><span class="line">[<span class="string">""</span> <span class="string">"man "</span> <span class="string">"plan "</span> <span class="string">"canal panama"</span>]</span><br><span class="line">[<span class="string">" "</span> <span class="string">"x"</span> <span class="string">"y"</span> <span class="string">"z"</span> <span class="string">" "</span>]</span><br><span class="line">[<span class="string">""</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-5-字符串是否有某个前缀或后缀"><a href="#1-5-字符串是否有某个前缀或后缀" class="headerlink" title="1.5. 字符串是否有某个前缀或后缀"></a>1.5. 字符串是否有某个前缀或后缀</h2><p>两个函数<code>HasPrefix</code>和<code>HasSuffix</code>：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// s 中是否以 prefix 开始</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">HasPrefix</span><span class="params">(s, prefix <span class="type">string</span>)</span></span> <span class="type">bool</span> {</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">len</span>(s) &gt;= <span class="built_in">len</span>(prefix) &amp;&amp; s[<span class="number">0</span>:<span class="built_in">len</span>(prefix)] == prefix</span><br><span class="line">}</span><br><span class="line"><span class="comment">// s 中是否以 suffix 结尾</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">HasSuffix</span><span class="params">(s, suffix <span class="type">string</span>)</span></span> <span class="type">bool</span> {</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">len</span>(s) &gt;= <span class="built_in">len</span>(suffix) &amp;&amp; s[<span class="built_in">len</span>(s)-<span class="built_in">len</span>(suffix):] == suffix</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>如果 prefix 或 suffix 为 “” , 返回值总是 true。</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(strings.HasPrefix(<span class="string">"Gopher"</span>, <span class="string">"Go"</span>))</span><br><span class="line">fmt.Println(strings.HasPrefix(<span class="string">"Gopher"</span>, <span class="string">"C"</span>))</span><br><span class="line">fmt.Println(strings.HasPrefix(<span class="string">"Gopher"</span>, <span class="string">""</span>))</span><br><span class="line">fmt.Println(strings.HasSuffix(<span class="string">"Amigo"</span>, <span class="string">"go"</span>))</span><br><span class="line">fmt.Println(strings.HasSuffix(<span class="string">"Amigo"</span>, <span class="string">"Ami"</span>))</span><br><span class="line">fmt.Println(strings.HasSuffix(<span class="string">"Amigo"</span>, <span class="string">""</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-6-字符或子串在字符串中出现的位置"><a href="#1-6-字符或子串在字符串中出现的位置" class="headerlink" title="1.6. 字符或子串在字符串中出现的位置"></a>1.6. 字符或子串在字符串中出现的位置</h2><p><code>Index</code>函数：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 s 中查找 sep 的第一次出现，返回第一次出现的索引</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Index</span><span class="params">(s, sep <span class="type">string</span>)</span></span> <span class="type">int</span></span><br><span class="line"><span class="comment">// 在 s 中查找字节 c 的第一次出现，返回第一次出现的索引</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IndexByte</span><span class="params">(s <span class="type">string</span>, c <span class="type">byte</span>)</span></span> <span class="type">int</span></span><br><span class="line"><span class="comment">// chars 中任何一个 Unicode 代码点在 s 中首次出现的位置</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IndexAny</span><span class="params">(s, chars <span class="type">string</span>)</span></span> <span class="type">int</span></span><br><span class="line"><span class="comment">// 查找字符 c 在 s 中第一次出现的位置，其中 c 满足 f(c) 返回 true</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IndexFunc</span><span class="params">(s <span class="type">string</span>, f <span class="keyword">func</span>(<span class="type">rune</span>)</span></span> <span class="type">bool</span>) <span class="type">int</span></span><br><span class="line"><span class="comment">// Unicode 代码点 r 在 s 中第一次出现的位置</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IndexRune</span><span class="params">(s <span class="type">string</span>, r <span class="type">rune</span>)</span></span> <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 有三个对应的查找最后一次出现的位置</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">LastIndex</span><span class="params">(s, sep <span class="type">string</span>)</span></span> <span class="type">int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">LastIndexByte</span><span class="params">(s <span class="type">string</span>, c <span class="type">byte</span>)</span></span> <span class="type">int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">LastIndexAny</span><span class="params">(s, chars <span class="type">string</span>)</span></span> <span class="type">int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">LastIndexFunc</span><span class="params">(s <span class="type">string</span>, f <span class="keyword">func</span>(<span class="type">rune</span>)</span></span> <span class="type">bool</span>) <span class="type">int</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>1.3小节<code>Contain</code> 相关的函数内部调用的是响应的 <code>Index</code> 函数。</p>
+<p> <code>IndexFunc</code> 举例：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">han := <span class="function"><span class="keyword">func</span><span class="params">(c <span class="type">rune</span>)</span></span> <span class="type">bool</span> {</span><br><span class="line">    <span class="keyword">return</span> unicode.Is(unicode.Han, c) <span class="comment">// 汉字</span></span><br><span class="line">}</span><br><span class="line">fmt.Println(strings.IndexFunc(<span class="string">"Hello, world"</span>, han))</span><br><span class="line">fmt.Println(strings.IndexFunc(<span class="string">"Hello, 世界"</span>, han))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">-1</span></span><br><span class="line"><span class="number">7</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-7-字符串-JOIN-操作"><a href="#1-7-字符串-JOIN-操作" class="headerlink" title="1.7. 字符串 JOIN 操作"></a>1.7. 字符串 JOIN 操作</h2><p><code>Join</code>函数 实现 字符串或数组连接 ：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Join</span><span class="params">(a []<span class="type">string</span>, sep <span class="type">string</span>)</span></span> <span class="type">string</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>自己实现：</p>
+<blockquote>
+<p>使用了 <code>bytes</code> 包的 <code>Buffer</code> 类型，避免大量的字符串连接操作（因为 Go 中字符串是不可变的）。</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Join</span><span class="params">(str []<span class="type">string</span>, sep <span class="type">string</span>)</span></span> <span class="type">string</span> {</span><br><span class="line">  <span class="comment">// 特殊情况应该做处理</span></span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(str) == <span class="number">0</span> {</span><br><span class="line">      <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(str) == <span class="number">1</span> {</span><br><span class="line">      <span class="keyword">return</span> str[<span class="number">0</span>]</span><br><span class="line">  }</span><br><span class="line">  buffer := bytes.NewBufferString(str[<span class="number">0</span>])</span><br><span class="line">  <span class="keyword">for</span> _, s := <span class="keyword">range</span> str[<span class="number">1</span>:] {</span><br><span class="line">      buffer.WriteString(sep)</span><br><span class="line">      buffer.WriteString(s)</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">return</span> buffer.String()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>标准库的实现：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Join</span><span class="params">(a []<span class="type">string</span>, sep <span class="type">string</span>)</span></span> <span class="type">string</span> {</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(a) == <span class="number">0</span> {</span><br><span class="line">      <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(a) == <span class="number">1</span> {</span><br><span class="line">      <span class="keyword">return</span> a[<span class="number">0</span>]</span><br><span class="line">  }</span><br><span class="line">  n := <span class="built_in">len</span>(sep) * (<span class="built_in">len</span>(a) - <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(a); i++ {</span><br><span class="line">      n += <span class="built_in">len</span>(a[i])</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  b := <span class="built_in">make</span>([]<span class="type">byte</span>, n)</span><br><span class="line">  bp := <span class="built_in">copy</span>(b, a[<span class="number">0</span>])</span><br><span class="line">  <span class="keyword">for</span> _, s := <span class="keyword">range</span> a[<span class="number">1</span>:] {</span><br><span class="line">      bp += <span class="built_in">copy</span>(b[bp:], sep)</span><br><span class="line">      bp += <span class="built_in">copy</span>(b[bp:], s)</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">return</span> <span class="type">string</span>(b)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>标准库的实现没有用 bytes 包，当然也不会简单的通过 + 号连接字符串。Go 中是不允许循环依赖的，标准库中很多时候会出现代码拷贝，而不是引入某个包。这里 Join 的实现方式挺好，我个人猜测，不直接使用 bytes 包，也是不想依赖 bytes 包（其实 bytes 中的实现也是 copy 方式）。</p>
+<p>简单使用示例：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(Join([]<span class="type">string</span>{<span class="string">"name=xxx"</span>, <span class="string">"age=xx"</span>}, <span class="string">"&amp;"</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出结果:</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=xxx&amp;age=xx</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-8-字符串重复几次"><a href="#1-8-字符串重复几次" class="headerlink" title="1.8. 字符串重复几次"></a>1.8. 字符串重复几次</h2><p>函数签名如下：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Repeat</span><span class="params">(s <span class="type">string</span>, count <span class="type">int</span>)</span></span> <span class="type">string</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>将 s 重复 count 次，如果 count 为负数或返回值长度 len(s)*count 超出 string 上限会导致 panic，这个函数使用很简单：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(<span class="string">"ba"</span> + strings.Repeat(<span class="string">"na"</span>, <span class="number">2</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">banana</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-9-字符替换"><a href="#1-9-字符替换" class="headerlink" title="1.9. 字符替换"></a>1.9. 字符替换</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Map</span><span class="params">(mapping <span class="keyword">func</span>(<span class="type">rune</span>)</span></span> <span class="type">rune</span>, s <span class="type">string</span>) <span class="type">string</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>Map 函数，将 s 的每一个字符按照 mapping 的规则做映射替换，如果 mapping 返回值 &lt;0 ，则舍弃该字符。该方法只能对每一个字符做处理，但处理方式很灵活，可以方便的过滤，筛选汉字等。</p>
+<p>示例：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mapping := <span class="function"><span class="keyword">func</span><span class="params">(r <span class="type">rune</span>)</span></span> <span class="type">rune</span> {</span><br><span class="line">    <span class="keyword">switch</span> {</span><br><span class="line">    <span class="keyword">case</span> r &gt;= <span class="string">'A'</span> &amp;&amp; r &lt;= <span class="string">'Z'</span>: <span class="comment">// 大写字母转小写</span></span><br><span class="line">        <span class="keyword">return</span> r + <span class="number">32</span></span><br><span class="line">    <span class="keyword">case</span> r &gt;= <span class="string">'a'</span> &amp;&amp; r &lt;= <span class="string">'z'</span>: <span class="comment">// 小写字母不处理</span></span><br><span class="line">        <span class="keyword">return</span> r</span><br><span class="line">    <span class="keyword">case</span> unicode.Is(unicode.Han, r): <span class="comment">// 汉字换行</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'\n'</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span> <span class="comment">// 过滤所有非字母、汉字的字符</span></span><br><span class="line">}</span><br><span class="line">fmt.Println(strings.Map(mapping, <span class="string">"Hello你#￥%……\n（'World\n,好Hello^(&amp;(*界gopher..."</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hello</span><br><span class="line">world</span><br><span class="line">hello</span><br><span class="line">gopher</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="1-10-字符串子串替换"><a href="#1-10-字符串子串替换" class="headerlink" title="1.10. 字符串子串替换"></a>1.10. 字符串子串替换</h2><p>进行字符串替换时，考虑到性能问题，能不用正则尽量别用，应该用这里的函数。</p>
+<p>字符串替换的函数签名如下：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用 new 替换 s 中的 old，一共替换 n 个。</span></span><br><span class="line"><span class="comment">// 如果 n &lt; 0，则不限制替换次数，即全部替换</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Replace</span><span class="params">(s, old, <span class="built_in">new</span> <span class="type">string</span>, n <span class="type">int</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="comment">// 该函数内部直接调用了函数 Replace(s, old, new , -1)</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ReplaceAll</span><span class="params">(s, old, <span class="built_in">new</span> <span class="type">string</span>)</span></span> <span class="type">string</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>使用示例：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(strings.Replace(<span class="string">"oink oink oink"</span>, <span class="string">"k"</span>, <span class="string">"ky"</span>, <span class="number">2</span>))</span><br><span class="line">fmt.Println(strings.Replace(<span class="string">"oink oink oink"</span>, <span class="string">"oink"</span>, <span class="string">"moo"</span>, <span class="number">-1</span>))</span><br><span class="line">fmt.Println(strings.ReplaceAll(<span class="string">"oink oink oink"</span>, <span class="string">"oink"</span>, <span class="string">"moo"</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+<p>输出：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oinky oinky oink</span><br><span class="line">moo moo moo</span><br><span class="line">moo moo moo</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>如果我们希望一次替换多个，比如我们希望替换 <code>This is &lt;b&gt;HTML&lt;/b&gt;</code> 中的 <code>&lt;</code> 和 <code>&gt;</code> 为 <code>&amp;lt</code>; 和 <code>&amp;gt;</code>;，可以调用上面的函数两次。但标准库提供了另外的方法进行这种替换。</p>
+<h2 id="1-11-大小写转换"><a href="#1-11-大小写转换" class="headerlink" title="1.11 大小写转换"></a>1.11 大小写转换</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ToLower</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ToLowerSpecial</span><span class="params">(c unicode.SpecialCase, s <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ToUpper</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ToUpperSpecial</span><span class="params">(c unicode.SpecialCase, s <span class="type">string</span>)</span></span> <span class="type">string</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>大小写转换包含了 4 个相关函数，<code>ToLower</code>和<code>ToUpper</code> 用于大小写转换。<code>ToLowerSpecial</code>和<code>ToUpperSpecial</code> 可以转换特殊字符的大小写。 举个例子：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(strings.ToLower(<span class="string">"HELLO WORLD"</span>))</span><br><span class="line">fmt.Println(strings.ToLower(<span class="string">"Ā Á Ǎ À"</span>))</span><br><span class="line">fmt.Println(strings.ToLowerSpecial(unicode.TurkishCase, <span class="string">"壹"</span>))</span><br><span class="line">fmt.Println(strings.ToLowerSpecial(unicode.TurkishCase, <span class="string">"HELLO WORLD"</span>))</span><br><span class="line">fmt.Println(strings.ToLower(<span class="string">"Önnek İş"</span>))</span><br><span class="line">fmt.Println(strings.ToLowerSpecial(unicode.TurkishCase, <span class="string">"Önnek İş"</span>))</span><br><span class="line"></span><br><span class="line">fmt.Println(strings.ToUpper(<span class="string">"hello world"</span>))</span><br><span class="line">fmt.Println(strings.ToUpper(<span class="string">"ā á ǎ à"</span>))</span><br><span class="line">fmt.Println(strings.ToUpperSpecial(unicode.TurkishCase, <span class="string">"一"</span>))</span><br><span class="line">fmt.Println(strings.ToUpperSpecial(unicode.TurkishCase, <span class="string">"hello world"</span>))</span><br><span class="line">fmt.Println(strings.ToUpper(<span class="string">"örnek iş"</span>))</span><br><span class="line">fmt.Println(strings.ToUpperSpecial(unicode.TurkishCase, <span class="string">"örnek iş"</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出结果:</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br><span class="line">ā á ǎ à</span><br><span class="line">壹</span><br><span class="line">hello world</span><br><span class="line">önnek iş</span><br><span class="line">önnek iş</span><br><span class="line">HELLO WORLD</span><br><span class="line">Ā Á Ǎ À       <span class="comment">// 汉字拼音有效</span></span><br><span class="line">一           <span class="comment">//  汉字无效</span></span><br><span class="line">HELLO WORLD</span><br><span class="line">ÖRNEK IŞ</span><br><span class="line">ÖRNEK İŞ    <span class="comment">// 有细微差别</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-12-标题处理"><a href="#1-12-标题处理" class="headerlink" title="1.12. 标题处理"></a>1.12. 标题处理</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Title</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ToTitle</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ToTitleSpecial</span><span class="params">(c unicode.SpecialCase, s <span class="type">string</span>)</span></span> <span class="type">string</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>标题处理包含 3 个相关函数，其中 Title 会将 s 每个单词的首字母大写，不处理该单词的后续字符。ToTitle 将 s 的每个字母大写。ToTitleSpecial 将 s 的每个字母大写，并且会将一些特殊字母转换为其对应的特殊大写字母。</p>
+<p>举个例子：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(strings.Title(<span class="string">"hElLo wOrLd"</span>))</span><br><span class="line">fmt.Println(strings.ToTitle(<span class="string">"hElLo wOrLd"</span>))</span><br><span class="line">fmt.Println(strings.ToTitleSpecial(unicode.TurkishCase, <span class="string">"hElLo wOrLd"</span>))</span><br><span class="line">fmt.Println(strings.Title(<span class="string">"āáǎà ōóǒò êēéěè"</span>))</span><br><span class="line">fmt.Println(strings.ToTitle(<span class="string">"āáǎà ōóǒò êēéěè"</span>))</span><br><span class="line">fmt.Println(strings.ToTitleSpecial(unicode.TurkishCase, <span class="string">"āáǎà ōóǒò êēéěè"</span>))</span><br><span class="line">fmt.Println(strings.Title(<span class="string">"dünyanın ilk borsa yapısı Aizonai kabul edilir"</span>))</span><br><span class="line">fmt.Println(strings.ToTitle(<span class="string">"dünyanın ilk borsa yapısı Aizonai kabul edilir"</span>))</span><br><span class="line">fmt.Println(strings.ToTitleSpecial(unicode.TurkishCase, <span class="string">"dünyanın ilk borsa yapısı Aizonai kabul edilir"</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HElLo WOrLd</span><br><span class="line">HELLO WORLD</span><br><span class="line">HELLO WORLD</span><br><span class="line">Āáǎà Ōóǒò Êēéěè</span><br><span class="line">ĀÁǍÀ ŌÓǑÒ ÊĒÉĚÈ</span><br><span class="line">ĀÁǍÀ ŌÓǑÒ ÊĒÉĚÈ</span><br><span class="line">Dünyanın Ilk Borsa Yapısı Aizonai Kabul Edilir</span><br><span class="line">DÜNYANIN ILK BORSA YAPISI AIZONAI KABUL EDILIR</span><br><span class="line">DÜNYANIN İLK BORSA YAPISI AİZONAİ KABUL EDİLİR</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-13-修剪"><a href="#1-13-修剪" class="headerlink" title="1.13. 修剪"></a>1.13. 修剪</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将 s 左侧和右侧中匹配 cutset 中的任一字符的字符去掉</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Trim</span><span class="params">(s <span class="type">string</span>, cutset <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="comment">// 将 s 左侧的匹配 cutset 中的任一字符的字符去掉</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TrimLeft</span><span class="params">(s <span class="type">string</span>, cutset <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="comment">// 将 s 右侧的匹配 cutset 中的任一字符的字符去掉</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TrimRight</span><span class="params">(s <span class="type">string</span>, cutset <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="comment">// 如果 s 的前缀为 prefix 则返回去掉前缀后的 string , 否则 s 没有变化。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TrimPrefix</span><span class="params">(s, prefix <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="comment">// 如果 s 的后缀为 suffix 则返回去掉后缀后的 string , 否则 s 没有变化。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TrimSuffix</span><span class="params">(s, suffix <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="comment">// 将 s 左侧和右侧的间隔符去掉。常见间隔符包括：'\t', '\n', '\v', '\f', '\r', ' ', U+0085 (NEL)</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TrimSpace</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">string</span></span><br><span class="line"><span class="comment">// 将 s 左侧和右侧的匹配 f 的字符去掉</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TrimFunc</span><span class="params">(s <span class="type">string</span>, f <span class="keyword">func</span>(<span class="type">rune</span>)</span></span> <span class="type">bool</span>) <span class="type">string</span></span><br><span class="line"><span class="comment">// 将 s 左侧的匹配 f 的字符去掉</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TrimLeftFunc</span><span class="params">(s <span class="type">string</span>, f <span class="keyword">func</span>(<span class="type">rune</span>)</span></span> <span class="type">bool</span>) <span class="type">string</span></span><br><span class="line"><span class="comment">// 将 s 右侧的匹配 f 的字符去掉</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TrimRightFunc</span><span class="params">(s <span class="type">string</span>, f <span class="keyword">func</span>(<span class="type">rune</span>)</span></span> <span class="type">bool</span>) <span class="type">string</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>包含了 9 个相关函数用于修剪字符串。</p>
+<p>举个例子：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x := <span class="string">"!!!@@@你好,!@#$ Gophers###$$$"</span></span><br><span class="line">fmt.Println(strings.Trim(x, <span class="string">"@#$!%^&amp;*()_+=-"</span>))</span><br><span class="line">fmt.Println(strings.TrimLeft(x, <span class="string">"@#$!%^&amp;*()_+=-"</span>))</span><br><span class="line">fmt.Println(strings.TrimRight(x, <span class="string">"@#$!%^&amp;*()_+=-"</span>))</span><br><span class="line">fmt.Println(strings.TrimSpace(<span class="string">" \t\n Hello, Gophers \n\t\r\n"</span>))</span><br><span class="line">fmt.Println(strings.TrimPrefix(x, <span class="string">"!"</span>))</span><br><span class="line">fmt.Println(strings.TrimSuffix(x, <span class="string">"$"</span>))</span><br><span class="line"></span><br><span class="line">f := <span class="function"><span class="keyword">func</span><span class="params">(r <span class="type">rune</span>)</span></span> <span class="type">bool</span> {</span><br><span class="line">    <span class="keyword">return</span> !unicode.Is(unicode.Han, r) <span class="comment">// 非汉字返回 true</span></span><br><span class="line">}</span><br><span class="line">fmt.Println(strings.TrimFunc(x, f))</span><br><span class="line">fmt.Println(strings.TrimLeftFunc(x, f))</span><br><span class="line">fmt.Println(strings.TrimRightFunc(x, f))</span><br></pre></td></tr></tbody></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">你好,!@#$ Gophers</span><br><span class="line">你好,!@#$ Gophers###$$$</span><br><span class="line">!!!@@@你好,!@#$ Gophers</span><br><span class="line">Hello, Gophers</span><br><span class="line">!!@@@你好,!@#$ Gophers###$$$</span><br><span class="line">!!!@@@你好,!@#$ Gophers###$$</span><br><span class="line">你好</span><br><span class="line">你好,!@#$ Gophers###$$$</span><br><span class="line">!!!@@@你好</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-14-Replacer-类型"><a href="#1-14-Replacer-类型" class="headerlink" title="1.14. Replacer 类型"></a>1.14. Replacer 类型</h2><p>这是一个结构，没有导出任何字段，实例化通过 func NewReplacer(oldnew …string) *Replacer 函数进行，其中不定参数 oldnew 是 old-new 对，即进行多个替换。如果 oldnew 长度与奇数，会导致 panic.</p>
+<p>示例：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r := strings.NewReplacer(<span class="string">"&lt;"</span>, <span class="string">"&amp;lt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"&amp;gt;"</span>)</span><br><span class="line">fmt.Println(r.Replace(<span class="string">"This is &lt;b&gt;HTML&lt;/b&gt;!"</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is &amp;lt;b&amp;gt;HTML&amp;lt;/b&amp;gt;!</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>另外，Replacer 还提供了另外一个方法，它在替换之后将结果写入 io.Writer 中。</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r *Replacer)</span></span> WriteString(w io.Writer, s <span class="type">string</span>) (n <span class="type">int</span>, err <span class="type">error</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="1-15-Reader-类型"><a href="#1-15-Reader-类型" class="headerlink" title="1.15. Reader 类型"></a>1.15. Reader 类型</h2><p>看到名字就能猜到，这是实现了 io 包中的接口。它实现了 io.Reader（Read 方法），io.ReaderAt（ReadAt 方法），io.Seeker（Seek 方法），io.WriterTo（WriteTo 方法），io.ByteReader（ReadByte 方法），io.ByteScanner（ReadByte 和 UnreadByte 方法），io.RuneReader（ReadRune 方法） 和 io.RuneScanner（ReadRune 和 UnreadRune 方法）。</p>
+<p>Reader 结构如下：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Reader <span class="keyword">struct</span> {</span><br><span class="line">  s        <span class="type">string</span>    <span class="comment">// Reader 读取的数据来源</span></span><br><span class="line">  i        <span class="type">int</span> <span class="comment">// current reading index（当前读的索引位置）</span></span><br><span class="line">  prevRune <span class="type">int</span> <span class="comment">// index of previous rune; or &lt; 0（前一个读取的 rune 索引位置）</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>可见 Reader 结构没有导出任何字段，而是提供一个实例化方法：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewReader</span><span class="params">(s <span class="type">string</span>)</span></span> *Reader</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>该方法接收一个字符串，返回的 Reader 实例就是从该参数字符串读数据。在后面学习了 bytes 包之后，可以知道 bytes.NewBufferString 有类似的功能，不过，如果只是为了读取，NewReader 会更高效。</p>
+<p>其他方法不介绍了，都是之前接口的实现，有兴趣的可以看看源码实现，大部分都是根据 i、prevRune 两个属性来控制。</p>
+<h2 id="1-16-Builder-类型"><a href="#1-16-Builder-类型" class="headerlink" title="1.16.  Builder 类型"></a>1.16.  Builder 类型</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Builder <span class="keyword">struct</span> {</span><br><span class="line">    addr *Builder <span class="comment">// of receiver, to detect copies by value</span></span><br><span class="line">    buf  []<span class="type">byte</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>该类型实现了 io 包下的 Writer, ByteWriter, StringWriter 等接口，可以向该对象内写入数据，Builder 没有实现 Reader 等接口，所以该类型不可读，但提供了 String 方法可以获取对象内的数据。</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 该方法向 b 写入一个字节</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Builder)</span></span> WriteByte(c <span class="type">byte</span>) <span class="type">error</span></span><br><span class="line"><span class="comment">// WriteRune 方法向 b 写入一个字符</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Builder)</span></span> WriteRune(r <span class="type">rune</span>) (<span class="type">int</span>, <span class="type">error</span>)</span><br><span class="line"><span class="comment">// WriteRune 方法向 b 写入字节数组 p</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Builder)</span></span> Write(p []<span class="type">byte</span>) (<span class="type">int</span>, <span class="type">error</span>)</span><br><span class="line"><span class="comment">// WriteRune 方法向 b 写入字符串 s</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Builder)</span></span> WriteString(s <span class="type">string</span>) (<span class="type">int</span>, <span class="type">error</span>)</span><br><span class="line"><span class="comment">// Len 方法返回 b 的数据长度。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Builder)</span></span> Len() <span class="type">int</span></span><br><span class="line"><span class="comment">// Cap 方法返回 b 的 cap。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Builder)</span></span> Cap() <span class="type">int</span></span><br><span class="line"><span class="comment">// Grow 方法将 b 的 cap 至少增加 n (可能会更多)。如果 n 为负数，会导致 panic。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Builder)</span></span> Grow(n <span class="type">int</span>)</span><br><span class="line"><span class="comment">// Reset 方法将 b 清空 b 的所有内容。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Builder)</span></span> Reset()</span><br><span class="line"><span class="comment">// String 方法将 b 的数据以 string 类型返回。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Builder)</span></span> String() <span class="type">string</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>Builder 有 4 个与写入相关的方法，这 4 个方法的 error 都总是为 nil.</p>
+<p>Builder 的 cap 会自动增长，一般不需要手动调用 Grow 方法。</p>
+<p>String 方法可以方便的获取 Builder 的内容。</p>
+<p>举个例子：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">b := strings.Builder{}</span><br><span class="line">_ = b.WriteByte(<span class="string">'7'</span>)</span><br><span class="line">n, _ := b.WriteRune(<span class="string">'夕'</span>)</span><br><span class="line">fmt.Println(n)</span><br><span class="line">n, _ = b.Write([]<span class="type">byte</span>(<span class="string">"Hello, World"</span>))</span><br><span class="line">fmt.Println(n)</span><br><span class="line">n, _ = b.WriteString(<span class="string">"你好，世界"</span>)</span><br><span class="line">fmt.Println(n)</span><br><span class="line">fmt.Println(b.Len())</span><br><span class="line">fmt.Println(b.Cap())</span><br><span class="line">b.Grow(<span class="number">100</span>)</span><br><span class="line">fmt.Println(b.Len())</span><br><span class="line">fmt.Println(b.Cap())</span><br><span class="line">fmt.Println(b.String())</span><br><span class="line">b.Reset()</span><br><span class="line">fmt.Println(b.String())</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>输出结果：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">15</span></span><br><span class="line"><span class="number">31</span></span><br><span class="line"><span class="number">32</span></span><br><span class="line"><span class="number">31</span></span><br><span class="line"><span class="number">164</span></span><br><span class="line"><span class="number">7</span>夕Hello, World你好，世界</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://books.studygolang.com/The-Golang-Standard-Library-by-Example/chapter02/02.1.html">Go语言标准库–strings</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/08/14/golang-2020-08-14-Go-Template%E4%BD%BF%E7%94%A8-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%9D%91%E5%B0%8F%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/14/golang-2020-08-14-Go-Template%E4%BD%BF%E7%94%A8-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%9D%91%E5%B0%8F%E8%AE%B0/" class="post-title-link" itemprop="url">Go-Template使用-使用示例以及遇坑小记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-08-14 08:08:03" itemprop="dateCreated datePublished" datetime="2020-08-14T08:08:03+08:00">2020-08-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/08/14/golang-2020-08-14-Go-Template%E4%BD%BF%E7%94%A8-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%9D%91%E5%B0%8F%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Template使用-使用示例以及遇坑小记" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://golangtc.com/t/5778735bb09ecc02f70001d4">go template href内容(&amp;,=等)被转义 </a><br><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903762901860360">Go 语言标准库 text/template 包深入浅出</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

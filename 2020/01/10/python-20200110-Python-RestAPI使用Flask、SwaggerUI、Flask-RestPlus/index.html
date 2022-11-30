@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="重要本文概述了使用Flask和Flask-restplus创建REST API所需的步骤。这些工具组合成一个框架，Swagger被整合在Flask-restplus中。   API参数校验 格式化输出（Json） 生成交互式API文档 将python异常转化为Readable http响应。 API文档可导出Swagger格式，也可以导出为Postman-collection   1.简介Flas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-RestAPI使用Flask、Flask-RestPlus">
+<meta property="og:url" content="https://hex-py.github.io/2020/01/10/python-20200110-Python-RestAPI%E4%BD%BF%E7%94%A8Flask%E3%80%81SwaggerUI%E3%80%81Flask-RestPlus/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="重要本文概述了使用Flask和Flask-restplus创建REST API所需的步骤。这些工具组合成一个框架，Swagger被整合在Flask-restplus中。   API参数校验 格式化输出（Json） 生成交互式API文档 将python异常转化为Readable http响应。 API文档可导出Swagger格式，也可以导出为Postman-collection   1.简介Flas">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tvax1.sinaimg.cn/large/006hT4w1ly1garkp5nhwwj30l50badhz.jpg">
+<meta property="og:image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1garlv7336jj30l40jh76m.jpg">
+<meta property="article:published_time" content="2020-01-10T00:00:59.000Z">
+<meta property="article:modified_time" content="2022-11-30T03:22:28.025Z">
+<meta property="article:author" content="Hex">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="RestAPI">
+<meta property="article:tag" content="Flask">
+<meta property="article:tag" content="Swagger">
+<meta property="article:tag" content="Web Develop">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tvax1.sinaimg.cn/large/006hT4w1ly1garkp5nhwwj30l50badhz.jpg">
+
+<link rel="canonical" href="https://hex-py.github.io/2020/01/10/python-20200110-Python-RestAPI%E4%BD%BF%E7%94%A8Flask%E3%80%81SwaggerUI%E3%80%81Flask-RestPlus/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Python-RestAPI使用Flask、Flask-RestPlus | Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/01/10/python-20200110-Python-RestAPI%E4%BD%BF%E7%94%A8Flask%E3%80%81SwaggerUI%E3%80%81Flask-RestPlus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python-RestAPI使用Flask、Flask-RestPlus
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-01-10 08:00:59" itemprop="dateCreated datePublished" datetime="2020-01-10T08:00:59+08:00">2020-01-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/01/10/python-20200110-Python-RestAPI%E4%BD%BF%E7%94%A8Flask%E3%80%81SwaggerUI%E3%80%81Flask-RestPlus/" class="post-meta-item leancloud_visitors" data-flag-title="Python-RestAPI使用Flask、Flask-RestPlus" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>本文概述了使用<code>Flask</code>和<code>Flask-restplus</code>创建<code>REST API</code>所需的步骤。这些工具组合成一个框架，Swagger被整合在<code>Flask-restplus</code>中。</p>
+<blockquote>
+<ol>
+<li>API参数校验</li>
+<li>格式化输出（Json）</li>
+<li>生成交互式API文档</li>
+<li>将python异常转化为Readable http响应。</li>
+<li>API文档可导出<code>Swagger</code>格式，也可以导出为<code>Postman-collection</code></li>
+</ol>
+</blockquote>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p><a target="_blank" rel="noopener" href="https://flask.readthedocs.io/en/1.1.x"><em>Flask</em></a>: 轻量级的Python Web框架。<br><a target="_blank" rel="noopener" href="https://flask-restplus.readthedocs.io/en/stable"><em>Flask-RestPlus</em></a> 使开发<code>REST api</code>变得快速和简单。它提供了足够的语法糖，使您的代码易于阅读和维护。它集成<code>Swagger UI</code>为API生成交互式文档。</p>
+<h1 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2.环境准备"></a>2.环境准备</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/">git</a></li>
+<li><a target="_blank" rel="noopener" href="https://virtualenv.pypa.io/en/stable/installation/">Virtualenv</a></li>
+<li>建议python3，python2也可以正常工作</li>
+</ul>
+<h1 id="3-运行Demo应用"><a href="#3-运行Demo应用" class="headerlink" title="3. 运行Demo应用"></a>3. 运行Demo应用</h1><h2 id="下载示例代码"><a href="#下载示例代码" class="headerlink" title="下载示例代码"></a>下载示例代码</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/work_space/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/hex-py/restplus-api-demo.git</span><br><span class="line"><span class="built_in">cd</span> restplus-api-demo</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="构建运行的venv环境"><a href="#构建运行的venv环境" class="headerlink" title="构建运行的venv环境"></a>构建运行的<code>venv</code>环境</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">virtualenv -p `<span class="built_in">which</span> python3` venv</span><br><span class="line"><span class="built_in">source</span> venv/bin/activate</span><br><span class="line">(venv) $ pip install -r requirements.txt</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="初始化应用，并启动"><a href="#初始化应用，并启动" class="headerlink" title="初始化应用，并启动"></a>初始化应用，并启动</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ python setup.py develop</span><br><span class="line">(venv) $ python rest_api_demo/app.py</span><br></pre></td></tr></tbody></table></figure>
+<p>访问地址<code>http://localhost:8888/api/</code>，可以查看API文档如下:</p>
+<p><img alt="restplus-api-listing-methods" data-src="https://tvax1.sinaimg.cn/large/006hT4w1ly1garkp5nhwwj30l50badhz.jpg"></p>
+<h1 id="4-使用"><a href="#4-使用" class="headerlink" title="4. 使用"></a>4. 使用</h1><h2 id="4-1-HelloWorld举例"><a href="#4-1-HelloWorld举例" class="headerlink" title="4.1 HelloWorld举例"></a>4.1 HelloWorld举例</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_restplus <span class="keyword">import</span> Resource, Api</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)                  <span class="comment">#  Create a Flask WSGI application</span></span><br><span class="line">api = Api(app)                         <span class="comment">#  Create a Flask-RESTPlus API</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@api.route(<span class="params"><span class="string">'/hello'</span></span>)                   </span><span class="comment">#  Create a URL route to this resource</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HelloWorld</span>(<span class="title class_ inherited__">Resource</span>):            <span class="comment">#  Create a RESTful resource</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self</span>):                     <span class="comment">#  Create GET endpoint</span></span><br><span class="line">        <span class="keyword">return</span> {<span class="string">'hello'</span>: <span class="string">'world'</span>}</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)                <span class="comment">#  Start a development server</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="4-2应用目录结构规划"><a href="#4-2应用目录结构规划" class="headerlink" title="4.2应用目录结构规划"></a>4.2应用目录结构规划</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">├── api                         #</span><br><span class="line">│   ├── blog                    #  Blog-related API directory</span><br><span class="line">│   │   ├── business.py         #</span><br><span class="line">│   │   ├── endpoints           #  API namespaces and REST methods</span><br><span class="line">│   │   │   ├── categories.py   #</span><br><span class="line">│   │   │   └── posts.py        #</span><br><span class="line">│   │   ├── parsers.py          #  Argument parsers</span><br><span class="line">│   │   └── serializers.py      #  Output serializers</span><br><span class="line">│   └── restplus.py             #  API bootstrap file</span><br><span class="line">├── app.py                      #  Application bootstrap file</span><br><span class="line">├── database                    #</span><br><span class="line">│   └── models.py               #  Definition of SQLAlchemy models</span><br><span class="line">├── db.sqlite                   #</span><br><span class="line">└── settings.py                 #  Global app settings</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p><code>Rest API</code> 定义放在文件<code>rest_api_demo/api/restplus.py</code><br><code>Flask app</code> 的配置和实例化放在文件<code>rest_api_demo/app.py</code></p>
+</blockquote>
+<p>重点注意的是<code>app.py</code>文件的<code>initialize_app</code>函数：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">initialize_app</span>(<span class="params">flask_app</span>):</span><br><span class="line">    configure_app(flask_app)</span><br><span class="line"></span><br><span class="line">    blueprint = Blueprint(<span class="string">'api'</span>, __name__, url_prefix=<span class="string">'/api'</span>)</span><br><span class="line">    api.init_app(blueprint)</span><br><span class="line">    api.add_namespace(blog_posts_namespace)</span><br><span class="line">    api.add_namespace(blog_categories_namespace)</span><br><span class="line">    flask_app.register_blueprint(blueprint)</span><br><span class="line"></span><br><span class="line">    db.init_app(flask_app)</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ol>
+<li><code>Blueprint</code> 注册<code>/api</code>URL前缀的路由；这样就可以通过前缀区分不同部分或不同版本的api。 </li>
+<li><code>add_namespace</code> api本身也分为多个namespace， 每个ns都有自己的<code>URL-prefix</code>，在<code>/api/blog/endpoints</code>目录下配置。</li>
+</ol>
+</blockquote>
+<h2 id="4-3-定义-API"><a href="#4-3-定义-API" class="headerlink" title="4.3 定义 API"></a>4.3 定义 API</h2><p><code>api</code>=<code>namespace</code>+<code>resource</code>+<code>method</code></p>
+<p><code>rest_api_demo/api/blog/endpoints/categories.py</code></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">ns = api.namespace(<span class="string">'blog/categories'</span>, description=<span class="string">'Operations related to blog categories'</span>)</span><br><span class="line">                                                                        <span class="comment">#</span></span><br><span class="line">                                                                        <span class="comment">#</span></span><br><span class="line"><span class="meta">@ns.route(<span class="params"><span class="string">'/'</span></span>)                                                          </span><span class="comment">#</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CategoryCollection</span>(<span class="title class_ inherited__">Resource</span>):                                     <span class="comment">#</span></span><br><span class="line">                                                                        <span class="comment">#</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self</span>):                                                      <span class="comment"># 1. Retrieve a list of categories</span></span><br><span class="line">        <span class="string">"""Returns list of blog categories."""</span>                          <span class="comment"># curl -X GET 'http://localhost:8888/api/blog/categories/'</span></span><br><span class="line">        <span class="keyword">return</span> get_all_categories()                                     <span class="comment">#</span></span><br><span class="line">                                                                        <span class="comment">#</span></span><br><span class="line"><span class="meta">    @api.response(<span class="params"><span class="number">201</span>, <span class="string">'Category successfully created.'</span></span>)                </span><span class="comment">#</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">post</span>(<span class="params">self</span>):                                                     <span class="comment"># 2. Create a new category</span></span><br><span class="line">        <span class="string">"""Creates a new blog category."""</span>                              <span class="comment"># POST 'http://localhost:8888/api/blog/categories/'</span></span><br><span class="line">        create_category(request.json)                                   <span class="comment">#</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span>, <span class="number">201</span>                                                <span class="comment">#</span></span><br><span class="line">                                                                        <span class="comment">#</span></span><br><span class="line">                                                                        <span class="comment">#</span></span><br><span class="line"><span class="meta">@ns.route(<span class="params"><span class="string">'/&lt;int:id&gt;'</span></span>)                                                  </span><span class="comment">#</span></span><br><span class="line"><span class="meta">@api.response(<span class="params"><span class="number">404</span>, <span class="string">'Category not found.'</span></span>)                               </span><span class="comment">#</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CategoryItem</span>(<span class="title class_ inherited__">Resource</span>):                                           <span class="comment">#</span></span><br><span class="line">                                                                        <span class="comment">#</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self, <span class="built_in">id</span></span>):                                                  <span class="comment"># 3. Retrieve category with ID 1</span></span><br><span class="line">        <span class="string">"""Returns details of a category."""</span>                            <span class="comment"># GET 'http://localhost:8888/api/blog/categories/1'</span></span><br><span class="line">        <span class="keyword">return</span> get_category(<span class="built_in">id</span>)                                         <span class="comment">#</span></span><br><span class="line">                                                                        <span class="comment">#</span></span><br><span class="line"><span class="meta">    @api.response(<span class="params"><span class="number">204</span>, <span class="string">'Category successfully updated.'</span></span>)                </span><span class="comment">#</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">put</span>(<span class="params">self, <span class="built_in">id</span></span>):                                                  <span class="comment"># 4. Update the category with ID 1</span></span><br><span class="line">        <span class="string">"""Updates a blog category."""</span>                                  <span class="comment"># PUT 'http://localhost:8888/api/blog/categories/1'</span></span><br><span class="line">        update_category(<span class="built_in">id</span>, request.json)                               <span class="comment">#</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span>, <span class="number">204</span>                                                <span class="comment">#</span></span><br><span class="line">                                                                        <span class="comment">#</span></span><br><span class="line"><span class="meta">    @api.response(<span class="params"><span class="number">204</span>, <span class="string">'Category successfully deleted.'</span></span>)                </span><span class="comment">#</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">delete</span>(<span class="params">self, <span class="built_in">id</span></span>):                                               <span class="comment"># 5. Delete the category with ID 1</span></span><br><span class="line">        <span class="string">"""Deletes blog category."""</span>                                    <span class="comment"># DELETE 'http://localhost:8888/api/blog/categories/1'</span></span><br><span class="line">        delete_category(<span class="built_in">id</span>)                                             <span class="comment">#</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span>, <span class="number">204</span>                                                <span class="comment">#</span></span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ol>
+<li><code>api.namespace()</code> 创建某个<code>URL-prefix</code>的namespace， 其中<code>description</code>的内容会在api文档中。</li>
+<li><code>@ns.route()</code> 将URLs与函数绑定，可以指定路径参数。比如<code>@ns.route('/&lt;int:id&gt;')</code>。<code>string:</code>(default),<code>path:</code>,<code>int:</code>,<code>float:</code>,<code>uuid:</code></li>
+<li>每个<code>Resource</code> 都是一个类，类包含的方法与<code>http-method</code>对应。包括：<code>get</code>, <code>post</code>, <code>put</code>, <code>delete</code>, <code>patch</code>, <code>options</code>, <code>head</code>.</li>
+<li><code>@api.response</code> 声明每个方法的返回<code>状态码</code>+<code>信息</code></li>
+</ol>
+</blockquote>
+<p>上面代码生成的api文档页面如下图：</p>
+<p><img alt="restplus-api-method-details" data-src="https://tvax3.sinaimg.cn/large/006hT4w1ly1garlv7336jj30l40jh76m.jpg"></p>
+<p>Swagger UI文档还包括一个可以设置参数的表单。如果需要一个请求体，它的格式可以指定。 点击<code>Try it out！</code>按钮，将会给后端服务发请求，并显示response信息。</p>
+<h2 id="4-4-参数-method校验"><a href="#4-4-参数-method校验" class="headerlink" title="4.4 参数+method校验"></a>4.4 参数+method校验</h2><p>上面提到了在<code>path</code>中用<code>&lt;&gt;</code>传参，下面介绍:</p>
+<blockquote>
+<ol>
+<li>request请求中传参(?xx=xxx)</li>
+<li>headers中传参(–heads HOST=xxx)</li>
+<li>form表单中(in request body)<br>所以需要用到<code>RequestParser</code>对象，可以通过函数<code>add_argument()</code>来声明参数以及参数的类型。</li>
+</ol>
+</blockquote>
+<h3 id="4-4-1-通用配置"><a href="#4-4-1-通用配置" class="headerlink" title="4.4.1 通用配置"></a>4.4.1 通用配置</h3><p><code>rest_api_demo/api/blog/parsers.py</code></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_restplus <span class="keyword">import</span> reqparse</span><br><span class="line"></span><br><span class="line">pagination_arguments = reqparse.RequestParser()</span><br><span class="line">pagination_arguments.add_argument(<span class="string">'page'</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, required=<span class="literal">False</span>)</span><br><span class="line">pagination_arguments.add_argument(<span class="string">'per_page'</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, required=<span class="literal">False</span>,</span><br><span class="line">                                  choices=[<span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>], default=<span class="number">10</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>然后通过装饰器<code>@api.expect</code>，将这个parser与方法绑定。</p>
+<p><code>rest_api_demo/api/blog/endpoints/posts.py</code></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ns.route(<span class="params"><span class="string">'/'</span></span>)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PostsCollection</span>(<span class="title class_ inherited__">Resource</span>):</span><br><span class="line"></span><br><span class="line"><span class="meta">    @api.expect(<span class="params">pagination_arguments, validate=<span class="literal">True</span></span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self</span>):</span><br><span class="line">        ...</span><br></pre></td></tr></tbody></table></figure>
+<p>配置了参数校验后，Swagger-UI会显示一个form表单来校验参数。</p>
+<blockquote>
+<ol>
+<li>参数校验可以通过<code>@api.expect</code>的参数<code>validate</code>来启用或关闭。(分别在每个方法上做设置)</li>
+<li>全局启用/关闭 <code>app.config['RESTPLUS_VALIDATE'] = True</code>。(在开发时，debug使用)</li>
+</ol>
+</blockquote>
+<h3 id="4-4-2-add-argument参数说明"><a href="#4-4-2-add-argument参数说明" class="headerlink" title="4.4.2 add_argument参数说明"></a>4.4.2 <a target="_blank" rel="noopener" href="https://flask-restplus.readthedocs.io/en/stable/api.html#module-flask_restplus.reqparse"><code>add_argument</code>参数说明</a></h3><ol>
+<li><p><code>type</code> allowed value： <code>int</code>,<code>str</code>,<code>bool</code>.</p>
+</li>
+<li><p><code>location</code> 声明参数在哪儿, allowed value： <code>headers</code>, <code>form</code>, <code>json</code>…</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'args1'</span>, location=<span class="string">'headers'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'args2'</span>, location=<span class="string">'form'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'args2'</span>, location=<span class="string">'json'</span>)</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><code>action</code> 多值参数</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'args1'</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, action=<span class="string">'append'</span>, required=<span class="literal">True</span>)</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><code>choise</code> 可选值</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pagination_arguments.add_argument(<span class="string">'pages'</span>, choices=[<span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>])</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h2 id="4-5-json对象的值校验和说明"><a href="#4-5-json对象的值校验和说明" class="headerlink" title="4.5 json对象的值校验和说明"></a>4.5 json对象的值校验和说明</h2><h3 id="4-5-1-通用配置"><a href="#4-5-1-通用配置" class="headerlink" title="4.5.1 通用配置"></a>4.5.1 通用配置</h3><p>通过<code>api.model()</code>列出所有期望的字段来定义对象的格式。每个字段都有一个关联的类型(e.g. <code>String</code>, <code>Integer</code>, <code>DateTime</code>)</p>
+<p><code>rest_api_demo/api/blog/serializers.py</code></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_restplus <span class="keyword">import</span> fields</span><br><span class="line"><span class="keyword">from</span> rest_api_demo.api.restplus <span class="keyword">import</span> api</span><br><span class="line"></span><br><span class="line">blog_post = api.model(<span class="string">'Blog post'</span>, {</span><br><span class="line">    <span class="string">'id'</span>: fields.Integer(description=<span class="string">'The unique identifier of a blog post'</span>),</span><br><span class="line">    <span class="string">'title'</span>: fields.String(required=<span class="literal">True</span>, description=<span class="string">'Article title'</span>),</span><br><span class="line">    <span class="string">'body'</span>: fields.String(required=<span class="literal">True</span>, description=<span class="string">'Article content'</span>),</span><br><span class="line">    <span class="string">'status'</span>: fields.String(required=<span class="literal">True</span>, enum=[<span class="string">'DRAFT'</span>, <span class="string">'PUBLISHED'</span>, <span class="string">'DELETED'</span>]),</span><br><span class="line">    <span class="string">'pub_date'</span>: fields.DateTime,</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<p>将定义的校验model绑定给指定的<code>Resource</code>, 通过<code>@api.expect(blog_post)</code></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ns.route(<span class="params"><span class="string">'/'</span></span>)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BlogPostCollection</span>(<span class="title class_ inherited__">Resource</span>):</span><br><span class="line"></span><br><span class="line"><span class="meta">    @api.response(<span class="params"><span class="number">201</span>, <span class="string">'Blog post successfully created.'</span></span>)</span></span><br><span class="line"><span class="meta">    @api.expect(<span class="params">blog_post</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">post</span>(<span class="params">self</span>):</span><br><span class="line">        ...</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-5-2-fields参数说明"><a href="#4-5-2-fields参数说明" class="headerlink" title="4.5.2 fields参数说明"></a>4.5.2 <a target="_blank" rel="noopener" href="https://github.com/noirbizarre/flask-restplus/blob/0.9.2/flask_restplus/fields.py#L355-L609"><code>fields</code>参数说明</a></h3><h4 id="公共参数选项："><a href="#公共参数选项：" class="headerlink" title="公共参数选项："></a>公共参数选项：</h4><blockquote>
+<ol>
+<li><code>required</code>: <code>True/False</code>是否必填项;</li>
+<li><code>default</code>: 该字段的默认值;</li>
+<li><code>description</code>: 该字段说明(会在SwaggerUI中显示);</li>
+<li><code>example</code>: 字段值示例(会在SwaggerUI中显示);</li>
+</ol>
+</blockquote>
+<h4 id="更具体的校验参数选项"><a href="#更具体的校验参数选项" class="headerlink" title="更具体的校验参数选项"></a>更具体的校验参数选项</h4><h5 id="字符串类型-包括String-："><a href="#字符串类型-包括String-：" class="headerlink" title="字符串类型(包括String)："></a>字符串类型(包括<code>String</code>)：</h5><blockquote>
+<p><code>min_length</code> 和 <code>max_length</code>: 字符串最大或最小长度。<br><code>pattern</code>: 正则表达式。<br>举例(字符串长度5&lt;=len&lt;=200, 必填, 正则: 小写字母+数字+符号’-‘)：</p>
+</blockquote>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'slug'</span>: fields.String(required=<span class="literal">True</span>, pattern=<span class="string">'^[a-z0-9-]+$'</span>, min_length=<span class="number">5</span>, max_length=<span class="number">200</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="数字类型-包括Integer-Float-Fixed-Arbitrary-："><a href="#数字类型-包括Integer-Float-Fixed-Arbitrary-：" class="headerlink" title="数字类型(包括Integer,Float,Fixed,Arbitrary)："></a>数字类型(包括<code>Integer</code>,<code>Float</code>,<code>Fixed</code>,<code>Arbitrary</code>)：</h5><blockquote>
+<ol>
+<li><code>min</code> 和 <code>max</code>: 该字段最大值或最小值, 包括边界值, 即 <code>min</code>&lt;<code>value</code>&lt;<code>max</code>;</li>
+<li><code>exclusiveMin</code> and <code>exclusiveMax</code>: 该字段最大值或最小值, 但不包过边界值, 即 <code>exclusiveMin</code>&lt;<code>value</code>&lt;<code>exclusiveMax</code>;</li>
+<li><code>multiple</code>: 该字段必须是多值;</li>
+</ol>
+</blockquote>
+<h4 id="嵌套类型配置"><a href="#嵌套类型配置" class="headerlink" title="嵌套类型配置"></a>嵌套类型配置</h4><ol>
+<li><code>API-model</code>的一个字段可以使用另一个<code>API-model</code>作为它的期望值。然后提供一个JSON对象作为该字段的有效值。</li>
+</ol>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'details'</span>: fields.Nested(blog_post_details)</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li><code>API-model</code>的一个字段是一个值列表，甚至是一个嵌套对象列表。</li>
+</ol>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'item_ids'</span>: fields.<span class="type">List</span>(fields.Integer),</span><br><span class="line"><span class="string">'items'</span>: fields.<span class="type">List</span>(fields.Nested(blog_post))</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="Model继承"><a href="#Model继承" class="headerlink" title="Model继承"></a>Model继承</h4><p>相似的<code>API-model</code>可以使用继承来扩展带有其他字段的<code>API-model</code>的定义。在下面的示例中，父类：通用分页API模型<code>pagination</code>，子类：更具体的博客文章分页<code>page_of_blog_posts</code>。使用<code>api.inherit()</code>方法继承父类。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pagination = api.model(<span class="string">'A page of results'</span>, {</span><br><span class="line">    <span class="string">'page'</span>: fields.Integer(description=<span class="string">'Number of this page of results'</span>),</span><br><span class="line">    <span class="string">'pages'</span>: fields.Integer(description=<span class="string">'Total number of pages of results'</span>),</span><br><span class="line">    <span class="string">'per_page'</span>: fields.Integer(description=<span class="string">'Number of items per page of results'</span>),</span><br><span class="line">    <span class="string">'total'</span>: fields.Integer(description=<span class="string">'Total number of results'</span>),</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">page_of_blog_posts = api.inherit(<span class="string">'Page of blog posts'</span>, pagination, {</span><br><span class="line">    <span class="string">'items'</span>: fields.<span class="type">List</span>(fields.Nested(blog_post))</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-6-处理输出json对象"><a href="#4-6-处理输出json对象" class="headerlink" title="4.6 处理输出json对象"></a>4.6 处理输出json对象</h2><p>可以根据上文提的 <code>API-model</code>定义，通过方法<code>@api.marshal_with(model)</code>将生成一个与<code>model</code>定义相同的json对象返回。值对应可以是两种方式：</p>
+<blockquote>
+<ol>
+<li>被装饰函数返回一个<code>object</code>，<code>object</code>具有跟model中字段名相同的属性;</li>
+<li>被装饰函数返回一个<code>dict</code>，<code>dict</code>具有跟model中字段名相同的<code>key</code>;</li>
+</ol>
+</blockquote>
+<p>例如，方法返回与<code>API-model</code>具有相同字段的<code>SQLAlchemy ORM对象</code>。</p>
+<p><code>rest_api_demo/api/blog/endpoints/categories.py</code></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ns.route(<span class="params"><span class="string">'/&lt;int:id&gt;'</span></span>)</span></span><br><span class="line"><span class="meta">@api.response(<span class="params"><span class="number">404</span>, <span class="string">'Category not found.'</span></span>)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CategoryItem</span>(<span class="title class_ inherited__">Resource</span>):</span><br><span class="line"></span><br><span class="line"><span class="meta">    @api.marshal_with(<span class="params">category_with_posts</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self, <span class="built_in">id</span></span>):</span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns a category with a list of posts.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> Category.query.<span class="built_in">filter</span>(Category.<span class="built_in">id</span> == <span class="built_in">id</span>).one()</span><br></pre></td></tr></tbody></table></figure>
+<p>如果返回值是<code>list</code>, 使用装饰器<code>@api.marshal_list_with(model)</code>.</p>
+<p><code>attribute</code>: 显式声明值来自于函数返回对象的哪个字段;</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'firstName'</span>: fields.String(attribute=<span class="string">'first_name'</span>),</span><br></pre></td></tr></tbody></table></figure>
+
+<p>通过<code>attribute</code>参数，可以提取嵌套在对象结构深处的值:</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'firstName'</span>: fields.String(attribute=<span class="string">'user.first_name'</span>),</span><br></pre></td></tr></tbody></table></figure>
+
+<p>更复杂的情形, 使用<code>lambda</code>函数提取值:</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'fullName'</span>: fields.String(attribute=<span class="keyword">lambda</span> x: <span class="string">'{} {}'</span>.<span class="built_in">format</span>(x.first_name, x.last_name)),</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-7-处理Errors"><a href="#4-7-处理Errors" class="headerlink" title="4.7 处理Errors"></a>4.7 处理<code>Errors</code></h2><p>通过函数<code>api.abort()</code>抛出异常</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api.abort(code=<span class="number">400</span>, message=<span class="string">"Sorry, Dave. I'm afraid I can't do that."</span>)</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>如果没有显式地自己处理错误，Flask将捕获异常并将其转换为一个HTTP 500错误页面。</p>
+</blockquote>
+<p>通过装饰器<code>@api.errorhandler</code>重写默认的错误处理函数<br><code>rest_api_demo/api/restplus.py</code></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@api.errorhandler(<span class="params">NoResultFound</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">database_not_found_error_handler</span>(<span class="params">e</span>):</span><br><span class="line">    log.warning(traceback.format_exc())</span><br><span class="line">    <span class="keyword">return</span> {<span class="string">'message'</span>: <span class="string">'A database result was required but none was found.'</span>}, <span class="number">404</span></span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>Flask debug模式下，上面<code>default_error_handler</code>不会生效。异常只会触发<code>Werkzeug interactive debugger</code>页面。</p>
+</blockquote>
+<h2 id="4-8-重置数据库"><a href="#4-8-重置数据库" class="headerlink" title="4.8 重置数据库"></a>4.8 重置数据库</h2><p>如果删除数据库<code>db.sqlite</code>文件或只是想将数据库重置为空状态，可以在Python控制台中输入以下命令。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> rest_api_demo.app <span class="keyword">import</span> initialize_app, app</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> rest_api_demo.database <span class="keyword">import</span> reset_database</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>initialize_app(app)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> app.app_context():</span><br><span class="line"><span class="meta">... </span>    reset_database()</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="http://shop.oreilly.com/product/0636920021575.do">Rest API Design Rulebook</a><br><a target="_blank" rel="noopener" href="https://flask-restplus.readthedocs.io/en/stable/swagger.html#export-swagger-specifications">flask-restplus stable文档</a><br><a target="_blank" rel="noopener" href="https://flask-restplus.readthedocs.io/en/stable/swagger.html#export-swagger-specifications">api export to Postman</a><br><a target="_blank" rel="noopener" href="https://flask-restplus.readthedocs.io/en/stable/postman.html">api export to PostMan</a></p>
+</body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢支持</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/../images/wx_reward.jpg" alt="Hex 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/RestAPI/" rel="tag"><i class="fa fa-tag"></i> RestAPI</a>
+              <a href="/tags/Flask/" rel="tag"><i class="fa fa-tag"></i> Flask</a>
+              <a href="/tags/Swagger/" rel="tag"><i class="fa fa-tag"></i> Swagger</a>
+              <a href="/tags/Web-Develop/" rel="tag"><i class="fa fa-tag"></i> Web Develop</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/09/devops-20200109-jenkins-pipeline-lib%E4%BD%BF%E7%94%A8/" rel="prev" title="jenkins-pipeline-lib使用">
+      <i class="fa fa-chevron-left"></i> jenkins-pipeline-lib使用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/20/kubernetes-2020-03-20-Kubernetes%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/" rel="next" title="Kubernetes资料汇总">
+      Kubernetes资料汇总 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%A6%81"><span class="nav-text">重要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-text">1.简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-text">2.环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E8%BF%90%E8%A1%8CDemo%E5%BA%94%E7%94%A8"><span class="nav-text">3. 运行Demo应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-text">下载示例代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E8%BF%90%E8%A1%8C%E7%9A%84venv%E7%8E%AF%E5%A2%83"><span class="nav-text">构建运行的venv环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BA%94%E7%94%A8%EF%BC%8C%E5%B9%B6%E5%90%AF%E5%8A%A8"><span class="nav-text">初始化应用，并启动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E4%BD%BF%E7%94%A8"><span class="nav-text">4. 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-HelloWorld%E4%B8%BE%E4%BE%8B"><span class="nav-text">4.1 HelloWorld举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2%E5%BA%94%E7%94%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%A7%84%E5%88%92"><span class="nav-text">4.2应用目录结构规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E5%AE%9A%E4%B9%89-API"><span class="nav-text">4.3 定义 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-%E5%8F%82%E6%95%B0-method%E6%A0%A1%E9%AA%8C"><span class="nav-text">4.4 参数+method校验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-text">4.4.1 通用配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-add-argument%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-text">4.4.2 add_argument参数说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-json%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%80%BC%E6%A0%A1%E9%AA%8C%E5%92%8C%E8%AF%B4%E6%98%8E"><span class="nav-text">4.5 json对象的值校验和说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-1-%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-text">4.5.1 通用配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-2-fields%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-text">4.5.2 fields参数说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E5%85%B1%E5%8F%82%E6%95%B0%E9%80%89%E9%A1%B9%EF%BC%9A"><span class="nav-text">公共参数选项：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E5%85%B7%E4%BD%93%E7%9A%84%E6%A0%A1%E9%AA%8C%E5%8F%82%E6%95%B0%E9%80%89%E9%A1%B9"><span class="nav-text">更具体的校验参数选项</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B-%E5%8C%85%E6%8B%ACString-%EF%BC%9A"><span class="nav-text">字符串类型(包括String)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B-%E5%8C%85%E6%8B%ACInteger-Float-Fixed-Arbitrary-%EF%BC%9A"><span class="nav-text">数字类型(包括Integer,Float,Fixed,Arbitrary)：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E7%B1%BB%E5%9E%8B%E9%85%8D%E7%BD%AE"><span class="nav-text">嵌套类型配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Model%E7%BB%A7%E6%89%BF"><span class="nav-text">Model继承</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-%E5%A4%84%E7%90%86%E8%BE%93%E5%87%BAjson%E5%AF%B9%E8%B1%A1"><span class="nav-text">4.6 处理输出json对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-7-%E5%A4%84%E7%90%86Errors"><span class="nav-text">4.7 处理Errors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-8-%E9%87%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">4.8 重置数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

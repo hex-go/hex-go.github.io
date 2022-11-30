@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="前言PipeWire开发工作最早可以追溯到2015年，最初被认为是 “视频领域的 PulseAudio&quot;，但后来也扩展到了音频领域。2021年4月发布的 Fedora34 成为了第一个默认采用了这项技术的发行版，其他桌面 Linux 发行版之后也很快跟进。相比之下，Ubuntu 进度远远落后于其竞争对手。  PipeWire 的优点： - 首先 PipeWire 的实现方式更新，开发也更加积极，b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu22.04:声卡驱动相关">
+<meta property="og:url" content="https://hex-py.github.io/2022/09/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-28-Ubuntu22-04-%E5%A3%B0%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="前言PipeWire开发工作最早可以追溯到2015年，最初被认为是 “视频领域的 PulseAudio&quot;，但后来也扩展到了音频领域。2021年4月发布的 Fedora34 成为了第一个默认采用了这项技术的发行版，其他桌面 Linux 发行版之后也很快跟进。相比之下，Ubuntu 进度远远落后于其竞争对手。  PipeWire 的优点： - 首先 PipeWire 的实现方式更新，开发也更加积极，b">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-27T17:50:08.000Z">
+<meta property="article:modified_time" content="2022-11-30T03:22:28.025Z">
+<meta property="article:author" content="Hex">
+<meta property="article:tag" content="个人工具">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/2022/09/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-28-Ubuntu22-04-%E5%A3%B0%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9B%B8%E5%85%B3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Ubuntu22.04:声卡驱动相关 | Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2022/09/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-28-Ubuntu22-04-%E5%A3%B0%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9B%B8%E5%85%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ubuntu22.04:声卡驱动相关
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2022-09-28 01:50:08" itemprop="dateCreated datePublished" datetime="2022-09-28T01:50:08+08:00">2022-09-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/09/28/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-28-Ubuntu22-04-%E5%A3%B0%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9B%B8%E5%85%B3/" class="post-meta-item leancloud_visitors" data-flag-title="Ubuntu22.04:声卡驱动相关" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>PipeWire开发工作最早可以追溯到2015年，最初被认为是 “视频领域的 PulseAudio"，但后来也扩展到了音频领域。2021年4月发布的 Fedora34 成为了第一个默认采用了这项技术的发行版，其他桌面 Linux 发行版之后也很快跟进。相比之下，Ubuntu 进度远远落后于其竞争对手。
+
+PipeWire 的优点：
+- 首先 PipeWire 的实现方式更新，开发也更加积极，bug 相对也就更少；
+- 其次 PipeWire 有更好的硬件兼容性(PulseAudio 不支持很多新的蓝牙耳机)，还减少了 CPU 的使用，代码基础更现代化；
+- 与PulseAudio相比，对现代蓝牙音频设备（例如，Apple Air Pods）的支持更好；
+
+WirePlumber, 一个流行的PipeWire会话和策略管理器。
+
+Ubuntu 22.04 LTS 的默认镜像会同时安装 PipeWire 和 PulseAudio。 PipeWire 只用于视频，PulseAudio 处理音频。需要手动将 PipeWire 设为默认的音频服务器。
+Ubuntu 22.10（代号 "Kinetic Kudu"）开发版本的日常构建中，Pipewire已经取代了 PulseAudio，成为了 Ubuntu 的默认音频服务器，不再需要任何设置。
+</code></pre>
+<h1 id="配置PipeWire为默认音频服务器"><a href="#配置PipeWire为默认音频服务器" class="headerlink" title="配置PipeWire为默认音频服务器"></a>配置PipeWire为默认音频服务器</h1><p>Ubuntu 22.04部分安装并启用了PipeWire。启用剩余的部分，并使用PipeWire进行音频和蓝牙，而不是PulseAudio。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>检查环境</p>
+<p>Pipewire预先安装，并自动作为后台服务运行。在终端运行下面的命令来进行确认</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --user status pipewire pipewire-session-manager</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">● pipewire.service - PipeWire Multimedia Service</span><br><span class="line">     Loaded: loaded (/usr/lib/systemd/user/pipewire.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: active (running) since Thu 2022-09-29 14:21:51 CST; 8min ago</span><br><span class="line">TriggeredBy: ● pipewire.socket</span><br><span class="line">   Main PID: 2657 (pipewire)</span><br><span class="line">      Tasks: 2 (<span class="built_in">limit</span>: 75541)</span><br><span class="line">     Memory: 6.6M</span><br><span class="line">        CPU: 142ms</span><br><span class="line">     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/pipewire.service</span><br><span class="line">             └─2657 /usr/bin/pipewire</span><br><span class="line"></span><br><span class="line">Sep 29 14:21:51 hex-Pad systemd[2650]: Started PipeWire Multimedia Service.</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: Cannot connect to server socket err = 没有那个文件或目录</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: Cannot connect to server request channel</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: jack server is not running or cannot be started</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: JackShmReadWritePtr::~JackShmReadWritePtr - Init not <span class="keyword">done</span> <span class="keyword">for</span> -1, skipping unlock</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: JackShmReadWritePtr::~JackShmReadWritePtr - Init not <span class="keyword">done</span> <span class="keyword">for</span> -1, skipping unlock</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: jack-device 0x5595b2c0bd58: can<span class="string">'t open client: 拒绝连接</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">● pipewire-media-session.service - PipeWire Media Session Manager</span></span><br><span class="line"><span class="string">     Loaded: loaded (/usr/lib/systemd/user/pipewire-media-session.service; enabled; vendor preset: enabled)</span></span><br><span class="line"><span class="string">     Active: active (running) since Thu 2022-09-29 14:21:51 CST; 8min ago</span></span><br><span class="line"><span class="string">   Main PID: 2658 (pipewire-media-)</span></span><br><span class="line"><span class="string">      Tasks: 2 (limit: 75541)</span></span><br><span class="line"><span class="string">     Memory: 4.9M</span></span><br><span class="line"><span class="string">        CPU: 108ms</span></span><br><span class="line"><span class="string">     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/pipewire-media-session.service</span></span><br><span class="line"><span class="string">             └─2658 /usr/bin/pipewire-media-session</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Sep 29 14:21:51 hex-Pad systemd[2650]: Started PipeWire Media Session Manager.</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>安装客户端包</p>
+<p>默认情况下，音频输出并。运行命令安装客户端库：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install pipewire-audio-client-libraries libspa-0.2-bluetooth libspa-0.2-jack</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>安装WirePlumber作为会话管理器：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install pipewire-media-session- wireplumber</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>注意’pipe - wire-media-session’后面的’-‘。这是为了在同一个命令中删除它，因为将使用’wireplumber’代替。</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --user --now <span class="built_in">enable</span> wireplumber.service</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+<li><p>安装蓝牙编码器 AAC/LDAC/AptX:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install \</span><br><span class="line">  libfdk-aac2 \</span><br><span class="line">  libldacbt-{abr,enc}2 \</span><br><span class="line">  libopenaptx0</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
+<p>Wireplumber使事情变得非常容易！如果只想用PipeWire替换Pulseaudio，则启用媒体会话服务和重新启动，仅此而已！</p>
+</blockquote>
+<ol>
+<li><p>ALSA客户端配置PipeWire输出</p>
+<p>将PipeWire示例中的配置文件复制到ALSA配置目录中：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /usr/share/doc/pipewire/examples/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d/</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+<li><p>JACK客户端配置PipeWire输出:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /usr/share/doc/pipewire/examples/ld.so.conf.d/pipewire-jack-*.conf /etc/ld.so.conf.d/</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>sudo ldconfig</p>
+</blockquote>
+</li>
+<li><p>Bluetooth客户端</p>
+<p>只需删除此包装，蓝牙将由PipeWire处理：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove pulseaudio-module-bluetooth</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><h3 id="通过客户端工具pactl检查："><a href="#通过客户端工具pactl检查：" class="headerlink" title="通过客户端工具pactl检查："></a>通过客户端工具pactl检查：</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LANG=C pactl info | grep <span class="string">'^Server Name'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>返回值</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server Name: PulseAudio (on PipeWire 0.3.32)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="通过systemctl检查pipewire服务状态"><a href="#通过systemctl检查pipewire服务状态" class="headerlink" title="通过systemctl检查pipewire服务状态"></a>通过systemctl检查pipewire服务状态</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --user status pipewire pipewire-session-manager</span><br></pre></td></tr></tbody></table></figure>
+
+<p>配置返回值</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">● pipewire.service - PipeWire Multimedia Service</span><br><span class="line">     Loaded: loaded (/usr/lib/systemd/user/pipewire.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: active (running) since Thu 2022-09-29 14:21:51 CST; 13min ago</span><br><span class="line">TriggeredBy: ● pipewire.socket</span><br><span class="line">   Main PID: 2657 (pipewire)</span><br><span class="line">      Tasks: 2 (<span class="built_in">limit</span>: 75541)</span><br><span class="line">     Memory: 7.7M</span><br><span class="line">        CPU: 245ms</span><br><span class="line">     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/pipewire.service</span><br><span class="line">             └─2657 /usr/bin/pipewire</span><br><span class="line"></span><br><span class="line">Sep 29 14:21:51 hex-Pad systemd[2650]: Started PipeWire Multimedia Service.</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: Cannot connect to server socket err = 没有那个文件或目录</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: Cannot connect to server request channel</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: jack server is not running or cannot be started</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: JackShmReadWritePtr::~JackShmReadWritePtr - Init not <span class="keyword">done</span> <span class="keyword">for</span> -1, skipping unlock</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: JackShmReadWritePtr::~JackShmReadWritePtr - Init not <span class="keyword">done</span> <span class="keyword">for</span> -1, skipping unlock</span><br><span class="line">Sep 29 14:21:51 hex-Pad pipewire[2657]: jack-device 0x5595b2c0bd58: can<span class="string">'t open client: 拒绝连接</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">● wireplumber.service - Multimedia Service Session Manager</span></span><br><span class="line"><span class="string">     Loaded: loaded (/usr/lib/systemd/user/wireplumber.service; enabled; vendor preset: enabled)</span></span><br><span class="line"><span class="string">     Active: active (running) since Thu 2022-09-29 14:33:58 CST; 1min 26s ago</span></span><br><span class="line"><span class="string">   Main PID: 10292 (wireplumber)</span></span><br><span class="line"><span class="string">      Tasks: 4 (limit: 75541)</span></span><br><span class="line"><span class="string">     Memory: 7.2M</span></span><br><span class="line"><span class="string">        CPU: 170ms</span></span><br><span class="line"><span class="string">     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/wireplumber.service</span></span><br><span class="line"><span class="string">             └─10292 /usr/bin/wireplumber</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Sep 29 14:33:58 hex-Pad systemd[2650]: Started Multimedia Service Session Manager.</span></span><br><span class="line"><span class="string">Sep 29 14:33:58 hex-Pad wireplumber[10292]: Failed to set scheduler settings: Operation not permitted</span></span><br><span class="line"><span class="string">Sep 29 14:33:59 hex-Pad wireplumber[10292]: &lt;WpSiAudioAdapter:0x55ae534170e0&gt; Object activation aborted: proxy destroyed</span></span><br><span class="line"><span class="string">Sep 29 14:33:59 hex-Pad wireplumber[10292]: &lt;WpSiAudioAdapter:0x55ae534170e0&gt; failed to activate item: Object activation aborted: proxy destroyed</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>检查已安装deb包</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt list --installed | grep libldac</span><br><span class="line"></span><br><span class="line">apt list --installed | grep pipewire</span><br><span class="line"></span><br><span class="line">apt show pipewire-pulse</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+
+
+<h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><h2 id="1-systemctl-–user-status-执行失败"><a href="#1-systemctl-–user-status-执行失败" class="headerlink" title="1. systemctl –user status 执行失败"></a>1. systemctl –user status 执行失败</h2><p>ubuntu22.04 登录会出现问题，导致出现报错</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">process org.freedesktop.systemd1 exited with status 1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>原因是：缺少环境变量<code>XDG_RUNTIME_DIR</code>， 怀疑之前将18.04$HOME目录下内容覆盖了22.04下的内容，导致<del>/.profile或</del>/.bashrc的内容出现问题。目前通过下面命令进行屏蔽</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"export XDG_RUNTIME_DIR=/run/user/<span class="subst">$(id -u)</span>"</span> &gt;&gt; /<span class="variable">$HOME</span>/.profile</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="2-wireplumber在pipewire-media-session未卸载之前，为masked状态无法enable"><a href="#2-wireplumber在pipewire-media-session未卸载之前，为masked状态无法enable" class="headerlink" title="2. wireplumber在pipewire-media-session未卸载之前，为masked状态无法enable"></a>2. wireplumber在pipewire-media-session未卸载之前，为masked状态无法enable</h2><blockquote>
+<p><code>mask</code> 是个比<code>disable</code>更彻底的状态。</p>
+<p>使用<code>disable</code>会删除服务相关的unit-file；</p>
+<p>使用<code>mask</code>则会将其link至<code>/dev/null</code>，其对比disable的优势是防止任何形式的激活，包括手动</p>
+<p><code>systemctl list-unit-files</code>命令来显示unit-files的状态，(static, enabled, disabled, masked, indirect)</p>
+<p><code>systemctl list-units</code>命令来显示服务的状态</p>
+</blockquote>
+<h2 id="3-恢复pulseaudio为音频处理"><a href="#3-恢复pulseaudio为音频处理" class="headerlink" title="3. 恢复pulseaudio为音频处理"></a>3. 恢复pulseaudio为音频处理</h2><p>要撤消更改，首先删除客户端库：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove pipewire-audio-client-libraries libspa-0.2-bluetooth libspa-0.2-jack</span><br></pre></td></tr></tbody></table></figure>
+
+<p>删除WirePlumber并安装以前的pipewire-media-session</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install pipewire-media-session wireplumber-</span><br></pre></td></tr></tbody></table></figure>
+
+<p>最后，重新启用PipeWire-Media-Session服务：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -f ~/.config/systemd/user/pipewire-session-manager.service</span><br><span class="line">systemctl --user --now <span class="built_in">enable</span> pipewire-media-session</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果声音仍无法正常工作，尝试通过命令禁用PipeWire-Pulse服务：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前用户</span></span><br><span class="line">systemctl --user --now <span class="built_in">disable</span> pipewire-pulse.service pipewire-pulse.socket</span><br><span class="line"><span class="comment"># 全局</span></span><br><span class="line">sudo systemctl --global --now <span class="built_in">disable</span> pipewire-pulse.service pipewire-pulse.socket</span><br></pre></td></tr></tbody></table></figure>
+
+<p>重新启用re-enable  pulseaudio服务：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前用户</span></span><br><span class="line">systemctl --user --now reenable pulseaudio.service pulseaudio.socket</span><br><span class="line"><span class="comment"># 全局</span></span><br><span class="line">sudo systemctl --global --now reenable pulseaudio.service pulseaudio.socket</span><br></pre></td></tr></tbody></table></figure>
+
+<p>重启</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl --user restart pulseaudio</span><br><span class="line"></span><br><span class="line">reboot</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>上下文：</p>
+<p><a target="_blank" rel="noopener" href="https://www.omgubuntu.co.uk/2022/05/ubuntu-22-10-makes-pipewire-default">PipeWire is the default audio server in Ubuntu 22.10.</a></p>
+<p><a target="_blank" rel="noopener" href="https://pipewire.org/">PipeWire</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitlab.freedesktop.org/pipewire/wireplumber">wireplumber</a></p>
+<p>配置：</p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/the-spyke/2de98b22ff4f978ebf0650c90e82027e?permalink_comment_id=3976215#enable-pipewire-on-ubuntu-2204">Enable PipeWire on Ubuntu 22.04</a></p>
+<p><a target="_blank" rel="noopener" href="https://ubuntuhandbook.org/index.php/2022/04/pipewire-replace-pulseaudio-ubuntu-2204/">How to Use PipeWire to replace PulseAudio in Ubuntu 22.04</a></p>
+<p>其他</p>
+<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/710420/why-are-some-systemd-services-in-the-masked-state">Why are some systemd services in the “masked” state?</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.ruanbekker.com/blog/2017/12/09/unmask-a-masked-service-in-systemd/">Unmask a Masked Service in Systemd</a></p>
+</body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢支持</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/../images/wx_reward.jpg" alt="Hex 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" rel="tag"><i class="fa fa-tag"></i> 个人工具</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/19/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-19-Ubuntu-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E5%8F%8A%E4%BF%9D%E5%AD%98%E8%B7%AF%E5%BE%84/" rel="prev" title="Ubuntu:个性化配置及保存路径">
+      <i class="fa fa-chevron-left"></i> Ubuntu:个性化配置及保存路径
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/30/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2022-09-30-Terraform%E6%93%8D%E4%BD%9C%E5%8D%8E%E4%B8%BA%E4%BA%91%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="next" title="Terraform操作华为云虚拟机">
+      Terraform操作华为云虚拟机 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEPipeWire%E4%B8%BA%E9%BB%98%E8%AE%A4%E9%9F%B3%E9%A2%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">配置PipeWire为默认音频服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5"><span class="nav-text">检查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%A5%E5%85%B7pactl%E6%A3%80%E6%9F%A5%EF%BC%9A"><span class="nav-text">通过客户端工具pactl检查：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87systemctl%E6%A3%80%E6%9F%A5pipewire%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81"><span class="nav-text">通过systemctl检查pipewire服务状态</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="nav-text">其他问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-systemctl-%E2%80%93user-status-%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5"><span class="nav-text">1. systemctl –user status 执行失败</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-wireplumber%E5%9C%A8pipewire-media-session%E6%9C%AA%E5%8D%B8%E8%BD%BD%E4%B9%8B%E5%89%8D%EF%BC%8C%E4%B8%BAmasked%E7%8A%B6%E6%80%81%E6%97%A0%E6%B3%95enable"><span class="nav-text">2. wireplumber在pipewire-media-session未卸载之前，为masked状态无法enable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%81%A2%E5%A4%8Dpulseaudio%E4%B8%BA%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86"><span class="nav-text">3. 恢复pulseaudio为音频处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

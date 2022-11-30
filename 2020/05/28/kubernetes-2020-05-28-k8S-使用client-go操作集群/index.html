@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="重要环境说明安装使用0. 校验kubeconfig可用性1234567891011121314151617import (	&quot;k8s.io&#x2F;client-go&#x2F;tools&#x2F;clientcmd&quot;	clientcmdapi &quot;k8s.io&#x2F;client-go&#x2F;tools&#x2F;clientcmd&#x2F;api&quot;)## 解析kubeConfig文件， 校验func (k *K8S) ParseConf(kubeCo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8S-使用client-go操作集群">
+<meta property="og:url" content="https://hex-py.github.io/2020/05/28/kubernetes-2020-05-28-k8S-%E4%BD%BF%E7%94%A8client-go%E6%93%8D%E4%BD%9C%E9%9B%86%E7%BE%A4/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="重要环境说明安装使用0. 校验kubeconfig可用性1234567891011121314151617import (	&quot;k8s.io&#x2F;client-go&#x2F;tools&#x2F;clientcmd&quot;	clientcmdapi &quot;k8s.io&#x2F;client-go&#x2F;tools&#x2F;clientcmd&#x2F;api&quot;)## 解析kubeConfig文件， 校验func (k *K8S) ParseConf(kubeCo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-28T03:16:44.000Z">
+<meta property="article:modified_time" content="2022-11-30T03:22:28.021Z">
+<meta property="article:author" content="Hex">
+<meta property="article:tag" content="Kubernetes">
+<meta property="article:tag" content="Go">
+<meta property="article:tag" content="Client-go">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/2020/05/28/kubernetes-2020-05-28-k8S-%E4%BD%BF%E7%94%A8client-go%E6%93%8D%E4%BD%9C%E9%9B%86%E7%BE%A4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>k8S-使用client-go操作集群 | Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/05/28/kubernetes-2020-05-28-k8S-%E4%BD%BF%E7%94%A8client-go%E6%93%8D%E4%BD%9C%E9%9B%86%E7%BE%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          k8S-使用client-go操作集群
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-05-28 11:16:44" itemprop="dateCreated datePublished" datetime="2020-05-28T11:16:44+08:00">2020-05-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/28/kubernetes-2020-05-28-k8S-%E4%BD%BF%E7%94%A8client-go%E6%93%8D%E4%BD%9C%E9%9B%86%E7%BE%A4/" class="post-meta-item leancloud_visitors" data-flag-title="k8S-使用client-go操作集群" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h3 id="0-校验kubeconfig可用性"><a href="#0-校验kubeconfig可用性" class="headerlink" title="0. 校验kubeconfig可用性"></a>0. 校验kubeconfig可用性</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"k8s.io/client-go/tools/clientcmd"</span></span><br><span class="line">	clientcmdapi <span class="string">"k8s.io/client-go/tools/clientcmd/api"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">## 解析kubeConfig文件， 校验</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *K8S)</span></span> ParseConf(kubeConfig []<span class="type">byte</span>) (Conf clientcmdapi.Config, err <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> (</span><br><span class="line">		restConf clientcmd.ClientConfig</span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">if</span> restConf, err = clientcmd.NewClientConfigFromBytes(kubeConfig); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not load kube Config : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line">	Conf, _ = restConf.RawConfig()</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="1-初始化客户端clientSet"><a href="#1-初始化客户端clientSet" class="headerlink" title="1. 初始化客户端clientSet"></a>1. 初始化客户端clientSet</h2><h3 id="1-1-集群内初始化ClientSet"><a href="#1-1-集群内初始化ClientSet" class="headerlink" title="1.1 集群内初始化ClientSet"></a>1.1 集群内初始化ClientSet</h3><p><a target="_blank" rel="noopener" href="https://github.com/kubernetes/client-go/blob/v0.19.0/examples/in-cluster-client-configuration/main.go">官方Example</a></p>
+<h3 id="1-2-集群外初始化ClientSet"><a href="#1-2-集群外初始化ClientSet" class="headerlink" title="1.2 集群外初始化ClientSet"></a>1.2 集群外初始化ClientSet</h3><p><a target="_blank" rel="noopener" href="https://github.com/kubernetes/client-go/blob/v0.19.0/examples/out-of-cluster-client-configuration/main.go">官方Example</a></p>
+<h3 id="1-3-从字节流创建ClientSet"><a href="#1-3-从字节流创建ClientSet" class="headerlink" title="1.3 从字节流创建ClientSet"></a>1.3 从字节流创建ClientSet</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> k8s</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"k8s.io/client-go/rest"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/kubernetes"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/tools/clientcmd"</span></span><br><span class="line">	clientcmdapi <span class="string">"k8s.io/client-go/tools/clientcmd/api"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> K8S <span class="keyword">struct</span> {</span><br><span class="line">	clientSet *kubernetes.Clientset</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// Connect - 初始化k8s客户端</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *K8S)</span></span> Connect(kubeConfig []<span class="type">byte</span>) (err <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> (</span><br><span class="line">		restConf *rest.Config</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> restConf, err = clientcmd.RESTConfigFromKubeConfig(kubeConfig); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not load kube Config : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// 生成client-set配置</span></span><br><span class="line">	<span class="keyword">if</span> k.clientSet, err = kubernetes.NewForConfig(restConf); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not connect k8s : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	log.Info(<span class="string">"Successfully connected to k8s"</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-4-创建Dynamic-ClientSet"><a href="#1-4-创建Dynamic-ClientSet" class="headerlink" title="1.4 创建Dynamic ClientSet"></a>1.4 创建Dynamic ClientSet</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fleet</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"errors"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/dynamic"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/rest"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/tools/clientcmd"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Crd <span class="keyword">struct</span> {</span><br><span class="line">	Client dynamic.Interface</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// Connect 初始化Fleet客户端</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> Connect(kubeConfig []<span class="type">byte</span>) (err <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> (</span><br><span class="line">		restConf *rest.Config</span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">if</span> restConf, err = clientcmd.RESTConfigFromKubeConfig(kubeConfig); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not load kube Config : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> i.Client, err = dynamic.NewForConfig(restConf); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not connect FleetCrd-k8s : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	log.Info(<span class="string">"Successfully connected to FleetCrd"</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+
+<h2 id="3-根据Deployment-StatefulSet获取Pods"><a href="#3-根据Deployment-StatefulSet获取Pods" class="headerlink" title="3. 根据Deployment|StatefulSet获取Pods"></a>3. 根据Deployment|StatefulSet获取Pods</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"k8s.io/api/apps/v1"</span></span><br><span class="line">	coreV1 <span class="string">"k8s.io/api/core/v1"</span></span><br><span class="line">	metaV1 <span class="string">"k8s.io/apimachinery/pkg/apis/meta/v1"</span></span><br><span class="line">	<span class="string">"k8s.io/apimachinery/pkg/labels"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *K8S)</span></span> PodGetByStatefulSet(namespace <span class="type">string</span>, statefulSet v1.StatefulSet) ([]*coreV1.Pod, <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> podList []*coreV1.Pod</span><br><span class="line">	labelsMap := statefulSet.ObjectMeta.GetLabels()</span><br><span class="line"></span><br><span class="line">	log.DebugF(<span class="string">"[Middleware-K8s] StatefulSet:Labels: 	%#v"</span>, labelsMap)</span><br><span class="line">	labelSets := labels.SelectorFromSet(labelsMap)</span><br><span class="line">	options := metaV1.ListOptions{</span><br><span class="line">		LabelSelector: labelSets.String(),</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	podsClient := k.clientSet.CoreV1().Pods(namespace)</span><br><span class="line">	pods, err := podsClient.List(context.TODO(), options)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span> _, pod := <span class="keyword">range</span> pods.Items {</span><br><span class="line">		log.DebugF(<span class="string">"[Middleware-K8s] Pod:Labels: 		%#v, pod_name=%s"</span>, pod.ObjectMeta.GetLabels(), pod.ObjectMeta.Name)</span><br><span class="line">		podList = <span class="built_in">append</span>(podList, &amp;pod)</span><br><span class="line"></span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> podList, err</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="4-根据Job获取Pods"><a href="#4-根据Job获取Pods" class="headerlink" title="4. 根据Job获取Pods"></a>4. 根据Job获取Pods</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	batchV1 <span class="string">"k8s.io/api/batch/v1"</span></span><br><span class="line">	coreV1 <span class="string">"k8s.io/api/core/v1"</span></span><br><span class="line">	metaV1 <span class="string">"k8s.io/apimachinery/pkg/apis/meta/v1"</span></span><br><span class="line">	<span class="string">"k8s.io/apimachinery/pkg/labels"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *K8S)</span></span> PodGetByJob(namespace <span class="type">string</span>, job batchV1.Job) ([]*coreV1.Pod, <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> podList []*coreV1.Pod</span><br><span class="line"></span><br><span class="line">	labelsMap := <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>{</span><br><span class="line">		<span class="string">"job-name"</span>:       job.ObjectMeta.Name,</span><br><span class="line">		<span class="string">"controller-uid"</span>: <span class="type">string</span>(job.ObjectMeta.UID),</span><br><span class="line">	}</span><br><span class="line">	log.DebugF(<span class="string">"[Middleware-K8s] Jobs:Labels: 	%#v"</span>, labelsMap)</span><br><span class="line">	labelSets := labels.SelectorFromSet(labelsMap)</span><br><span class="line">	options := metaV1.ListOptions{</span><br><span class="line">		LabelSelector: labelSets.String(),</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	podsClient := k.clientSet.CoreV1().Pods(namespace)</span><br><span class="line">	pods, err := podsClient.List(context.TODO(), options)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span> _, pod := <span class="keyword">range</span> pods.Items {</span><br><span class="line">		log.DebugF(<span class="string">"[Middleware-K8s] Pod:Labels: 	%#v, pod_name=%s"</span>, </span><br><span class="line">			pod.ObjectMeta.GetLabels(), </span><br><span class="line">			pod.ObjectMeta.Name)</span><br><span class="line">		podList = <span class="built_in">append</span>(podList, &amp;pod)</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> podList, err</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="5-Dynamic-client-go操作CRD资源"><a href="#5-Dynamic-client-go操作CRD资源" class="headerlink" title="5. Dynamic-client-go操作CRD资源"></a>5. Dynamic-client-go操作CRD资源</h2><p>以rancher fleet项目的CRD <code>clusters.fleet.cattle.io</code>举例</p>
+<blockquote>
+<p>完整的包引用</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fleet</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"errors"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	fleet <span class="string">"github.com/rancher/fleet/pkg/apis/fleet.cattle.io/v1alpha1"</span></span><br><span class="line">	<span class="string">"icosdeploy/pkg/api/log"</span></span><br><span class="line">	metav1 <span class="string">"k8s.io/apimachinery/pkg/apis/meta/v1"</span></span><br><span class="line">	<span class="string">"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"</span></span><br><span class="line">	<span class="string">"k8s.io/apimachinery/pkg/runtime/schema"</span></span><br><span class="line">	<span class="string">"k8s.io/apimachinery/pkg/runtime/serializer/yaml"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/dynamic"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/rest"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/tools/clientcmd"</span></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-1-初始化ClientSet"><a href="#5-1-初始化ClientSet" class="headerlink" title="5.1 初始化ClientSet"></a>5.1 初始化ClientSet</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fleet</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"errors"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/dynamic"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/rest"</span></span><br><span class="line">	<span class="string">"k8s.io/client-go/tools/clientcmd"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Crd <span class="keyword">struct</span> {</span><br><span class="line">	Client dynamic.Interface</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// Connect 初始化Fleet客户端</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> Connect(kubeConfig []<span class="type">byte</span>) (err <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">var</span> (</span><br><span class="line">		restConf *rest.Config</span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">if</span> restConf, err = clientcmd.RESTConfigFromKubeConfig(kubeConfig); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not load kube Config : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> i.Client, err = dynamic.NewForConfig(restConf); err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(fmt.Sprintf(<span class="string">"Could not connect FleetCrd-k8s : %s"</span>, err.Error()))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	log.Info(<span class="string">"Successfully connected to FleetCrd"</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="5-2-Cluster-CRD的查询、删除操作"><a href="#5-2-Cluster-CRD的查询、删除操作" class="headerlink" title="5.2 Cluster CRD的查询、删除操作"></a>5.2 Cluster CRD的查询、删除操作</h3><p>资源定义</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clusterCRD = schema.GroupVersionResource{</span><br><span class="line">	Group:    <span class="string">"fleet.cattle.io"</span>,</span><br><span class="line">	Version:  <span class="string">"v1alpha1"</span>,</span><br><span class="line">	Resource: <span class="string">"clusters"</span>,</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>上面的值在CRD``中获取</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="comment"># group name to use for REST API: /apis/&lt;group&gt;/&lt;version&gt;</span></span><br><span class="line">  <span class="comment"># 对应 Group 字段的值</span></span><br><span class="line">  <span class="attr">group:</span> <span class="string">fleet.cattle.io</span></span><br><span class="line">  <span class="comment"># list of versions supported by this CustomResourceDefinition</span></span><br><span class="line">  <span class="attr">versions:</span></span><br><span class="line">    <span class="comment"># 对应 Version 字段的可选值</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">v1alpha1</span></span><br><span class="line">  <span class="comment"># ...</span></span><br><span class="line"><span class="attr">names:</span></span><br><span class="line">  <span class="comment"># plural name to be used in the URL: /apis/&lt;group&gt;/&lt;version&gt;/&lt;plural&gt;</span></span><br><span class="line">  <span class="comment"># 对应 Resource 字段的值</span></span><br><span class="line">  <span class="attr">plural:</span> <span class="string">clusters</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="5-2-1-List查询资源"><a href="#5-2-1-List查询资源" class="headerlink" title="5.2.1 List查询资源"></a>5.2.1 List查询资源</h4><blockquote>
+<p>如果资源对象不是Namespace隔离的，则不指定Namespace:  <code>i.Client.Resource(xxxCRD).List(context.TODO(), metav1.ListOptions{})</code></p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> ListClusters(namespace <span class="type">string</span>) (clusters *fleet.ClusterList, err <span class="type">error</span>) {</span><br><span class="line">	list, err := i.Client.Resource(clusterCRD).Namespace(namespace).List(context.TODO(), metav1.ListOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := list.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err := json.Unmarshal(data, &amp;clusters); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> clusters, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-2-2-Get查询资源详情"><a href="#5-2-2-Get查询资源详情" class="headerlink" title="5.2.2 Get查询资源详情"></a>5.2.2 Get查询资源详情</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> GetCluster(namespace <span class="type">string</span>, name <span class="type">string</span>) (cluster *fleet.Cluster, err <span class="type">error</span>) {</span><br><span class="line">	list, err := i.Client.Resource(clusterCRD).</span><br><span class="line">		Namespace(namespace).Get(context.TODO(), name, metav1.GetOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := list.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err := json.Unmarshal(data, &amp;cluster); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> cluster, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-2-3-删除资源"><a href="#5-2-3-删除资源" class="headerlink" title="5.2.3 删除资源"></a>5.2.3 删除资源</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> DelCluster(namespace <span class="type">string</span>, name <span class="type">string</span>) (err <span class="type">error</span>) {</span><br><span class="line">	deletePolicy := metav1.DeletePropagationForeground</span><br><span class="line"></span><br><span class="line">	cluster, err := i.GetCluster(namespace, name)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		log.Error(err.Error())</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> cluster == <span class="literal">nil</span> {</span><br><span class="line">		err = errors.New(fmt.Sprintf(<span class="string">"Cluster -- %s not exists"</span>, name))</span><br><span class="line">		log.Error(err.Error())</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	err = i.Client.Resource(clusterCRD).</span><br><span class="line">		Namespace(namespace).Delete(context.TODO(), name, metav1.DeleteOptions{PropagationPolicy: &amp;deletePolicy})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="5-3-Token-CRD的创建操作"><a href="#5-3-Token-CRD的创建操作" class="headerlink" title="5.3 Token CRD的创建操作"></a>5.3 Token CRD的创建操作</h3><p>资源定义</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tokenCRD = schema.GroupVersionResource{</span><br><span class="line">	Group:    <span class="string">"fleet.cattle.io"</span>,</span><br><span class="line">	Version:  <span class="string">"v1alpha1"</span>,</span><br><span class="line">	Resource: <span class="string">"clusterregistrationtokens"</span>,</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-3-1-List查询资源"><a href="#5-3-1-List查询资源" class="headerlink" title="5.3.1 List查询资源"></a>5.3.1 List查询资源</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> ListToken(namespace <span class="type">string</span>) (tokenList *fleet.ClusterRegistrationTokenList, err <span class="type">error</span>) {</span><br><span class="line">	list, err := i.Client.Resource(tokenCRD).Namespace(namespace).List(context.TODO(), metav1.ListOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := list.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err = json.Unmarshal(data, &amp;tokenList); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> tokenList, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-3-2-Get查询资源详情"><a href="#5-3-2-Get查询资源详情" class="headerlink" title="5.3.2 Get查询资源详情"></a>5.3.2 Get查询资源详情</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> GetToken(namespace <span class="type">string</span>, name <span class="type">string</span>) (token *fleet.ClusterRegistrationToken, err <span class="type">error</span>) {</span><br><span class="line">	list, err := i.Client.Resource(tokenCRD).Namespace(namespace).Get(context.TODO(), name, metav1.GetOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := list.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err = json.Unmarshal(data, &amp;token); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> token, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-3-3-创建资源"><a href="#5-3-3-创建资源" class="headerlink" title="5.3.3 创建资源"></a>5.3.3 创建资源</h4><blockquote>
+<p>注意: <code>yaml</code>包一定要用 <code>"k8s.io/apimachinery/pkg/runtime/serializer/yaml"</code>， 否则想资源部分数据解析会报错</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> CreateData = <span class="string">`</span></span><br><span class="line"><span class="string">kind: ClusterRegistrationToken</span></span><br><span class="line"><span class="string">apiVersion: "fleet.cattle.io/v1alpha1"</span></span><br><span class="line"><span class="string">metadata:</span></span><br><span class="line"><span class="string">    name: new-token</span></span><br><span class="line"><span class="string">    namespace: fleet-local</span></span><br><span class="line"><span class="string">spec:</span></span><br><span class="line"><span class="string">    ttl: 240h</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> CreateToken(namespace <span class="type">string</span>) (token *fleet.ClusterRegistrationToken, err <span class="type">error</span>) {</span><br><span class="line">	decoder := yaml.NewDecodingSerializer(unstructured.UnstructuredJSONScheme)</span><br><span class="line">	obj := &amp;unstructured.Unstructured{}</span><br><span class="line">	gvk := schema.GroupVersionKind{</span><br><span class="line">		Group:   <span class="string">"fleet.cattle.io"</span>,</span><br><span class="line">		Version: <span class="string">"v1alpha1"</span>,</span><br><span class="line">		Kind:    <span class="string">"ClusterRegistrationToken"</span>,</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> _, _, err := decoder.Decode([]<span class="type">byte</span>(CreateData), &amp;gvk, obj); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	one, err := i.Client.Resource(tokenCRD).Namespace(namespace).Create(context.TODO(), obj, metav1.CreateOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := one.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> err = json.Unmarshal(data, &amp;token); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> token, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="5-4-GitRepo-CRD的操作"><a href="#5-4-GitRepo-CRD的操作" class="headerlink" title="5.4 GitRepo CRD的操作"></a>5.4 GitRepo CRD的操作</h3><p>资源定义</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gitRepoCRD = schema.GroupVersionResource{</span><br><span class="line">	Group:    <span class="string">"fleet.cattle.io"</span>,</span><br><span class="line">	Version:  <span class="string">"v1alpha1"</span>,</span><br><span class="line">	Resource: <span class="string">"gitrepos"</span>,</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5-4-1-List查询资源"><a href="#5-4-1-List查询资源" class="headerlink" title="5.4.1 List查询资源"></a>5.4.1 List查询资源</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(i *Crd)</span></span> ListGitRepo(namespace <span class="type">string</span>) (repoList *fleet.GitRepoList, err <span class="type">error</span>) {</span><br><span class="line">	list, err := i.Client.Resource(gitRepoCRD).Namespace(namespace).List(context.TODO(), metav1.ListOptions{})</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	data, err := list.MarshalJSON()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err := json.Unmarshal(data, &amp;repoList); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> repoList, <span class="literal">nil</span></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="6-查看容器日志"><a href="#6-查看容器日志" class="headerlink" title="6. 查看容器日志"></a>6. 查看容器日志</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PodLogs - pod  logs</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k *K8S)</span></span> PodLogs(namespace <span class="type">string</span>, name <span class="type">string</span>) (<span class="type">string</span>, <span class="type">error</span>) {</span><br><span class="line">	podLogOpts := coreV1.PodLogOptions{}</span><br><span class="line"></span><br><span class="line">	jobsClient := k.clientSet.CoreV1().Pods(namespace)</span><br><span class="line">	result := jobsClient.GetLogs(name, &amp;podLogOpts)</span><br><span class="line"></span><br><span class="line">	podLogs, err := result.Stream(context.TODO())</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		log.ErrorF(<span class="string">"error in opening stream:  %v"</span>, err)</span><br><span class="line">		<span class="keyword">return</span> <span class="string">""</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">defer</span> podLogs.Close()</span><br><span class="line">	buf := <span class="built_in">new</span>(bytes.Buffer)</span><br><span class="line">	_, err = io.Copy(buf, podLogs)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		log.ErrorF(<span class="string">"error in copy information from podLogs to buf:  %v"</span>, err)</span><br><span class="line">		<span class="keyword">return</span> <span class="string">""</span>, err</span><br><span class="line">	}</span><br><span class="line">	logs := buf.String()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> logs, err</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><strong><a target="_blank" rel="noopener" href="https://www.huweihuang.com/kubernetes-notes/develop/client-go.html">第一参考 client-go简介</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/kubernetes/client-go/blob/master/examples/in-cluster-client-configuration/main.go">client-go官方实例–集群内client配置</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49953980/watch-customresourcedefinitions-crd-with-client-go">client-go针对crd资源，代码生成器</a></p>
+<p><strong><a target="_blank" rel="noopener" href="https://gianarb.it/blog/unit-testing-kubernetes-client-in-go">Unit test kubernetes client in Go</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://mozillazg.com/2020/07/k8s-kubernetes-client-go-list-get-create-update-patch-delete-crd-resource-without-generate-client-code-update-or-create-via-yaml.html#hidcreate">Dynamic-client-go操作CRD资源</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/eMDyXfPbeQmOOwTtLNsaOA">基于Dynamic-client, 开发第三方资源Informer和Controller</a></p>
+</body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢支持</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/../images/wx_reward.jpg" alt="Hex 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Kubernetes/" rel="tag"><i class="fa fa-tag"></i> Kubernetes</a>
+              <a href="/tags/Go/" rel="tag"><i class="fa fa-tag"></i> Go</a>
+              <a href="/tags/Client-go/" rel="tag"><i class="fa fa-tag"></i> Client-go</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/28/golang-2020-05-28-Gorm-%E4%BD%BF%E7%94%A8gormigrate%E4%BD%9C%E4%B8%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E7%AE%A1%E7%90%86/" rel="prev" title="Gorm-使用gormigrate">
+      <i class="fa fa-chevron-left"></i> Gorm-使用gormigrate
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/28/devops-2020-05-28-devops-%E6%8C%82%E8%BD%BDvolume%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/" rel="next" title="devops-挂载volume权限问题">
+      devops-挂载volume权限问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%A6%81"><span class="nav-text">重要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E"><span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-%E6%A0%A1%E9%AA%8Ckubeconfig%E5%8F%AF%E7%94%A8%E6%80%A7"><span class="nav-text">0. 校验kubeconfig可用性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AE%A2%E6%88%B7%E7%AB%AFclientSet"><span class="nav-text">1. 初始化客户端clientSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%9B%86%E7%BE%A4%E5%86%85%E5%88%9D%E5%A7%8B%E5%8C%96ClientSet"><span class="nav-text">1.1 集群内初始化ClientSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E9%9B%86%E7%BE%A4%E5%A4%96%E5%88%9D%E5%A7%8B%E5%8C%96ClientSet"><span class="nav-text">1.2 集群外初始化ClientSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E4%BB%8E%E5%AD%97%E8%8A%82%E6%B5%81%E5%88%9B%E5%BB%BAClientSet"><span class="nav-text">1.3 从字节流创建ClientSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%88%9B%E5%BB%BADynamic-ClientSet"><span class="nav-text">1.4 创建Dynamic ClientSet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%A0%B9%E6%8D%AEDeployment-StatefulSet%E8%8E%B7%E5%8F%96Pods"><span class="nav-text">3. 根据Deployment|StatefulSet获取Pods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%A0%B9%E6%8D%AEJob%E8%8E%B7%E5%8F%96Pods"><span class="nav-text">4. 根据Job获取Pods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Dynamic-client-go%E6%93%8D%E4%BD%9CCRD%E8%B5%84%E6%BA%90"><span class="nav-text">5. Dynamic-client-go操作CRD资源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%88%9D%E5%A7%8B%E5%8C%96ClientSet"><span class="nav-text">5.1 初始化ClientSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-Cluster-CRD%E7%9A%84%E6%9F%A5%E8%AF%A2%E3%80%81%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="nav-text">5.2 Cluster CRD的查询、删除操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-List%E6%9F%A5%E8%AF%A2%E8%B5%84%E6%BA%90"><span class="nav-text">5.2.1 List查询资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-Get%E6%9F%A5%E8%AF%A2%E8%B5%84%E6%BA%90%E8%AF%A6%E6%83%85"><span class="nav-text">5.2.2 Get查询资源详情</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-3-%E5%88%A0%E9%99%A4%E8%B5%84%E6%BA%90"><span class="nav-text">5.2.3 删除资源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-Token-CRD%E7%9A%84%E5%88%9B%E5%BB%BA%E6%93%8D%E4%BD%9C"><span class="nav-text">5.3 Token CRD的创建操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-List%E6%9F%A5%E8%AF%A2%E8%B5%84%E6%BA%90"><span class="nav-text">5.3.1 List查询资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-2-Get%E6%9F%A5%E8%AF%A2%E8%B5%84%E6%BA%90%E8%AF%A6%E6%83%85"><span class="nav-text">5.3.2 Get查询资源详情</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-3-%E5%88%9B%E5%BB%BA%E8%B5%84%E6%BA%90"><span class="nav-text">5.3.3 创建资源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-GitRepo-CRD%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-text">5.4 GitRepo CRD的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-1-List%E6%9F%A5%E8%AF%A2%E8%B5%84%E6%BA%90"><span class="nav-text">5.4.1 List查询资源</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E6%97%A5%E5%BF%97"><span class="nav-text">6. 查看容器日志</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

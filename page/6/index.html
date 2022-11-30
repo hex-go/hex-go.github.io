@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="个人技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hex Blog">
+<meta property="og:url" content="https://hex-py.github.io/page/6/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="个人技术博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hex">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/page/6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/11/06/devops-2020-11-06-DevOps-trivy-%E9%95%9C%E5%83%8F%E6%89%AB%E6%8F%8F%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/06/devops-2020-11-06-DevOps-trivy-%E9%95%9C%E5%83%8F%E6%89%AB%E6%8F%8F%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">DevOps-trivy-镜像扫描汇总</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-11-06 06:26:40" itemprop="dateCreated datePublished" datetime="2020-11-06T06:26:40+08:00">2020-11-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/11/06/devops-2020-11-06-DevOps-trivy-%E9%95%9C%E5%83%8F%E6%89%AB%E6%8F%8F%E6%B1%87%E6%80%BB/" class="post-meta-item leancloud_visitors" data-flag-title="DevOps-trivy-镜像扫描汇总" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>trivy用来扫描镜像的安全漏洞。如果用于生产环境，需要将漏洞库离线，安全人员将镜像的基础镜像或者buildpack的stack进行升级。之后再升级安全漏洞。</p>
+<p>将安全漏洞修复变成可计划，分期实施的过程。如果一直使用在线库，则不能采取存在漏洞立即删除的策略。</p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>trivy version 0.4.4</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>扫描镜像的命令</p>
+<h2 id="采用server-client模式启动服务"><a href="#采用server-client模式启动服务" class="headerlink" title="采用server-client模式启动服务"></a>采用<code>server-client</code>模式启动服务</h2><p>trivy采取<code>server-client</code>模式，server端将漏洞库离线打在镜像内</p>
+<h3 id="1-获取离线漏洞库"><a href="#1-获取离线漏洞库" class="headerlink" title="1. 获取离线漏洞库"></a>1. 获取离线漏洞库</h3><p>在trivy版本Release时，会发布漏洞库<br><a target="_blank" rel="noopener" href="https://github.com/aquasecurity/trivy-db/releases">下载连接</a><br><a target="_blank" rel="noopener" href="https://github.com/aquasecurity/trivy/issues/423">参考issue</a></p>
+<p>或者选择执行命令下载</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trivy --download-db-only</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-启动server端"><a href="#2-启动server端" class="headerlink" title="2. 启动server端"></a>2. 启动server端</h3><p>server端命令如下</p>
+<blockquote>
+<p>–token用于客户端与server连接时，认证使用。<br>–skip-update 跳过漏洞库更新</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trivy server -d --listen 0.0.0.0:4954 --skip-update --token mail2Uyu</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-启动client端"><a href="#3-启动client端" class="headerlink" title="3. 启动client端"></a>3. 启动client端</h3><p>client端命令如下</p>
+<blockquote>
+<p>–cache-dir 声明缓存的路径<br>–severity  扫描的漏洞安全级别<br>–vuln-type 扫描的漏洞类型<br>–format    声明报告格式<br>–output    输出的日志位置<br>–ignore-unfixed 忽略未修复的漏洞</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">trivy client --remote http://10.15.6.105:32449 --token mail2Uyu \</span><br><span class="line">             --cache-dir /root/.cache/trivy \</span><br><span class="line">             --severity UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL \</span><br><span class="line">             --vuln-type os \</span><br><span class="line">             --ignore-unfixed \</span><br><span class="line">             --format json \</span><br><span class="line">             --output /root/.cache/reports/scan_report_984890059.json \</span><br><span class="line">             ubuntu:20.04</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="使用-trivy-直接扫描"><a href="#使用-trivy-直接扫描" class="headerlink" title="使用 trivy 直接扫描"></a>使用 trivy 直接扫描</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">trivy  --cache-dir /root/.cache/trivy \</span><br><span class="line">       --severity CRITICAL \</span><br><span class="line">       --vuln-type os \</span><br><span class="line">       --format json \</span><br><span class="line">       --output /root/.cache/reports/18.04.json \</span><br><span class="line">       centos:centos7.8.2003</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="trivy-跳过-误报漏洞"><a href="#trivy-跳过-误报漏洞" class="headerlink" title="trivy 跳过 误报漏洞"></a>trivy 跳过 误报漏洞</h2><p>在trivy命令执行的同级目录下， 创建<code>.trivyignore</code>文件。以类似下面内容配置忽略的漏洞</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> .trivyignore</span><br><span class="line"><span class="comment"># Accept the risk</span></span><br><span class="line">CVE-2018-14618</span><br><span class="line"></span><br><span class="line"><span class="comment"># No impact in our settings</span></span><br><span class="line">CVE-2019-1543</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://github.com/aquasecurity/trivy/issues/423">获取trivy漏洞库</a><br><a target="_blank" rel="noopener" href="https://github.com/aquasecurity/trivy#ignore-the-specified-vulnerabilities">忽略特定的漏洞</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/aquasecurity/trivy#os-packages">trivy支持的os</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/aquasecurity/trivy/issues/310">bug-使用厂商(比如. Redhat)提供的危险等级</a><br><a target="_blank" rel="noopener" href="https://github.com/aquasecurity/trivy/issues/403">issue-不能使用非官方源装包(包括自制的包or国内源装包)</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/11/06/kubernetes-2020-11-06-Kubernetes-ingress-nginx%E9%85%8D%E7%BD%AEgrpc%E6%9C%8D%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/06/kubernetes-2020-11-06-Kubernetes-ingress-nginx%E9%85%8D%E7%BD%AEgrpc%E6%9C%8D%E5%8A%A1/" class="post-title-link" itemprop="url">Kubernetes-ingress-nginx配置grpc服务</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-11-06 06:17:38" itemprop="dateCreated datePublished" datetime="2020-11-06T06:17:38+08:00">2020-11-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/11/06/kubernetes-2020-11-06-Kubernetes-ingress-nginx%E9%85%8D%E7%BD%AEgrpc%E6%9C%8D%E5%8A%A1/" class="post-meta-item leancloud_visitors" data-flag-title="Kubernetes-ingress-nginx配置grpc服务" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>ingress-nginx对于暴露grpc的服务，要求必须tls加密。所以，要么ingress配置grpcs,在服务端自己管理证书；要么ingress配置grpc,在ingress配置统一管理证书。</p>
+<p>为便于运维管理证书，此处采用<code>cert-manager</code>统一在ingress配置中。自动生成证书，发布https服务。</p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>+ </p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ol>
+<li>生成自签发CA证书，并保存在secret中(供cert-manager签发证书使用)；</li>
+<li>配置<code>cluster-issuer</code>,和<code>certificate</code>，使生成Secret，保存证书、ca和私钥；</li>
+<li>创建pod,service,ingress, ingress的tls配置使用第二步生成的Secret；</li>
+<li>执行命令测试grpc端口是否暴露成功；<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grpcurl -insecure test.icos.city:443 build.stack.fortune.FortuneTeller/Predict</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>以上1.2步参考cert-manager相关内容<br><a href="https://hex-py.github.io/2020/11/05/kubernetes-2020-11-05-Kubernetes-certmanager%E8%A7%A3%E5%86%B3ingress-tls%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/">cert-manager hex-博客</a><br><a target="_blank" rel="noopener" href="https://github.com/hex-py/cert-manager-example.git">cert-manager hex-github-示例项目</a></p>
+<p>第3,4部参考<code>ingress-nginx</code>的官方示例，<br><a target="_blank" rel="noopener" href="https://github.com/kubernetes/ingress-nginx/tree/master/images/grpc-fortune-teller">IngressNginx官房GRPC示例</a></p>
+<p>第3,4部也可参考cert-manager的示例代码测试<br><a target="_blank" rel="noopener" href="https://github.com/hex-py/cert-manager-example.git">cert-manager hex-github-示例项目</a></p>
+<p>其他关于grpc的内容，需要参考此链接</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/grpc/grpc">grpc_github</a> </p>
+<p><a target="_blank" rel="noopener" href="https://grpc.io/docs/languages/go/quickstart/">grpc_go_quick_start</a> </p>
+<p><a target="_blank" rel="noopener" href="https://grpc.io/docs/languages/python/quickstart/">grpc python quick-start</a> </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/grpc/grpc-java">grpc_java_quick-start</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kubernetes/ingress-nginx/tree/master/docs/examples/grpc">ingress-nginx-grpcExample</a></p>
+<p><a target="_blank" rel="noopener" href="https://kubernetes.github.io/ingress-nginx/examples/grpc/">ingress-nginx-grpc-DOC</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kubernetes/ingress-nginx/tree/master/images/grpc-fortune-teller">ingress-nginx-grocExampleImage</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/11/05/kubernetes-2020-11-05-Kubernetes-certmanager%E8%A7%A3%E5%86%B3ingress-tls%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/05/kubernetes-2020-11-05-Kubernetes-certmanager%E8%A7%A3%E5%86%B3ingress-tls%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Kubernetes-CertManager解决ingress-tls证书问题</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-11-05 03:55:15" itemprop="dateCreated datePublished" datetime="2020-11-05T03:55:15+08:00">2020-11-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/11/05/kubernetes-2020-11-05-Kubernetes-certmanager%E8%A7%A3%E5%86%B3ingress-tls%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="Kubernetes-CertManager解决ingress-tls证书问题" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><p>由于需要配置<code>ingress-grpc</code>,nginx-ingress要求tls加密。实现的方式有两种：一种在ingress注解<code>grpcs</code>,之后在pod控制证书；另一种在ingress配置<code>tls</code>。<br>生产环境证书都是运维统一维护，舍弃第一种。所以调研cert-manager用来维护证书。</p>
+<p>此处<code>cert-manager</code>用来使用已给的<code>ca</code>为需要证书的服务生成证书、并使用.</p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><p>K8S：1.15.6<br>CertManager: 1.0.4</p>
+<h1 id="部署cert-manager"><a href="#部署cert-manager" class="headerlink" title="部署cert-manager"></a>部署cert-manager</h1><p>两种方式：<br>一种资源清单部署（<a target="_blank" rel="noopener" href="https://cert-manager.io/docs/installation/kubernetes/#installing-with-regular-manifests">install with regular manifests</a>）<br>另一种是helm-chart部署（<a target="_blank" rel="noopener" href="https://cert-manager.io/docs/installation/kubernetes/#installing-with-helm">install with helm</a>）</p>
+<p>注意, 默认配置在<code>certificate</code>删除时,它所创建的<code>secret</code>不会被删除; 如果想要<code>Secret</code>同步被删除,需要在部署时指定参数<code>--enable-certificate-owner-ref=true</code>.</p>
+<h2 id="1-资源清单部署"><a href="#1-资源清单部署" class="headerlink" title="1. 资源清单部署"></a>1. 资源清单部署</h2><blockquote>
+<p>由于工作环境使用的k8s环境版本为1.15.6，&lt;1.16.</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Kubernetes &lt;1.16</span></span><br><span class="line">kubectl apply --validate=<span class="literal">false</span> -f https://github.com/jetstack/cert-manager/releases/download/v1.0.4/cert-manager-legacy.yaml</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-helm-chart部署"><a href="#2-helm-chart部署" class="headerlink" title="2. helm-chart部署"></a>2. helm-chart部署</h2><ol>
+<li><p>创建CRD资源</p>
+<blockquote>
+<p>由于工作环境使用的k8s环境版本为1.15.6，创建crd时使用最新版本.</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply --validate=<span class="literal">false</span> -f https://github.com/jetstack/cert-manager/releases/download/v1.0.4/cert-manager.crds.yaml</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>获取chart部署</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加 chart-repo</span></span><br><span class="line">helm repo add jetstack https://charts.jetstack.io</span><br><span class="line"><span class="comment"># 拉取 v1.0.4 版本chart</span></span><br><span class="line"><span class="comment"># 建议拉取chart,而不是在线安装</span></span><br><span class="line">helm pull jetstack/cert-manager --version=v1.0.4</span><br><span class="line"></span><br><span class="line"><span class="comment"># helm install </span></span><br><span class="line">helm install --name cert-manager --namespace cert-manager cert-manager-v1.0.4.tgz</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h1 id="检查安装"><a href="#检查安装" class="headerlink" title="检查安装"></a>检查安装</h1><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get pods --namespace cert-manager</span><br><span class="line"></span><br><span class="line">NAME                                       READY   STATUS    RESTARTS   AGE</span><br><span class="line">cert-manager-5c6866597-zw7kh               1/1     Running   0          2m</span><br><span class="line">cert-manager-cainjector-577f6d9fd7-tr77l   1/1     Running   0          2m</span><br><span class="line">cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>证书的生成分这几种方式<br>SelfSigned:<br>CA:<br>Vault:</p>
+<p>此处选用<code>CA</code>方式签发证书：</p>
+<h2 id="1-创建ca并保存进集群，Secret-cert-manager-ca-key-pair"><a href="#1-创建ca并保存进集群，Secret-cert-manager-ca-key-pair" class="headerlink" title="1. 创建ca并保存进集群，Secret:cert-manager:ca-key-pair"></a>1. 创建ca并保存进集群，Secret:cert-manager:ca-key-pair</h2><blockquote>
+<p>此处配置的是自签发证书，如果环境中需要更换成合法证书，需要运维在第二步时，根据真实证书创建Secret。 </p>
+</blockquote>
+<ul>
+<li><p>生成自签发证书(ca.crt)和key(ca.key)</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Generate a CA private key</span></span><br><span class="line">openssl genrsa -out ca.key 2048</span><br><span class="line">    </span><br><span class="line"><span class="comment"># Create a self signed Certificate, valid for 10yrs with the 'signing' option set</span></span><br><span class="line">openssl req -x509 -new -nodes -key ca.key -subj <span class="string">"/CN=ICOS.CITY"</span> -days 3650 -reqexts v3_req -extensions v3_ca -out ca.crt</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>创建<code>Secret</code>保存证书(命名空间: cert-manager; 资源类型: secret; 资源名称: ca-key-pair.)。</p>
+<blockquote>
+<p>如果使用cluster-issuer，则需要将此secret保存至<code>cert-manager</code>命名空间；<br>如果使用issuer,则需要在每个issuer所在命名空间创建此secret.</p>
+</blockquote>
+</li>
+</ul>
+<p>此处以 <code>cluster-issuer</code> 配置</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create secret tls ca-key-pair --cert=ca.crt --key=ca.key --namespace=cert-manager</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-创建-cluster-issuer-内容如下-cluster-issuer-yaml-："><a href="#2-创建-cluster-issuer-内容如下-cluster-issuer-yaml-：" class="headerlink" title="2. 创建 cluster-issuer, 内容如下(cluster-issuer.yaml)："></a>2. 创建 <code>cluster-issuer</code>, 内容如下(cluster-issuer.yaml)：</h2><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">cert-manager.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ClusterIssuer</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">ca-clusterissuer</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ca:</span></span><br><span class="line">    <span class="attr">secretName:</span> <span class="string">ca-key-pair</span></span><br></pre></td></tr></tbody></table></figure>
+<p>执行下面命令创建</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create -f cluster-issuer.yaml</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-创建certificate测试，内容如下-example-ca-yaml-："><a href="#3-创建certificate测试，内容如下-example-ca-yaml-：" class="headerlink" title="3. 创建certificate测试，内容如下(example-ca.yaml)："></a>3. 创建<code>certificate</code>测试，内容如下(example-ca.yaml)：</h2><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">cert-manager.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Certificate</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">example-ca</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">mars</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="comment"># 创建名为`example-secret`的secret,保存`ca`与签发的证书.</span></span><br><span class="line">  <span class="attr">secretName:</span> <span class="string">example-secret</span></span><br><span class="line">  <span class="attr">issuerRef:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">ca-clusterissuer</span></span><br><span class="line">    <span class="attr">kind:</span> <span class="string">ClusterIssuer</span></span><br><span class="line">  <span class="comment"># 此处放的是服务集群内部访问地址，</span></span><br><span class="line">  <span class="attr">commonName:</span> <span class="string">example.mars</span></span><br><span class="line">  <span class="attr">organization:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Example</span> <span class="string">CA</span></span><br><span class="line">  <span class="attr">dnsNames:</span></span><br><span class="line">  <span class="comment"># 同namespace访问的服务地址</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">example</span></span><br><span class="line">  <span class="comment"># 集群外部访问地址</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">example.mars.icos.city</span></span><br></pre></td></tr></tbody></table></figure>
+<p>执行命令<code>kubectl create -f example-ca.yaml</code><br>查看证书和Secret</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl -n mars get certificate</span><br><span class="line"><span class="comment"># 证书的状态 READY 为 True。</span></span><br><span class="line">NAME           READY   SECRET             AGE</span><br><span class="line">example-ca     True    example-secret     5d20h</span><br><span class="line"></span><br><span class="line">$ kubectl -n mars get secrets example-secret -o yaml</span><br><span class="line"><span class="comment"># 回显的secret的 data.ca.crt, data.tls.crt, data.tls.key 都有证书或秘钥base64值。</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">data:</span><br><span class="line">  ca.crt: LS0tLS1C...EUtLS0tLQo=</span><br><span class="line">  tls.crt: LS0tLS1C...RFLS0tLS0K</span><br><span class="line">  tls.key: LS0tLS1C...0tLS0tCg==</span><br><span class="line">kind: Secret</span><br><span class="line">metadata:</span><br><span class="line">  annotations:</span><br><span class="line">    cert-manager.io/alt-names: test-cert.mars,test-cert.icos.city</span><br><span class="line">    cert-manager.io/certificate-name: test-cert-ca</span><br><span class="line">    cert-manager.io/common-name: icos.city</span><br><span class="line">    cert-manager.io/issuer-kind: ClusterIssuer</span><br><span class="line">    cert-manager.io/issuer-name: ca-clusterissuer</span><br><span class="line">  <span class="comment"># 在certificate中指定的 `spec.secretName`</span></span><br><span class="line">  name: example-secret</span><br><span class="line">  namespace: mars</span><br><span class="line"><span class="built_in">type</span>: kubernetes.io/tls</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="4-容器使用"><a href="#4-容器使用" class="headerlink" title="4. 容器使用"></a>4. 容器使用</h2><p>集群中使用证书的场景有以下几个诉求：</p>
+<ol>
+<li>非https容器访问https容器，需要信任此自签证书。所以需要将<code>ca.crt</code>挂载到非https容器内部；</li>
+<li>储存各个服务自身证书的secret中包含三部分，<code>ca.crt</code>,<code>tls.crt</code>,<code>tls.key</code>。</li>
+<li>统一的平台部署应用到多个k8s集群，需要每个集群均部署<code>cert-manager</code>,并使用同一个<code>ca</code>。</li>
+</ol>
+<p>所以采取以下实现。</p>
+<ol>
+<li>为每个服务均生成证书，至少包含<code>同一集群内部访问</code>和<code>同一Namespace访问</code>的证书。并挂载在<code>/opt/tls/</code>目录下。</li>
+<li>如果服务有对外暴露，多加一个dnsName 为<code>集群外部访问地址</code>。</li>
+<li>每个服务在固定的容器目录下，均有<code>ca.crt</code>,<code>tls.crt</code>,<code>tls.key</code>文件，只是访问https服务，则只使用<code>ca.crt</code>文件。</li>
+<li><code>ca.crt</code>是公用、一致的； <code>tls.crt</code>,<code>tls.key</code>是根据每个服务的服务名、ingress签发的。</li>
+</ol>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Source: icossense-icosgrpc-service-xadit-001/templates/deployment.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">example-001</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">example-001</span></span><br><span class="line">    <span class="attr">chart:</span> <span class="string">example-001-1.0.0</span></span><br><span class="line">    <span class="attr">release:</span> <span class="string">"RELEASE-NAME"</span></span><br><span class="line">    <span class="attr">heritage:</span> <span class="string">"Helm"</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">example-001</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">example-001</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">example-001</span></span><br><span class="line">        <span class="attr">release:</span> <span class="string">"RELEASE-NAME"</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">example-001</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">"hexpy/example-grpc:latest9"</span></span><br><span class="line">        <span class="attr">imagePullPolicy:</span> <span class="string">"Always"</span></span><br><span class="line">        <span class="attr">securityContext:</span></span><br><span class="line">          <span class="attr">allowPrivilegeEscalation:</span> <span class="literal">true</span></span><br><span class="line">          <span class="attr">runAsNonRoot:</span> <span class="literal">true</span></span><br><span class="line">          <span class="attr">capabilities:</span></span><br><span class="line">            <span class="attr">drop:</span> [<span class="string">"NET_ADMIN"</span>, <span class="string">"SYS_TIME"</span>,<span class="string">"CHOWN"</span>,<span class="string">"SYS_ADMIN"</span>]</span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">containerport-0</span></span><br><span class="line">          <span class="attr">protocol:</span> <span class="string">"TCP"</span></span><br><span class="line">          <span class="attr">containerPort:</span> <span class="number">7070</span></span><br><span class="line">        <span class="attr">volumeMounts:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">example-secret-mount</span></span><br><span class="line">          <span class="attr">mountPath:</span> <span class="string">"/etc/tls"</span></span><br><span class="line">          <span class="attr">readOnly:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">volumes:</span></span><br><span class="line">      <span class="comment"># 在此`deployment`中, `volumeMounts`中的`name`一致</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">example-secret-mount</span></span><br><span class="line">        <span class="attr">secret:</span></span><br><span class="line">          <span class="comment"># 在`certificate`中`spec.secretName`设置的.</span></span><br><span class="line">          <span class="attr">secretName:</span> <span class="string">example-secret</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://cert-manager.io/docs/">官方文档</a><br><a target="_blank" rel="noopener" href="https://artifacthub.io/packages/helm/jetstack/cert-manager/1.0.4">chart</a><br><a target="_blank" rel="noopener" href="https://github.com/jetstack/cert-manager">github</a><br><a target="_blank" rel="noopener" href="https://github.com/jetstack/cert-manager/issues/2993">当证书被删除，Secret会被留下</a><br><a target="_blank" rel="noopener" href="https://github.com/jetstack/cert-manager/issues/296">当证书被删除，Secret会被留下2</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hex-py/cert-manager-example.git">github-示例项目</a><br><a target="_blank" rel="noopener" href="https://atelierhsn.com/2020/07/cert-manager-ingress/">Automatic TLS certificates with cert-manager and ingress-nginx</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/10/22/golang-2020-10-22-Go-Struct-tag%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-%E4%BA%8C-%E4%B8%BAstruct%E8%AE%BE%E7%BD%AEdefault%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/22/golang-2020-10-22-Go-Struct-tag%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-%E4%BA%8C-%E4%B8%BAstruct%E8%AE%BE%E7%BD%AEdefault%E5%80%BC/" class="post-title-link" itemprop="url">Go-Struct-tag深入理解[二]为struct设置default值</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-10-22 07:19:13" itemprop="dateCreated datePublished" datetime="2020-10-22T07:19:13+08:00">2020-10-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/10/22/golang-2020-10-22-Go-Struct-tag%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-%E4%BA%8C-%E4%B8%BAstruct%E8%AE%BE%E7%BD%AEdefault%E5%80%BC/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Struct-tag深入理解[二]为struct设置default值" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://web.archive.org/web/20160818125551/https://joneisen.tumblr.com/post/53695478114/golang-and-default-values">golang 为struct设置默认值的四种方式</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/37135193/how-to-set-default-values-in-go-structs">how-to-set-default-values-in-go-structs(stack overflow)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/creasty/defaults#usage">为struct设置默认值的包</a><br><a target="_blank" rel="noopener" href="https://github.com/go-playground/validator/issues/263">validator包不支持也不打算支持default</a><br><a target="_blank" rel="noopener" href="https://github.com/leebenson/conform">struct 数据预处理包</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/10/21/golang-2020-10-21-Go-Struct-tag%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-%E4%B8%80-StructTag%E8%A7%84%E5%88%99%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/21/golang-2020-10-21-Go-Struct-tag%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-%E4%B8%80-StructTag%E8%A7%84%E5%88%99%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">Go-Struct-tag深入理解[一]StructTag规则说明</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-10-21 09:07:42" itemprop="dateCreated datePublished" datetime="2020-10-21T09:07:42+08:00">2020-10-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/10/21/golang-2020-10-21-Go-Struct-tag%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-%E4%B8%80-StructTag%E8%A7%84%E5%88%99%E8%AF%B4%E6%98%8E/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Struct-tag深入理解[一]StructTag规则说明" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Go 语言中<code>Struct</code>声明包含三部分: <code>field_name</code>, <code>field_type</code>, <code>field_tag</code>.</p>
+<p><code>field_tag</code>的作用:</p>
+<ul>
+<li><p>可以作为字段后额外的注释或者说明</p>
+</li>
+<li><p>在反射场景下, <code>reflect</code>包中提供了操作<code>tag</code>的方法, <code>tag</code>的写法需要遵循一定规则.</p>
+</li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h3 id="Tag-书写规则"><a href="#Tag-书写规则" class="headerlink" title="Tag 书写规则"></a>Tag 书写规则</h3><p><code>tag</code>是一串字符串, 以空格分隔的<code>key:"value"</code>对.</p>
+<ul>
+<li><code>key</code>: 为非空字符串, 字符串不含控制字符\空格\引号\冒号.</li>
+<li><code>value</code>: 以双引号标记的字符串.</li>
+<li>以<code>:</code>分隔,并且冒号前后不能有空格.</li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Server <span class="keyword">struct</span> {</span><br><span class="line">    ServerName <span class="type">string</span> <span class="string">`json: "server_name" gorm:"serverName" default:"example"`</span></span><br><span class="line">    ServerIP   <span class="type">string</span> <span class="string">`json: "server_ip"`</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="reflect获取Tag值"><a href="#reflect获取Tag值" class="headerlink" title="reflect获取Tag值"></a>reflect获取Tag值</h3><p><code>StructTag</code>提供了<code>Get(key string) string</code>方法来获取<code>Tag</code>，示例如下：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"reflect"</span></span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Server <span class="keyword">struct</span> {</span><br><span class="line">    ServerName <span class="type">string</span> <span class="string">`json: "server_name" gorm:"serverName" default:"example"`</span></span><br><span class="line">    ServerIP   <span class="type">string</span> <span class="string">`json: "server_ip"`</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    s := Server{}</span><br><span class="line">    st := reflect.TypeOf(s)</span><br><span class="line"></span><br><span class="line">    fieldServerName := st.Field(<span class="number">0</span>)</span><br><span class="line">    fmt.Printf(<span class="string">"TAG-key=&gt;json     TAG-value=&gt;%v\n"</span>, fieldServerName.Tag.Get(<span class="string">"json"</span>))</span><br><span class="line">    fmt.Printf(<span class="string">"TAG-key=&gt;default  TAG-value=&gt;%v\n"</span>, fieldServerName.Tag.Get(<span class="string">"default"</span>))</span><br><span class="line"></span><br><span class="line">    fieldServerIp := st.Field(<span class="number">1</span>)</span><br><span class="line">    fmt.Printf(<span class="string">"TAG-key=&gt;json     TAG-value=&gt;%v\n"</span>, fieldServerIp.Tag.Get(<span class="string">"json"</span>))</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>程序输出如下：</p>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TAG-key=&gt;json     TAG-value=&gt;server_name</span><br><span class="line">TAG-key=&gt;<span class="keyword">default</span>  TAG-value=&gt;example</span><br><span class="line">TAG-key=&gt;json     TAG-value=&gt;server_ip</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="Tag的作用"><a href="#Tag的作用" class="headerlink" title="Tag的作用"></a>Tag的作用</h3><p>使用反射可以动态的给结构体成员赋值，正是因为有tag，在赋值前可以使用tag来决定赋值的动作。 比如，官方的<code>encoding/json</code>包，可以将一个JSON数据<code>Unmarshal</code>进一个结构体，此过程中就使用了Tag. 该包定义一些规则，只要参考该规则设置tag就可以将不同的JSON数据转换成结构体。</p>
+<p>总之：正是基于struct的tag特性，才有了诸如json数据解析、orm映射等等的应用。理解这个关系是至关重要的。或许，你可以定义另一种tag规则，来处理你特有的数据。</p>
+<h3 id="Tag使用举例"><a href="#Tag使用举例" class="headerlink" title="Tag使用举例"></a>Tag使用举例</h3><table>
+<thead>
+<tr>
+<th>包</th>
+<th>包中关于tag的规则</th>
+<th>full example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>json</td>
+<td><a target="_blank" rel="noopener" href="https://godoc.org/encoding/json#Marshal">https://godoc.org/encoding/json#Marshal</a></td>
+<td>“my_name,omitempty” 声明名字+可省略<br>“,omitempty” 值为空则省略此字段<br>“my_name”  在json中此字段的键<br>“-“  字段始终省略</td>
+</tr>
+<tr>
+<td>default</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/creasty/defaults#usage">https://github.com/creasty/defaults#usage</a></td>
+<td></td>
+</tr>
+<tr>
+<td>gorm</td>
+<td><a target="_blank" rel="noopener" href="https://godoc.org/github.com/jinzhu/gorm">https://godoc.org/github.com/jinzhu/gorm</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zisefeizhu/p/12788017.html#%E7%BB%93%E6%9E%84%E4%BD%93%E6%A0%87%E8%AE%B0tags">https://www.cnblogs.com/zisefeizhu/p/12788017.html#%E7%BB%93%E6%9E%84%E4%BD%93%E6%A0%87%E8%AE%B0tags</a></td>
+</tr>
+<tr>
+<td>yaml</td>
+<td><a target="_blank" rel="noopener" href="https://godoc.org/gopkg.in/yaml.v2">https://godoc.org/gopkg.in/yaml.v2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>xml</td>
+<td><a target="_blank" rel="noopener" href="https://godoc.org/encoding/xml">https://godoc.org/encoding/xml</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://my.oschina.net/renhc/blog/2045683">Go struct tag深入理解(华为)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32279896">Go语言中的struct tag(知乎)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/Well-known-struct-tags">Well known struct tags(golang wiki)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zisefeizhu/p/12788017.html#%E7%BB%93%E6%9E%84%E4%BD%93%E6%A0%87%E8%AE%B0tags">gorm 结构体的相关标记</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/23/golang-2020-09-23-Go-Vault-benchmark%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/23/golang-2020-09-23-Go-Vault-benchmark%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">Go-Vault-benchmark方案</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-23 03:19:25" itemprop="dateCreated datePublished" datetime="2020-09-23T03:19:25+08:00">2020-09-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/23/golang-2020-09-23-Go-Vault-benchmark%E6%96%B9%E6%A1%88/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Vault-benchmark方案" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://medium.com/hashicorp-engineering/hashicorp-vault-performance-benchmark-13d0ea7b703f">官方博客-VaultPerformanceBenchmark</a><br><a target="_blank" rel="noopener" href="https://github.com/rberlind/vault-benchmarking">GitHub-vault-benchmarking</a><br><a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!topic/vault-tool/pF_E0JkYoS4">GoogleGroups - vaultTool</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/23/devops-2020-09-23-DevOps-kpack-%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/23/devops-2020-09-23-DevOps-kpack-%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">DevOps-kpack-使用汇总</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-23 02:58:41" itemprop="dateCreated datePublished" datetime="2020-09-23T02:58:41+08:00">2020-09-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/23/devops-2020-09-23-DevOps-kpack-%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/" class="post-meta-item leancloud_visitors" data-flag-title="DevOps-kpack-使用汇总" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://github.com/GoogleCloudPlatform/buildpacks/issues/62">buildpack issue - 存在Dockerfile时,使用dockerfile构建镜像</a></p>
+<p><a target="_blank" rel="noopener" href="https://thenewstack.io/part-1-how-to-improve-enhance-your-kubernetes-ci-cd-pipelines-with-gitlab-and-open-source/">How Containerized CI/CD Pipelines Work with Kubernetes and GitLab</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/pivotal/kpack/blob/master/docs/secrets.md">kpack-secret</a><br><a target="_blank" rel="noopener" href="https://github.com/pivotal/kpack/blob/master/docs/tutorial.md">kpack-Tutorial</a><br><a target="_blank" rel="noopener" href="https://github.com/pivotal/kpack/blob/master/docs/builders.md">kpack-builders</a><br><a target="_blank" rel="noopener" href="https://starkandwayne.com/blog/investigating-kpack-automatically-updating-kubernetes-pods-with-buildpacks/">使用kpack-云构建镜像</a><br><a target="_blank" rel="noopener" href="https://docs.cloudfoundry.org/buildpacks/custom.html">CloudFoundry - CreatingCustomBuildpacks</a><br><a target="_blank" rel="noopener" href="https://buildpacks.io/docs/concepts/components/builder/">buildpack.io-Builder</a><br><a target="_blank" rel="noopener" href="https://buildpacks.io/docs/concepts/components/buildpack/">buildpack.io-Buildpack</a><br><a target="_blank" rel="noopener" href="https://paketo.io/docs/create-paketo-buildpack/">paketo - Write_Buildpack_Using_Packit</a><br><a target="_blank" rel="noopener" href="https://godoc.org/github.com/cloudfoundry/packit">Packit - godoc</a><br><a target="_blank" rel="noopener" href="https://medium.com/paketo-buildpacks/building-apps-for-kubernetes-get-to-know-paketo-buildpacks-6dc29b0f3cf3">Get to Know Paketo Buildpacks.</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/22/golang-2020-09-22-Go-Gin-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/golang-2020-09-22-Go-Gin-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">Go-Gin-项目结构最佳实践</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-22 08:36:21" itemprop="dateCreated datePublished" datetime="2020-09-22T08:36:21+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/22/golang-2020-09-22-Go-Gin-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Gin-项目结构最佳实践" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://sodocumentation.net/go/topic/9463/best-practices-on-project-structure">Gin项目结构最佳实践</a><br><a target="_blank" rel="noopener" href="https://medium.com/hackernoon/golang-clean-archithecture-efd6d7c43047">在Golang尝试清洁架构</a><br><a target="_blank" rel="noopener" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">The Clean Architecture</a><br><a target="_blank" rel="noopener" href="https://learnku.com/go/t/24598">教程：使用 go 的 gin 和 gorm 框架来构建 RESTful API 微服务</a><br><a target="_blank" rel="noopener" href="https://semaphoreci.com/community/tutorials/building-go-web-applications-and-microservices-using-gin">使用Gin构建Go Web应用程序和微服务</a><br><a target="_blank" rel="noopener" href="https://blog.logrocket.com/how-to-build-a-rest-api-with-golang-using-gin-and-gorm/">How to build a REST API with Golang using Gin and Gorm</a><br><a target="_blank" rel="noopener" href="https://studygolang.com/articles/21656">基于gin构建企业级 golang web 脚手架</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/22/golang-2020-09-22-Go-Path-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/golang-2020-09-22-Go-Path-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">Go-Path-文件路径操作汇总</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-22 08:31:58" itemprop="dateCreated datePublished" datetime="2020-09-22T08:31:58+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/22/golang-2020-09-22-Go-Path-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/" class="post-meta-item leancloud_visitors" data-flag-title="Go-Path-文件路径操作汇总" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h2 id="1-目录操作"><a href="#1-目录操作" class="headerlink" title="1. 目录操作"></a>1. 目录操作</h2><h3 id="1-1-删除目录"><a href="#1-1-删除目录" class="headerlink" title="1.1 删除目录"></a>1.1 删除目录</h3><ul>
+<li>删除目录下所有内容</li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Golang program to illustrate how to </span></span><br><span class="line"><span class="comment">// remove all the files and directories </span></span><br><span class="line"><span class="comment">// from the default directory </span></span><br><span class="line"><span class="keyword">package</span> main </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> ( </span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">) </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> { </span><br><span class="line"></span><br><span class="line">	<span class="comment">// Remove all the directories and files </span></span><br><span class="line">	<span class="comment">// Using RemoveAll() function </span></span><br><span class="line">	err := os.RemoveAll(<span class="string">"/Users/hex/Documents/go"</span>) </span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> { </span><br><span class="line">		log.Fatal(err) </span><br><span class="line">	} </span><br><span class="line">} </span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-2-创建目录"><a href="#1-2-创建目录" class="headerlink" title="1.2 创建目录"></a>1.2 创建目录</h3><ul>
+<li>级联创建所有目录</li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.MkdirAll(<span class="string">"/tmp/"</span>,FileMode)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-3-创建临时目录"><a href="#1-3-创建临时目录" class="headerlink" title="1.3 创建临时目录"></a>1.3 创建临时目录</h3><blockquote>
+<p>方法：</p>
+<p>调用<code>io.ioutil</code>包的 <code>ioutil.TempDir</code>方法 == == <code>os</code>包的 <code>os.MkdirTemp</code>方法</p>
+<p>作用：</p>
+<p>创建全局唯一的临时目录。但在使用完成后，需要自行删除此目录。</p>
+<p>参数：</p>
+<ul>
+<li>第一个<code>dir</code>参数如果不指定，则为<code>os.TempDir()</code>目录。如Linux下取<code>$TMPDIR</code>变量，变量空值则为<code>/tmp</code>目录。</li>
+</ul>
+</blockquote>
+<p> <code>ioutil.TempDir</code>方法调用过程说明：</p>
+<ul>
+<li>在目录<code>/tmp</code>目录中创建一个名称以<code>prefix</code>开头的新目录</li>
+<li>并返回新创建目录的路径</li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dir, err := ioutil.TempDir(<span class="string">"/tmp"</span>, <span class="string">"prefix-"</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">	log.Fatal(err)</span><br><span class="line">}</span><br><span class="line"><span class="keyword">defer</span> os.RemoveAll(dir)</span><br><span class="line"></span><br><span class="line">fmt.Println(dir) <span class="comment">// 例如目录名为 "/tmp/prefix-054003078/"</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="1-3-1-创建时间目录"><a href="#1-3-1-创建时间目录" class="headerlink" title="1.3.1 创建时间目录"></a>1.3.1 创建时间目录</h4><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// logsDir := os.path.Join("/tmp", time.Now().Format("2006/01/02"))</span></span><br><span class="line">logsDir := filepath.Join(<span class="string">"/tmp"</span>, time.Now().Format(<span class="string">"2006/01/02"</span>))</span><br><span class="line">err := os.MkdirAll(logsDir, <span class="number">666</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-4-检查路径是否为目录"><a href="#1-4-检查路径是否为目录" class="headerlink" title="1.4 检查路径是否为目录"></a>1.4 检查路径是否为目录</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IsDir</span><span class="params">(name <span class="type">string</span>)</span></span> <span class="type">bool</span> {</span><br><span class="line">    <span class="keyword">if</span> info, err := os.State(name); err == <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">return</span> info.IsDir()</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-5-打印当前目录"><a href="#1-5-打印当前目录" class="headerlink" title="1.5 打印当前目录"></a>1.5 打印当前目录</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.Getwd() <span class="comment">//获取当前目录</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-6-文件目录拼接"><a href="#1-6-文件目录拼接" class="headerlink" title="1.6 文件目录拼接"></a>1.6 文件目录拼接</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">os.path.join(<span class="string">"/tmp"</span>, <span class="string">"/text.md"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-7-目录复制"><a href="#1-7-目录复制" class="headerlink" title="1.7 目录复制"></a>1.7 目录复制</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CopyDir</span><span class="params">(srcPath, desPath <span class="type">string</span>)</span></span> <span class="type">error</span> {</span><br><span class="line">	<span class="comment">//检查目录是否正确</span></span><br><span class="line">	<span class="keyword">if</span> srcInfo, err := os.Stat(srcPath); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	} <span class="keyword">else</span> {</span><br><span class="line">		<span class="keyword">if</span> !srcInfo.IsDir() {</span><br><span class="line">			<span class="keyword">return</span> errors.New(<span class="string">"源路径不是一个正确的目录！"</span>)</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span> desInfo, err := os.Stat(desPath); err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	} <span class="keyword">else</span> {</span><br><span class="line">		<span class="keyword">if</span> !desInfo.IsDir() {</span><br><span class="line">			<span class="keyword">return</span> errors.New(<span class="string">"目标路径不是一个正确的目录！"</span>)</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span> strings.TrimSpace(srcPath) == strings.TrimSpace(desPath) {</span><br><span class="line">		<span class="keyword">return</span> errors.New(<span class="string">"源路径与目标路径不能相同！"</span>)</span><br><span class="line">	}</span><br><span class="line"> </span><br><span class="line">	err := filepath.Walk(srcPath, <span class="function"><span class="keyword">func</span><span class="params">(path <span class="type">string</span>, f os.FileInfo, err <span class="type">error</span>)</span></span> <span class="type">error</span> {</span><br><span class="line">		<span class="keyword">if</span> f == <span class="literal">nil</span> {</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		}</span><br><span class="line"> </span><br><span class="line">		<span class="comment">//复制目录是将源目录中的子目录复制到目标路径中，不包含源目录本身</span></span><br><span class="line">		<span class="keyword">if</span> path == srcPath {</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		}</span><br><span class="line"> </span><br><span class="line">		<span class="comment">//生成新路径</span></span><br><span class="line">		destNewPath := strings.Replace(path, srcPath, desPath, <span class="number">-1</span>)</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">if</span> !f.IsDir() {</span><br><span class="line">			CopyFile(path, destNewPath)</span><br><span class="line">		} <span class="keyword">else</span> {</span><br><span class="line">			<span class="keyword">if</span> !FileIsExisted(destNewPath) {</span><br><span class="line">				<span class="keyword">return</span> MakeDir(destNewPath)</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	})</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> err</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-8-遍历目录下所有文件-不包含子目录"><a href="#1-8-遍历目录下所有文件-不包含子目录" class="headerlink" title="1.8 遍历目录下所有文件(不包含子目录)"></a>1.8 遍历目录下所有文件(不包含子目录)</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 获取指定路径下的所有文件，只搜索当前路径，不进入下一级目录，可匹配后缀过滤（suffix为空则不过滤）*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ListDir</span><span class="params">(dir, suffix <span class="type">string</span>)</span></span> (files []<span class="type">string</span>, err <span class="type">error</span>) {</span><br><span class="line">   files = []<span class="type">string</span>{}</span><br><span class="line"> </span><br><span class="line">   _dir, err := ioutil.ReadDir(dir)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">   }</span><br><span class="line"> </span><br><span class="line">   suffix = strings.ToLower(suffix)  <span class="comment">//匹配后缀</span></span><br><span class="line"> </span><br><span class="line">   <span class="keyword">for</span> _, _file := <span class="keyword">range</span> _dir {</span><br><span class="line">      <span class="keyword">if</span> _file.IsDir() {</span><br><span class="line">         <span class="keyword">continue</span>   <span class="comment">//忽略目录</span></span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">if</span> <span class="built_in">len</span>(suffix) == <span class="number">0</span> || strings.HasSuffix(strings.ToLower(_file.Name()), suffix) {</span><br><span class="line">         <span class="comment">//文件后缀匹配</span></span><br><span class="line">         files = <span class="built_in">append</span>(files, path.Join(dir, _file.Name()))</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line"> </span><br><span class="line">   <span class="keyword">return</span> files, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="1-9-遍历目录下所有文件-包含子目录"><a href="#1-9-遍历目录下所有文件-包含子目录" class="headerlink" title="1.9 遍历目录下所有文件(包含子目录)"></a>1.9 遍历目录下所有文件(包含子目录)</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 获取指定路径下以及所有子目录下的所有文件，可匹配后缀过滤（suffix为空则不过滤）*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">WalkDir</span><span class="params">(dir, suffix <span class="type">string</span>)</span></span> (files []<span class="type">string</span>, err <span class="type">error</span>) {</span><br><span class="line">	files = []<span class="type">string</span>{}</span><br><span class="line"> </span><br><span class="line">	err = filepath.Walk(dir, <span class="function"><span class="keyword">func</span><span class="params">(fname <span class="type">string</span>, fi os.FileInfo, err <span class="type">error</span>)</span></span> <span class="type">error</span> {</span><br><span class="line">		<span class="keyword">if</span> fi.IsDir() {</span><br><span class="line">			<span class="comment">//忽略目录</span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		}</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(suffix) == <span class="number">0</span> || strings.HasSuffix(strings.ToLower(fi.Name()), suffix) {</span><br><span class="line">			<span class="comment">//文件后缀匹配</span></span><br><span class="line">			files = <span class="built_in">append</span>(files, fname)</span><br><span class="line">		}</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	})</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> files, err</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+<h2 id="2-文件操作"><a href="#2-文件操作" class="headerlink" title="2. 文件操作"></a>2. 文件操作</h2><h3 id="2-1-文件创建或追加内容"><a href="#2-1-文件创建或追加内容" class="headerlink" title="2.1 文件创建或追加内容"></a>2.1 文件创建或追加内容</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"io/ioutil"</span></span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">    <span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="comment">// ioutil包 创建文件</span></span><br><span class="line">    err := ioutil.WriteFile(<span class="string">"temp.txt"</span>, []<span class="type">byte</span>(<span class="string">"first line\n"</span>), <span class="number">0644</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// os包 Create方法 创建文件</span></span><br><span class="line">    f1, _ := os.Create(<span class="string">"./temp.txt"</span>)</span><br><span class="line">    <span class="keyword">defer</span> f1.<span class="built_in">close</span>()</span><br><span class="line">    <span class="comment">// os包 Openfile 读写打开文件</span></span><br><span class="line">    f2, _ := os.Openfile(<span class="string">"./temp.txt"</span>, os.O_RDWR|os.O_CREATE|os.O_TRUNC, <span class="number">0666</span>)</span><br><span class="line">    <span class="keyword">defer</span> f2.<span class="built_in">close</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 追加文件内容</span></span><br><span class="line">    file, err := os.OpenFile(<span class="string">"temp.txt"</span>, os.O_APPEND|os.O_WRONLY, <span class="number">0644</span>)</span><br><span class="line">    <span class="keyword">defer</span> file.<span class="built_in">close</span>()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        log.Println(err)</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> _, err := file.WriteString(<span class="string">"second line"</span>); err != <span class="literal">nil</span> {</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Print the contents of the file</span></span><br><span class="line">    data, err := ioutil.ReadFile(<span class="string">"temp.txt"</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    }</span><br><span class="line">    fmt.Println(<span class="type">string</span>(data))</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="2-2-创建临时文件"><a href="#2-2-创建临时文件" class="headerlink" title="2.2 创建临时文件"></a>2.2 创建临时文件</h3><blockquote>
+<p>方法：</p>
+<p>调用<code>io.ioutil</code>包的 <code>ioutil.TempFile</code>方法[Go-旧版]  == <code>os</code>包的 <code>os.CreateTemp</code>方法[ Go 1.17以上版本]</p>
+<p>作用： </p>
+<p>创建全局唯一的临时文件。但在使用完成后，需要自行删除此文件。</p>
+<p>参数：</p>
+<ul>
+<li><p>第一个<code>dir</code>参数如果不指定，则为<code>os.TempDir()</code>目录。如Linux下取<code>$TMPDIR</code>变量，变量空值则为<code>/tmp</code>目录。</p>
+</li>
+<li><p>第二个参数<code>pattern</code>，在Go-1.11以后支持使用<code>*</code>占位符来制定随机串的位置，没有<code>*</code>则保持默认，再最后追加随机串。</p>
+</li>
+</ul>
+</blockquote>
+<p> <code>ioutil.TempFile</code>方法调用过程说明：</p>
+<ul>
+<li>在目录<code>/tmp</code>目录中以<code>prefix</code>开头的名称创建一个新文件</li>
+<li>打开文件进行读写操作</li>
+<li>并返回新创建临时文件对象<code>*os.File</code></li>
+</ul>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不指定随机串位置</span></span><br><span class="line">file, err := ioutil.TempFile(<span class="string">"/tmp"</span>, <span class="string">"prefix-"</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">}</span><br><span class="line"><span class="keyword">defer</span> os.Remove(file.Name())</span><br><span class="line"></span><br><span class="line">fmt.Println(file.Name()) <span class="comment">// 例如文件名为: "/tmp/prefix-054003078"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定随机串位置</span></span><br><span class="line">file2, err2 := ioutil.TempFile(<span class="string">"/tmp"</span>, <span class="string">"myname.*.go"</span>)</span><br><span class="line"><span class="keyword">if</span> err2 != <span class="literal">nil</span> {</span><br><span class="line">    log.Fatal(err2)</span><br><span class="line">}</span><br><span class="line"><span class="keyword">defer</span> os.Remove(file2.Name())</span><br><span class="line"></span><br><span class="line">fmt.Println(file2.Name()) <span class="comment">// 例如文件名为: "/tmp/myname.054003078.bat"</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="2-3-检查文件是否存在"><a href="#2-3-检查文件是否存在" class="headerlink" title="2.3 检查文件是否存在"></a>2.3 检查文件是否存在</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">FileIsExisted</span><span class="params">(filename <span class="type">string</span>)</span></span> <span class="type">bool</span> {</span><br><span class="line">    existed := <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> _, err := os.Stat(filename); os.IsNotExist(err){</span><br><span class="line">        existed = <span class="literal">false</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> existed</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="2-4-重命名文件"><a href="#2-4-重命名文件" class="headerlink" title="2.4 重命名文件"></a>2.4 重命名文件</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.Rename(<span class="string">"/tmp/1.md"</span>, <span class="string">"tmp/2.md"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="2-5-复制文件"><a href="#2-5-复制文件" class="headerlink" title="2.5 复制文件"></a>2.5 复制文件</h3><blockquote>
+<p> 复制文件过程中一定要注意将原始文件的权限也要复制过去，否则可能会导致可执行文件不能执行等问题。</p>
+</blockquote>
+<h4 id="2-5-1-使用io-Copy"><a href="#2-5-1-使用io-Copy" class="headerlink" title="2.5.1 使用io.Copy"></a>2.5.1 使用<code>io.Copy</code></h4><blockquote>
+<p>方法简单，但是缺少灵活性。如果文件太大，不是一种很好的方法。</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">copy</span><span class="params">(src, dst <span class="type">string</span>)</span></span> (<span class="type">int64</span>, <span class="type">error</span>) {</span><br><span class="line">    <span class="comment">// 获取文件权限</span></span><br><span class="line">    sourceFileStat, err := os.Stat(src)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">    }</span><br><span class="line">    perm := sourceFileStat.Mode()</span><br><span class="line">    <span class="comment">// 判断文件状态</span></span><br><span class="line">    <span class="keyword">if</span> !perm.IsRegular() {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, fmt.Errorf(<span class="string">"%s is not a regular file"</span>, src)</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 打开源文件</span></span><br><span class="line">    source, err := os.Open(src)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">defer</span> source.Close()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建目标文件</span></span><br><span class="line">    <span class="comment">// destination, err := os.Create(dst)	//无法复制源文件的所有权限</span></span><br><span class="line">    <span class="comment">//复制源文件的所有权限</span></span><br><span class="line">	destination, err := os.OpenFile(des, os.O_RDWR|os.O_CREATE|os.O_TRUNC, perm)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">defer</span> destination.Close()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 拷贝</span></span><br><span class="line">    nBytes, err := io.Copy(destination, source)</span><br><span class="line">    <span class="keyword">return</span> nBytes, err</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="2-5-2-使用ioutil包WriteFile-和-ReadFile"><a href="#2-5-2-使用ioutil包WriteFile-和-ReadFile" class="headerlink" title="2.5.2 使用ioutil包WriteFile() 和 ReadFile()"></a>2.5.2 使用<code>ioutil</code>包<code>WriteFile()</code> 和 <code>ReadFile()</code></h4><blockquote>
+<p>一次性读取输入文件，然后再一次性写入目标文件。依然不是很高效的方法。</p>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CopyFile</span><span class="params">(src, des <span class="type">string</span>)</span></span> (written <span class="type">int64</span>, err <span class="type">error</span>) {</span><br><span class="line">	<span class="comment">// 打开源文件</span></span><br><span class="line">    srcFile, err := os.Open(src)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">defer</span> srcFile.Close()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取源文件的权限</span></span><br><span class="line">    fi, _ := srcFile.Stat()</span><br><span class="line">	perm := fi.Mode()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 打开并读取源文件</span></span><br><span class="line">	input, err := ioutil.ReadFile(src)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 创建并写入目标文件</span></span><br><span class="line">	err = ioutil.WriteFile(des, input, perm)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        fmt.Println(<span class="string">"Error creating"</span>, destinationFile, err)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="type">int64</span>(<span class="built_in">len</span>(input)), <span class="literal">nil</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="2-5-3-使用os包Read-和-Write"><a href="#2-5-3-使用os包Read-和-Write" class="headerlink" title="2.5.3 使用os包Read() 和 Write()"></a>2.5.3 使用<code>os</code>包<code>Read()</code> 和 <code>Write()</code></h4><blockquote>
+<ol>
+<li>使用buffer一块块地复制文件</li>
+</ol>
+</blockquote>
+<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CopyFile</span><span class="params">(src <span class="type">string</span>, des <span class="type">string</span>, bufSize <span class="type">int</span>)</span></span> (written <span class="type">int64</span>, err <span class="type">error</span>) {</span><br><span class="line">	<span class="keyword">if</span> bufSize &lt;= <span class="number">0</span> {</span><br><span class="line">        bufSize = <span class="number">1</span>*<span class="number">1024</span>*<span class="number">1024</span> <span class="comment">// buf大小1M</span></span><br><span class="line">    }</span><br><span class="line">	buf := <span class="built_in">make</span>([]<span class="type">byte</span>, bufSize)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 打开源文件</span></span><br><span class="line">    srcFile, err := os.Open(src)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">defer</span> srcFile.Close()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取文件权限</span></span><br><span class="line">	fileInfo, _ := srcFile.Stat()</span><br><span class="line">	perm := fileInfo.Mode()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打开目标文件+原权限</span></span><br><span class="line">	destFile, err := os.OpenFile(des, os.O_RDWR|os.O_CREATE|os.O_TRUNC, perm)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, err</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">defer</span> destFile.Close()</span><br><span class="line"></span><br><span class="line">	count := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> {</span><br><span class="line">   		n, err := srcFile.Read(buf)</span><br><span class="line">   		<span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; err != io.EOF {</span><br><span class="line">      		<span class="keyword">return</span> err</span><br><span class="line">   		}</span><br><span class="line">   		</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span> {</span><br><span class="line">      		<span class="keyword">break</span></span><br><span class="line">   		}</span><br><span class="line">        </span><br><span class="line">   		<span class="keyword">if</span> wn, err := destFile.Write(buf[:n]); err != <span class="literal">nil</span> {</span><br><span class="line">      		<span class="keyword">return</span> err</span><br><span class="line">   		} <span class="keyword">else</span>{</span><br><span class="line">       		count += wn</span><br><span class="line">   		}</span><br><span class="line">	}</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">return</span> <span class="type">int64</span>(count), <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://books.studygolang.com/The-Golang-Standard-Library-by-Example/chapter06/06.2.html">path/filepath — 兼容操作系统的文件路径操作</a><br><a target="_blank" rel="noopener" href="https://golangbyexample.com/append-file-golang/">Append to an existing file in Go (Golang)</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2020/09/22/golang-2020-09-22-Go-HDFS-%E6%93%8D%E4%BD%9Chdfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/golang-2020-09-22-Go-HDFS-%E6%93%8D%E4%BD%9Chdfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">Go-HDFS-操作hdfs文件系统</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2020-09-22 08:29:09" itemprop="dateCreated datePublished" datetime="2020-09-22T08:29:09+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/09/22/golang-2020-09-22-Go-HDFS-%E6%93%8D%E4%BD%9Chdfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="post-meta-item leancloud_visitors" data-flag-title="Go-HDFS-操作hdfs文件系统" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://github.com/colinmarc/hdfs">hdfs golang client 非webhdfs</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

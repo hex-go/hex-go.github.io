@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="1. ubuntu 18.04 install Ansiblesoftware-properties-common package installed. This software will make it easier to manage this and other independent software repositories: 12apt updateapt install softw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简记 Ansible 使用">
+<meta property="og:url" content="https://hex-py.github.io/2019/12/13/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-13-Ansible-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="1. ubuntu 18.04 install Ansiblesoftware-properties-common package installed. This software will make it easier to manage this and other independent software repositories: 12apt updateapt install softw">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-13T00:49:00.000Z">
+<meta property="article:modified_time" content="2022-11-30T03:22:28.025Z">
+<meta property="article:author" content="Hex">
+<meta property="article:tag" content="运维笔记">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Ansible">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/2019/12/13/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-13-Ansible-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>简记 Ansible 使用 | Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/13/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-13-Ansible-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          简记 Ansible 使用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-13 08:49:00" itemprop="dateCreated datePublished" datetime="2019-12-13T08:49:00+08:00">2019-12-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/13/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-13-Ansible-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="post-meta-item leancloud_visitors" data-flag-title="简记 Ansible 使用" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html><head></head><body><h1 id="1-ubuntu-18-04-install-Ansible"><a href="#1-ubuntu-18-04-install-Ansible" class="headerlink" title="1. ubuntu 18.04 install Ansible"></a>1. ubuntu 18.04 install Ansible</h1><p><code>software-properties-common</code> package installed. This software will make it easier to manage this and other independent software repositories:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install software-properties-common</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Then add the Ansible PPA by typing the following command:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-add-repository ppa:ansible/ansible</span><br></pre></td></tr></tbody></table></figure>
+
+<p>install Ansible</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install ansible</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="2-config-ssh-access-to-ansible-hosts"><a href="#2-config-ssh-access-to-ansible-hosts" class="headerlink" title="2. config ssh access to ansible-hosts"></a>2. config ssh access to ansible-hosts</h1><h1 id="3-ansible-注意"><a href="#3-ansible-注意" class="headerlink" title="3. ansible 注意"></a>3. ansible 注意</h1><ol>
+<li>ansible 主机需要安装 pip install netaddr，因为 playbook 依赖</li>
+<li>ansible 主机需要安装 apt install sshpass ，因为使用密码连接</li>
+<li>ansible 主机需要安装 apt install zip unzip 因为 playbook 需要解压文件</li>
+<li>ansible 主机需要配置 ansible 的<code>host_key_checking</code>(/etc/ansible/ansible.cfg)为<code>False</code>，因为所有主机都是第一次连接，还没有主机指纹在<code>known_hosts</code>中，需要忽略</li>
+</ol>
+<h1 id="4-测试Ansible-Hosts连通性方法"><a href="#4-测试Ansible-Hosts连通性方法" class="headerlink" title="4. 测试Ansible-Hosts连通性方法"></a>4. 测试Ansible-Hosts连通性方法</h1><ol>
+<li><code>vi /etc/ansible/hosts</code>追加以下内容，IP地址即为要测试的机器<figure class="highlight ini"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[test]</span></span><br><span class="line">10.8.2.95 <span class="attr">ansible_ssh_user</span>=root ansible_ssh_pass=Qloud@<span class="number">123</span> docker_registry=<span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>执行以下命令，用<code>ping</code>模块进行测试。<code>test</code>为上面为hosts配置的主机组名字。<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible -i /etc/ansible/hosts <span class="built_in">test</span> -m ping</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h1 id="5-Ansible-的一些约定"><a href="#5-Ansible-的一些约定" class="headerlink" title="5. Ansible 的一些约定"></a>5. Ansible 的一些约定</h1><ol>
+<li><p>inventory 主机清单<br> <code>-i</code>参数指定主机清单。例如<code>ansible-playbook -i inventory.py nomad.yaml</code></p>
+<p>1.1 静态inventory，通过静态配置文件<code>inventory.json</code>配置。</p>
+<p>1.2 动态inventory，通过动态生成脚本<code>inventory.py</code>生成。</p>
+</li>
+<li><p>roles目录必须与playbook文件同级，并且文件夹名必须为<code>roles</code>。playbook文件中通过<code>roles</code>下的各个文件夹名字引用role<br> 例如 </p>
+ <figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">install</span> <span class="string">mirrors</span> <span class="string">and</span> <span class="string">initialization</span>         </span><br><span class="line">  <span class="attr">hosts:</span> <span class="string">all</span>                                       </span><br><span class="line">  <span class="attr">roles:</span>                                           <span class="comment"># roles/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">yum-mirrors</span>                                  <span class="comment">#   |-- yum-mirrors/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">initialization</span>                               <span class="comment">#   |-- initializations/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker-registry</span>                              <span class="comment">#   |-- docker-registry/</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>单个role目录结构说明。</p>
+ <figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">├──</span> <span class="string">install_nginx.yml</span>              <span class="comment"># playbook 文件和 roles 目录应该处于平级目录</span></span><br><span class="line"><span class="string">└──</span> <span class="string">roles</span>                          <span class="comment"># 存放所有角色的的目录</span></span><br><span class="line">    <span class="string">└──</span> <span class="string">nginx</span>                      <span class="comment"># nginx 角色</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">defaults</span>               <span class="comment"># 设定默认变量</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">│</span>   <span class="string">└──</span> <span class="string">main.yml</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">files</span>                  <span class="comment"># 存放由 copy 或 script 模块等调用的文件</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">│</span>   <span class="string">└──</span> <span class="string">index.html</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">handlers</span>               <span class="comment"># 触发器任务</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">│</span>   <span class="string">└──</span> <span class="string">main.yml</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">meta</span>                   <span class="comment"># 定义当前角色的特殊设定及其依赖关系</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">tasks</span>                  <span class="comment"># 定义任务，它是 role 的基本元素</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">│</span>   <span class="string">└──</span> <span class="string">main.yml</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">templates</span>              <span class="comment"># templates 模块查找所需要模板文件的目录</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">│</span>   <span class="string">└──</span> <span class="string">nginx.conf.j2</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">└──</span> <span class="string">vars</span>                   <span class="comment"># 定义变量</span></span><br><span class="line">    <span class="string">│</span>       <span class="string">└──</span> <span class="string">main.yml</span></span><br><span class="line">    <span class="string">└──</span> <span class="string">php</span>                        <span class="comment"># php 角色</span></span><br><span class="line">        <span class="string">└──</span> <span class="string">...</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>playbook文件的定义中，优先级: <code>role</code> &gt; <code>task</code>; 如果<code>task-A</code>必须要在某<code>role-B</code>之前执行，需要将<code>task-A</code>封装为<code>role-A</code>，放到<code>role-B</code>之前。</p>
+</li>
+<li><p><code>task</code>中常用的模块</p>
+<table>
+<thead>
+<tr>
+<th>模块名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ping</td>
+<td>检查指定节点机器是否还能连通</td>
+</tr>
+<tr>
+<td>command</td>
+<td>执行命令模块，可以不填，是ansible默认的模块，命令中无法使用变量，管道。</td>
+</tr>
+<tr>
+<td>shell</td>
+<td>启动一个子shell执行命令，执行的命令中有管道或者变量，就需要使用shell模块。</td>
+</tr>
+<tr>
+<td>script</td>
+<td>将本机的shell脚本在被管理主机运行</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>将本机复制文件到远程位置</td>
+</tr>
+<tr>
+<td>service</td>
+<td>用于控制远程主机的服务</td>
+</tr>
+<tr>
+<td>cron</td>
+<td>用于管理定时任务</td>
+</tr>
+<tr>
+<td>file</td>
+<td>用于远程主机上的文件操作</td>
+</tr>
+<tr>
+<td>yum</td>
+<td>使用yum包管理器来管理软件包</td>
+</tr>
+<tr>
+<td>user、group</td>
+<td>user、goup分别请求：useradd、userdel、usermod；groupadd、groupdel、groupmod</td>
+</tr>
+<tr>
+<td>filesystem</td>
+<td>在块设备上创建文件系统</td>
+</tr>
+<tr>
+<td>get_url</td>
+<td>下载文件</td>
+</tr>
+<tr>
+<td>synchronize</td>
+<td>同步文件模块</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04">Install Ansible on Ubuntu 18.04</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">官方文档</a><br><a target="_blank" rel="noopener" href="https://ansible-tran.readthedocs.io/en/latest/docs/intro_inventory.html">中文文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yongchaocsdn/article/details/78750469">ansible Ad-Hoc命令集</a></p>
+<p><a target="_blank" rel="noopener" href="https://yangjinheng.github.io/2017/03/20/Linux/Ansible/">金恒博客</a></p>
+</body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢支持</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/../images/wx_reward.jpg" alt="Hex 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 运维笔记</a>
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/Ansible/" rel="tag"><i class="fa fa-tag"></i> Ansible</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/13/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-13-Pycharm-free/" rel="prev" title="Pycharm2018 破解">
+      <i class="fa fa-chevron-left"></i> Pycharm2018 破解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/13/kubernetes-2019-12-13-k8s%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="next" title="kubectl 小技巧">
+      kubectl 小技巧 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-ubuntu-18-04-install-Ansible"><span class="nav-text">1. ubuntu 18.04 install Ansible</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-config-ssh-access-to-ansible-hosts"><span class="nav-text">2. config ssh access to ansible-hosts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ansible-%E6%B3%A8%E6%84%8F"><span class="nav-text">3. ansible 注意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%B5%8B%E8%AF%95Ansible-Hosts%E8%BF%9E%E9%80%9A%E6%80%A7%E6%96%B9%E6%B3%95"><span class="nav-text">4. 测试Ansible-Hosts连通性方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Ansible-%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BA%A6%E5%AE%9A"><span class="nav-text">5. Ansible 的一些约定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

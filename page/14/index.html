@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="个人技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hex Blog">
+<meta property="og:url" content="https://hex-py.github.io/page/14/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="个人技术博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hex">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hex-py.github.io/page/14/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/31/devops-20191231-%E5%9F%BA%E4%BA%8EJenkins%E3%80%81gitlab%E3%80%81docker%E3%80%81helm%E5%92%8CKubernetes%E7%9A%84CI-CD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/31/devops-20191231-%E5%9F%BA%E4%BA%8EJenkins%E3%80%81gitlab%E3%80%81docker%E3%80%81helm%E5%92%8CKubernetes%E7%9A%84CI-CD/" class="post-title-link" itemprop="url">基于Jenkins、gitlab、docker、helm和Kubernetes的CI/CD</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-31 07:05:19" itemprop="dateCreated datePublished" datetime="2019-12-31T07:05:19+08:00">2019-12-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/31/devops-20191231-%E5%9F%BA%E4%BA%8EJenkins%E3%80%81gitlab%E3%80%81docker%E3%80%81helm%E5%92%8CKubernetes%E7%9A%84CI-CD/" class="post-meta-item leancloud_visitors" data-flag-title="基于Jenkins、gitlab、docker、helm和Kubernetes的CI/CD" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="提前说明"><a href="#提前说明" class="headerlink" title="提前说明"></a>提前说明</h1><blockquote>
+<ol>
+<li>开发人员提交代码到 Gitlab 代码仓库</li>
+<li>通过 Gitlab 配置的 Jenkins Webhook 触发 Pipeline 自动构建</li>
+<li>Jenkins 触发构建构建任务，根据 Pipeline 脚本定义分步骤构建</li>
+<li>先进行代码静态分析，单元测试</li>
+<li>然后进行 Maven 构建（Java 项目）</li>
+<li>根据构建结果构建 Docker 镜像</li>
+<li>推送 Docker 镜像到 Harbor 仓库</li>
+<li>触发更新服务阶段，使用 Helm 安装/更新 Release</li>
+<li>查看服务是否更新成功。</li>
+</ol>
+</blockquote>
+<h1 id="部署Jenkins"><a href="#部署Jenkins" class="headerlink" title="部署Jenkins"></a>部署Jenkins</h1><p>chart地址: <code>https://github.com/helm/charts/tree/master/stable/jenkins</code></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">helm install --name jenkins stable/jenkins</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="1-后端服务容器化"><a href="#1-后端服务容器化" class="headerlink" title="1.后端服务容器化"></a>1.后端服务容器化</h1><figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> maven:<span class="number">3.6</span>-alpine as BUILD</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> src /usr/app/src</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> pom.xml /usr/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> mvn -f /usr/app/pom.xml clean package -Dmaven.test.skip=<span class="literal">true</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>-jdk-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> LANG en_US.UTF-<span class="number">8</span></span><br><span class="line"><span class="keyword">ENV</span> LANGUAGE en_US:en</span><br><span class="line"><span class="keyword">ENV</span> LC_ALL en_US.UTF-<span class="number">8</span></span><br><span class="line"><span class="keyword">ENV</span> TZ=Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> /app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=BUILD /usr/app/target/polls-0.0.1-SNAPSHOT.jar /app/polls.jar</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">"java"</span>, <span class="string">"-Djava.security.egd=file:/dev/./urandom"</span>, <span class="string">"-jar"</span>,<span class="string">"/app/polls.jar"</span>]</span></span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ol>
+<li>页面打包到一个jar文件<code>build-container-/usr/app/target/polls-0.0.1-SNAPSHOT.jar</code></li>
+<li>将上面jar文件添加到 <code>jdk-container-/app/polls.jar</code>目录</li>
+</ol>
+</blockquote>
+<h1 id="2-前段服务容器化"><a href="#2-前段服务容器化" class="headerlink" title="2. 前段服务容器化"></a>2. 前段服务容器化</h1><figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:alpine as BUILD</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /usr/src/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> -p /usr/src/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> . /usr/src/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm install &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    npm run build</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> nginx:<span class="number">1.15</span>.<span class="number">10</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=BUILD /usr/src/app/build /usr/share/nginx/html</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> nginx.conf</span></span><br><span class="line">/etc/nginx/conf.d/default.conf</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ol>
+<li>页面打包到一个build目录<code>build-container-/usr/src/app/build</code></li>
+<li>将上面目录添加到 <code>nginx-container-/usr/share/nginx/html</code>目录</li>
+</ol>
+</blockquote>
+<h1 id="3-Jenkins-task配置"><a href="#3-Jenkins-task配置" class="headerlink" title="3. Jenkins task配置"></a>3. Jenkins task配置</h1><p>在 Pipeline 中去自定义<code>Slave Pod</code>中所需要用到的容器模板，需要什么镜像只需要在<code>Slave Pod Template</code>中声明即可，不需要安装了所有工具的<code>Slave</code>镜像。<br>首先Jenkins 中 kubernetes 配置，Jenkins -&gt; 系统管理 -&gt; 系统设置 -&gt; 云 -&gt; Kubernetes区域</p>
+<p><img alt="jenkins-k8s-plugin" data-src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gaqezdn991j30v40u040o.jpg"></p>
+<p>新建一个名为<code>polling-app-server</code>类型为<code>流水线(Pipeline)</code>的任务：</p>
+<p><img alt="jenkins-new-job" data-src="https://tvax4.sinaimg.cn/large/006hT4w1ly1gaqf0wt3l1j31ac0u0dka.jpg"></p>
+<p>勾选<code>触发远程构建</code>的触发器，其中令牌我们可以随便写一个字符串，然后记住下面的 URL，将 JENKINS_URL 替换成 Jenkins 的地址,我们这里的地址就是：<code>http://jenkins.qikqiak.com/job/polling-app-server/build?token=server321</code></p>
+<p><img alt="jenkins-trigger" data-src="https://tva1.sinaimg.cn/large/006hT4w1ly1gaqf34zhm7j31g80lcdie.jpg"></p>
+<p>在下面的流水线区域，可以选择<code>Pipeline script</code>，测试流水线脚本。正常配置选择<code>Pipeline script from SCM</code>，就是从代码仓库中通过<code>Jenkinsfile</code>文件获取<code>Pipeline script</code>脚本定义，选择 SCM 来源为Git。配置仓库地址<code>http://git.qikqiak.com/course/polling-app-server.git</code>，由于是在一个 Slave Pod 中去进行构建，所以如果使用 SSH 的方式去访问 Gitlab 代码仓库的话就需要频繁的去更新 SSH-KEY，所以直接采用用户名和密码的形式来访问：</p>
+<p><img alt="pipeline-scm" data-src="https://tva4.sinaimg.cn/large/006hT4w1ly1gaqf7s2oj7j31eo0tstcd.jpg"></p>
+<p>在Credentials区域点击添加按钮添加我们访问 Gitlab 的用户名和密码：</p>
+<p><img alt="credentials" data-src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gaqf98q79tj31gi0qu76m.jpg"></p>
+<p>配置用于构建的分支，如果所有的分支需要进行构建，将<code>Branch Specifier</code>区域留空即可，一般情况下，只有不同的环境对应的分支才需要构建，比如 master、develop、test 等，平时开发的 feature 或者 bugfix 的分支没必要频繁构建，下图只配置 master 和 develop 两个分支用户构建：</p>
+<p><img alt="git-branch" data-src="https://tva4.sinaimg.cn/large/006hT4w1ly1gaqfbg7lanj31960u076m.jpg"></p>
+<p>然后前往 Gitlab 中配置项目polling-app-server Webhook，settings -&gt; Integrations，填写上面得到的 trigger 地址：</p>
+<p><img alt="jenkins-webhook" data-src="https://tva2.sinaimg.cn/large/006hT4w1ly1gaqfch7v2tj31m80nan0a.jpg"></p>
+<p>保存后，可以直接点击<code>Test</code> -&gt; <code>Push Event</code>测试是否可以正常访问 Webhook 地址，这里需要注意的是我们需要配置下 Jenkins 的安全配置，否则这里的触发器没权限访问 Jenkins，系统管理 -&gt; 全局安全配置：取消<code>防止跨站点请求伪造</code>，勾选上<code>匿名用户具有可读权限</code>：</p>
+<p><img alt="jenkins-webhook-security-config" data-src="https://tva4.sinaimg.cn/large/006hT4w1ly1gaqfe5nn5uj31f00ncgnu.jpg"></p>
+<p>如果测试出现了<code>Hook executed successfully: HTTP 201</code>则证明 Webhook 配置成功了，否则就需要检查下 Jenkins 的安全配置是否正确了。</p>
+<h1 id="4-JenkinsFile"><a href="#4-JenkinsFile" class="headerlink" title="4. JenkinsFile"></a>4. JenkinsFile</h1><p>Clone 代码 -&gt; 代码静态分析 -&gt; 单元测试 -&gt; Maven 打包 -&gt; Docker 镜像构建/推送 -&gt; Helm 更新服务</p>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> label = <span class="string">"slave-${UUID.randomUUID().toString()}"</span></span><br><span class="line"></span><br><span class="line">podTemplate(<span class="attr">label:</span> label, <span class="attr">containers:</span> [</span><br><span class="line">  containerTemplate(<span class="attr">name:</span> <span class="string">'maven'</span>, <span class="attr">image:</span> <span class="string">'maven:3.6-alpine'</span>, <span class="attr">command:</span> <span class="string">'cat'</span>, <span class="attr">ttyEnabled:</span> <span class="literal">true</span>),</span><br><span class="line">  containerTemplate(<span class="attr">name:</span> <span class="string">'docker'</span>, <span class="attr">image:</span> <span class="string">'docker'</span>, <span class="attr">command:</span> <span class="string">'cat'</span>, <span class="attr">ttyEnabled:</span> <span class="literal">true</span>),</span><br><span class="line">  containerTemplate(<span class="attr">name:</span> <span class="string">'kubectl'</span>, <span class="attr">image:</span> <span class="string">'hex/kubectl'</span>, <span class="attr">command:</span> <span class="string">'cat'</span>, <span class="attr">ttyEnabled:</span> <span class="literal">true</span>),</span><br><span class="line">  containerTemplate(<span class="attr">name:</span> <span class="string">'helm'</span>, <span class="attr">image:</span> <span class="string">'hex/helm'</span>, <span class="attr">command:</span> <span class="string">'cat'</span>, <span class="attr">ttyEnabled:</span> <span class="literal">true</span>)</span><br><span class="line">], <span class="attr">volumes:</span> [</span><br><span class="line">  hostPathVolume(<span class="attr">mountPath:</span> <span class="string">'/root/.m2'</span>, <span class="attr">hostPath:</span> <span class="string">'/var/run/m2'</span>),</span><br><span class="line">  hostPathVolume(<span class="attr">mountPath:</span> <span class="string">'/home/jenkins/.kube'</span>, <span class="attr">hostPath:</span> <span class="string">'/root/.kube'</span>),</span><br><span class="line">  hostPathVolume(<span class="attr">mountPath:</span> <span class="string">'/var/run/docker.sock'</span>, <span class="attr">hostPath:</span> <span class="string">'/var/run/docker.sock'</span>)</span><br><span class="line">]) {</span><br><span class="line">  node(label) {</span><br><span class="line">    <span class="keyword">def</span> myRepo = checkout scm</span><br><span class="line">    <span class="keyword">def</span> gitCommit = myRepo.GIT_COMMIT</span><br><span class="line">    <span class="keyword">def</span> gitBranch = myRepo.GIT_BRANCH</span><br><span class="line"></span><br><span class="line">    stage(<span class="string">'单元测试'</span>) {</span><br><span class="line">      echo <span class="string">"测试阶段"</span></span><br><span class="line">    }</span><br><span class="line">    stage(<span class="string">'代码编译打包'</span>) {</span><br><span class="line">      container(<span class="string">'maven'</span>) {</span><br><span class="line">        echo <span class="string">"打码编译打包阶段"</span></span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    stage(<span class="string">'构建 Docker 镜像'</span>) {</span><br><span class="line">      container(<span class="string">'docker'</span>) {</span><br><span class="line">        echo <span class="string">"构建 Docker 镜像阶段"</span></span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    stage(<span class="string">'运行 Kubectl'</span>) {</span><br><span class="line">      container(<span class="string">'kubectl'</span>) {</span><br><span class="line">        echo <span class="string">"查看 K8S 集群 Pod 列表"</span></span><br><span class="line">        sh <span class="string">"kubectl get pods"</span></span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    stage(<span class="string">'运行 Helm'</span>) {</span><br><span class="line">      container(<span class="string">'helm'</span>) {</span><br><span class="line">        echo <span class="string">"查看 Helm Release 列表"</span></span><br><span class="line">        sh <span class="string">"helm list"</span></span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ol>
+<li><code>/root/.m2</code> 挂载为了<code>maven</code>构建添加缓存，否则每次构建重新下载依赖，太慢。</li>
+<li><code>~/.kube</code> 挂载为了让<code>kubectl</code>和<code>helm</code>访问 <code>Kubernetes</code> 集群。</li>
+<li><code>/var/run/docker.sock</code> 挂载为了<code>docker</code>客户端与<code>Docker Daemon</code>通信，构建镜像。</li>
+<li><code>label标签的定义</code> 使用 、<code>UUID</code>生成随机字符串，让<code>Slave Pod</code>每次的名称不一样，不会被固定在一个<code>Pod</code>上面了，而且有多个构建任务的时候就不会存在等待的情况.</li>
+</ol>
+</blockquote>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.qikqiak.com/post/kubernetes-jenkins1/">k8s-deploy jenkins 动态slaves</a><br><a target="_blank" rel="noopener" href="https://www.qikqiak.com/post/kubernetes-jenkins2/">jenkins pipeline 部署k8s应用</a><br><a target="_blank" rel="noopener" href="https://www.qikqiak.com/post/kubernetes-jenkins3/">jenkin Blue Ocean 使用</a><br><a target="_blank" rel="noopener" href="https://www.qikqiak.com/post/complete-cicd-demonstrate-1/">jenkins-pipeline to k8s</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/30/devops-20191230-gogs-drone-dockercompose/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/30/devops-20191230-gogs-drone-dockercompose/" class="post-title-link" itemprop="url">gogs-drone-dockercompose</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-30 11:44:00" itemprop="dateCreated datePublished" datetime="2019-12-30T11:44:00+08:00">2019-12-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/30/devops-20191230-gogs-drone-dockercompose/" class="post-meta-item leancloud_visitors" data-flag-title="gogs-drone-dockercompose" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><blockquote>
+<ol>
+<li><code>Drone</code>登录的账号需要在<code>Gogs</code>设置为管理员，他俩兄弟的账密是互通的</li>
+<li><code>Gogs</code>的仓库会自动同步到<code>Drone</code>上，此时，需要在<code>Drone</code>开启激活该项目才能正常运行，激活后能在Gogs仓库WeHooks多一个记录。</li>
+<li>Drone默认读取的配置文件名为项目根下<code>.drone.yml</code>，如果仓库内文件名不是。需要再Drone-setting中做修改。</li>
+</ol>
+</blockquote>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p><code>CI / CD</code>( 持续集成 / 持续部署  )方案是DevOps中不可或缺的流程之一，本文简单介绍选择 <code>Gogs</code> + <code>Drone</code> 通过<code>docker compose</code>部署。</p>
+<table>
+<thead>
+<tr>
+<th>主机名</th>
+<th>gitLab + jenkins</th>
+<th>Gogs + Drone</th>
+<th>NUM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>成熟度</td>
+<td>GitLab是一个非常成熟的git工具之一，同时Jenkins也是非常成熟的CICD组件，功能非常强大。</td>
+<td>性能高，并且简单易用</td>
+<td>1</td>
+</tr>
+<tr>
+<td>语言技术栈</td>
+<td><code>GitLab</code>是使用<code>Ruby</code>编写的，<code>Jenkins</code>更是了不起，使用<code>Java</code>来编写的，项目整体比较膨大，同时它们对硬件、CPU等开销比较高</td>
+<td><code>Drone</code>、<code>Gogs</code>皆是使用<code>Go</code>语言来编写构建，在整体的语言性能与内存开销算是有一定的优势</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Drone是一种基于容器技术的持续交付系统。Drone使用简单的YAML配置文件（docker-compose的超集）来定义和执行Docker容器中的Pipelines。Drone与流行的源代码管理系统无缝集成，包括GitHub，GitHub Enterprise，Gogs，Bitbucket等。</p>
+</blockquote>
+<h2 id="镜像说明"><a href="#镜像说明" class="headerlink" title="镜像说明"></a>镜像说明</h2><p><code>drone</code>升级使用<code>1.0.0-rc6</code>版本，此版本并非稳定版本，推荐使用<code>1</code>版本甚至是<code>0.8.6</code>更稳定的版本。<code>1.0</code>后的版本较之前而言，配置更加灵活、优化版本，同时界面也变化了。<a target="_blank" rel="noopener" href="https://drone.io/">drone</a></p>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>使用的前提，必须符合以下条件</p>
+<ul>
+<li>系统安装了<code>Docker</code>，同时要安装了<code>Docker</code>编排工具<code>docker-compose</code></li>
+<li>主流的<code>x64</code>位系统，<code>Linux</code>、<code>Mac</code>、<code>Window</code>等</li>
+<li>安装了<code>git</code>版本控制工具</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装非常简单，拉取<code>docker-compose.yml</code>编排文件，基于<code>Docker</code>环境自动构建即可！</p>
+<p>docker-compose: <code>https://github.com/alicfeng/gogs-drone-docker.git/deployment/</code></p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"2"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">gogs:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">gogs</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gogs/gogs:0.11.91</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">3000</span><span class="string">:3000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">10022</span><span class="string">:22</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data/gogs/data:/data</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">dronenet</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">drone-server:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">drone/drone:1.6.1</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">drone-server</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8000</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data/drone/:/var/lib/drone</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_OPEN=true</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_SERVER_HOST=drone-server:8000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_DEBUG=true</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_GIT_ALWAYS_AUTH=false</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_GOGS=true</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_GOGS_SKIP_VERIFY=false</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_GOGS_SERVER={http://gogs:3000}</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_PROVIDER=gogs</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_SERVER_PROTO=http</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_RPC_SECRET=7b4eb5caee376cf81a2fcf7181e66175</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_USER_CREATE=username:alic,admin:true</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_DATABASE_DATASOURCE=/var/lib/drone/drone.sqlite</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_DATABASE_DRIVER=sqlite3</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">dronenet</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">drone-agent:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">drone/agent:1.6.1</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">drone-agent</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">drone-server</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_RPC_SERVER={docker-server:8000}</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_RPC_SECRET=7b4eb5caee376cf81a2fcf7181e66175</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_RUNNER_CAPACITY=2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DRONE_DEBUG=true</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx:alpine</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">drone_nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"80:80"</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">dronenet</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">dronenet:</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>执行以下命令，创建容器、网络</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></tbody></table></figure>
+<p>修改Nginx配置</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it nginx ash</span><br></pre></td></tr></tbody></table></figure>
+<p>容器内执行以下命令</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/conf.d/drone.conf</span><br><span class="line"></span><br><span class="line">server {</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name drone.qloud.com;</span><br><span class="line">    location / {</span><br><span class="line">        proxy_pass http://drone-server:8000;</span><br><span class="line">        proxy_set_header   Host             <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header   X-Real-IP        <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">nginx -s reload</span><br></pre></td></tr></tbody></table></figure>
+
+<p>运行 <code>docker-runner</code></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">           -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">           -e DRONE_RPC_PROTO=http \</span><br><span class="line">           -e DRONE_RPC_HOST=10.8.3.206:8000 \</span><br><span class="line">           -e DRONE_RPC_SECRET=7b4eb5caee376cf81a2fcf7181e66175 \</span><br><span class="line">           -e DRONE_RUNNER_CAPACITY=2 \</span><br><span class="line">           -e DRONE_RUNNER_NAME=<span class="variable">${HOSTNAME}</span> \</span><br><span class="line">           -p 3002:3000 \</span><br><span class="line">           --restart always \</span><br><span class="line">           --name docker-runner \</span><br><span class="line">           drone/drone-runner-docker:1</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>每当分支的代码更新的时候，Gogs会动过钩子同步通知Drone，而Drone收到通知后根据<code>.drone.yml</code>配置执行命令。</p>
+<ul>
+<li>通过git <code>clone</code>分支代码到容器里面</li>
+<li>单元测试, 代码静态检查</li>
+<li>编译代码，构建可执行文件</li>
+<li>build image镜像，发布到<code>Registry</code></li>
+<li>部署至生产环境</li>
+<li>发送邮件等通知信息，这里还有很多插件，比如微信、钉钉、电报等</li>
+</ul>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/hex-py">价值源于技术，技术源于分享</a></strong></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5d36ccb5af88">Nginx代理</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-20191230-tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-20191230-tree/" class="post-title-link" itemprop="url">Tree</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-30 11:44:00" itemprop="dateCreated datePublished" datetime="2019-12-30T11:44:00+08:00">2019-12-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86-20191230-tree/" class="post-meta-item leancloud_visitors" data-flag-title="Tree" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><ul>
+<li>计算机原理<ul>
+<li>网络<ul>
+<li>dns</li>
+<li>bgp</li>
+<li>证书</li>
+<li>ssl</li>
+</ul>
+</li>
+<li>编译原理</li>
+<li>编程思想</li>
+<li>linux</li>
+</ul>
+</li>
+</ul>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/29/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-20191229-k8s%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/29/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-20191229-k8s%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" class="post-title-link" itemprop="url">k8s源码阅读</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-29 07:10:14" itemprop="dateCreated datePublished" datetime="2019-12-29T07:10:14+08:00">2019-12-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sourceCode/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/29/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-20191229-k8s%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" class="post-meta-item leancloud_visitors" data-flag-title="k8s源码阅读" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.tianfeiyu.com/source-code-reading-notes/">kubernetes源码阅读</a></li>
+<li>Docker源码</li>
+<li>flask源码</li>
+<li>DBaas源码</li>
+</ul>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/29/%E6%8F%90%E4%B8%8A%E6%97%A5%E7%A8%8B-20191229-%E4%B8%8B%E4%B8%80%E6%AD%A5%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/29/%E6%8F%90%E4%B8%8A%E6%97%A5%E7%A8%8B-20191229-%E4%B8%8B%E4%B8%80%E6%AD%A5%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91/" class="post-title-link" itemprop="url">下一步研究方向</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-29 07:08:33" itemprop="dateCreated datePublished" datetime="2019-12-29T07:08:33+08:00">2019-12-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/next/" itemprop="url" rel="index">
+                    <span itemprop="name">提上日程</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/29/%E6%8F%90%E4%B8%8A%E6%97%A5%E7%A8%8B-20191229-%E4%B8%8B%E4%B8%80%E6%AD%A5%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91/" class="post-meta-item leancloud_visitors" data-flag-title="下一步研究方向" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><p>有待准备完善的博客计划：</p>
+<ul>
+<li>persistence:<ul>
+<li>minio</li>
+<li>restic</li>
+<li>mongodb</li>
+<li>redis</li>
+<li>kafka</li>
+<li>postgresql</li>
+<li>dbaas</li>
+<li>consul</li>
+<li>vault</li>
+<li>nomad</li>
+<li>ElasticSearch</li>
+<li>zookeeper</li>
+<li>rook-ceph</li>
+<li>GlusterFS</li>
+</ul>
+</li>
+<li>Kubernetes<ul>
+<li>监控<ul>
+<li>prometheus</li>
+<li>grafana</li>
+<li>promethus operator</li>
+</ul>
+</li>
+<li>k8s deployment</li>
+<li>k8s Resource详解</li>
+<li>k8s 源码阅读</li>
+<li>knative</li>
+<li>faas</li>
+<li>k8s operator</li>
+<li>ambassador</li>
+<li>istio</li>
+<li>consul-connect</li>
+<li>gloo</li>
+</ul>
+</li>
+<li>Devops<ul>
+<li>docker</li>
+<li>jenkins</li>
+<li>gitlab</li>
+<li>gogs</li>
+<li>drone</li>
+<li>pipeline</li>
+<li>join with k8s</li>
+</ul>
+</li>
+<li>自动化工具<ul>
+<li>ansible</li>
+<li>terraform</li>
+</ul>
+</li>
+<li>个人工具<ul>
+<li>Pycharm</li>
+<li>Postman</li>
+<li>SecureCRT</li>
+<li>Git</li>
+<li>在线json数据结构定义[Golang]。</li>
+</ul>
+</li>
+<li>Python<ul>
+<li>代码块<ul>
+<li>jinjia2</li>
+<li>gitClient</li>
+<li>chartmuseum api</li>
+<li>apscheduler</li>
+<li>socket-client + socket-server</li>
+</ul>
+</li>
+<li>架构<ul>
+<li>Raft-gossip分布式python实现</li>
+</ul>
+</li>
+<li>设计模式</li>
+<li>算法实现</li>
+<li>部署<ul>
+<li>venv</li>
+<li>docker</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Golang<ul>
+<li>架构<ul>
+<li>Raft-gossip分布式Golang实现</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>vue</li>
+<li>计算机原理<ul>
+<li>网络<ul>
+<li>dns</li>
+<li>bgp</li>
+<li>证书</li>
+<li>ssl</li>
+</ul>
+</li>
+<li>编译原理</li>
+<li>编程思想</li>
+<li>linux</li>
+</ul>
+</li>
+</ul>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/29/python-20191229-Python%E8%B5%84%E6%96%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/29/python-20191229-Python%E8%B5%84%E6%96%99/" class="post-title-link" itemprop="url">Python资料</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-29 06:57:39" itemprop="dateCreated datePublished" datetime="2019-12-29T06:57:39+08:00">2019-12-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/29/python-20191229-Python%E8%B5%84%E6%96%99/" class="post-meta-item leancloud_visitors" data-flag-title="Python资料" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><span id="more"></span></body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/29/golang-2019-12-29-Golang%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/29/golang-2019-12-29-Golang%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" class="post-title-link" itemprop="url">Golang学习资料</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-29 06:43:01" itemprop="dateCreated datePublished" datetime="2019-12-29T06:43:01+08:00">2019-12-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/29/golang-2019-12-29-Golang%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" class="post-meta-item leancloud_visitors" data-flag-title="Golang学习资料" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><div class="note success">
+            <p>不错的备查资料 </p>
+          </div>
+
+<p><em><strong>超详细备查(利于排查概念模糊点)</strong></em><br><a target="_blank" rel="noopener" href="http://c.biancheng.net/golang/"><strong>Go语言入门教程，Golang入门教程（非常详细）</strong></a></p>
+<p><strong>超级实用</strong><br><a target="_blank" rel="noopener" href="https://books.studygolang.com/The-Golang-Standard-Library-by-Example/"><strong>Go语言标准库》The Golang Standard Library by Example</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5a113e686fb9a0452936596c"><strong>Golang设计模式–k8s源码为例</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/senghoo/golang-design-pattern"><strong>Glang设计模式–概念+示例</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://gobyexample.com/"><strong>Go by Example</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gocn/knowledge"><strong>go社区知识图谱</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.gin.sh/"><strong>go语言的leetcode刷题</strong></a></p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/unknwon/the-way-to-go_ZH_CN/blob/master/eBook/directory.md">The Way To Go-ZH_CN</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yunabe/lgo">交互式go工具–lgo</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/bcicen/ctop">容器的top–ctop</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jesseduffield/lazydocker">docker和docker-compose的终端UI</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/26/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-26-Ubuntu-18-04%E5%AE%89%E8%A3%85SecureCRT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/26/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-26-Ubuntu-18-04%E5%AE%89%E8%A3%85SecureCRT/" class="post-title-link" itemprop="url">Ubuntu18.04安装SecureCRT.</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-26 08:49:00" itemprop="dateCreated datePublished" datetime="2019-12-26T08:49:00+08:00">2019-12-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/26/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-26-Ubuntu-18-04%E5%AE%89%E8%A3%85SecureCRT/" class="post-meta-item leancloud_visitors" data-flag-title="Ubuntu18.04安装SecureCRT." title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="SecureCRT-x2F-SecureFX-8-5-4安装使用"><a href="#SecureCRT-x2F-SecureFX-8-5-4安装使用" class="headerlink" title="SecureCRT/SecureFX 8.5.4安装使用"></a>SecureCRT/SecureFX 8.5.4安装使用</h1><h2 id="1-下载"><a href="#1-下载" class="headerlink" title="1. 下载"></a>1. 下载</h2><p><a target="_blank" rel="noopener" href="https://www.vandyke.com/download/index.html">官网下载地址</a><br>直接到官网上下载即可，下载过程可能会提示要先注册，直接注册，然后再下载。<br>我直接下载的是最新版secureCRT+secureFX的合体包：scrt-sfx-8.5.4-1942.ubuntu16-64.x86_64.deb</p>
+<h2 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h2><p>sudo dpkg -i scrt-sfx-8.5.4-1942.ubuntu16-64.x86_64.deb<br>如果安装过程中因为缺少依赖而安装失败，只需要通过命令：apt-get install -f即可完成依赖的安装。</p>
+<h2 id="3-破解"><a href="#3-破解" class="headerlink" title="3.破解"></a>3.破解</h2><p>破解文件下载：<a target="_blank" rel="noopener" href="https://share.weiyun.com/5Mc38uB">https://share.weiyun.com/5Mc38uB</a> 密码：yetp32</p>
+<p>secureCRT破解</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /usr/bin/SecureCRT 路径如果不知道,请自行find</span></span><br><span class="line">sudo  perl securecrt_forgeek_crack.pl /usr/bin/SecureCRT</span><br></pre></td></tr></tbody></table></figure>
+<p>打开SecureCRT，会弹出配置存放路径，点OK，跳出激活界面，还有30天过期什么的。</p>
+<pre><code>a. 点Enter License Data，跳出一个文本框，不用输任何东西!!! 直接点下一步
+
+b. 他肯定报错，说license无效，不用管，
+
+c. 点左下角的 Enter Licence Manually, 然后要求输入各种信息，照着上面命令执行完的output信息复制粘贴上去就行。下面是举例:
+
+Name:REIZ
+Company:Toyota
+Serial Number: 请复制卡号  03-52-039026
+License Key:请复制密码  AAS4RS X1MU15 G9S6WV VTA5TV ACXK55 1JKW75 8R8Z5Z PK4FXJ
+Issue Date:  08-08-2088
+</code></pre>
+<p>SecureFX破解</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo perl securefx_forgeek_crack.pl /usr/bin/SecureFX</span><br></pre></td></tr></tbody></table></figure>
+<p>打开SecureFX，参考SecureCRT激活步骤.</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1000970-1-1.html">linux破解资源</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/MrDmmm/article/details/89527261">Windows破解资源</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/13/kubernetes-2019-12-13-k8s%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/13/kubernetes-2019-12-13-k8s%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">kubectl 小技巧</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-13 08:49:00" itemprop="dateCreated datePublished" datetime="2019-12-13T08:49:00+08:00">2019-12-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/13/kubernetes-2019-12-13-k8s%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="post-meta-item leancloud_visitors" data-flag-title="kubectl 小技巧" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="简化命令行交互-简化应用程序部署语法"><a href="#简化命令行交互-简化应用程序部署语法" class="headerlink" title="简化命令行交互, 简化应用程序部署语法"></a>简化命令行交互, 简化应用程序部署语法</h1><h2 id="1-Kubectl-自动补全"><a href="#1-Kubectl-自动补全" class="headerlink" title="1. Kubectl 自动补全"></a>1. Kubectl 自动补全</h2><p>kubectl 工具本身支持自动补全,只需要简单设置一下即可</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"source &lt;(kubectl completion bash)"</span> &gt;&gt; ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></tbody></table></figure>
+<p>如果没有安装<code>bash-completion</code>, 按如下命令安装</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install bash-completion</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-自定义-kubectl-get-输出"><a href="#2-自定义-kubectl-get-输出" class="headerlink" title="2. 自定义 kubectl get 输出"></a>2. 自定义 kubectl get 输出</h2><p>kubectl get 相关资源，默认输出为 kubectl 内置，一般我们也可以使用<code>-o json</code>/<code>-o jsonpath=''</code>或者<code>-o yaml</code>查看其完整的资源信息。但是很多时候，我们需要关心的信息并不全面，因此我们需要自定义输出的列，那么可以使用 go-template 来进行实现。</p>
+<p>go-template 是 golang 的一种模板，可以参考 <a href="https://link.zhihu.com/?target=https://golang.org/pkg/text/template/">template</a> 的相关说明。</p>
+<p>比如仅仅想要查看获取的 pods 中的各个 pod 的 uid，则可以使用以下命令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pods --all-namespaces -o go-template=<span class="string">'{{range .items}}{{.metadata.uid}} {{end}}'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>比如使用 jsonpath 获取数据</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ISTIO_PILOT_PORT=$(kubectl get -n istio-system service istio-ingressgateway -o jsonpath=<span class="string">'{.spec.ports[?(@.name=="tcp-pilot-grpc-tls")].nodePort}'</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">${ISTIO_PILOT_PORT}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-k8s强制删除提示-Terminating-的namespace"><a href="#3-k8s强制删除提示-Terminating-的namespace" class="headerlink" title="3. k8s强制删除提示 Terminating 的namespace"></a>3. k8s强制删除提示 <code>Terminating</code> 的<code>namespace</code></h2><h3 id="a-首先尝试强制删除参数"><a href="#a-首先尝试强制删除参数" class="headerlink" title="a. 首先尝试强制删除参数"></a>a. 首先尝试强制删除参数</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete namespace example-ns -force --grace-period=0</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="b-如果不能删除，则采取以下方法"><a href="#b-如果不能删除，则采取以下方法" class="headerlink" title="b. 如果不能删除，则采取以下方法"></a>b. 如果不能删除，则采取以下方法</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl edit namespace example-ns</span><br></pre></td></tr></tbody></table></figure>
+
+<p>将其中<code>spec.finalizers</code>的值删除，也可以设置为[]。保存退出后，namespace就会被删除。</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Namespace</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">finalizers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">controller.cattle.io/namespace-auth</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">mars</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">finalizers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">kubernetes</span></span><br><span class="line"><span class="attr">status:</span></span><br><span class="line">  <span class="attr">phase:</span> <span class="string">Active</span></span><br></pre></td></tr></tbody></table></figure>
+<p>思路：<br>命名空间无法删除通常是因为还有资源在使用这个命名空间，执行<code>kubectl delete namespace xxx </code>时候，虽然显示deleted，但是命令夯死。我们可以查看资源使用情况：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl api-resources --namespaced=<span class="literal">true</span> -o name | xargs -n 1 kubectl get --show-kind --ingore-not-found -n xxxx</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/G8t18WpE_XW69nRmFLZSfg">Kubernetes 的奇技淫巧</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44267608/article/details/103002124">删除一直处于terminating状态的namespace</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/13/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-13-Ansible-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/13/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-13-Ansible-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">简记 Ansible 使用</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-13 08:49:00" itemprop="dateCreated datePublished" datetime="2019-12-13T08:49:00+08:00">2019-12-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">个人工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/13/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7-2019-12-13-Ansible-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="post-meta-item leancloud_visitors" data-flag-title="简记 Ansible 使用" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head></head><body><h1 id="1-ubuntu-18-04-install-Ansible"><a href="#1-ubuntu-18-04-install-Ansible" class="headerlink" title="1. ubuntu 18.04 install Ansible"></a>1. ubuntu 18.04 install Ansible</h1><p><code>software-properties-common</code> package installed. This software will make it easier to manage this and other independent software repositories:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install software-properties-common</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Then add the Ansible PPA by typing the following command:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-add-repository ppa:ansible/ansible</span><br></pre></td></tr></tbody></table></figure>
+
+<p>install Ansible</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install ansible</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="2-config-ssh-access-to-ansible-hosts"><a href="#2-config-ssh-access-to-ansible-hosts" class="headerlink" title="2. config ssh access to ansible-hosts"></a>2. config ssh access to ansible-hosts</h1><h1 id="3-ansible-注意"><a href="#3-ansible-注意" class="headerlink" title="3. ansible 注意"></a>3. ansible 注意</h1><ol>
+<li>ansible 主机需要安装 pip install netaddr，因为 playbook 依赖</li>
+<li>ansible 主机需要安装 apt install sshpass ，因为使用密码连接</li>
+<li>ansible 主机需要安装 apt install zip unzip 因为 playbook 需要解压文件</li>
+<li>ansible 主机需要配置 ansible 的<code>host_key_checking</code>(/etc/ansible/ansible.cfg)为<code>False</code>，因为所有主机都是第一次连接，还没有主机指纹在<code>known_hosts</code>中，需要忽略</li>
+</ol>
+<h1 id="4-测试Ansible-Hosts连通性方法"><a href="#4-测试Ansible-Hosts连通性方法" class="headerlink" title="4. 测试Ansible-Hosts连通性方法"></a>4. 测试Ansible-Hosts连通性方法</h1><ol>
+<li><code>vi /etc/ansible/hosts</code>追加以下内容，IP地址即为要测试的机器<figure class="highlight ini"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[test]</span></span><br><span class="line">10.8.2.95 <span class="attr">ansible_ssh_user</span>=root ansible_ssh_pass=Qloud@<span class="number">123</span> docker_registry=<span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>执行以下命令，用<code>ping</code>模块进行测试。<code>test</code>为上面为hosts配置的主机组名字。<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible -i /etc/ansible/hosts <span class="built_in">test</span> -m ping</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h1 id="5-Ansible-的一些约定"><a href="#5-Ansible-的一些约定" class="headerlink" title="5. Ansible 的一些约定"></a>5. Ansible 的一些约定</h1><ol>
+<li><p>inventory 主机清单<br> <code>-i</code>参数指定主机清单。例如<code>ansible-playbook -i inventory.py nomad.yaml</code></p>
+<p>1.1 静态inventory，通过静态配置文件<code>inventory.json</code>配置。</p>
+<p>1.2 动态inventory，通过动态生成脚本<code>inventory.py</code>生成。</p>
+</li>
+<li><p>roles目录必须与playbook文件同级，并且文件夹名必须为<code>roles</code>。playbook文件中通过<code>roles</code>下的各个文件夹名字引用role<br> 例如 </p>
+ <figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">install</span> <span class="string">mirrors</span> <span class="string">and</span> <span class="string">initialization</span>         </span><br><span class="line">  <span class="attr">hosts:</span> <span class="string">all</span>                                       </span><br><span class="line">  <span class="attr">roles:</span>                                           <span class="comment"># roles/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">yum-mirrors</span>                                  <span class="comment">#   |-- yum-mirrors/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">initialization</span>                               <span class="comment">#   |-- initializations/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker-registry</span>                              <span class="comment">#   |-- docker-registry/</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>单个role目录结构说明。</p>
+ <figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">├──</span> <span class="string">install_nginx.yml</span>              <span class="comment"># playbook 文件和 roles 目录应该处于平级目录</span></span><br><span class="line"><span class="string">└──</span> <span class="string">roles</span>                          <span class="comment"># 存放所有角色的的目录</span></span><br><span class="line">    <span class="string">└──</span> <span class="string">nginx</span>                      <span class="comment"># nginx 角色</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">defaults</span>               <span class="comment"># 设定默认变量</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">│</span>   <span class="string">└──</span> <span class="string">main.yml</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">files</span>                  <span class="comment"># 存放由 copy 或 script 模块等调用的文件</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">│</span>   <span class="string">└──</span> <span class="string">index.html</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">handlers</span>               <span class="comment"># 触发器任务</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">│</span>   <span class="string">└──</span> <span class="string">main.yml</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">meta</span>                   <span class="comment"># 定义当前角色的特殊设定及其依赖关系</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">tasks</span>                  <span class="comment"># 定义任务，它是 role 的基本元素</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">│</span>   <span class="string">└──</span> <span class="string">main.yml</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">├──</span> <span class="string">templates</span>              <span class="comment"># templates 模块查找所需要模板文件的目录</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">│</span>   <span class="string">└──</span> <span class="string">nginx.conf.j2</span></span><br><span class="line">    <span class="string">│</span>   <span class="string">└──</span> <span class="string">vars</span>                   <span class="comment"># 定义变量</span></span><br><span class="line">    <span class="string">│</span>       <span class="string">└──</span> <span class="string">main.yml</span></span><br><span class="line">    <span class="string">└──</span> <span class="string">php</span>                        <span class="comment"># php 角色</span></span><br><span class="line">        <span class="string">└──</span> <span class="string">...</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>playbook文件的定义中，优先级: <code>role</code> &gt; <code>task</code>; 如果<code>task-A</code>必须要在某<code>role-B</code>之前执行，需要将<code>task-A</code>封装为<code>role-A</code>，放到<code>role-B</code>之前。</p>
+</li>
+<li><p><code>task</code>中常用的模块</p>
+<table>
+<thead>
+<tr>
+<th>模块名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ping</td>
+<td>检查指定节点机器是否还能连通</td>
+</tr>
+<tr>
+<td>command</td>
+<td>执行命令模块，可以不填，是ansible默认的模块，命令中无法使用变量，管道。</td>
+</tr>
+<tr>
+<td>shell</td>
+<td>启动一个子shell执行命令，执行的命令中有管道或者变量，就需要使用shell模块。</td>
+</tr>
+<tr>
+<td>script</td>
+<td>将本机的shell脚本在被管理主机运行</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>将本机复制文件到远程位置</td>
+</tr>
+<tr>
+<td>service</td>
+<td>用于控制远程主机的服务</td>
+</tr>
+<tr>
+<td>cron</td>
+<td>用于管理定时任务</td>
+</tr>
+<tr>
+<td>file</td>
+<td>用于远程主机上的文件操作</td>
+</tr>
+<tr>
+<td>yum</td>
+<td>使用yum包管理器来管理软件包</td>
+</tr>
+<tr>
+<td>user、group</td>
+<td>user、goup分别请求：useradd、userdel、usermod；groupadd、groupdel、groupmod</td>
+</tr>
+<tr>
+<td>filesystem</td>
+<td>在块设备上创建文件系统</td>
+</tr>
+<tr>
+<td>get_url</td>
+<td>下载文件</td>
+</tr>
+<tr>
+<td>synchronize</td>
+<td>同步文件模块</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04">Install Ansible on Ubuntu 18.04</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">官方文档</a><br><a target="_blank" rel="noopener" href="https://ansible-tran.readthedocs.io/en/latest/docs/intro_inventory.html">中文文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yongchaocsdn/article/details/78750469">ansible Ad-Hoc命令集</a></p>
+<p><a target="_blank" rel="noopener" href="https://yangjinheng.github.io/2017/03/20/Linux/Ansible/">金恒博客</a></p>
+</body></html>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>

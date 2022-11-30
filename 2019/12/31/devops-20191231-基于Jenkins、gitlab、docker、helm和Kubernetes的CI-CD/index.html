@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Long Cang:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hex-py.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="重要提前说明  开发人员提交代码到 Gitlab 代码仓库 通过 Gitlab 配置的 Jenkins Webhook 触发 Pipeline 自动构建 Jenkins 触发构建构建任务，根据 Pipeline 脚本定义分步骤构建 先进行代码静态分析，单元测试 然后进行 Maven 构建（Java 项目） 根据构建结果构建 Docker 镜像 推送 Docker 镜像到 Harbor 仓库 触发更">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Jenkins、gitlab、docker、helm和Kubernetes的CI&#x2F;CD">
+<meta property="og:url" content="https://hex-py.github.io/2019/12/31/devops-20191231-%E5%9F%BA%E4%BA%8EJenkins%E3%80%81gitlab%E3%80%81docker%E3%80%81helm%E5%92%8CKubernetes%E7%9A%84CI-CD/index.html">
+<meta property="og:site_name" content="Hex Blog">
+<meta property="og:description" content="重要提前说明  开发人员提交代码到 Gitlab 代码仓库 通过 Gitlab 配置的 Jenkins Webhook 触发 Pipeline 自动构建 Jenkins 触发构建构建任务，根据 Pipeline 脚本定义分步骤构建 先进行代码静态分析，单元测试 然后进行 Maven 构建（Java 项目） 根据构建结果构建 Docker 镜像 推送 Docker 镜像到 Harbor 仓库 触发更">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gaqezdn991j30v40u040o.jpg">
+<meta property="og:image" content="https://tvax4.sinaimg.cn/large/006hT4w1ly1gaqf0wt3l1j31ac0u0dka.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006hT4w1ly1gaqf34zhm7j31g80lcdie.jpg">
+<meta property="og:image" content="https://tva4.sinaimg.cn/large/006hT4w1ly1gaqf7s2oj7j31eo0tstcd.jpg">
+<meta property="og:image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gaqf98q79tj31gi0qu76m.jpg">
+<meta property="og:image" content="https://tva4.sinaimg.cn/large/006hT4w1ly1gaqfbg7lanj31960u076m.jpg">
+<meta property="og:image" content="https://tva2.sinaimg.cn/large/006hT4w1ly1gaqfch7v2tj31m80nan0a.jpg">
+<meta property="og:image" content="https://tva4.sinaimg.cn/large/006hT4w1ly1gaqfe5nn5uj31f00ncgnu.jpg">
+<meta property="article:published_time" content="2019-12-30T23:05:19.000Z">
+<meta property="article:modified_time" content="2022-11-30T03:22:28.021Z">
+<meta property="article:author" content="Hex">
+<meta property="article:tag" content="Devops">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Jenkins">
+<meta property="article:tag" content="JenkinsFile">
+<meta property="article:tag" content="Gitlab">
+<meta property="article:tag" content="Kubernetes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gaqezdn991j30v40u040o.jpg">
+
+<link rel="canonical" href="https://hex-py.github.io/2019/12/31/devops-20191231-%E5%9F%BA%E4%BA%8EJenkins%E3%80%81gitlab%E3%80%81docker%E3%80%81helm%E5%92%8CKubernetes%E7%9A%84CI-CD/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>基于Jenkins、gitlab、docker、helm和Kubernetes的CI/CD | Hex Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154554671-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154554671-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hex Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle"> 大胆假设 小心求证 认真做事 严谨做人 </p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>博客首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类专栏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>各种标签</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-location-arrow"></i>关于更多</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站点搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hex-py.github.io/2019/12/31/devops-20191231-%E5%9F%BA%E4%BA%8EJenkins%E3%80%81gitlab%E3%80%81docker%E3%80%81helm%E5%92%8CKubernetes%E7%9A%84CI-CD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+      <meta itemprop="name" content="Hex">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hex Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于Jenkins、gitlab、docker、helm和Kubernetes的CI/CD
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text"> </span>
+
+              <time title="创建时间：2019-12-31 07:05:19" itemprop="dateCreated datePublished" datetime="2019-12-31T07:05:19+08:00">2019-12-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">专栏：</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index">
+                    <span itemprop="name">Devops</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/31/devops-20191231-%E5%9F%BA%E4%BA%8EJenkins%E3%80%81gitlab%E3%80%81docker%E3%80%81helm%E5%92%8CKubernetes%E7%9A%84CI-CD/" class="post-meta-item leancloud_visitors" data-flag-title="基于Jenkins、gitlab、docker、helm和Kubernetes的CI/CD" title="阅读">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html><head></head><body><h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h1 id="提前说明"><a href="#提前说明" class="headerlink" title="提前说明"></a>提前说明</h1><blockquote>
+<ol>
+<li>开发人员提交代码到 Gitlab 代码仓库</li>
+<li>通过 Gitlab 配置的 Jenkins Webhook 触发 Pipeline 自动构建</li>
+<li>Jenkins 触发构建构建任务，根据 Pipeline 脚本定义分步骤构建</li>
+<li>先进行代码静态分析，单元测试</li>
+<li>然后进行 Maven 构建（Java 项目）</li>
+<li>根据构建结果构建 Docker 镜像</li>
+<li>推送 Docker 镜像到 Harbor 仓库</li>
+<li>触发更新服务阶段，使用 Helm 安装/更新 Release</li>
+<li>查看服务是否更新成功。</li>
+</ol>
+</blockquote>
+<h1 id="部署Jenkins"><a href="#部署Jenkins" class="headerlink" title="部署Jenkins"></a>部署Jenkins</h1><p>chart地址: <code>https://github.com/helm/charts/tree/master/stable/jenkins</code></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">helm install --name jenkins stable/jenkins</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="1-后端服务容器化"><a href="#1-后端服务容器化" class="headerlink" title="1.后端服务容器化"></a>1.后端服务容器化</h1><figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> maven:<span class="number">3.6</span>-alpine as BUILD</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> src /usr/app/src</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> pom.xml /usr/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> mvn -f /usr/app/pom.xml clean package -Dmaven.test.skip=<span class="literal">true</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>-jdk-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> LANG en_US.UTF-<span class="number">8</span></span><br><span class="line"><span class="keyword">ENV</span> LANGUAGE en_US:en</span><br><span class="line"><span class="keyword">ENV</span> LC_ALL en_US.UTF-<span class="number">8</span></span><br><span class="line"><span class="keyword">ENV</span> TZ=Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> /app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=BUILD /usr/app/target/polls-0.0.1-SNAPSHOT.jar /app/polls.jar</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">"java"</span>, <span class="string">"-Djava.security.egd=file:/dev/./urandom"</span>, <span class="string">"-jar"</span>,<span class="string">"/app/polls.jar"</span>]</span></span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ol>
+<li>页面打包到一个jar文件<code>build-container-/usr/app/target/polls-0.0.1-SNAPSHOT.jar</code></li>
+<li>将上面jar文件添加到 <code>jdk-container-/app/polls.jar</code>目录</li>
+</ol>
+</blockquote>
+<h1 id="2-前段服务容器化"><a href="#2-前段服务容器化" class="headerlink" title="2. 前段服务容器化"></a>2. 前段服务容器化</h1><figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:alpine as BUILD</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /usr/src/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> -p /usr/src/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> . /usr/src/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm install &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    npm run build</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> nginx:<span class="number">1.15</span>.<span class="number">10</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=BUILD /usr/src/app/build /usr/share/nginx/html</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> nginx.conf</span></span><br><span class="line">/etc/nginx/conf.d/default.conf</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ol>
+<li>页面打包到一个build目录<code>build-container-/usr/src/app/build</code></li>
+<li>将上面目录添加到 <code>nginx-container-/usr/share/nginx/html</code>目录</li>
+</ol>
+</blockquote>
+<h1 id="3-Jenkins-task配置"><a href="#3-Jenkins-task配置" class="headerlink" title="3. Jenkins task配置"></a>3. Jenkins task配置</h1><p>在 Pipeline 中去自定义<code>Slave Pod</code>中所需要用到的容器模板，需要什么镜像只需要在<code>Slave Pod Template</code>中声明即可，不需要安装了所有工具的<code>Slave</code>镜像。<br>首先Jenkins 中 kubernetes 配置，Jenkins -&gt; 系统管理 -&gt; 系统设置 -&gt; 云 -&gt; Kubernetes区域</p>
+<p><img alt="jenkins-k8s-plugin" data-src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gaqezdn991j30v40u040o.jpg"></p>
+<p>新建一个名为<code>polling-app-server</code>类型为<code>流水线(Pipeline)</code>的任务：</p>
+<p><img alt="jenkins-new-job" data-src="https://tvax4.sinaimg.cn/large/006hT4w1ly1gaqf0wt3l1j31ac0u0dka.jpg"></p>
+<p>勾选<code>触发远程构建</code>的触发器，其中令牌我们可以随便写一个字符串，然后记住下面的 URL，将 JENKINS_URL 替换成 Jenkins 的地址,我们这里的地址就是：<code>http://jenkins.qikqiak.com/job/polling-app-server/build?token=server321</code></p>
+<p><img alt="jenkins-trigger" data-src="https://tva1.sinaimg.cn/large/006hT4w1ly1gaqf34zhm7j31g80lcdie.jpg"></p>
+<p>在下面的流水线区域，可以选择<code>Pipeline script</code>，测试流水线脚本。正常配置选择<code>Pipeline script from SCM</code>，就是从代码仓库中通过<code>Jenkinsfile</code>文件获取<code>Pipeline script</code>脚本定义，选择 SCM 来源为Git。配置仓库地址<code>http://git.qikqiak.com/course/polling-app-server.git</code>，由于是在一个 Slave Pod 中去进行构建，所以如果使用 SSH 的方式去访问 Gitlab 代码仓库的话就需要频繁的去更新 SSH-KEY，所以直接采用用户名和密码的形式来访问：</p>
+<p><img alt="pipeline-scm" data-src="https://tva4.sinaimg.cn/large/006hT4w1ly1gaqf7s2oj7j31eo0tstcd.jpg"></p>
+<p>在Credentials区域点击添加按钮添加我们访问 Gitlab 的用户名和密码：</p>
+<p><img alt="credentials" data-src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gaqf98q79tj31gi0qu76m.jpg"></p>
+<p>配置用于构建的分支，如果所有的分支需要进行构建，将<code>Branch Specifier</code>区域留空即可，一般情况下，只有不同的环境对应的分支才需要构建，比如 master、develop、test 等，平时开发的 feature 或者 bugfix 的分支没必要频繁构建，下图只配置 master 和 develop 两个分支用户构建：</p>
+<p><img alt="git-branch" data-src="https://tva4.sinaimg.cn/large/006hT4w1ly1gaqfbg7lanj31960u076m.jpg"></p>
+<p>然后前往 Gitlab 中配置项目polling-app-server Webhook，settings -&gt; Integrations，填写上面得到的 trigger 地址：</p>
+<p><img alt="jenkins-webhook" data-src="https://tva2.sinaimg.cn/large/006hT4w1ly1gaqfch7v2tj31m80nan0a.jpg"></p>
+<p>保存后，可以直接点击<code>Test</code> -&gt; <code>Push Event</code>测试是否可以正常访问 Webhook 地址，这里需要注意的是我们需要配置下 Jenkins 的安全配置，否则这里的触发器没权限访问 Jenkins，系统管理 -&gt; 全局安全配置：取消<code>防止跨站点请求伪造</code>，勾选上<code>匿名用户具有可读权限</code>：</p>
+<p><img alt="jenkins-webhook-security-config" data-src="https://tva4.sinaimg.cn/large/006hT4w1ly1gaqfe5nn5uj31f00ncgnu.jpg"></p>
+<p>如果测试出现了<code>Hook executed successfully: HTTP 201</code>则证明 Webhook 配置成功了，否则就需要检查下 Jenkins 的安全配置是否正确了。</p>
+<h1 id="4-JenkinsFile"><a href="#4-JenkinsFile" class="headerlink" title="4. JenkinsFile"></a>4. JenkinsFile</h1><p>Clone 代码 -&gt; 代码静态分析 -&gt; 单元测试 -&gt; Maven 打包 -&gt; Docker 镜像构建/推送 -&gt; Helm 更新服务</p>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> label = <span class="string">"slave-${UUID.randomUUID().toString()}"</span></span><br><span class="line"></span><br><span class="line">podTemplate(<span class="attr">label:</span> label, <span class="attr">containers:</span> [</span><br><span class="line">  containerTemplate(<span class="attr">name:</span> <span class="string">'maven'</span>, <span class="attr">image:</span> <span class="string">'maven:3.6-alpine'</span>, <span class="attr">command:</span> <span class="string">'cat'</span>, <span class="attr">ttyEnabled:</span> <span class="literal">true</span>),</span><br><span class="line">  containerTemplate(<span class="attr">name:</span> <span class="string">'docker'</span>, <span class="attr">image:</span> <span class="string">'docker'</span>, <span class="attr">command:</span> <span class="string">'cat'</span>, <span class="attr">ttyEnabled:</span> <span class="literal">true</span>),</span><br><span class="line">  containerTemplate(<span class="attr">name:</span> <span class="string">'kubectl'</span>, <span class="attr">image:</span> <span class="string">'hex/kubectl'</span>, <span class="attr">command:</span> <span class="string">'cat'</span>, <span class="attr">ttyEnabled:</span> <span class="literal">true</span>),</span><br><span class="line">  containerTemplate(<span class="attr">name:</span> <span class="string">'helm'</span>, <span class="attr">image:</span> <span class="string">'hex/helm'</span>, <span class="attr">command:</span> <span class="string">'cat'</span>, <span class="attr">ttyEnabled:</span> <span class="literal">true</span>)</span><br><span class="line">], <span class="attr">volumes:</span> [</span><br><span class="line">  hostPathVolume(<span class="attr">mountPath:</span> <span class="string">'/root/.m2'</span>, <span class="attr">hostPath:</span> <span class="string">'/var/run/m2'</span>),</span><br><span class="line">  hostPathVolume(<span class="attr">mountPath:</span> <span class="string">'/home/jenkins/.kube'</span>, <span class="attr">hostPath:</span> <span class="string">'/root/.kube'</span>),</span><br><span class="line">  hostPathVolume(<span class="attr">mountPath:</span> <span class="string">'/var/run/docker.sock'</span>, <span class="attr">hostPath:</span> <span class="string">'/var/run/docker.sock'</span>)</span><br><span class="line">]) {</span><br><span class="line">  node(label) {</span><br><span class="line">    <span class="keyword">def</span> myRepo = checkout scm</span><br><span class="line">    <span class="keyword">def</span> gitCommit = myRepo.GIT_COMMIT</span><br><span class="line">    <span class="keyword">def</span> gitBranch = myRepo.GIT_BRANCH</span><br><span class="line"></span><br><span class="line">    stage(<span class="string">'单元测试'</span>) {</span><br><span class="line">      echo <span class="string">"测试阶段"</span></span><br><span class="line">    }</span><br><span class="line">    stage(<span class="string">'代码编译打包'</span>) {</span><br><span class="line">      container(<span class="string">'maven'</span>) {</span><br><span class="line">        echo <span class="string">"打码编译打包阶段"</span></span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    stage(<span class="string">'构建 Docker 镜像'</span>) {</span><br><span class="line">      container(<span class="string">'docker'</span>) {</span><br><span class="line">        echo <span class="string">"构建 Docker 镜像阶段"</span></span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    stage(<span class="string">'运行 Kubectl'</span>) {</span><br><span class="line">      container(<span class="string">'kubectl'</span>) {</span><br><span class="line">        echo <span class="string">"查看 K8S 集群 Pod 列表"</span></span><br><span class="line">        sh <span class="string">"kubectl get pods"</span></span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    stage(<span class="string">'运行 Helm'</span>) {</span><br><span class="line">      container(<span class="string">'helm'</span>) {</span><br><span class="line">        echo <span class="string">"查看 Helm Release 列表"</span></span><br><span class="line">        sh <span class="string">"helm list"</span></span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ol>
+<li><code>/root/.m2</code> 挂载为了<code>maven</code>构建添加缓存，否则每次构建重新下载依赖，太慢。</li>
+<li><code>~/.kube</code> 挂载为了让<code>kubectl</code>和<code>helm</code>访问 <code>Kubernetes</code> 集群。</li>
+<li><code>/var/run/docker.sock</code> 挂载为了<code>docker</code>客户端与<code>Docker Daemon</code>通信，构建镜像。</li>
+<li><code>label标签的定义</code> 使用 、<code>UUID</code>生成随机字符串，让<code>Slave Pod</code>每次的名称不一样，不会被固定在一个<code>Pod</code>上面了，而且有多个构建任务的时候就不会存在等待的情况.</li>
+</ol>
+</blockquote>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.qikqiak.com/post/kubernetes-jenkins1/">k8s-deploy jenkins 动态slaves</a><br><a target="_blank" rel="noopener" href="https://www.qikqiak.com/post/kubernetes-jenkins2/">jenkins pipeline 部署k8s应用</a><br><a target="_blank" rel="noopener" href="https://www.qikqiak.com/post/kubernetes-jenkins3/">jenkin Blue Ocean 使用</a><br><a target="_blank" rel="noopener" href="https://www.qikqiak.com/post/complete-cicd-demonstrate-1/">jenkins-pipeline to k8s</a></p>
+</body></html>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢支持</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/../images/wx_reward.jpg" alt="Hex 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Devops/" rel="tag"><i class="fa fa-tag"></i> Devops</a>
+              <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+              <a href="/tags/Jenkins/" rel="tag"><i class="fa fa-tag"></i> Jenkins</a>
+              <a href="/tags/JenkinsFile/" rel="tag"><i class="fa fa-tag"></i> JenkinsFile</a>
+              <a href="/tags/Gitlab/" rel="tag"><i class="fa fa-tag"></i> Gitlab</a>
+              <a href="/tags/Kubernetes/" rel="tag"><i class="fa fa-tag"></i> Kubernetes</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/30/devops-20191230-gogs-drone-dockercompose/" rel="prev" title="gogs-drone-dockercompose">
+      <i class="fa fa-chevron-left"></i> gogs-drone-dockercompose
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/01/02/persistence-2020-01-02-%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1-Minio/" rel="next" title="对象存储服务-Minio">
+      对象存储服务-Minio <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%A6%81"><span class="nav-text">重要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E5%89%8D%E8%AF%B4%E6%98%8E"><span class="nav-text">提前说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Jenkins"><span class="nav-text">部署Jenkins</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%AE%B9%E5%99%A8%E5%8C%96"><span class="nav-text">1.后端服务容器化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%89%8D%E6%AE%B5%E6%9C%8D%E5%8A%A1%E5%AE%B9%E5%99%A8%E5%8C%96"><span class="nav-text">2. 前段服务容器化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Jenkins-task%E9%85%8D%E7%BD%AE"><span class="nav-text">3. Jenkins task配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-JenkinsFile"><span class="nav-text">4. JenkinsFile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hex"
+      src="https://tvax3.sinaimg.cn/large/006hT4w1ly1gabg2q14y4j30hs0hs3yu.jpg">
+  <p class="site-author-name" itemprop="name">Hex</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">专栏</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hex-py" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hex-py" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hex</span>
+</div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '9XJtXrvzukg47QyRRTh3Rp1s-gzGzoHsz',
+            'X-LC-Key': 'yp4oGRDoJHNogXykGNIWlvCo',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+<script src="//cdn.jsdelivr.net/npm/minigrid@3.1.1/dist/minigrid.min.js"></script>
+
+    </div>
+</body>
+</html>
