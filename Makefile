@@ -33,8 +33,8 @@ post:
     #hexo new --path $(path) $(type) $(title)
 
 tool:
-	npm i -g npm --registry https://registry.npm.taobao.org
-	npm i -g yarn --registry https://registry.npm.taobao.org
+	#npm i -g npm --registry https://registry.npm.taobao.org
+#	npm i -g yarn --registry https://registry.npm.taobao.org
 	yarn config set registry https://registry.npm.taobao.org
 	yarn install
 	npm audit fix --force
