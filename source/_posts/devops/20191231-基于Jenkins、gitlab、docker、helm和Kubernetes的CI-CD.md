@@ -96,35 +96,35 @@ ADD nginx.conf
 在 Pipeline 中去自定义`Slave Pod`中所需要用到的容器模板，需要什么镜像只需要在`Slave Pod Template`中声明即可，不需要安装了所有工具的`Slave`镜像。
 首先Jenkins 中 kubernetes 配置，Jenkins -> 系统管理 -> 系统设置 -> 云 -> Kubernetes区域
 
-![jenkins-k8s-plugin](https://tvax3.sinaimg.cn/large/006hT4w1ly1gaqezdn991j30v40u040o.jpg)
+![jenkins-k8s-plugin](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/S6c1uM.jpg)
 
 新建一个名为`polling-app-server`类型为`流水线(Pipeline)`的任务：
 
-![jenkins-new-job](https://tvax4.sinaimg.cn/large/006hT4w1ly1gaqf0wt3l1j31ac0u0dka.jpg)
+![jenkins-new-job](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/RXzpgt.jpg)
 
 勾选`触发远程构建`的触发器，其中令牌我们可以随便写一个字符串，然后记住下面的 URL，将 JENKINS_URL 替换成 Jenkins 的地址,我们这里的地址就是：`http://jenkins.qikqiak.com/job/polling-app-server/build?token=server321`
 
-![jenkins-trigger](https://tva1.sinaimg.cn/large/006hT4w1ly1gaqf34zhm7j31g80lcdie.jpg)
+![jenkins-trigger](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/p5Ocmb.jpg)
 
 在下面的流水线区域，可以选择`Pipeline script`，测试流水线脚本。正常配置选择`Pipeline script from SCM`，就是从代码仓库中通过`Jenkinsfile`文件获取`Pipeline script`脚本定义，选择 SCM 来源为Git。配置仓库地址`http://git.qikqiak.com/course/polling-app-server.git`，由于是在一个 Slave Pod 中去进行构建，所以如果使用 SSH 的方式去访问 Gitlab 代码仓库的话就需要频繁的去更新 SSH-KEY，所以直接采用用户名和密码的形式来访问：
 
-![pipeline-scm](https://tva4.sinaimg.cn/large/006hT4w1ly1gaqf7s2oj7j31eo0tstcd.jpg)
+![pipeline-scm](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/5jwRju.jpg)
 
 在Credentials区域点击添加按钮添加我们访问 Gitlab 的用户名和密码：
 
-![credentials](https://tvax3.sinaimg.cn/large/006hT4w1ly1gaqf98q79tj31gi0qu76m.jpg)
+![credentials](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/WCeT1i.jpg)
 
 配置用于构建的分支，如果所有的分支需要进行构建，将`Branch Specifier`区域留空即可，一般情况下，只有不同的环境对应的分支才需要构建，比如 master、develop、test 等，平时开发的 feature 或者 bugfix 的分支没必要频繁构建，下图只配置 master 和 develop 两个分支用户构建：
 
-![git-branch](https://tva4.sinaimg.cn/large/006hT4w1ly1gaqfbg7lanj31960u076m.jpg)
+![git-branch](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/xKquxA.jpg)
 
 然后前往 Gitlab 中配置项目polling-app-server Webhook，settings -> Integrations，填写上面得到的 trigger 地址：
 
-![jenkins-webhook](https://tva2.sinaimg.cn/large/006hT4w1ly1gaqfch7v2tj31m80nan0a.jpg)
+![jenkins-webhook](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/SDwnae.jpg)
 
 保存后，可以直接点击`Test` -> `Push Event`测试是否可以正常访问 Webhook 地址，这里需要注意的是我们需要配置下 Jenkins 的安全配置，否则这里的触发器没权限访问 Jenkins，系统管理 -> 全局安全配置：取消`防止跨站点请求伪造`，勾选上`匿名用户具有可读权限`：
 
-![jenkins-webhook-security-config](https://tva4.sinaimg.cn/large/006hT4w1ly1gaqfe5nn5uj31f00ncgnu.jpg)
+![jenkins-webhook-security-config](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/gRNfUd.jpg)
 
 如果测试出现了`Hook executed successfully: HTTP 201`则证明 Webhook 配置成功了，否则就需要检查下 Jenkins 的安全配置是否正确了。
 

@@ -42,16 +42,16 @@ comments: true
 > 全局可用 需要 `Overall/RunScripts` 权限配置这些库，权限过大，不安全。
 `Manage Jenkins` » `Configure System` » `Global Pipeline Libraries`
 
-![jenkins-add-lib](https://tva1.sinaimg.cn/large/006hT4w1ly1gara20zrtaj30m503fglj.jpg)
+![jenkins-add-lib](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/D5xXyc.jpg)
 
-![global-pipeline-library-modern-scm](https://tvax2.sinaimg.cn/large/006hT4w1ly1garb6bkp8sj30jg0dpaaj.jpg)
+![global-pipeline-library-modern-scm](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/MPbG10.jpg)
 
 
 ## JenkinsFile引用共享库
 > 1. 勾选` Load implicitly`, 可直接引用共享库中变量方法；
 > 2. 不勾选，则需要使用`@Library`显式引用。
 
-![jenkins-global-pipeline-lib](https://tva1.sinaimg.cn/large/006hT4w1ly1garauneza5j30lr08wt91.jpg)
+![jenkins-global-pipeline-lib](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/5TNzoe.jpg)
 
 ```groovy
 @Library('my-shared-library') _

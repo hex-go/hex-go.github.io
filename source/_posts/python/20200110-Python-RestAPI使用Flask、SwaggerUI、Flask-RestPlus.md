@@ -50,7 +50,7 @@ source venv/bin/activate
 ```
 访问地址`http://localhost:8888/api/`，可以查看API文档如下:
 
-![restplus-api-listing-methods](https://tvax1.sinaimg.cn/large/006hT4w1ly1garkp5nhwwj30l50badhz.jpg)
+![restplus-api-listing-methods](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/5OSCwQ.jpg)
 
 # 4. 使用
 ## 4.1 HelloWorld举例
@@ -154,7 +154,7 @@ class CategoryItem(Resource):                                           #
 
 上面代码生成的api文档页面如下图：
 
-![restplus-api-method-details](https://tvax3.sinaimg.cn/large/006hT4w1ly1garlv7336jj30l40jh76m.jpg)
+![restplus-api-method-details](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/g6WVkN.jpg)
 
 Swagger UI文档还包括一个可以设置参数的表单。如果需要一个请求体，它的格式可以指定。 点击`Try it out！`按钮，将会给后端服务发请求，并显示response信息。
 

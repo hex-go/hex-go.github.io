@@ -11,7 +11,7 @@ comments: true
 
 # 重要
 
-![image](https://tva2.sinaimg.cn/large/006hT4w1ly1gw8ppmvt2jj31280t6gwd.jpg)
+![image](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/GxJG4k.jpg)
 
 # 环境说明
 

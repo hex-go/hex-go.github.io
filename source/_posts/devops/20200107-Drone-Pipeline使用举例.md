@@ -152,7 +152,7 @@ steps:
 > 3. docker: 使用官方插件`plugins/docker`，该镜像可以指定`Dockerfile` 的路径，镜像的`tag`，以及镜像仓库的用户名和密码。
 此处用户名密码通过`secret`的方式传入。该secret可以通过`drone-cli`创建，也可以Drone网页配置。
 
-![drone-add-secret](https://tva4.sinaimg.cn/large/006hT4w1ly1gaq5l7x3baj31i00pgwgb.jpg)
+![drone-add-secret](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/5eEUrN.jpg)
 
 > 4. deploy: 使用官方插件`drone-helm`
 Drone 的插件页面找到和 Helm 相关的插件：http://plugins.drone.io/ipedrazas/drone-helm/，这个插件的基本用法如下:

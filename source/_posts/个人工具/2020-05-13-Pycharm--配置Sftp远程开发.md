@@ -40,11 +40,11 @@ comments: true
 1. add sftp server
 > PyCharm  Tools > Deployment > Configuration
 
-![picture_sftp_setting_connect](https://tva1.sinaimg.cn/large/006hT4w1ly1g9v745f0xaj30md0iwgmi.jpg)
+![picture_sftp_setting_connect](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/LuEFMK.jpg)
 
-![picture_sftp_setting_mapping](https://tvax4.sinaimg.cn/large/006hT4w1ly1g9v74l9kpaj30mb0ivmxx.jpg)
+![picture_sftp_setting_mapping](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/8am7PP.jpg)
 
 2. set project interpreter use sftp's
 > 点击 PyCharm 的 File > Setting > Project > Project Interpreter 右边的设置按钮新建一个项目的远程解释器：
 
-![picture_project_interpreter_use_sftp](https://tva3.sinaimg.cn/large/006hT4w1ly1g9v73161thj30yl0jidic.jpg)
+![picture_project_interpreter_use_sftp](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/cFekKv.jpg)

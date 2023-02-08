@@ -25,7 +25,7 @@ comments: true
 3. 在三个组上面添加对应的用户， jenkins-admin组添加admin， jenkins-manager组添加operator用户
 最终组织图如下：
 
-![ldap-group+user](https://tvax1.sinaimg.cn/large/006hT4w1ly1gap61auymhj30bk0bejrk.jpg)
+![ldap-group+user](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/HOvgyq.jpg)
 
 ## 1. jenkins插件安装
 使用LDAP认证需要安装LDAP插件，安装插件有两种方法：
@@ -35,7 +35,7 @@ comments: true
 > + 缺点：因为网络等各种问题安装不成功
 安装方法：登录Jenkins --> 系统管理 --> 插件管理 --> 可选插件 --> 搜索LDAP --> 选中 --> 直接安装 --> 安装完成重启
 
-![jenkins-ldap](https://tvax1.sinaimg.cn/large/006hT4w1ly1gap6m6gdzij311q08eglw.jpg)
+![jenkins-ldap](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/QR6yLk.jpg)
 如果安装失败，网上也有说在插件管理 --> 高级 --> 升级站点里替换URL为`https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`，但替换了之后依然没有成功，最后还是使用方法二安装成功
 
 方法二：官网下载安装文件后台上传
@@ -46,16 +46,16 @@ comments: true
 安装方法：官网下载插件 --> 登录Jenkins --> 系统管理 --> 插件管理 --> 高级 --> 上传插件 --> 选择文件 --> 上传 --> 安装完成后重启
 上传插件安装可能会失败，大部分都是提示你当前插件依赖某些插件，只需要下载全部依赖插件，按照顺序上传安装即可，LDAP插件安装完成后，所有依赖的插件如下：
 
-![jenkins-ldap-install](https://tvax1.sinaimg.cn/large/006hT4w1ly1gap6qkkd95j31040eqq3z.jpg)
+![jenkins-ldap-install](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/ngCjc3.jpg)
 
 ## 2. 配置LDAP认证
 登录Jenkins --> 系统管理 --> 全局安全配置
 
-![jenkin-global-sec-config](https://tvax1.sinaimg.cn/large/006hT4w1ly1gap6r9uyv0j30wq0ed0tz.jpg)
+![jenkin-global-sec-config](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/AxzuTf.jpg)
 
 访问控制选择“LDAP”，Server输入LDAP服务器地址，有其他配置可以点击“Advanced Server Configuration...”
 
-![image](https://tvax1.sinaimg.cn/large/006hT4w1ly1gap89aax6fj30zy0lijv1.jpg)
+![image](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/wzPeQa.jpg)
 
 说明：
 + **root DN**：这里的`root DN只`是指搜索的根，并非LDAP服务器的`root dn`。由于LDAP数据库的数据组织结构类似一颗大树，而搜索是递归执行的，理论上，我们如果从子节点（而不是根节点）开始搜索，因为缩小了搜索范围那么就可以获得更高的性能。这里的`root DN`指的就是这个子节点的DN，当然也可以不填，表示从LDAP的根节点开始搜索
@@ -72,17 +72,17 @@ comments: true
 
 配置完成后，不要立刻保存，点击``Test LDAP Settings`验证配置的准确性。
 
-![jenkins-test-ldap](https://tvax1.sinaimg.cn/large/006hT4w1ly1gap7jsk7quj30tn05n0sm.jpg)
+![jenkins-test-ldap](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/nyOtqt.jpg)
 
 这里输入的用户名就是你上边配置的User search filter里定义的LDAP中的属性, 本文配置的是uid 密码就是LDAP的密码
 
-![jekins-ldap-test](https://tvax1.sinaimg.cn/large/006hT4w1ly1gap7kydsxpj30n60a20sz.jpg)
+![jekins-ldap-test](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/V82dsx.jpg)
 
 
 ## 3. 配置ldap分组认证
 操作步骤: 选择 `jenkins` -> `系统管理`-> `全局安全设置` -> `访问控制` -> `ldap` -> `授权策略`，选择安全矩阵授权策略。
 
-![image](https://tvax1.sinaimg.cn/large/006hT4w1ly1gap85k0n35j310g0m0jvt.jpg)
+![image](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/old/JqIa3X.jpg)
 
 
 # 备注
