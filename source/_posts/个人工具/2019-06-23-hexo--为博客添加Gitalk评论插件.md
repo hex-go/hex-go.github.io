@@ -4,50 +4,49 @@ categories:
   - 个人工具
 tags:
   - Hexo
-date: '2017-12-19 08:49:00'
+date: '2019-12-19 08:49:00'
 sticky: 0
 comments: true
 ---
 
 # 前言
+博客 **评论系统** 技术选型：
 
-由于 **Disqus** 对于国内网路的支持十分糟糕，很多人反映 Disqus 评论插件一直加载不出来。而我一直是处于翻墙状态的~（话说你们做程序员的都不翻墙用Google的吗😅，哈哈，吐嘈下）
+1.  Disqus 国内无法访问。
+2.  [gitment](https://github.com/imsun/gitment)很久没有维护、更新。
+3.  选用[Gitalk](https://github.com/gitalk/gitalk) 评论插件。
 
-针对这个问题，我添加了[Gitalk](https://github.com/gitalk/gitalk) 评论插件。在此，非常感谢 [@FeDemo](https://github.com/FeDemo) 的推荐 。
+
+
+## Gitalk 说明
+
+[Gitalk](https://gitalk.github.io/) 的界面和功能：
+
+![image-20230206182144023](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/picgo/image-20230206182144023.png)
+gitalk 使用 Github 帐号登录，界面干净整洁，且支持 `MarkDown语法`。
 
 # 正文
 
-## Gitalk 评论插件
+## 1. 获取 Token
+Gitalk 需要一个 **Github Application**，[点击这里申请](https://github.com/settings/applications/new)。
 
-首先来看看 Gitalk 的界面和功能：
+填写下面参数：
 
-[![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmm4u3j0lmj30nk0kl40i.jpg)](https://gitalk.github.io/)
+![image-20230208161904464](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/picgo/image-20230208161904464.png)
 
-gitalk 使用 Github 帐号登录，界面干净整洁，最喜欢的一点是支持 `MarkDown语法`。
+点击创建，获取 `Client ID` 和 `Client Secret` 之后填入 博客配置 Gitalk 部分
 
-## 原理
+![image-20230208162254037](https://hex-cdn.oss-cn-hangzhou.aliyuncs.com/picgo/image-20230208162254037.png)
 
-Gitalk 是一个利用 Github API,基于 Github issue 和 Preact 开发的评论插件，在 Gitalk 之前还有一个 [gitment](https://github.com/imsun/gitment) 插件也是基于这个原理开发的,不过 gitment 已经很久没人维护了。
+## 2. 博客配置
 
-可以看到在 gitalk 的评论框进行评论时，其实就是在对应的 issue 上提问题。
-
-![gitalk评论框](https://ws4.sinaimg.cn/large/006tKfTcgy1fmm5916av1j30i209rab7.jpg)
-
-![Github issue](https://ws4.sinaimg.cn/large/006tKfTcgy1fmm596ggkfj30mx0gfjuk.jpg)
-
-
-## 集成 Gitalk
-
-到这里，你应该对 Gitalk 有个大致的了解了，现在，开始集成 gitalk 插件吧。
-
-
-将这段代码插入到你的网站：
+博客配置文件`source/_data/next.yml`，增加以下配置：
 
 
 ```html
-<!-- Gitalk 评论 start  -->
+<!-- Gitalk start  -->
 {% if site.gitalk.enable %}
-<!-- Link Gitalk 的支持文件  -->
+<!-- Link Gitalk 的脚本  -->
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
 
@@ -58,10 +57,10 @@ Gitalk 是一个利用 Github API,基于 Github issue 和 Preact 开发的评论
     // gitalk的主要参数
 		clientID: `Github Application clientID`,
 		clientSecret: `Github Application clientSecret`,
-		repo: `存储你评论 issue 的 Github 仓库名`,
+		repo: `存储评论 issue 的 Github 仓库名（一般设置为 GitHub Page 的仓库名）`,
 		owner: 'Github 用户名',
 		admin: ['Github 用户名'],
-		id: '页面的唯一标识，gitalk会根据这个标识自动创建的issue的标签',
+		id: '页面的唯一标识。gitalk会根据这个标识，自动创建issue的标签',
     
     });
     gitalk.render('gitalk-container');
@@ -70,54 +69,27 @@ Gitalk 是一个利用 Github API,基于 Github issue 和 Preact 开发的评论
 <!-- Gitalk end -->
 ```
 
-我们需要关心的就是配置下面几个参数：
+**主要参数**配置如下：
 
 ```yaml
 clientID: `Github Application clientID`,
 clientSecret: `Github Application clientSecret`,
-repo: `Github 仓库名`,//存储你评论 issue 的 Github 仓库名（建议直接用 GitHub Page 的仓库名）
+repo: `Github 仓库名`,//存储评论 issue 的 Github 仓库名（建议直接用 GitHub Page 的仓库名）
 owner: 'Github 用户名',
-admin: ['Github 用户名'], //这个仓库的管理员，可以有多个，用数组表示，一般写自己,
-id: 'window.location.pathname', //页面的唯一标识，gitalk 会根据这个标识自动创建的issue的标签,我们使用页面的相对路径作为标识
+admin: ['Github 用户名'], //这个仓库的管理员，可以有多个，数组表示
+id: 'window.location.pathname', //页面的唯一标识。gitalk 会根据这个标识，自动创建issue的标签，使用页面的相对路径作为标识
 ```
-当然，还有其他很多参数，有兴趣的话可以 [ 点这里](https://github.com/gitalk/gitalk#options)。
-
-比如我就增加了这个全屏遮罩的参数。
+其他参数说明见[官方文档](https://github.com/gitalk/gitalk#options) 。比如，增加 **全屏遮罩** 的参数。
 
 ```
 distractionFreeMode: true,
 ```
 
-## 创建 Github Application
 
-Gitalk 需要一个 **Github Application**，[点击这里申请](https://github.com/settings/applications/new)。
 
-填写下面参数：
-
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmm7jaib6fj30jo0gaacs.jpg)
-
-点击创建
-
-获取 `Client ID` 和 `Client Secret` 填入你的我们 Gitalk 参数中
-
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmm7jrzff6j30lc0budhp.jpg)
-
-当你参数都设置好，将代码推送到 Github 仓库后，没什么问题的话，当你点击进入你的博客页面后就会出现评论框了。
-
-当你用 github 帐号登录（管理员），并且第一次加载该会比较慢，因为第一次加载会自动在你 `repo` 的仓库下创建对应 issue。
-
-比如说这样：
-
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmm867n88cj30l809mjse.jpg)
-
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmm8a0i0jkj30rr0ct42t.jpg)
-
-当然，你也可以手动创建issue作为 gitalk评论容器。只要有 `Gitalk` 标签 和 `id` 对应标签就可以。比我我自己创建的 [About issue](https://github.com/qiubaiying/qiubaiying.github.io/issues/38) 。
 
 # 结语
 
-最后说几句吐嘈几句， Gitalk 需要你点开每篇文章的页面才会创建对应的 issue,对我来说真是个糟糕的体验（文章有点多~）。
+遗留问题
 
-当然，也有解决办法，这篇 [自动初始化 Gitalk 和 Gitment 评论](https://draveness.me/git-comments-initialize)，就解决了这个问题。
-
-最后，[给个 star 吧](https://github.com/qiubaiying/qiubaiying.github.io)~
+Gitalk 需要点开每篇文章的页面，进行初始化issue创建。解决方案参考 [自动初始化 Gitalk 和 Gitment 评论](https://draveness.me/git-comments-initialize)。
