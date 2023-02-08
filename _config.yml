@@ -13,7 +13,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://hex-py.github.io/
+url: https://hex-go.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -106,7 +106,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   - type: git
-    repo: https://GH_TOKEN@github.com/hex-py/hex-py.github.io.git
+    repo: https://GH_TOKEN@github.com/hex-go/hex-go.github.io.git
     branch: master
 
 search:

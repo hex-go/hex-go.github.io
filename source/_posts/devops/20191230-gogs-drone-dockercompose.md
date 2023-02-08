@@ -167,7 +167,7 @@ docker run -d \
  - 发送邮件等通知信息，这里还有很多插件，比如微信、钉钉、电报等
 
 
-**[价值源于技术，技术源于分享](https://github.com/hex-py)**
+**[价值源于技术，技术源于分享](https://github.com/hex-go)**
 
 # Reference
 [Nginx代理](https://www.jianshu.com/p/5d36ccb5af88)

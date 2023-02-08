@@ -34,7 +34,7 @@ comments: true
 ## 下载示例代码
 ```bash
 cd ~/work_space/
-git clone https://github.com/hex-py/restplus-api-demo.git
+git clone https://github.com/hex-go/restplus-api-demo.git
 cd restplus-api-demo
 ```
 ## 构建运行的`venv`环境

@@ -28,7 +28,7 @@ comments: true
             └── cls2
                 └── base.go
 ```
-> [项目代码](https://github.com/hex-py/example-adaptor)
+> [项目代码](https://github.com/hex-go/example-adaptor)
 # 使用
 ## 类工厂 
 > 具体文件: ./example-adaptor/adaptor/init.go

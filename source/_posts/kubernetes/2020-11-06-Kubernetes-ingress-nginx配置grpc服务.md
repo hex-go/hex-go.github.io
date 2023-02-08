@@ -28,14 +28,14 @@ grpcurl -insecure test.icos.city:443 build.stack.fortune.FortuneTeller/Predict
 
 # Reference
 以上1.2步参考cert-manager相关内容
-[cert-manager hex-博客](https://hex-py.github.io/2020/11/05/kubernetes-2020-11-05-Kubernetes-certmanager%E8%A7%A3%E5%86%B3ingress-tls%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/)
-[cert-manager hex-github-示例项目](https://github.com/hex-py/cert-manager-example.git)
+[cert-manager hex-博客](https://hex-go.github.io/2020/11/05/kubernetes-2020-11-05-Kubernetes-certmanager%E8%A7%A3%E5%86%B3ingress-tls%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/)
+[cert-manager hex-github-示例项目](https://github.com/hex-go/cert-manager-example.git)
 
 第3,4部参考`ingress-nginx`的官方示例，
 [IngressNginx官房GRPC示例](https://github.com/kubernetes/ingress-nginx/tree/master/images/grpc-fortune-teller)
 
 第3,4部也可参考cert-manager的示例代码测试
-[cert-manager hex-github-示例项目](https://github.com/hex-py/cert-manager-example.git)
+[cert-manager hex-github-示例项目](https://github.com/hex-go/cert-manager-example.git)
 
 其他关于grpc的内容，需要参考此链接
 

@@ -19,7 +19,7 @@ comments: true
 
 # 环境说明
 服务依赖 Postgresql
-[个人部署记录](https://github.com/hex-py/featmap-deploy)
+[个人部署记录](https://github.com/hex-go/featmap-deploy)
 
 # 安装
 目录结构

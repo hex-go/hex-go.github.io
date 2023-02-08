@@ -16,5 +16,5 @@ comments: true
 ### 在这里发现更多
 
 　<i class="fa fa-fw fa-envelope"></i>&nbsp;&nbsp;hex-python (at) qq.com
-　<i class="fa fa-fw fa-github"></i>&nbsp;&nbsp;[GitHub](https://github.com/hex-py "@hex-py")
+　<i class="fa fa-fw fa-github"></i>&nbsp;&nbsp;[GitHub](https://github.com/hex-go "@hex-go")
 {% img /images/wx_channel.jpg 150 微信扫码：Hex %}

@@ -227,5 +227,5 @@ spec:
 [当证书被删除，Secret会被留下](https://github.com/jetstack/cert-manager/issues/2993)
 [当证书被删除，Secret会被留下2](https://github.com/jetstack/cert-manager/issues/296)
 
-[github-示例项目](https://github.com/hex-py/cert-manager-example.git)
+[github-示例项目](https://github.com/hex-go/cert-manager-example.git)
 [Automatic TLS certificates with cert-manager and ingress-nginx](https://atelierhsn.com/2020/07/cert-manager-ingress/)
