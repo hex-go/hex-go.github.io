@@ -1,11 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "Hugo Zzo theme",
-  "short_name": "Hugo Zzo theme",
+  "name": "Hex Blog",
+  "short_name": "Hex Blog",
   "version": "1.0.0",
   "default_locale": "en",
-  "description": "Hugo blog theme with rich features",
-  "start_url": "https://themes.gohugo.io/theme/hugo-theme-zzo/",
+  "description": "Hex Blog with rich features",
   "icons": [
     {
       "src": "favicon/android-icon-36x36.png",
@@ -40,12 +39,6 @@
     {
       "src": "favicon/android-icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "density": "4.0"
-    },
-    {
-      "src": "favicon/android-icon-512x512.png",
-      "sizes": "512x512",
       "type": "image/png",
       "density": "4.0"
     }
