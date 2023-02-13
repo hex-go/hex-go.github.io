@@ -25,9 +25,9 @@ header:
     paddingY: 0
     align: center
     title:
-      - HUGO
+      - Hex Blog
     subtitle:
-      - The world’s fastest framework for building websites
+      - 专注云原生领域的技术博客，将工作中以及感兴趣的技术与经验做记录、备忘。
     titleColor: 
     titleShadow: true
     titleFontSize: 44
