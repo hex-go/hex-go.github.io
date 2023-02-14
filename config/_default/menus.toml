@@ -1,0 +1,82 @@
+[[main]]
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[main]]
+  identifier = "Archive"
+  pre = '<i class="fas fa-book"></i>'
+  name = "存档"
+  weight = 2
+
+[[main]]
+  parent = "Archive"
+  name = "分类"
+  url = "categories"
+  weight = 1
+
+[[main]]
+  parent = "Archive"
+  name = "标签"
+  url = "tags"
+  weight = 1
+
+#[[main]]
+#  parent = "Archive"
+#  name = "kubernetes"
+#  url = "categories/kubernetes/"
+#  weight = 1
+
+[[main]]
+  identifier = "Friends"
+  name = "友链"
+  url = "page/friend"
+  weight = 3
+
+[[main]]
+  identifier = "Books"
+  pre = '<i class="fab fa-docker"></i>'
+  name = "书籍"
+  weight = 4
+
+[[main]]
+  parent = "Books"
+  name = "Go 入门指南"
+  url = "tags/go"
+  weight = 1
+
+[[main]]
+  parent = "Books"
+  name = "Docker handbook"
+  url = "https://www.gitbook.com/book/yeasy/docker_practice"
+  weight = 2
+
+[[main]]
+  parent = "Books"
+  name = "Istio service mesh"
+  url = "https://istio.io/zh/docs"
+  weight = 3
+
+[[main]]
+  parent = "Books"
+  name = "阮一峰书单"
+  url = "https://github.com/ruanyf/reading-list"
+  weight = 4
+
+[[main]]
+  parent = "Books"
+  name = "机器学习笔记"
+  url = "https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes"
+  weight = 5
+
+[[main]]
+  identifier = "about"
+  name = "关于"
+  url = "about"
+  weight = 5
+
+[[main]]
+  identifier = "Rss"
+  name = "RSS"
+  url = "index.xml"
+  weight = 6

@@ -1,6 +1,6 @@
-logoText = "Zzo"
+logoText = "Hex Blog"
 logoType = "short" # long, short
-description = "The Zzo theme for Hugo example site."
+description = "关注云原生领域技术栈的个人博客。"
 custom_css = []
 custom_js = []
 useFaviconGenerator = true # https://www.favicon-generator.org/
@@ -76,7 +76,7 @@ enableSidebar = true
 enableSidebarTags = true
 enableSidebarSeries = true
 enableSidebarCategories = true
-enableHomeSidebarTitles = true
+enableHomeSidebarTitles = false
 enableListSidebarTitles = true
 enableToc = true
 hideToc = false
@@ -92,7 +92,7 @@ enableSidebarPostsByOrder = false
 showPoweredBy = true
 showFeedLinks = true
 showSocialLinks = true
-enableLangChange = true
+enableLangChange = false
 enableThemeChange = true
 
 # service
@@ -161,11 +161,11 @@ commento = false
   dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author='true'"
 
 [socialOptions]
-  email = "mailto:your@email.com"
-  phone = ""
-  facebook = "http://example.org/"
-  twitter = "http://example.org/"
-  github = "https://github.com/zzossig/hugo-theme-zzo"
+  email = "892120992@qq.com"
+  phone = "155****8922"
+  facebook = ""
+  twitter = ""
+  github = "https://github.com/hex-go"
   stack-overflow = ""
   instagram = ""
   google-plus = ""
@@ -207,8 +207,8 @@ commento = false
   name = "twitter"
 
 [[footerLinks]]
-  name = ""
-  link = ""
+  name = "友链"
+  link = "page/friend/"
 [[footerLinks]]
-  name = ""
-  link = ""
+  name = "归档"
+  link = "tags/"

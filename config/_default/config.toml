@@ -2,17 +2,31 @@ baseURL = "https://hex-go.github.io/"
 title = "Hex Blog"
 theme = "zzo"
 
-defaultContentLanguage = "en"
+languageCode = "en-us"
+defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = true
+# 统计中文字数
 hasCJKLanguage = true
+# 把 url 中的大写字符转为小写
+disablePathToLower = false
+# 把分类（categories）名称转为小写
+preserveTaxonomyNames = false
+# 取消默认的代码高亮，我们使用prism代码高亮
+pygmentsUseClasses = false
+pygmentsCodeFences = true
+pygmentsStyle = "dracula"
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClassic = false
+# 分页
+paginate = 12
+# 启用 Emoji; see emoji-cheat-sheet.com
+enableEmoji = true
 
 summaryLength = 70
 buildFuture = true
 
 copyright = "&copy;{year}, All Rights Reserved"
 timeout = 10000
-enableEmoji = true
-paginate = 13
 rssLimit = 100
 
 enableGitInfo = false
