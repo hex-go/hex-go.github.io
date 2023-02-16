@@ -1,6 +1,6 @@
 ---
 title: 小伙伴们
-comments: true
+type: "page"
 ---
 > 感觉内容不错的博客
 

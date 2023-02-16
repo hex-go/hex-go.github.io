@@ -5,21 +5,27 @@
 
 [[main]]
   identifier = "Archive"
-  pre = '<i class="fas fa-book"></i>'
-  name = "存档"
+  name = "归档"
+  url = "archive"
   weight = 2
 
-[[main]]
-  parent = "Archive"
-  name = "分类"
-  url = "categories"
-  weight = 1
-
-[[main]]
-  parent = "Archive"
-  name = "标签"
-  url = "tags"
-  weight = 1
+#[[main]]
+#  identifier = "Archive"
+#  pre = '<i class="fas fa-book"></i>'
+#  name = "存档"
+#  weight = 2
+#
+#[[main]]
+#  parent = "Archive"
+#  name = "分类"
+#  url = "categories"
+#  weight = 1
+#
+#[[main]]
+#  parent = "Archive"
+#  name = "标签"
+#  url = "tags"
+#  weight = 1
 
 #[[main]]
 #  parent = "Archive"
@@ -72,7 +78,7 @@
 [[main]]
   identifier = "about"
   name = "关于"
-  url = "about"
+  url = "page/about"
   weight = 5
 
 [[main]]

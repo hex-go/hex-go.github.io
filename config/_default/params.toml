@@ -8,12 +8,12 @@ meta_image = ""
 themecolor = ""
 
 themeOptions = ["dark", "light", "solarized"]
-notAllowedTypesInHome = ["contact", "talks", "about", "showcase", "publication", "presentation", "resume"]
-notAllowedTypesInHomeSidebar = ["about", "archive", "showcase", "publication", "presentation", "resume"]
-notAllowedTypesInArchive = ["about", "talks", "showcase", "publication", "presentation", "resume"]
-notAllowedTypesInHomeFeed = ["about", "archive", "contact", "talks", "showcase", "publication", "presentation", "resume", "gallery"]
+notAllowedTypesInHome = ["page", "archive"]
+notAllowedTypesInHomeSidebar = ["page", "archive"]
+notAllowedTypesInArchive = ["page", "archive"]
+notAllowedTypesInHomeFeed = ["page", "archive"]
 
-viewportSize = "normal" # widest, wider, wide, normal, narrow
+viewportSize = "narrow" # widest, wider, wide, normal, narrow
 enableUiAnimation = true
 hideSingleContentsWhenJSDisabled = false
 enablePinnedPosts = true
@@ -67,7 +67,7 @@ bioImageUrl = ""
 useGravatar = false
 location = "Xian, China"
 organization = "CheBai"
-link = "https://hex-go.github.io/zh"
+link = "https://hex-go.github.io"
 
 # sidebar
 enableBio = true
@@ -81,11 +81,12 @@ enableListSidebarTitles = true
 enableToc = true
 hideToc = false
 tocFolding = true
-tocPosition = "inner" # inner, outer
+# 文档目录结构位置: 内联、外嵌。 参考：https://zzo-docs.vercel.app/zzo/configuration/params.toml/
+tocPosition = "outer" # inner, outer
 enableTocSwitch = true
 itemsPerCategory = 5
 sidebarPosition = "right"
-tocLevels = ["h2", "h3", "h4"]
+tocLevels = ["h1", "h2", "h3", "h4", "h5"]
 enableSidebarPostsByOrder = false
 
 # footer
@@ -208,7 +209,7 @@ commento = false
 
 [[footerLinks]]
   name = "友链"
-  link = "page/friend/"
+  link = "https://hex-go.github.io/page/friend"
 [[footerLinks]]
   name = "归档"
-  link = "tags/"
+  link = "https://hex-go.github.io/archive"
