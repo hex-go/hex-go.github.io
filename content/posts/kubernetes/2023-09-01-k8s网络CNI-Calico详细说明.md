@@ -10,6 +10,8 @@ top: false
 comments: true
 series:
   - k8s基石
+
+draft: true
 ---
 
 Calico由`Tigera`维护，是k8s中另一个流行的开源CNI插件。适用于网络性能、灵活性和功率等因素至关重要的环境。
