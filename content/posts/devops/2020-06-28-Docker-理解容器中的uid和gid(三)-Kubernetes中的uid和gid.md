@@ -5,7 +5,6 @@ categories:
 tags:
   - Devops
   - Kubernetes
-  - uid
   - Docker
 date: '2020-06-28 09:36:19'
 top: false
