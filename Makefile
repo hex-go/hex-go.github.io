@@ -17,24 +17,29 @@ FILE_NAME=$(BUILD_TIME)-$(TITLE).md
 POST_PATH=source/_posts
 DRAFT_PATH=source/_drafts
 
+# ！！！！正则在makefile中状态不正常、未解决
+# 由于Windows(dos)与linux(unix)文件系统之间的文件命名要求不同，因此只允许TITLE命名包含字母、数字、_、-、. k8s_
+check-title:
+	@if ! echo "$(TITLE)" | grep -E '^[a-zA-Z0-9_\.\-]+$$' &>/dev/null; then echo "Error: '$(TITLE)' contains invalid characters.";fi
+
 types:
 	@echo ">>>>>>>>>show types<<<<<<<<<"
 	@echo Modles:  devops	go    k8s    self    ps    theory    leetcode    bash
 	@echo Folders: $(devops) $(go) $(k8s) $(self) $(ps) $(theory) $(leetcode) $(bash)
 
-show-drafts:
+list-drafts:
 	@echo ">>>>>>>>>show drafts<<<<<<<<<"
-	ls -1 $(DRAFT_PATH)/*.md |cut -d \/ -f 3 |cut -d . -f 1
+	@hugo list drafts
 
-post:
-	@echo $(TYPE)
-	@echo $(TITLE)
-	@echo $(path)
-    #hexo new --path $(path) $(type) $(title)
+clean-build:
+	# hugo设计 只对现有文件进行覆盖，不删除public目录的多余文件（避免删除用户在public手动放置的静态文件）。 按需手动删除
+	rm -rf public/
+	hugo --minify --gc --cleanDestinationDir
 
-#tool:
+build:
+	hugo
 
-local:
+server:
 	hugo server
 
 .PHONY: devops
