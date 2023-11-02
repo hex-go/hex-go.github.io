@@ -8,9 +8,9 @@ tags:
 date: '2023-08-31 21:19:30'
 top: false
 comments: true
-draft: "true"
-#series:
-#  - k8s基石
+draft: true
+series:
+  - k8s基石
 ---
 
 Flannel由CoreOS开发，是k8s最成熟的开源CNI插件之一。它提供了一个开箱即用的网络模型，旨在实现更好的容器和主机间的网络。

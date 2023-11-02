@@ -7,8 +7,8 @@ tags:
   - Kubernetes
 date: '2023-09-02 20:19:12'
 draft: true
-#series:
-#  - k8s基石
+series:
+  - k8s基石
 ---
 Cannal 完美保持Flannel原生的三种模式，扩展支持Calico的BGP、IPIP模式。并且支持网络策略。
 
