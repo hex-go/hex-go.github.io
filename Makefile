@@ -1,5 +1,4 @@
 TYPE:= bash
-TITLE := test
 
 #  post模板名 := 目标文件夹
 CONTENT_DIR:=content/posts
@@ -38,55 +37,51 @@ post:
 local:
 	hugo server
 
-#publish: gen
-#	git commit -m "add some blog"
-
 .PHONY: devops
 devops:
-	hugo new -c $(devops)/ $(FILE_NAME)
+	hugo new --kind devops $(devops)/$(FILE_NAME)
 	git add $(devops)/$(FILE_NAME)
-	#typora $(POST_PATH)/$(devops)/$(FILE_NAME)
+	typora $(POST_PATH)/$(devops)/$(FILE_NAME)
 
 .PHONY: golang
 golang:
-	hugo new -c $(go)/ $(FILE_NAME)
+	hugo new --kind golang $(go)/$(FILE_NAME)
 	git add $(go)/$(FILE_NAME)
 	typora $(go)/$(FILE_NAME)
 
 .PHONY: k8s
 k8s:
-	hugo new -c $(k8s)/ $(FILE_NAME)
+	hugo new --kind k8s $(k8s)/$(FILE_NAME)
 	git add $(k8s)/$(FILE_NAME)
 	typora $(k8s)/$(FILE_NAME)
 
 .PHONY: self
 self:
-	hugo new -c $(self)/$(FILE_NAME)
+	hugo new --kind self $(self)/$(FILE_NAME)
 	git add $(self)/$(FILE_NAME)
-
 	typora $(self)/$(FILE_NAME)
 
 .PHONY: ps
 ps:
-	hugo new -c $(ps)/$(FILE_NAME)
+	hugo new --kind persistence $(ps)/$(FILE_NAME)
 	git add $(ps)/$(FILE_NAME)
 	typora $(ps)/$(FILE_NAME)
 
 .PHONY: theory
 theory:
-	hugo new -c $(theory)/$(FILE_NAME)
+	hugo new --kind theory $(theory)/$(FILE_NAME)
 	git add $(theory)/$(FILE_NAME)
 	typora $(theory)/$(FILE_NAME)
 
 .PHONY: bash
 bash:
-	hugo new -c $(bash)/$(FILE_NAME)
+	hugo new --kind bash $(bash)/$(FILE_NAME)
 	git add $(bash)/$(FILE_NAME)
 	typora $(bash)/$(FILE_NAME)
 
 .PHONY: leetcode
 leetcode:
-	hugo new -c $(leetcode)/$(FILE_NAME)
+	hugo new --kind leetcode $(leetcode)/$(FILE_NAME)
 	git add $(leetcode)/$(FILE_NAME)
 	typora $(leetcode)/$(FILE_NAME)
 
