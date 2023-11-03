@@ -8,6 +8,15 @@
 sudo apt install hugo
 ```
 
+- sync theme
+```bash
+# 使用代理
+source  /mnt/d/AppData/wsl/set-proxy.sh
+
+# 拉取主题
+git submodule update --init
+```
+
 ## 编译
 ```bash
 # 在博客根目录，执行命令 hugo 会编译博客，并将编译后的文件保存至默认目录 ./public 下
@@ -145,7 +154,35 @@ git submodule update --init
 
 > git submodule update时报错`fatal: Need a single revision \n Unable to find current revision in submodule path themes/zzo`, 通过删除`themes/zzo`目录，并执行上面命令解决
 
-3. 从linux环境迁移至window环境，由于之前没有注意跨平台文件格式支持问题，导致`git error：invalid path`问题
+3. 如何更新子模块内容
+   要将 Git 子模块（Git Submodule）中的内容更新到最新提交，你可以使用以下命令：
+
+3.1. 首先，进入包含子模块的父仓库的根目录。
+3.2 使用以下命令来更新子模块内容：
+   ```bash
+   git submodule update --remote
+   ```
+   这会将子模块更新为其最新提交。如果你希望同时初始化未初始化的子模块，可以添加 `--init` 选项：
+   ```bash
+   git submodule update --remote --init
+   ```
+   这将确保子模块已经被初始化并更新到最新提交。
+3.3. 如果你只希望更新一个特定的子模块，可以进入子模块目录，然后运行 `git pull` 或 `git fetch` 命令，如下所示：
+   ```bash
+   cd path/to/submodule
+   git pull origin master  # 或者使用子模块所在分支的名称
+   ```
+   这将使子模块更新到其最新提交。请替换 `path/to/submodule` 为你的子模块的实际路径，以及使用正确的分支名称。
+3.4. 最后，返回到父仓库的根目录，并提交任何子模块更新的变更：
+
+   ```bash
+   git add path/to/submodule  # 将子模块的路径添加到父仓库的暂存区
+   git commit -m "Update submodule to latest commit"
+   ```
+   这将在父仓库中记录子模块的更新。
+请注意，如果你的子模块包含在主仓库的特定提交中，父仓库中的该提交将包含子模块的特定提交引用。因此，要更新子模块，你需要切换到主仓库中包含最新子模块引用的提交，然后执行上述更新步骤。
+
+4. 从linux环境迁移至window环境，由于之前没有注意跨平台文件格式支持问题，导致`git error：invalid path`问题
 > 文件命名注意：1. windows不区分大小写（避免文件名相同，但大小写不同）；2. 文件名不要带`:`；3. 文件名尽量不要带中文
 - `core.protectNTFS` git配置 Windows系统下默认值是true，不符合NTFS策略的文件不会被checkout，设置为false后可以关闭保护机制。
 
