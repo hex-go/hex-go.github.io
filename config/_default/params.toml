@@ -1,49 +1,51 @@
-logoText = "Hex Blog"
-logoType = "short" # long, short
-description = "关注云原生领域技术栈的个人博客。"
-custom_css = []
-custom_js = []
-useFaviconGenerator = true # https://www.favicon-generator.org/
-meta_image = ""
-themecolor = ""
+# 参考  https://zzo-docs.vercel.app/zzo/configuration/params.toml/
 
-themeOptions = ["dark", "light", "solarized"]
-notAllowedTypesInHome = ["page", "archive"]
-notAllowedTypesInHomeSidebar = ["page", "archive"]
-notAllowedTypesInArchive = ["page", "archive"]
-notAllowedTypesInHomeFeed = ["page", "archive"]
+logoText = "Hex Blog"                              # 导航栏logo旁边显示的网站名称
+logoType = "short" # long, short                   # 导航栏logologo类型，short: 正方形；long: 矩形
+description = "关注云原生领域技术栈的个人博客。"         # 博客描述
+custom_css = []                                    # 自定义css  举例说明 文件目录： assets/scss/custom.scss  配置文件： custom_css = ["css/custom.css", ...]
+custom_js = []                                     # 自定义Js
+useFaviconGenerator = true                         # https://www.favicon-generator.org/
+meta_image = ""                                    # 将博文分享到社交媒体（Twitter、Facebook、Telegram 等）时，博文链接可以使用元图像作为链接预览。
+themecolor = ""                                    #
 
-viewportSize = "narrow" # widest, wider, wide, normal, narrow
-enableUiAnimation = true
-hideSingleContentsWhenJSDisabled = false
-enablePinnedPosts = true
-minItemsToShowInTagCloud = 1 # Minimum items to show in tag cloud
+themeOptions = ["dark", "light", "solarized"]      # 主题：深色、浅色、护眼
+notAllowedTypesInHome = ["page", "archive"]        # 不想包含在 "主页" 中的类型，page=./content/page archive=./content/archive 可选 [archive about contact talks showcase ]
+notAllowedTypesInHomeSidebar = ["page", "archive"] # 不想包含在 "主页-侧边栏" 中的类型， 类型介绍 同上
+notAllowedTypesInArchive = ["page", "archive"]     # 不想包含在 "存档页面" 中的类型， 类型介绍 同上。
+notAllowedTypesInHomeFeed = ["page", "archive"]    # 不想包含在 "RSS 订阅页面" 上的类型。 类型介绍 同上。
+
+viewportSize = "normal"                    # 博客内容区宽度： widest=1600px, wider=1440px, wide=1280px, normal=960px, narrow=800px
+enableUiAnimation = true                   # 加载内容时启用或禁用用户界面动画
+hideSingleContentsWhenJSDisabled = false   # 浏览器禁用 javascript 时，博客内容是否被隐藏。false: 不隐藏
+enablePinnedPosts = true                   # 可以在帖子中设置 pinned: true 固定前置内容。被固定的帖子会出现在帖子列表的顶部。true: 可置顶(目前测试无法置顶，但会在标题前增加📌图标)
+minItemsToShowInTagCloud = 1               # 博客标签小于此数目的标签将被隐藏，1：全部显示
 
 # appbar
 enableAppbarSearchIcon = false
 enableAppbarLangIcon = false
 
 # header
-homeHeaderType = "text" # text, img, slide, typewriter
-hideHomeHeaderWhenMobile = false
+homeHeaderType = "text"           # 首页标题类型，text：文本（可选 text, img, slide, typewriter）
+hideHomeHeaderWhenMobile = false  # 手机端隐藏首页标题，false: 不隐藏
 
 # menu
 showMobileMenuTerms = ["tags", "categories", "series"]
 
 # search
-enableSearch = true
-enableSearchHighlight = true
-searchResultPosition = "main" # side, main
-searchContent = true # include content to search index
-searchDistance = 100 # fuse option
-searchThreshold = 0.4 # 0.0: exact match, 1.0: any match
+enableSearch = true               # 搜索功能
+enableSearchHighlight = true      # 搜索高亮
+searchResultPosition = "main"     # 搜索结果位置 main: 中间 （可选 side, main）
+searchContent = true              # include content to search index
+searchDistance = 100              # fuse option
+searchThreshold = 0.4             # 0.0: exact match, 1.0: any match
 
 # body
 enableBreadcrumb = true
 enableGoToTop = true
 enableWhoami = true
-summaryShape = "classic" # card, classic, compact
-archiveGroupByDate = "2006" # "2006-01": group by month, "2006": group by year
+summaryShape = "classic"          # card, classic, compact
+archiveGroupByDate = "2006"       # "2006-01": group by month, "2006": group by year
 archivePaginate = 13
 paginateWindow = 1
 talksPaginate = 5
@@ -64,40 +66,41 @@ myname = "Hex"
 email = "hex-py@gmail.com"
 whoami = "CloudNative Developer"
 bioImageUrl = ""
-useGravatar = false
-location = "Xian, China"
-organization = "CheBai"
-link = "https://hex-go.github.io"
+useGravatar = false               # Gravatar是Globally Recognized Avatar的缩写,意为“全球通用头像”。如果在Gravatar(https://gravatar.com/)的服务器上放置了你自己的头像，那么在任何支持Gravatar的blog或者留言本上留言时，只要提供你与这个头像关联的email地址，就能够显示出你的Gravatar头像来。
+location = "Xian, China"          # 地址
+organization = "CheBai"           # 组织
+link = "https://hex-go.github.io" # 链接
 
 # sidebar
-enableBio = true
-enableBioImage = true
-enableSidebar = true
-enableSidebarTags = true
-enableSidebarSeries = true
-enableSidebarCategories = true
-enableHomeSidebarTitles = false
-enableListSidebarTitles = true
-enableToc = true
-hideToc = false
-tocFolding = true
-# 文档目录结构位置: 内联、外嵌。 参考：https://zzo-docs.vercel.app/zzo/configuration/params.toml/
-tocPosition = "outer" # inner, outer
-enableTocSwitch = true
-itemsPerCategory = 5
-sidebarPosition = "right"
-tocLevels = ["h1", "h2", "h3", "h4", "h5"]
-enableSidebarPostsByOrder = false
+enableBio = true                  # 显示 简介，Bio(Biography的缩写，在社交媒体上是指对用户的简短描述。通常显示在用户的个人资料页面上，可包括用户的姓名、地点、兴趣爱好、网站链接和联系方式等信息。它用于帮助其他用户更多了解该用户，并决定是否关注或与之联系。)
+enableBioImage = true             # 显示 简介的头像
+enableSidebar = true              # 开启侧边栏显示
+enableSidebarTags = true          # 侧边栏 - 标签显示
+enableSidebarSeries = true        # 侧边栏 - 系列显示
+enableSidebarCategories = true    # 侧边栏 - 分类显示
+enableHomeSidebarTitles = false   #
+enableListSidebarTitles = true    #
+itemsPerCategory = 5              # 进入某分类、标签、系列时，侧边栏显示博客的最大数目 5 个
+enableSidebarPostsByOrder = false #
+sidebarPosition = "right"         # 侧边栏位置 - right：右侧
+
+# 博客目录
+enableToc = true                  # 目录是否启用
+hideToc = false                   # 目录是否隐藏
+enableTocSwitch = true            # 是否启用 目录隐藏\显示 按钮
+tocFolding = false                # 目录是否动态显示
+tocPosition = "outer"             # 文档目录结构位置: 内联(inner)、外嵌(outer)。
+tocLevels = ["h2", "h3", "h4"]    # 目录所包含的标题，还受config.toml中的markup.tableOfContents配置影响
 
 # footer
-showPoweredBy = true
-showFeedLinks = true
-showSocialLinks = true
-enableLangChange = false
-enableThemeChange = true
+showPoweredBy = true              # 页脚显示博客引擎与主题
+showFeedLinks = true              # RSS订阅
+showSocialLinks = true            # 博客页脚 显示社交链接(email github ...)
+enableLangChange = false          # 语言切换 - 禁用
+enableThemeChange = true          # 主题切换 - 启用
 
 # service
-googleTagManager = "" # GTM-XXXXXX
+googleTagManager = ""             # GTM-XXXXXX
 baiduAnalytics = ""
 enableBusuanzi = false
 busuanziSiteUV = true
@@ -105,7 +108,7 @@ busuanziSitePV = true
 busuanziPagePV = true
 
 # rss
-updatePeriod = "" # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
+updatePeriod = ""                 # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
 updateFrequency = ""
 fullContents = false
 
@@ -142,27 +145,27 @@ commento = false
   enable = false
   appId = '你的appId'
   appKey = '你的appKey'
-  notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
-  verify = false # Verification code
+  notify = false          # mail notifier , https://github.com/xCss/Valine/wiki
+  verify = false          # Verification code
   avatar = 'mm' 
   placeholder = '说点什么吧...'
   visitor = false
 
 [changyan]
-  changyanAppid = ""        # Changyan app id             # 畅言
-  changyanAppkey = ""       # Changyan app key
+  changyanAppid = ""      # Changyan app id             # 畅言
+  changyanAppkey = ""     # Changyan app key
 
 [livere]
-  livereUID = ""            # LiveRe UID                  # 来必力
+  livereUID = ""          # LiveRe UID                  # 来必力
 
 # Isso: https://posativ.org/isso/
 [isso]
   enable = false
-  scriptSrc = "" # "https://isso.example.com/js/embed.min.js"
-  dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author='true'"
+  scriptSrc = ""          # "https://isso.example.com/js/embed.min.js"
+  dataAttrs = ""          # "data-isso='https://isso.example.com' data-isso-require-author='true'"
 
 [socialOptions]
-  email = "892120992@qq.com"
+  email = "hex-go@qq.com"
   phone = "155****8922"
   facebook = ""
   twitter = ""
@@ -206,6 +209,8 @@ commento = false
   username = ""
 [[share]]
   name = "twitter"
+[[share]]
+name = "linkedin"
 
 [[footerLinks]]
   name = "友链"

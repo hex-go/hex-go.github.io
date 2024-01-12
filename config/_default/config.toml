@@ -1,52 +1,46 @@
-baseURL = "https://hex-go.github.io/"
-title = "Hex Blog"
-theme = "zzo"
+baseURL = "https://hex-go.github.io/"     # 已发布网站的绝对URL（协议://域名/path/ 如 https://hex-go.github.io/）
+title = "Hex Blog"                        # 浏览器页签显示的title名称
+theme = "zzo"                             # 主题
 
-languageCode = "en-us"
-defaultContentLanguage = "zh"
-defaultContentLanguageInSubdir = true
-# 统计中文字数
-hasCJKLanguage = true
-# 把 url 中的大写字符转为小写
-disablePathToLower = false
-# 把分类（categories）名称转为小写
-preserveTaxonomyNames = false
-# 取消默认的代码高亮，我们使用prism代码高亮
-pygmentsUseClasses = false
-pygmentsCodeFences = true
-pygmentsStyle = "dracula"
-pygmentsCodefencesGuessSyntax = true
-pygmentsUseClassic = false
-# 分页
-paginate = 12
-# 启用 Emoji; see emoji-cheat-sheet.com
-enableEmoji = true
+languageCode = "en-us"                    # RFC 5646 定义的语言标记。该值用于RSS模板和html模板中的lang=''
+defaultContentLanguage = "zh"             # 没有语言指示符的博客内容将默认使用该语言。zh: 中文
+defaultContentLanguageInSubdir = true     # 在子目录中渲染默认内容语言，例如 content/en/。网站根目录 / 将重定向到 /en/。
+hasCJKLanguage = true                     # 统计中文字数
+disablePathToLower = false                # 把 url 中的大写字符转为小写
+preserveTaxonomyNames = false             # 把分类（categories）名称转为小写
 
-summaryLength = 70
-buildFuture = true
+pygmentsCodeFences = true                 # 启用或禁用 Pygments 语法高亮处理代码块。如果设置为 true，Hugo 将使用 Pygments 来高亮显示代码块。false: 使用默认的代码高亮包（chroma）二者区别https://github.com/alecthomas/chroma#whats-missing-compared-to-pygments
+pygmentsUseClasses = false                # 用于启用或禁用在渲染代码块时为语法元素使用 CSS 类。如果设置为 true，Pygments 将在生成的 HTML 代码中使用 CSS 类。
+pygmentsStyle = "dracula"                 # 高亮风格
+pygmentsCodefencesGuessSyntax = true      # 推断代码块语法的功能。代码块没有显式指定语法的情况下，尝试根据代码的内容猜测应该使用哪种语法高亮。
+
+summaryLength = 70                        # 在 .Summary 中显示的文字长度（以字为单位）。
+buildFuture = true                        # 编译date>now的内容。
 
 copyright = "&copy;{year}, All Rights Reserved"
-timeout = 10000
-rssLimit = 100
+timeout = 600                             # 页面内容生成超时，单位：秒。 此配置用于跳出递归，如果页面内容过多可适当调高此限制
+paginate = 12                             # 分页时每页的博客数量。
+enableEmoji = true                        # 启用 Emoji; see emoji-cheat-sheet.com
+rssLimit = 100                            # RSS 订阅内容的最大条目数。默认值-1（不限制）
 
 enableGitInfo = false
 googleAnalytics = ""
 
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      hardWraps = true
-      unsafe = true
-      xHTML = true
-  [markup.highlight]
-    codeFences = true
-    lineNos = true
-    lineNumbersInTable = true
-    noClasses = false
-  [markup.tableOfContents]
-    endLevel = 4
-    ordered = false
-    startLevel = 2
+[markup]                                 # 标记语言渲染html设置 https://gohugo.io/getting-started/configuration-markup/
+  [markup.goldmark]                      #   goldmark是golang分析标记语言的包  https://github.com/yuin/goldmark/
+    [markup.goldmark.renderer]           #
+      hardWraps = true                   #     忽略换行符，默认值false: 忽略段落中的换行符。true: 换行符将呈现为 <br> 元素。
+    unsafe = true                        #     渲染原始HTML和潜在危险的链接。默认值false: Goldmark不进行渲染；如果有大量内联 HTML 和/或 JavaScript，需要设置为true。
+    xHTML = true                         #
+  [markup.highlight]                     #   高亮设置
+    codeFences = true                    #     启用代码块（codeFences）高亮显示
+    lineNos = true                       #     配置行号。有效值为 true、false、table 或 inline。false 将关闭行号。
+    lineNumbersInTable = true            #     使用表格格式化行号和代码，而不是跨行。
+    noClasses = false                    #     false: 不引用class css
+  [markup.tableOfContents]               #   目录TOC设置
+    endLevel = 4                         #     目录包含的最小标题，4 == H4
+    ordered = false                      #     目录标题排序
+    startLevel = 2                       #     目录包含的最大标题，2 == H2
 
 [outputs]
   home = ["HTML", "RSS", "SearchIndex"]
@@ -65,3 +59,45 @@ googleAnalytics = ""
   category = "categories"
   tag = "tags"
   series = "series"
+
+[related]                                # 相关内容设置
+  includeNewer = false                   #   包括更新日期比当前文章新的相关文章
+  threshold = 80                         #   定义两篇文章之间标签匹配的阈值。标签匹配度高于阈值的文章将被视为相关文章。
+  toLower = false                        #   将标签、关键字转换成小写进行匹配，即 false：区分大小写
+# 自定义相关内容算法中不同因素的权重，结合threshold=80，相关文章最大5条
+# 1. 相同系列的文章，也必定为相关文章（合理）
+# 2. 文章>3个相同关键字，则为相关文章（合理）
+# 3. 文章>3个相同tag，则为相同文章(合理)
+# 4. 日期不纳入相关性计算（合理）
+[[related.indices]]                      #   相关性 - 系列
+    name = 'series'                      #     名称，series(系列)
+    weight = 90                          #     权重，在相关性计算中的权重，范围为正整数，值越大相关性越强，0：不进行相关性计算
+    type = 'basic'                       #     相关性类型， basic基本类型
+    applyFilter = false                  #     是否应用过滤器，false：不应用
+    cardinalityThreshold = 0             #     关键字的基础阈值，0：没有基础阈值
+    pattern = ''                         #     正则表达式模式，可用正则进行过滤
+    toLower = false                      #     转小写
+[[related.indices]]                      #   相关性 - 关键字
+    name = 'keywords'                    #     名称，keywords(关键字)
+    weight = 30                          #     权重，30：标签在相关性计算中 权重较低
+    type = 'basic'
+    applyFilter = false
+    cardinalityThreshold = 0
+    pattern = ''
+    toLower = false
+[[related.indices]]                      #   相关性 - 标签
+    name = 'tags'                        #     名称，tag(标签)
+    weight = 30                          #     权重，30：标签在相关性计算中 权重较低
+    type = 'basic'
+    applyFilter = false
+    cardinalityThreshold = 0
+    pattern = ''
+    toLower = false
+[[related.indices]]                      #   相关性 - 日期
+    name = 'date'                        #     名称，date(日期)
+    weight = 0                           #     权重，0：日期不进行相关性计算
+    type = 'basic'
+    applyFilter = false
+    cardinalityThreshold = 0
+    pattern = ''
+    toLower = false

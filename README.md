@@ -37,11 +37,10 @@ make clean-build
 make server
 ```
 
-## 目录说明
-> ./source/ 与 ./scaffolds/为hexo迁移后的遗留文件，彻底完成迁移并验证后进行删除
+# 目录说明
 ```text
 hex-go.github.io
-├── archetypes/      # hugo new content 命令
+├── archetypes/      # 博客模板目录
 │   └── default.md
 ├── config/          # 配置文件
 ├── content/         # 博客主要内容
@@ -56,52 +55,31 @@ hex-go.github.io
 ```
 
 
-## 编写博客
+# 编写博客
 ```bash
-# 创建博客（不能带空格，不能加特殊字符）
+# 创建博客（1. 不能带空格、冒号等特殊字符；2. `_`可作为系列前缀，会在title中被替换为 `: `）
 make k8s TITLE='解析k8s-yaml成client-go中的data-structs'
 #make ps TITLE='Registry配置keycloak作为认证服务'
 #make self TITLE='Gland使用技巧'
-#make golang TITLE='Go-Modules版本控制和依赖管理'
-#make devops TITLE='Docker-理解容器中的uid和gid'
+#make golang TITLE='Golang_Modules版本控制和依赖管理'
+#make devops TITLE='Docker_理解容器中的uid和gid'
 #make bash TITLE='shell基础之EOF的用法'
 # make bash TITLE='Linux查漏补缺-4_安装包管理-deb'
 #make leetcode TITLE='算法的时间和空间复杂度说明'
 #make theory TITLE='RSA算法原理'
 
-# 创建草稿
-hugo new draft hexo常用命令备忘录
+# make 创建博客
+make devops TITLE='容器常见：Dockerfile的ENTRYPOINT中不能使用环境变量'
 
-# make 创建草稿
-make draft TITLE='容器常见：Dockerfile的ENTRYPOINT中不能使用环境变量'
+# 本机预览
+make server
 
-# 本机预览草稿
-hugo server --buildDrafts
+# 发布博客
+git push origin
 
-# 将草稿发布为正式文章
-hexo P hexo常用命令备忘录
-# 或者 将草稿 以 bash 的布局发布(不支持--path参数知道目录，文件会保存在_post目录下，只能手动移动到相应子文件夹下)
-hexo publish bash hexo常用命令备忘录 
-
-make publish TYPE='bash' TITLE='hexo常用命令备忘录'
 ```
 
-## 编写最佳实践
-# 建议使用顺序
-> 尽量避免使用 make new 直接创建正式博客，除非有大块的时间将博客能一步到位写完。
-> make types 命令查看所有类型，
-1. make draft来创建文章草稿并推送远端
-```bash
-# TITLE 禁止包含空格、/、.等特殊字符
-make draft TITLE='容器常见：Dockerfile的ENTRYPOINT中不能使用环境变量'
-```
-2. 将草稿修改内容每天推送远端
-
-3. 草稿完成后 make publish 发布为正式博客，并推送github
-> make show-drafts 命令查看所有草稿文件名(不包含父目录和后缀)
-```bash
-make publish TYPE='bash' TITLE='hexo常用命令备忘录'
-```
+> 也可以将未完成的博客暂存, 添加`draft: true`标识，并推送
 
 # 配置文件
 
