@@ -4,10 +4,14 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - Draft
+  - CNI
+  - CSI
+  - CRI
 date: '2020-05-29 00:52:19'
 top: false
 comments: true
+keywords: 
+  - CNI
 series:
   - k8s基石
 ---
