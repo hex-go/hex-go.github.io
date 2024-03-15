@@ -11,8 +11,8 @@ top: false
 comments: true
 ---
 # 重点
-> 1. 能在DockerFile中做的，比如多阶段构建，就在dockerfile中做。不能再jenkinsfile中做太多特例化的事情，否则不好管理迁移。
-> 2. 如果有时间，可以做一个简单的ui来配置生成jenkinsfile，这样就可以省去开发学习jenkinsFile的成本。也可以限制住，把控标准。
+> 1. 能在DockerFile中做的，比如多阶段构建，就在Dockerfile中做。不能在Jenkinsfile中做太多特例化的事情，否则不好管理迁移。
+> 2. 如果有时间，可以做一个简单的ui来配置生成Jenkinsfile，这样就可以省去开发人员学习JenkinsFile的成本。也可以增加限制，把控标准。
 
 # JenkinsFile 文档目录
 
@@ -23,7 +23,7 @@ comments: true
 5. 推送chart
 
 
-## 1 拉带码
+## 1 拉取代码
 ```groovy
     stage('Check out') {
         checkout scm
@@ -32,7 +32,7 @@ comments: true
 ### 1.1 镜像版本控制  --  {ver}
 master  --> latest
 release --> stable
-TAG       --> 保持不便 
+TAG     --> 保持不变 
 
 ```groovy
 name_list     = "$JOB_NAME".split('/')
@@ -45,21 +45,21 @@ if(ver_map.containsKey(ver)){
 ### 1.2 镜像版本控制  --  {ver}
 举例：
 ```
-  jenkins配置的job名为 'qloudobp-customer-profiles'  选择 master 分支构建
-  $JOB_NAME         : qloudobp-customer-profiles/master
-  name_list         : ['qloudobp-customer-profiles', 'master']
+  jenkins配置的job名为 'paas-devops-ui'  选择 master 分支构建
+  $JOB_NAME         : paas-devops-ui/master
+  name_list         : ['paas-devops-ui', 'master']
   ver               : 'master'
-  job               : 'qloudobp-customer-profiles'
-  job_list          : ['qloudobp', 'customer', 'profiles']
-  project           : qloudobp
+  job               : 'paas-devops-ui'
+  job_list          : ['paas', 'devops', 'ui']
+  project           : paas
   job_size          : 2
-  img_list          : ['customer', 'profiles']
-  img               : customer-profiles
+  img_list          : ['devops', 'ui']
+  img               : devops-ui
   ver               : 'latest' (重赋值)
-  tag               : "reg.qloud.com/qloudobp/customer-profiles:latest"
-  script_dir        :  qloudobp/customer-profiles/latest
-  slug_dir          : /tmp/qloudobp/customer-profiles/latest
-  slug_file         : /tmp/qloudobp/customer-profiles/latest/slug.tgz
+  tag               : "reg.service.com/paas/devops-ui:latest"
+  script_dir        :  paas/devops-ui/latest
+  slug_dir          : /tmp/paas/devops-ui/latest
+  slug_file         : /tmp/paas/devops-ui/latest/slug.tgz
 ```
 
 ```groovy
@@ -80,11 +80,11 @@ if(ver_map.containsKey(ver)){
         ver       = ver_map.get(ver)
     }
 
-    def tag       = "reg.qloud.com/'${ project }'/'${ img }':'${ ver }'"
-    //  def tag   = "reg.qloud.com"+"/"+project+'/'+img+':'+ver
+    def tag       = "reg.service.com/'${ project }'/'${ img }':'${ ver }'"
+    //  def tag   = "reg.service.com"+"/"+project+'/'+img+':'+ver
     def script_dir= project+'/'+img+'/'+ver
     def slug_dir  = "/tmp/'${script_dir}'"
-    def slug_file = "'${slug_dir}'/qloudmart.tgz"
+    def slug_file = "'${slug_dir}'/slug.tgz"
 ```
 
 ## 2. 代码构建
@@ -104,11 +104,11 @@ if(ver_map.containsKey(ver)){
     stage('Build') {
     
         withEnv(["PATH+NODE=${ nodeHome }/bin"]) {
-            dir('QloudMartUI'){
+            dir('devops_ui'){
                 sh 'npm install'
                 sh "${ng_cmd}"
             }
-            dir('QloudMartUI/qloudmart'){
+            dir('devops_ui/devops'){
                 sh 'npm install'
             }
         }
@@ -123,9 +123,9 @@ def slug_file = "'${slug_dir}'/slug.tgz"
 stage('Docker build') {
     // 创建存放代码slug包的目录
     sh("mkdir -p '${ slug_dir }'")
-    // 在QloudMartUI目录，将当前文件夹除去.git src 的所有内容打成 slug.tgz包
+    // 在DevopsUI目录，将当前文件夹除去.git src 的所有内容打成 slug.tgz包
     // 目录结构为： /tmp/{project}/{img}/{ver}/slug.tgz
-    dir('QloudMartUI'){
+    dir('devops_ui'){
        sh("tar -z --exclude='.git' --exclude='src' -cf '${slug_file}' .")
     }
     // 将/tmp/{project}/{img}/{ver}/slug.tgz 拷贝到 Dockerfile 同级
@@ -138,13 +138,13 @@ stage('Docker build') {
 ```
 
 ## 4. 推送初始化脚本
-项目根目录下如果没有/deploy/install.sh 那么说明该项目不需要初始化脚本，paas
+项目根目录下如果没有`/deploy/install.sh`, 那么说明该项目不需要初始化脚本，跳过。
 ```groovy
 stage('Send script') {
     def exists = fileExists './deploy/install.sh'
     if (exists) {
         sh("tar -zcvf deploy.tgz deploy/")
-        sh("curl -v -u qloudinstall:qloudinstall123 -X POST 'http://qloudnexus.mart.service.sd/service/rest/v1/components?repository=qloudinstall' -H 'accept: application/json' -H 'Content-Type: multipart/form-data' -F 'raw.directory=${script_dir}' -F 'raw.asset1=@deploy.tgz;type=application/x-compressed-tar' -F 'raw.asset1.filename=deploy.tgz'")
+        sh("curl -v -u username:password -X POST 'http://nexus.service.com/service/rest/v1/components?repository=paasinstall' -H 'accept: application/json' -H 'Content-Type: multipart/form-data' -F 'raw.directory=${script_dir}' -F 'raw.asset1=@deploy.tgz;type=application/x-compressed-tar' -F 'raw.asset1.filename=deploy.tgz'")
     } else {
         println "File doesn't exist"
     }
@@ -154,11 +154,11 @@ stage('Send script') {
 ## 5. 推送chart
 ```groovy
 stage('Send Helm') {
-    def gitUrl = 'https://192.168.11.21/plugins/git/qloudlet/charts.git'
-    def gitCredentialsId = '4116a55e-8551-46b7-b864-d182d6e16657'
+    def gitUrl = 'https://git.service.com/plugins/git/paas/charts.git'
+    def gitCredentialsId = '4116a55e-8551-46b7-b864-xxxxxxxxxxxx'
     git credentialsId: "${ gitCredentialsId }", url: "${ gitUrl }"
     helm package ''
-    curl -X POST "http://192.168.11.130:8081/service/rest/v1/components?repository=market" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "helm.asset=@qloudmonitor-1.2.1.tgz;type=application/x-compressed-tar"
+    curl -X POST "http://dop.service.com/service/rest/v1/components?repository=market" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "helm.asset=@monitor-1.2.1.tgz;type=application/x-compressed-tar"
 }
 ```
 ## 6. 清理环境
@@ -200,8 +200,8 @@ withEnv(["PATH+NODE=${ nodeHome }/bin"]) {
 
 ## 在某个目录下执行命令
 ```groovy
-//例 在 **.git/QloudMartUI 目录下 执行编译命令
-dir('QloudMartUI/qloudmart'){
+//例 在 **.git/devops_ui 目录下 执行编译命令
+dir('devops_ui/devops'){
     sh 'npm install'
 }
 ```
@@ -220,11 +220,11 @@ node {
         ng_cmd = ng_map.get(label)
     }
 
-    name_list     = "$JOB_NAME".split('/') //eg : 'qloudservice-qloudapi/master' --> ['qloudservice-qloudapi', 'master']
+    name_list     = "$JOB_NAME".split('/') //eg : 'devops-api/master' --> ['devops-api', 'master']
     def ver       = name_list[1]           //eg : 'master'
-    def job       = name_list[0]           //eg : 'qloudservice-qloudapi'
-    job_list      = "$job".split('-')      //eg : 'qloudservice-qloudapi' --> ['qloudservice', 'qloudapi']
-    def project   = job_list[0]            //eg : 'qloudservice'
+    def job       = name_list[0]           //eg : 'devops-api'
+    job_list      = "$job".split('-')      //eg : 'devops-api' --> ['devops', 'api']
+    def project   = job_list[0]            //eg : 'devops'
     job_size      = job_list.size()-1
     img_list      = []
     for(x in (1..job_size)){
@@ -237,11 +237,11 @@ node {
         ver = ver_map.get(ver)
     }
 
-    def tag = "reg.qloud.com/'${ project }'/'${ img }':'${ ver }'"
-    //  def tag = "reg.qloud.com"+"/"+project+'/'+img+':'+ver
+    def tag = "reg.service.com/'${ project }'/'${ img }':'${ ver }'"
+    //  def tag = "reg.service.com"+"/"+project+'/'+img+':'+ver
     def script_dir= project+'/'+img+'/'+ver
     def slug_dir  = "/tmp/'${script_dir}'"
-    def slug_file = "'${slug_dir}'/qloudmart.tgz"
+    def slug_file = "'${slug_dir}'/slug.tgz"
 
     try {
         stage('Check out') {
@@ -251,21 +251,21 @@ node {
 
             withEnv(["PATH+NODE=${ nodeHome }/bin"]) {
                 // sh 'npm prune'
-                 sh "rm -rf QloudMartUI/node_modules"
-                 sh "rm -rf QloudMartUI/package-lock.json"
-                 sh "rm -rf QloudMartUI/qloudmart/node_modules"
-                 sh "rm -rf QloudMartUI/qloudmart/package-lock.json"
+                 sh "rm -rf devops_ui/node_modules"
+                 sh "rm -rf devops_ui/package-lock.json"
+                 sh "rm -rf devops_ui/devops/node_modules"
+                 sh "rm -rf devops_ui/devops/package-lock.json"
             }
 
         }
         stage('Build') {
 
             withEnv(["PATH+NODE=${ nodeHome }/bin"]) {
-                dir('QloudMartUI'){
+                dir('devops_ui'){
                     sh 'npm install'
                     sh "${ng_cmd}"
             }
-                dir('QloudMartUI/qloudmart'){
+                dir('devops_ui/devops'){
                     sh 'npm install'
             }
             }
@@ -273,7 +273,7 @@ node {
         }
         stage('Docker build') {
             sh("mkdir -p '${ slug_dir }'")
-            dir('QloudMartUI'){
+            dir('devops_ui'){
                 sh("tar -z --exclude='.git' --exclude='src' -cf '${slug_file}' .")
             }
             sh("cp ${slug_file} .")
@@ -284,7 +284,7 @@ node {
             def exists = fileExists './deploy/install.sh'
             if (exists) {
                 sh("tar -zcvf deploy.tgz deploy/")
-                sh("curl -v -u admin:admin123 -X POST 'http://qloudnexus.mart.service.sd/service/rest/v1/components?repository=qloudinstall' -H 'accept: application/json' -H 'Content-Type: multipart/form-data' -F 'raw.directory=${script_dir}' -F 'raw.asset1=@deploy.tgz;type=application/x-compressed-tar' -F 'raw.asset1.filename=deploy.tgz'")
+                sh("curl -v -u username:password -X POST 'http://nexus.service.com/service/rest/v1/components?repository=paasinstall' -H 'accept: application/json' -H 'Content-Type: multipart/form-data' -F 'raw.directory=${script_dir}' -F 'raw.asset1=@deploy.tgz;type=application/x-compressed-tar' -F 'raw.asset1.filename=deploy.tgz'")
 
             } else {
                 println "File doesn't exist"
@@ -292,10 +292,10 @@ node {
 
         }
         stage('Send Helm') {
-            def gitUrl           = 'https://192.168.11.21/plugins/git/qloudmart/market-service.git'
-            def gitCredentialsId = '4116a55e-8551-46b7-b864-d182d6e16657'
+            def gitUrl           = 'https://git.service.com/plugins/git/paas/devops-api.git'
+            def gitCredentialsId = '4116a55e-8551-46b7-b864-xxxxxxxxxxxx'
             git credentialsId: "${ gitCredentialsId }", url: "${ gitUrl }"
-            curl -X POST "http://192.168.11.130:8081/service/rest/v1/components?repository=market" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "helm.asset=@qloudmonitor-1.2.1.tgz;type=application/x-compressed-tar"
+            curl -X POST "http://dop.service.com/service/rest/v1/components?repository=market" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "helm.asset=@monitor-1.2.1.tgz;type=application/x-compressed-tar"
         }
 
         stage('Cleanup') {
@@ -315,25 +315,25 @@ node {
 ```
 DockerFile:
 ```dockerfile
-FROM reg.qloud.com/qloudpaas/node:8.12
+FROM reg.service.com/paas/node:8.12
 # Create app directory
 RUN mkdir -p /usr/src/app
 # Bundle app source
 
-ADD ./QloudMartUI/qloudmart.tgz /usr/src/app
-WORKDIR /usr/src/app/qloudmart
+ADD ./devops_ui/slug.tgz /usr/src/app
+WORKDIR /usr/src/app/devops_ui
 ENV NODE_ENV dev
-CMD ["/usr/src/app/qloudmart/start.sh"]
+CMD ["/usr/src/app/devops_ui/start.sh"]
 EXPOSE 8080
 # Build image
-# docker build -t qloud_market:v1 .
+# docker build -t devops-api:v1 .
 #image save
-#docker save d38ea8888a73   -o ~/work/thirdCode/QloudMarket/QloudMarket.tar
+#docker save d38ea8888a73   -o ~/work/thirdCode/paas/devops-api.tar
 #docker images|grep none|awk '{print "docker rmi -f " $3}'|sh
 # docker rm -f $(docker ps -q -a)
-#tar zcvf qloudmart.tgz qloudmart
+#tar zcvf devops.tgz devops
 # Run docker
-# docker run -e SYSTEMCONFIG='{"port":"8080","url":"http://49.4.93.173:32090"}' -p 8080:8080  qloud_market:v1
+# docker run -e SYSTEMCONFIG='{"port":"8080","url":"http://49.4.93.173:32090"}' -p 8080:8080  devops_ui:v1
 #数据格式 http://localhost:8080/api/products/seed
 #{
 #  "port":"8080",
@@ -347,11 +347,11 @@ node {
     currentBuild.result = "SUCCESS"
     def mvnHome   = tool 'maven_3_5_4'
 
-    name_list     = "$JOB_NAME".split('/') //eg : 'qloudservice-qloudapi/master' --> ['qloudservice-qloudapi', 'master']
+    name_list     = "$JOB_NAME".split('/') //eg : 'devops-api/master' --> ['devops-api', 'master']
     def ver       = name_list[1]           //eg : 'master'
-    def job       = name_list[0]           //eg : 'qloudservice-qloudapi'
-    job_list      = "$job".split('-')      //eg : 'qloudservice-qloudapi' --> ['qloudservice', 'qloudapi']
-    def project   = job_list[0]            //eg : 'qloudservice'
+    def job       = name_list[0]           //eg : 'devops-api'
+    job_list      = "$job".split('-')      //eg : 'devops-api' --> ['devops', 'api']
+    def project   = job_list[0]            //eg : 'devops'
     job_size      = job_list.size()-1
     img_list      = []
     for(x in (1..job_size)){
@@ -364,8 +364,8 @@ node {
         ver = ver_map.get(ver)
     }
 
-    def tag = "reg.qloud.com/'${ project }'/'${ img }':'${ ver }'"
-    //  def tag = "reg.qloud.com"+"/"+project+'/'+img+':'+ver
+    def tag = "reg.service.com/'${ project }'/'${ img }':'${ ver }'"
+    //  def tag = "reg.service.com"+"/"+project+'/'+img+':'+ver
     def script_dir= project+'/'+img+'/'+ver
     def slug_dir  = "/tmp/'${script_dir}'"
     def slug_file = "'${slug_dir}'/slug.tgz"
@@ -393,7 +393,7 @@ node {
             def exists = fileExists './deploy/install.sh'
             if (exists) {
                 sh("tar -zcvf deploy.tgz deploy/")
-                sh("curl -v -u admin:admin123 -X POST 'http://qloudnexus.mart.service.sd/service/rest/v1/components?repository=qloudinstall' -H 'accept: application/json' -H 'Content-Type: multipart/form-data' -F 'raw.directory=${script_dir}' -F 'raw.asset1=@deploy.tgz;type=application/x-compressed-tar' -F 'raw.asset1.filename=deploy.tgz'")
+                sh("curl -v -u admin:admin123 -X POST 'http://nexus.service.com/service/rest/v1/components?repository=paasinstall' -H 'accept: application/json' -H 'Content-Type: multipart/form-data' -F 'raw.directory=${script_dir}' -F 'raw.asset1=@deploy.tgz;type=application/x-compressed-tar' -F 'raw.asset1.filename=deploy.tgz'")
 
             } else {
                 println "File doesn't exist"
@@ -401,10 +401,10 @@ node {
 
         }
         stage('Send Helm') {
-            def gitUrl           = 'https://192.168.11.21/plugins/git/qloudlet/charts.git'
-            def gitCredentialsId = '4116a55e-8551-46b7-b864-d182d6e16657'
+            def gitUrl           = 'https://git.service.com/plugins/git/paas/charts.git'
+            def gitCredentialsId = '4116a55e-8551-46b7-b864-xxxxxxxxxxxx'
             git credentialsId: "${ gitCredentialsId }", url: "${ gitUrl }"
-            curl -X POST "http://192.168.11.130:8081/service/rest/v1/components?repository=market" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "helm.asset=@qloudmonitor-1.2.1.tgz;type=application/x-compressed-tar"
+            curl -X POST "http://dop.service.com/service/rest/v1/components?repository=market" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "helm.asset=@monitor-1.2.1.tgz;type=application/x-compressed-tar"
         }
 
         stage('Cleanup') {
@@ -425,7 +425,7 @@ node {
 ```
 DockerFile:
 ```dockerfile
-FROM reg.qloud.com/qloudpaas/jrunner:1.0.0
+FROM reg.service.com/paas/jrunner:1.0.0
 ENV LANG C.UTF-8
 RUN set -x; \
     { \

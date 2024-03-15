@@ -55,7 +55,7 @@ client端命令如下
 > --ignore-unfixed 忽略未修复的漏洞
 
 ```bash
-trivy client --remote http://10.15.6.105:32449 --token mail2Uyu \
+trivy client --remote http://trivy-server.svc.com:4954 --token mail2Uyu \
              --cache-dir /root/.cache/trivy \
              --severity UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL \
              --vuln-type os \

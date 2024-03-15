@@ -44,20 +44,36 @@ comments: true
 - apt包安装
 
 ```dockerfile
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     package-bar \
     package-baz \
     package-foo  \
     && rm -rf /var/lib/apt/lists/*
 ```
 
+- apk安装
+
+```Dockerfile
+## 国内加速
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+RUN apk upgrade --update \
+    && apk add -U tzdata \
+    && rm -rf /var/cache/apk/*
+```
+- 
 
 
 ## 2.2 设置时区
+> 时区原理以及具体说明，参考
 
 ```dockerfile
+FROM alpine:3.19.1
+ENV TZ=Asia/Shanghai
 
+RUN apk add --no-cache tzdata
 ```
+
+
 
 
 
@@ -89,5 +105,5 @@ RUN apt-get update && apt-get install -y \
 
 [使用Alpine基础镜像-add user](https://stackoverflow.com/questions/49955097/how-do-i-add-a-user-when-im-using-alpine-as-a-base-image)
 
-[使用Alpine基础镜像-set Timezone](https://www.grainger.xyz/timezone-in-docker-alpine-not-using-environment-variable-tz/)
+[使用Alpine基础镜像-set Timezone]()
 

@@ -65,12 +65,9 @@ cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 
 
 # 使用
-证书的生成分这几种方式
-SelfSigned: 
-CA:
-Vault:
+cert-manager 可以从各种证书颁发机构获取证书，包括Let's Encrypt、HashiCorp Vault、Venafi 和 私人PKI。
 
-此处选用`CA`方式签发证书：
+由于服务不需要暴露公网，此处选用自签发`CA`(即私人PKI)方式签发证书：
 
 ## 1. 创建ca并保存进集群，Secret:cert-manager:ca-key-pair
 > 此处配置的是自签发证书，如果环境中需要更换成合法证书，需要运维在第二步时，根据真实证书创建Secret。 
