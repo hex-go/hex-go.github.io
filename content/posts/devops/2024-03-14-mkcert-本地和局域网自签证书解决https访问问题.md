@@ -207,4 +207,4 @@ export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 # Reference
 
 [概念说明](https://www.cnblogs.com/guogangj/p/4118605.html)
-[生成证书](https://blog.csdn.net/xiangyuecn/article/details/79179684)
+[mkcert 源码仓库](https://github.com/FiloSottile/mkcert)
