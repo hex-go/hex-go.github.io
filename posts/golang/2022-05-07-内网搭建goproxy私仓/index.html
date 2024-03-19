@@ -24,9 +24,11 @@
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>docker run -d -p80:8081 --name goproxy goproxy/goproxy -listen<span class=o>=</span>0.0.0.0:8081 -cacheDir<span class=o>=</span>/tmp/test -proxy https://goproxy.io -exclude <span class=s2>&#34;git.corp.example.com,rsc.io/private&#34;</span>
 </span></span></code></pre></td></tr></table></div></div><h2 id=测试>测试</h2><p>在本地开发机上，通过环境变量将 proxy server 指定到你刚部署的服务器：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
+</span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>export</span> <span class=nv>GO111MODULE</span><span class=o>=</span>on
 </span></span><span class=line><span class=cl><span class=nb>export</span> <span class=nv>GOPROXY</span><span class=o>=</span>http://<span class=o>[</span>goproxy所在的机器IP<span class=o>]</span>:80
-</span></span></code></pre></td></tr></table></div></div><p>接着运行下面命令，查看是否成功。</p><p><code>go get github.com/pkg/errors</code></p><p>观察服务器日志输出是否正常<br>执行命令<code>docker logs -f goproxy</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span></span><span class=line><span class=cl><span class=nb>export</span> <span class=nv>GOPATH</span><span class=o>=</span>/tmp/go
+</span></span></code></pre></td></tr></table></div></div><p>接着运行下面命令，查看是否成功。</p><p><code>go get -v github.com/pkg/errors</code></p><p>观察服务器日志输出是否正常<br>执行命令<code>docker logs -f goproxy</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
 </span><span class=lnt> 4
