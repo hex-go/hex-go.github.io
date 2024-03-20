@@ -8,6 +8,8 @@ tags:
 date: '2020-11-13 04:02:02'
 top: false
 comments: true
+
+draft: true
 ---
 # 重要
 mongodb的搭建主要分`sharded-cluster`,`ha`, `single-node`, 一个`ha`可以包含primary(1),secondary(0~2),ab
