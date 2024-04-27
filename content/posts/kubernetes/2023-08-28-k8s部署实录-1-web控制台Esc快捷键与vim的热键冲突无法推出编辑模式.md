@@ -2,9 +2,8 @@
 title: k8s部署实录-1-web控制台Esc快捷键与vim的热键冲突无法推出编辑模式
 categories:
   - Kubernetes
-  - Vim
 tags:
-  - Kubernetes
+  - Vim
 date: '2023-08-28 19:58:28'
 top: false
 comments: true

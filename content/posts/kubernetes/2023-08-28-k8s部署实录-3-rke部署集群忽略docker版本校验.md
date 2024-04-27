@@ -2,9 +2,9 @@
 title: k8s部署实录-3-rke部署集群忽略docker版本校验
 categories:
   - Kubernetes
-  - RKE
 tags:
   - Kubernetes
+  - RKE
 date: '2023-08-28 21:15:10'
 top: false
 comments: true

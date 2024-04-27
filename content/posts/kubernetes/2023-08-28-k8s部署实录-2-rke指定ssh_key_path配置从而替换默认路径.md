@@ -2,9 +2,9 @@
 title: k8s部署实录-2-rke指定ssh_key_path配置从而替换默认路径
 categories:
   - Kubernetes
-  - RKE
 tags:
   - Kubernetes
+  - RKE
 date: '2023-08-28 20:28:18'
 top: false
 comments: true
