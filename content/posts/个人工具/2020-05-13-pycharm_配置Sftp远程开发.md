@@ -9,6 +9,8 @@ tags:
 date: '2019-12-13 08:49:00'
 sticky: 0
 comments: true
+description: 记录pycharm通过sftp远程连接容器环境进行开发的操作
+
 ---
 
 # 配置pycharm 同步代码至docker容器
@@ -16,9 +18,10 @@ comments: true
 ## 容器配置
 1. 22端口暴露：
     ```bash
-    docker run --name chartbackend -d -p 5556:5555 -p8022:22 reg.qloudhub.com/qloudpaas/chartbackend:latest4
+    docker run --name chartbackend -d -p 5556:5555 -p8022:22 ubuntu:16.04
     ```
 2. 安装配置ssh服务
+   > 装包时`%0 working`问题，注意apt源改国内、以及apt-transport-https缺失问题
     ```bash
     # Ubuntu 16.04
     apt install openssh-server
