@@ -76,7 +76,7 @@ mkcert example.com "*.example.com" example.test localhost 127.0.0.1 ::1
 # 1. 将第一步生成的ca文件（rootCA.pem）拷贝至当前需要配置的机器
 # 注意只需要rootCA.pem文件，一定不能将私钥随意拷贝
 
-# 2. 声明变量，
+# 2. 声明变量, CA文件名称必须为 rootCA.pem
 export CAROOT=/xxx/rootCA.pem
 # 3. 执行命令，本机证书导入rootStore
 mkcert -install
