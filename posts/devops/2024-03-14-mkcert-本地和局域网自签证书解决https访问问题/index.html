@@ -38,7 +38,7 @@
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 1. 将第一步生成的ca文件（rootCA.pem）拷贝至当前需要配置的机器</span>
 </span></span><span class=line><span class=cl><span class=c1># 注意只需要rootCA.pem文件，一定不能将私钥随意拷贝</span>
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=c1># 2. 声明变量，</span>
+</span></span><span class=line><span class=cl><span class=c1># 2. 声明变量, CA文件名称必须为 rootCA.pem</span>
 </span></span><span class=line><span class=cl><span class=nb>export</span> <span class=nv>CAROOT</span><span class=o>=</span>/xxx/rootCA.pem
 </span></span><span class=line><span class=cl><span class=c1># 3. 执行命令，本机证书导入rootStore</span>
 </span></span><span class=line><span class=cl>mkcert -install
