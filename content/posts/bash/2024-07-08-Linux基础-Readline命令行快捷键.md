@@ -1,16 +1,16 @@
 ---
-title: Linux常用快捷键
+title: Linux基础-Readline命令行
 categories:
-  - 个人工具
+  - Linux
 tags:
-  - 个人工具
+  - Linux
+  - Readline
 date: '2022-07-08 02:47:38'
 top: false
 comments: true
----
 
-## 重要
-最重要的事: 
+description: 在 Linux 系统中，主机名用于唯一标识网络上的计算机。通常由字母、数字和连字符组成，且不区分大小写。在网络通信和系统管理中起到重要的作用。
+---
 
 ## 命令行编辑
 > GNU命令行编辑由`readline`库提供，使用 readline 的程序现在主要有 Bash, GDB，ftp 。 当使用交互式shell时，命令行编辑被默认启用，除非在shell调用时提供--noediting选项。
