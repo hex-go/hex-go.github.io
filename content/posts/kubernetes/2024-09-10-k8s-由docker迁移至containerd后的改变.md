@@ -78,13 +78,33 @@ ln -s /run/k3s/containerd/containerd.sock /run/containerd/containerd.sock
 
 
 
-### 增加的功能
+### ctr命令介绍
 
-1. 命名空间
+![ctr命令介绍](../../../static/images/post-image/2024-09-10-k8s-由docker迁移至containerd后的改变-ctr命令介绍.png)
 
-2. 任务
+等价 `docker run nginx` 命令的ctr命令
 
+> 注意：`docker run`命令可以缺省容器名称，但`ctr run`必须指定容器名称
+> docker `--restart=always`等操作无法用`ctr run`实现，而`ctr run`也有docker所不具备的功能。
 
+```bash 
+ctr image pull docker.io/library/nginx:latest
+ctr run docker.io/library/nginx:latest nginx
+```
+
+`ctr run`是一个组合命令：`ctr container create` 和`ctr task start`的组合。
+
+```bash
+ctr container create docker.io/library/nginx:alpine nginx
+
+# --detach 后台运行，nginx为容器ID
+ctr task start --detach nginx
+```
+
+#### 容器container与任务task
+
+container：容器是进程的隔离和受限的执行环境。
+task：任务代表容器内运行的实际进程。
 
 
 ### 镜像管理
@@ -96,6 +116,7 @@ ln -s /run/k3s/containerd/containerd.sock /run/containerd/containerd.sock
 
 | 命令                     | docker                       | ctr（containerd）                           | crictl（kubernetes） | 常用程度 |
 | ------------------------ | ---------------------------- | ------------------------------------------- | -------------------- | -------- |
+| **操作镜像**             |                              |                                             |                      |          |
 | 构建镜像                 | docker build -t <path:tag> . | 无                                          | 无                   | ★★★★★    |
 | 查看镜像                 | docker images                | ctr image ls                                | crictl images        | ★★★★☆    |
 | 拉取镜像                 | docker pull                  | ctr image pull                              | ctictl pull          | ★★★★★    |
@@ -104,20 +125,34 @@ ln -s /run/k3s/containerd/containerd.sock /run/containerd/containerd.sock
 | 导出镜像                 | docker save                  | ctr image export <文件名称> <image-path>    | 无                   | ★★★☆     |
 | 导入镜像                 | docker load                  | ctr image import <OCI-TAR-archive, img.tar> | 无                   | ★★★☆     |
 | 删除镜像                 | docker rmi                   | ctr image rm                                | crictl rmi           | ★★★☆     |
-| 查看运行的容器           | docker ps                    | ctr task ls/ctr container ls                | crictl ps            | ★★★★★    |
+| **操作容器**             |                              |                                             |                      |          |
+| 查看容器列表             | docker ps                    | ctr task ls/ctr container ls                | crictl ps            | ★★★★★    |
 | 查看容器数据信息         | docker inspect               | ctr container info                          | crictl inspect       | ★★★★★    |
-| 启动/关闭已有的容器      | docker start/stop            | ctr task start/kill                         | crictl start/stop    | ★★★★☆    |
 | 创建一个新的容器         | docker create                | ctr container create                        | crictl create        | ★★★★☆    |
-| 删除容器                 | docker rm                    | ctr container rm                            | crictl rm            | ★★★★☆    |
 | 运行一个新的容器         | docker run                   | ctr run                                     | 无（最小单元为pod）  | ★★★★☆    |
+| 启动/关闭已有的容器      | docker start/stop            | ctr task start/kill                         | crictl start/stop    | ★★★★☆    |
+| 删除容器                 | docker rm                    | ctr container rm                            | crictl rm            | ★★★★☆    |
 | 查看容器日志             | docker logs                  | 无                                          | crictl logs          | ★★★★★    |
 | 查看容器资源             | docker stats                 | 无                                          | crictl stats         | ★★★★☆    |
 | 登录或在容器内部执行命令 | docker exec                  | 无                                          | crictl exec          | ★★★★★    |
 | 清空不用的容器           | docker image prune           | 无                                          | crictl rmi --prune   | ★★★★★    |
+| **操作Pod**              |                              |                                             |                      |          |
+| Pod列表                  | 无                           | 无                                          | crictl pods          | ★★       |
+| Pod详情                  | 无                           | 无                                          | crictl inspectp      | ★★       |
+| 启动Pod                  | 无                           | 无                                          | crictl runp          | ★★       |
+| 停止Pod                  | 无                           | 无                                          | crictl stopp         | ★★       |
 
 > 镜像编译，推送仓库：docker、nertdctl
 > K8S节点上，镜像的拉取、导入导出：ctr
 > K8S节点上，调试容器，查看日志，容器状态：crictl
+
+运行容器：
+> -d  detach，后台
+> -t  tty，添加一个伪终端
+
+```bash
+ctr -n k8s.io run -d -t --env TEST_PORT=8080 
+```
 
 ## 结论
 cdebug 作为一款专为容器环境设计的调试工具，它通过提供一系列高级功能，极大地简化了容器化应用的调试流程。无论是面对无 Shell 容器、需要端口转发的场景，还是需要导出文件系统，cdebug 都能提供有效的解决方案，是云原生开发者的得力助手。
