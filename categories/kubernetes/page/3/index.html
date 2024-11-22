@@ -19,7 +19,7 @@
 <a href=https://github.com/ruanyf/reading-list class=navbar__dropdown--item dir=ltr>阮一峰书单</a>
 <a href=https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes class=navbar__dropdown--item dir=ltr>机器学习笔记</a></div></div><a href=/page/about class="navbar__menu-item navbar__slide-down" dir=ltr data-ani=true>关于</a>
 <a href=/index.xml class="navbar__menu-item navbar__slide-down" dir=ltr data-ani=true>RSS</a></div></nav><main class="main inner" data-sidebar-position=right><div class="list__main lm"><nav class="breadcrumb hide" aria-label=breadcrumbs><script>document.querySelector(".breadcrumb").classList.remove("hide")</script><ol><li><a href=https://hex-go.github.io/ class=capitalize>Hex Blog</a></li><li><a href=https://hex-go.github.io/categories/ class=capitalize>分类</a></li><li class=is-active><span>Kubernetes</span></li></ol></nav><header class=list__header><h5 class="list__header--title capitalize h5">Kubernetes</h5></header><div class="list__header--desc p2"></div><div class=summary__container data-display=block><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2020-11-05-kubernetes-certmanager%E8%A7%A3%E5%86%B3ingress-tls%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/>Kubernetes-CertManager解决ingress-tls证书问题</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2020年11月05日</time>
-<span title=阅读时长 dir=ltr>&#183; ☕&nbsp;5&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">重要 由于需要配置ingress-grpc,nginx-ingress要求tls加密。实现的方式有两种：一种在ingress注解grpcs,之</div></div></div></div><hr></article><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2020-08-07-minikube--%E5%A2%9E%E5%8A%A0%E5%A4%96%E9%83%A8dns%E8%A7%A3%E6%9E%90/>Minikube--增加外部dns解析</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2020年08月07日</time>
+<span title=阅读时长 dir=ltr>&#183; ☕&nbsp;5&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">重要 由于需要配置ingress-grpc,nginx-ingress要求tls加密。实现的方式有两种：一种在ingress注解grpcs,之</div></div></div></div><hr></article><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2019-08-07-k8s%E7%BB%8F%E9%AA%8C-%E9%85%8D%E7%BD%AE%E5%A4%96%E9%83%A8dns%E8%A7%A3%E6%9E%90/>Minikube--增加外部dns解析</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2020年08月07日</time>
 <span title=阅读时长 dir=ltr>&#183; ☕&nbsp;2&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">重要 原理说明 kubernetes集群并采用Coredns进行解析，集群内部的服务都能通过内部域名进行访问。但是集群内部的coredns与物理</div></div></div></div><hr></article><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2020-06-29-servicecatalog%E5%92%8Coperator%E7%BB%93%E5%90%88/>ServiceCatalog和Operator结合</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2020年06月29日</time>
 <span title=阅读时长 dir=ltr>&#183; ☕&nbsp;1&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">当下流行两种方式来为云原生应用提供后台服务： Operators和Open Services Broker API。本文比较两种技术，并针对性研究如何整合两者协同工作。 运行</div></div></div></div><hr></article><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2020-06-28-docker-kubernetes%E9%9B%86%E7%BE%A4%E4%B8%AD%E4%BB%A5%E9%9D%9Eroot%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8/>2020-06-28-K8S容器进程以root运行带来的安全隐患及解决</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2020年06月28日</time>
 <span title=阅读时长 dir=ltr>&#183; ☕&nbsp;4&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">容器中的进程默认以 root 用户权限运行，Docker默认不启用user namespace, 所有的容器共用一个内核，所以内核控制的 uid 和 gid 则仍然只有一套。如果容器内使用root用户，则容器内的进程与宿主机的root具有相同权限。会有很大的安全隐患，一旦容器有权限访问宿主机资源，则将具备宿主机root相同权限。</div></div></div></div><hr></article><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2020-05-29-k8s%E5%9F%BA%E7%9F%B3-%E7%90%86%E8%A7%A3k8s%E6%8E%A5%E5%8F%A3cricnicsi/>K8S基石-理解k8s接口CRI、CNI、CSI</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2020年05月29日</time>
@@ -27,7 +27,7 @@
 <span title=阅读时长 dir=ltr>&#183; ☕&nbsp;5&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">重要 环境说明 安装 使用 0. 校验kubeconfig可用性 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 import ( "k8s.io/client-go/tools/clientcmd" clientcmdapi "k8s.io/client-go/tools/clientcmd/api" ) ## 解析kubeConfig文件， 校验 func (k *K8S)</div></div></div></div><hr></article><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2020-05-25-%E8%A7%A3%E6%9E%90k8s-yaml%E6%88%90client-go%E4%B8%AD%E7%9A%84data-structs/>解析k8s-yaml成client-go中的data-structs</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2020年05月25日</time>
 <span title=阅读时长 dir=ltr>&#183; ☕&nbsp;1&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">重要 开发过程中，需要解析helm-manifest获取到的各种资源的yaml。每个都写映射 环境说明 helm 3 kubernetes-v1.15.6 安装 无 使用 注意: k8s版本不同。，资</div></div></div></div><hr></article><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2020-04-20-minikube%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8/>Minikube本地启动</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2020年04月23日</time>
 <span title=阅读时长 dir=ltr>&#183; ☕&nbsp;2&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">重要 minikube 主要是镜像都在k8s.gcr.io上，需要设置proxy。 环境说明 Ubuntu18.04 driver = docker 安装 1. 初始配置 验证机器支持虚拟化。执行下面命令，如果输出非空</div></div></div></div><hr></article><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2020-03-20-kubernetes%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/>Kubernetes资料汇总</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2020年03月20日</time>
-<span title=阅读时长 dir=ltr>&#183; ☕&nbsp;1&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">重要 Kubernetes资料汇总 环境说明 Reference 备注 Kubernetes-handbook(宋净超-jimmy Song) Installing Kubernetes with Minikube minikube启动带参数</div></div></div></div><hr></article><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2019-12-13-k8s%E5%B0%8F%E6%8A%80%E5%B7%A7/>kubectl 小技巧</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2019年12月13日</time>
+<span title=阅读时长 dir=ltr>&#183; ☕&nbsp;1&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">重要 Kubernetes资料汇总 环境说明 Reference 备注 Kubernetes-handbook(宋净超-jimmy Song) Installing Kubernetes with Minikube minikube启动带参数</div></div></div></div><hr></article><article class=summary-classic data-ani=true><div class=summary-classic__flex-box><div class=summary-classic__content><header><h5 class="title h5"><a href=https://hex-go.github.io/posts/kubernetes/2018-12-13-k8s%E7%BB%8F%E9%AA%8C-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BE%E7%BD%AE%E5%BC%BA%E5%88%B6%E5%88%A0%E9%99%A4/>k8s经验-客户端设置、强制删除</a></h5><h6 class="subtitle caption"><time title=创建日期 dir=ltr>📅&nbsp;2018年12月13日</time>
 <span title=阅读时长 dir=ltr>&#183; ☕&nbsp;2&nbsp;分钟</span></h6></header><div><div class="summary-classic__text p2">简单记录kubectl使用过程中的一些记不住但有用的命令、设置。</div></div></div></div><hr></article><ul class=pagination><li><a href=/categories/kubernetes/>1</a></li><li><a href=/categories/kubernetes/page/2/>2</a></li><li class=active><a href=/categories/kubernetes/page/3/>3</a></li></ul></div><div class=search-result data-display=none><div class=search-result__header><div class=search-result__close data-dir=ltr><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path opacity=".87" fill="none" d="M0 0h24v24H0V0z"/><path fill="currentcolor" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41.0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/></svg></div></div><div class=search-result__body><ul><li class=search-result__item><div class=search-result__item--title></div><div class=search-result__item--desc></div></li></ul></div></div></div><aside class="list__sidebar r" data-dir=ltr><ul class=sidebar><div class=search><span class=icon><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentcolor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49.0s.41-1.08.0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></span><input id=search aria-label="Site Search" class=input type=text placeholder=搜索 autocomplete=off><div id=search-results class=dropdown><div id=search-menu class=dropdown-menu role=menu></div></div></div><li class=sidebar-recent><a href=/posts/kubernetes/2024-09-10-etcd-%E5%AE%9E%E6%88%98-%E9%85%8D%E7%BD%AE%E5%AE%A2%E6%88%B7%E7%AB%AF/ class="sidebar-recent__title p1">Etcd实战-配置客户端</a></li><li class=sidebar-recent><a href=/posts/kubernetes/2024-09-10-etcd-%E5%AE%9E%E6%88%98-%E8%BF%90%E7%BB%B4%E7%AF%87-%E4%B8%80%E6%90%AD%E5%BB%BA%E9%9B%86%E7%BE%A4/ class="sidebar-recent__title p1">ETCD实战-运维篇（一）集群搭建</a></li><li class=sidebar-recent><a href=/posts/kubernetes/2024-09-10-etcd-%E5%8E%9F%E7%90%86-%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/ class="sidebar-recent__title p1">Etcd原理-基础架构</a></li><li class=sidebar-recent><a href=/posts/kubernetes/2024-09-10-k8s-%E7%94%B1docker%E8%BF%81%E7%A7%BB%E8%87%B3containerd%E5%90%8E%E7%9A%84%E6%94%B9%E5%8F%98/ class="sidebar-recent__title p1">K8S容器运行时由docker变为containerd后的必知必会</a></li><li class=sidebar-recent><a href=/posts/kubernetes/2024-09-10-k8s-%E5%AE%B9%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7cdebug/ class="sidebar-recent__title p1">容器调试工具-cdebug</a></li><hr class="hr-fade sidebar-hr"></ul><div class=taxo-root><div class=taxo><section><span class="title p2"><a href=/series/ class=taxo__title>系列</a></span>
 <span class=tag><a href=/series/k8s%E5%9F%BA%E7%9F%B3/ class="is-series taxo__link" data-dir=ltr><span class=taxo__text>k8s基石</span>
 <span class=taxo__num dir=auto>1</span></a></span>
@@ -44,7 +44,7 @@
 <span class=tag><a href=/categories/bash/ class="is-categories taxo__link" data-dir=ltr><span class=taxo__text>Bash</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/categories/devops/ class="is-categories taxo__link" data-dir=ltr><span class=taxo__text>Devops</span>
-<span class=taxo__num dir=auto>20</span></a></span>
+<span class=taxo__num dir=auto>21</span></a></span>
 <span class=tag><a href=/categories/golang/ class="is-categories taxo__link" data-dir=ltr><span class=taxo__text>Golang</span>
 <span class=taxo__num dir=auto>13</span></a></span>
 <span class=tag><a href=/categories/kubernetes/ class="is-categories taxo__link" data-dir=ltr><span class=taxo__text>Kubernetes</span>
@@ -52,7 +52,7 @@
 <span class=tag><a href=/categories/leetcode/ class="is-categories taxo__link" data-dir=ltr><span class=taxo__text>LeetCode</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/categories/linux/ class="is-categories taxo__link" data-dir=ltr><span class=taxo__text>Linux</span>
-<span class=taxo__num dir=auto>18</span></a></span>
+<span class=taxo__num dir=auto>23</span></a></span>
 <span class=tag><a href=/categories/persistence/ class="is-categories taxo__link" data-dir=ltr><span class=taxo__text>Persistence</span>
 <span class=taxo__num dir=auto>7</span></a></span>
 <span class=tag><a href=/categories/python/ class="is-categories taxo__link" data-dir=ltr><span class=taxo__text>Python</span>
@@ -74,7 +74,7 @@
 <span class=tag><a href=/tags/awk/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>awk</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/bash/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Bash</span>
-<span class=taxo__num dir=auto>12</span></a></span>
+<span class=taxo__num dir=auto>11</span></a></span>
 <span class=tag><a href=/tags/blog/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Blog</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/calico/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Calico</span>
@@ -114,7 +114,7 @@
 <span class=tag><a href=/tags/deployment/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Deployment</span>
 <span class=taxo__num dir=auto>2</span></a></span>
 <span class=tag><a href=/tags/devops/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Devops</span>
-<span class=taxo__num dir=auto>21</span></a></span>
+<span class=taxo__num dir=auto>22</span></a></span>
 <span class=tag><a href=/tags/disk/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Disk</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/docker/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Docker</span>
@@ -123,6 +123,8 @@
 <span class=taxo__num dir=auto>4</span></a></span>
 <span class=tag><a href=/tags/drone/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Drone</span>
 <span class=taxo__num dir=auto>3</span></a></span>
+<span class=tag><a href=/tags/eof/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>EOF</span>
+<span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/etcd/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>etcd</span>
 <span class=taxo__num dir=auto>2</span></a></span>
 <span class=tag><a href=/tags/etcd%E5%8E%9F%E7%90%86/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Etcd原理</span>
@@ -131,12 +133,14 @@
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/finalshell/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Finalshell</span>
 <span class=taxo__num dir=auto>1</span></a></span>
+<span class=tag><a href=/tags/find/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>find</span>
+<span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/flannel/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Flannel</span>
 <span class=taxo__num dir=auto>2</span></a></span>
 <span class=tag><a href=/tags/flask/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Flask</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/git/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Git</span>
-<span class=taxo__num dir=auto>3</span></a></span>
+<span class=taxo__num dir=auto>4</span></a></span>
 <span class=tag><a href=/tags/gitlab/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Gitlab</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/go/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Go</span>
@@ -147,10 +151,14 @@
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/gotty/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>GoTTY</span>
 <span class=taxo__num dir=auto>1</span></a></span>
+<span class=tag><a href=/tags/grep/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>grep</span>
+<span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/gvm/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>GVM</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/hexo/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Hexo</span>
 <span class=taxo__num dir=auto>2</span></a></span>
+<span class=tag><a href=/tags/history/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>history</span>
+<span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/hostname/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Hostname</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/hugo/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Hugo</span>
@@ -169,14 +177,16 @@
 <span class=taxo__num dir=auto>4</span></a></span>
 <span class=tag><a href=/tags/leetcode/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>LeetCode</span>
 <span class=taxo__num dir=auto>1</span></a></span>
+<span class=tag><a href=/tags/less/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>less</span>
+<span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/linux/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Linux</span>
-<span class=taxo__num dir=auto>20</span></a></span>
+<span class=taxo__num dir=auto>25</span></a></span>
 <span class=tag><a href=/tags/minio/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>MinIO</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/mkcert/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Mkcert</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/network/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Network</span>
-<span class=taxo__num dir=auto>2</span></a></span>
+<span class=taxo__num dir=auto>3</span></a></span>
 <span class=tag><a href=/tags/nexus/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Nexus</span>
 <span class=taxo__num dir=auto>2</span></a></span>
 <span class=tag><a href=/tags/nodejs/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Nodejs</span>
@@ -193,12 +203,14 @@
 <span class=taxo__num dir=auto>2</span></a></span>
 <span class=tag><a href=/tags/proxy/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Proxy</span>
 <span class=taxo__num dir=auto>1</span></a></span>
+<span class=tag><a href=/tags/ps/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>ps</span>
+<span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/pycharm/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Pycharm</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/python/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Python</span>
 <span class=taxo__num dir=auto>6</span></a></span>
 <span class=tag><a href=/tags/readline/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Readline</span>
-<span class=taxo__num dir=auto>2</span></a></span>
+<span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/registry/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Registry</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/restapi/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>RestAPI</span>
@@ -213,8 +225,8 @@
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/source-code/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Source Code</span>
 <span class=taxo__num dir=auto>4</span></a></span>
-<span class=tag><a href=/tags/ssh/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>SSH</span>
-<span class=taxo__num dir=auto>1</span></a></span>
+<span class=tag><a href=/tags/ssh/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>ssh</span>
+<span class=taxo__num dir=auto>2</span></a></span>
 <span class=tag><a href=/tags/sudo/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Sudo</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/swagger/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Swagger</span>
@@ -222,6 +234,8 @@
 <span class=tag><a href=/tags/switchomega/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>SwitchOmega</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/systemd/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>Systemd</span>
+<span class=taxo__num dir=auto>2</span></a></span>
+<span class=tag><a href=/tags/tail/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>tail</span>
 <span class=taxo__num dir=auto>1</span></a></span>
 <span class=tag><a href=/tags/tcp/ class="is-tags taxo__link" data-dir=ltr><span class=taxo__text>TCP</span>
 <span class=taxo__num dir=auto>1</span></a></span>
