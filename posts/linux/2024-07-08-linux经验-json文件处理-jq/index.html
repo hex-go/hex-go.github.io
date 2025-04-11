@@ -30,15 +30,15 @@
 </span></span><span class=line><span class=cl>  <span class=nt>&#34;hash&#34;</span><span class=p>:</span> <span class=s2>&#34;0c716eee2da840c54&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>  <span class=nt>&#34;command&#34;</span><span class=p>:</span> <span class=s2>&#34;bash jenkins.sh&#34;</span>
 </span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><h3 id=21-输出返回原始值>2.1 输出，返回原始值</h3><blockquote><p>jq默认返回JSON-TEXTS(带引号), 可通过 <code>-r</code> 获取原始字符串</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><h3 id=21-输出返回原始值>2.1 输出，返回原始值</h3><blockquote><p><code>jq</code>默认返回<code>JSON-TEXTS(带引号)</code>, 可通过 <code>-r</code> 获取原始字符串。<br>下午</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>jq -r <span class=s1>&#39;.name&#39;</span> ./example.json
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># 或者</span>
-</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=nb>echo</span> <span class=s1>&#39;{&#34;name&#34;: &#34;example&#34;}&#39;</span> <span class=p>|</span> jq -r .name
-</span></span></code></pre></td></tr></table></div></div><p>默认返回值(<strong>带引号</strong>)为<code>"example"</code>, 增加<code>-r</code>返回值为<code>example</code>。</p><h3 id=21-jq解析压缩返回值>2.1 jq解析，压缩返回值</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=s1>&#39;{&#34;name&#34;: &#34;example&#34;}&#39;</span> <span class=p>|</span> jq -r .name
+</span></span></code></pre></td></tr></table></div></div><p>返回值为：<code>example</code>，不加<code>-r</code>选项返回值：(<strong>带引号</strong>)为<code>"example"</code>, 增加<code>-r</code>返回值为。</p><h3 id=21-jq解析压缩返回值>2.1 jq解析，压缩返回值</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>jq -c . ./example.json
 </span></span></code></pre></td></tr></table></div></div><h3 id=22-jq解析优雅输出>2.2 jq解析，优雅输出</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>jq -n --
