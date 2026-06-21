@@ -23,7 +23,7 @@ pinned: true
 
 本系列介绍 K8s 中 Device Plugin 机制及其在 GPU 管理等 AI 场景中的应用。
 
-`① GPU基础 → ② Device Plugin → ③ 开发Plugin → ④ 多设备/AI场景`
+`① GPU基础 → ② Device Plugin → ③ 开发Plugin → ④ 多设备/AI场景 → ⑤ DRA`
 
 | 顺序 | 文章 | 定位 |
 |------|------|------|
@@ -31,6 +31,7 @@ pinned: true
 | ② | **本篇 - Device Plugin 详解** | 核心——机制原理、gRPC 接口、生命周期、部署 |
 | ③ | **[编写自定义 Device Plugin]({{< relref "2024-07-10-k8s设备插件-编写自定义DevicePlugin.md" >}})** | 扩展——FPGA、RDMA、ASIC 等自定义设备接入 |
 | ④ | **[多设备管理与 AI 场景]({{< relref "2024-07-15-k8s设备插件-多设备管理与AI场景.md" >}})** | 进阶——GPU + RDMA + NVMe 组合调度 |
+| ⑤ | **[DRA 动态资源分配]({{< relref "2024-07-20-k8s设备插件-DRA动态资源分配.md" >}})** | 演进——K8s 1.26+ 新一代资源分配机制，替代 Device Plugin 的新方向 |
 
 ---
 
