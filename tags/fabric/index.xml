@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Fabric on Hex Blog</title>
+    <link>https://hex-go.github.io/tags/fabric/</link>
+    <description>Recent content in Fabric on Hex Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <managingEditor>hex-py@gmail.com (Hex)</managingEditor>
+    <webMaster>hex-py@gmail.com (Hex)</webMaster>
+    <copyright>©2026, All Rights Reserved</copyright>
+    <lastBuildDate>Fri, 30 Sep 2022 07:26:26 +0000</lastBuildDate>
+    
+        <atom:link href="https://hex-go.github.io/tags/fabric/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>区块链概念梳理</title>
+        <link>https://hex-go.github.io/posts/persistence/2023-11-02-%E5%8C%BA%E5%9D%97%E9%93%BE%E6%A6%82%E5%BF%B5%E6%A2%B3%E7%90%86/</link>
+        <pubDate>Fri, 30 Sep 2022 07:26:26 +0000</pubDate>
+        <author>hex-py@gmail.com (Hex)</author>
+        <atom:modified>Fri, 30 Sep 2022 07:26:26 +0000</atom:modified>
+        <guid>https://hex-go.github.io/posts/persistence/2023-11-02-%E5%8C%BA%E5%9D%97%E9%93%BE%E6%A6%82%E5%BF%B5%E6%A2%B3%E7%90%86/</guid>
+        <description>1.简介 2.说明 2.1 区块链网络 区块链网络：N 网络配置：NC, 包含了描述网络管理能力初始集合的规则 排序服务: O 组织： R1\R2\R3\R4(R4</description>
+        
+        <dc:creator>Hex</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>Persistence</category>
+            
+          
+            
+              <category>Fabric</category>
+            
+          
+        
+        
+          
+            
+              <category>Persistence</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

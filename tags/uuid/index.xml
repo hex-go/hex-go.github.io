@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Uuid on Hex Blog</title>
+    <link>https://hex-go.github.io/tags/uuid/</link>
+    <description>Recent content in Uuid on Hex Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <managingEditor>hex-py@gmail.com (Hex)</managingEditor>
+    <webMaster>hex-py@gmail.com (Hex)</webMaster>
+    <copyright>©2026, All Rights Reserved</copyright>
+    <lastBuildDate>Thu, 28 May 2020 11:11:24 +0000</lastBuildDate>
+    
+        <atom:link href="https://hex-go.github.io/tags/uuid/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>Gorm-使用UUID作为主键</title>
+        <link>https://hex-go.github.io/posts/golang/2020-05-28-gorm-%E4%BD%BF%E7%94%A8uuid%E4%BD%9C%E4%B8%BA%E4%B8%BB%E9%94%AE/</link>
+        <pubDate>Thu, 28 May 2020 11:11:24 +0000</pubDate>
+        <author>hex-py@gmail.com (Hex)</author>
+        <atom:modified>Thu, 28 May 2020 11:11:24 +0000</atom:modified>
+        <guid>https://hex-go.github.io/posts/golang/2020-05-28-gorm-%E4%BD%BF%E7%94%A8uuid%E4%BD%9C%E4%B8%BA%E4%B8%BB%E9%94%AE/</guid>
+        <description>重要 环境说明 安装 使用 Reference How to Use UUID Key Type with Gorm</description>
+        
+        <dc:creator>Hex</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>Go</category>
+            
+          
+            
+              <category>Gorm</category>
+            
+          
+            
+              <category>Uuid</category>
+            
+          
+            
+              <category>Draft</category>
+            
+          
+        
+        
+          
+            
+              <category>Golang</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

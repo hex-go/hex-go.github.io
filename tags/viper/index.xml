@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Viper on Hex Blog</title>
+    <link>https://hex-go.github.io/tags/viper/</link>
+    <description>Recent content in Viper on Hex Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <managingEditor>hex-py@gmail.com (Hex)</managingEditor>
+    <webMaster>hex-py@gmail.com (Hex)</webMaster>
+    <copyright>©2026, All Rights Reserved</copyright>
+    <lastBuildDate>Thu, 23 Apr 2020 08:14:25 +0000</lastBuildDate>
+    
+        <atom:link href="https://hex-go.github.io/tags/viper/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>配置读取包--viper</title>
+        <link>https://hex-go.github.io/posts/golang/2020-04-23-go-viper%E9%85%8D%E7%BD%AE%E8%AF%BB%E5%8F%96%E5%8C%85/</link>
+        <pubDate>Thu, 23 Apr 2020 08:14:25 +0000</pubDate>
+        <author>hex-py@gmail.com (Hex)</author>
+        <atom:modified>Thu, 23 Apr 2020 08:14:25 +0000</atom:modified>
+        <guid>https://hex-go.github.io/posts/golang/2020-04-23-go-viper%E9%85%8D%E7%BD%AE%E8%AF%BB%E5%8F%96%E5%8C%85/</guid>
+        <description>说明 viper 支持以下功能： 1. 支持Yaml、Json、 TOML、HCL 等格式的配置 2. 可以从文件、io、环境变量、command line中提取配置 3. 支</description>
+        
+        <dc:creator>Hex</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>Go</category>
+            
+          
+            
+              <category>Viper</category>
+            
+          
+            
+              <category>Draft</category>
+            
+          
+        
+        
+          
+            
+              <category>Golang</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

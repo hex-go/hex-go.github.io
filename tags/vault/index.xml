@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Vault on Hex Blog</title>
+    <link>https://hex-go.github.io/tags/vault/</link>
+    <description>Recent content in Vault on Hex Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <managingEditor>hex-py@gmail.com (Hex)</managingEditor>
+    <webMaster>hex-py@gmail.com (Hex)</webMaster>
+    <copyright>©2026, All Rights Reserved</copyright>
+    <lastBuildDate>Mon, 22 Jun 2020 10:17:50 +0000</lastBuildDate>
+    
+        <atom:link href="https://hex-go.github.io/tags/vault/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>Go-Vault配置调用vault相关api</title>
+        <link>https://hex-go.github.io/posts/golang/2020-06-22-go-vault%E9%85%8D%E7%BD%AE%E8%B0%83%E7%94%A8vault%E7%9B%B8%E5%85%B3api/</link>
+        <pubDate>Mon, 22 Jun 2020 10:17:50 +0000</pubDate>
+        <author>hex-py@gmail.com (Hex)</author>
+        <atom:modified>Mon, 22 Jun 2020 10:17:50 +0000</atom:modified>
+        <guid>https://hex-go.github.io/posts/golang/2020-06-22-go-vault%E9%85%8D%E7%BD%AE%E8%B0%83%E7%94%A8vault%E7%9B%B8%E5%85%B3api/</guid>
+        <description>重要 环境说明 安装 使用 1 {&amp;#34;kind&amp;#34;:&amp;#34;Config&amp;#34;,&amp;#34;apiVersion&amp;#34;:&amp;#34;v1&amp;#34;,&amp;#34;preferences&amp;#34;:{},&amp;#34;clusters&amp;#34;:[{&amp;#34;name&amp;#34;:&amp;#34;internalCluster&amp;#34;,&amp;#34;cluster&amp;#34;:{&amp;#34;server&amp;#34;:&amp;#34;https://10.15.6.59:5443&amp;#34;,&amp;#34;certificate-authority-data&amp;#34;:&amp;#34;LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMxakNDQWI2Z0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFiTVJrd0Z3WURWUVFLRXhCRFEwVWcKVkdWamFHNXZiRzluYVdWek1DQVhEVEl3TURReE9URXhORGswTkZvWUR6SXdOVEF3TkRFeU1URTBPVFEwV2pBYgpNUmt3RndZRFZRUUtFeEJEUTBVZ1ZHVmphRzV2Ykc5bmFXVnpNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DCkFROEFNSUlCQ2dLQ0FRRUF4cS85eS96VmhPVVVwV2p6NnVQZTZqVVl5YWdXR3dFNmJvVktXMzE3R0p4aGNQL1IKWnVOOVFORXhZRFdhSEhsRGkyY0NLYjJlK2U0M1pPejhKV3hxZk5lb1pMMmlETnVoRG41d2hTVm4vYmV4d2dTZgp5UXJ0UnpqZ1dHRjF3UWhBWjdnVWVLdHcweDNXUWZCUHFFWnJmVUlMMEkrTnNoRW1PZ1BUdlQwTzZyaktOSSt2CllPcC9ONjh4cEY4aFFRZDB4WnFpUWhzRzNyVFJ1R3lWalltRk9POG9oa0pUS3VtZTVGc1VZQ0k5UVRlMVkwc0EKM1AyTzBqbU1rVk5xdGN6YmJnNkx3NVhPWlZHT3BLbFJWUFJ5aDZ2VmlCRmVXNGl3U0xUL3RaTDJ4bjlORXZxQwpDVVdiZWhkcW1CMVFtLzhueERKVGl3ME5TR1hKSFE0SW1yaHhFd0lEQVFBQm95TXdJVEFPQmdOVkhROEJBZjhFCkJBTUNBcVF3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBY0R2ZWsxQVoKMEpHMTl2SUNPNUtFcXozTndlcC92MmVZWmgzZVpyb3VhL0VYMVM0aUQxaFFwMFBtczNtK2N2NDVLZ1pBMDJ1WQpadGppaWR5T21pNkJJZ2dSOFp3L2hwNmJ4SE8rcUV2MHpLK3NFdEM2WTBaTkJoT09vRGxZdkRjTVJFQ0dvbGtSClMxRDZDUzZoS1U3UUVPZHRuMlhHNHJwNUdKMm9XMGpoTTVCVW1wUE5nekw0WDJjeVBIU2JRb05wTk5ldisyOGMKSnY1bXlwV0tUcU8veVZvaE9MbkNIb255bnFlSk04V1FXUmM0WUVsSzhDTmJrR0l5L1RvRjhZb01hTng0OS84YgpLcVVQL1Y5Z1B5Wnk4Z25lSE9iRXBjNVFzRTU4MzUxNi9qU1JCWkJwS2grRTFxbjNCaGNyTDYvanlQKzBzMkdPCkxVWXhPbmFJYWJZS3lnPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=&amp;#34;}}],&amp;#34;users&amp;#34;:[{&amp;#34;name&amp;#34;:&amp;#34;user&amp;#34;,&amp;#34;user&amp;#34;:{&amp;#34;client-certificate-data&amp;#34;:&amp;#34;LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUQrekNDQXVPZ0F3SUJBZ0lJWllJL3lhUmhuUFl3RFFZSktvWklodmNOQVFFTEJRQXdHekVaTUJjR0ExVUUKQ2hNUVEwTkZJRlJsWTJodWIyeHZaMmxsY3pBZ0Z3MHlNREEwTVRreE1UUTVORFJhR0E4eU1EVXdNRFF4TWpFeApORGswTmxvd01qRVhNQlVHQTFVRUNoTU9jM2x6ZEdWdE9tMWhjM1JsY25NeEZ6QVZCZ05WQkFNVERuTjVjM1JsCmJUcHRZWE4wWlhKek1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBeHEvOXkvelYKaE9VVXBXano2dVBlNmpVWXlhZ1dHd0U2Ym9WS1czMTdHSnhoY1AvUlp1TjlRTkV4WURXYUhIbERpMmNDS2IyZQorZTQzWk96OEpXeHFmTmVvWkwyaUROdWhEbjV3aFNWbi9iZXh3Z1NmeVFydFJ6amdXR0Yxd1FoQVo3Z1VlS3R3CjB4M1dRZkJQcUVacmZVSUwwSStOc2hFbU9nUFR2VDBPNnJqS05JK3ZZT3AvTjY4eHBGOGhRUWQweFpxaVFoc0cKM3JUUnVHeVZqWW1GT084b2hrSlRLdW1lNUZzVVlDSTlRVGUxWTBzQTNQMk8wam1Na1ZOcXRjemJiZzZMdzVYTwpaVkdPcEtsUlZQUnloNnZWaUJGZVc0aXdTTFQvdFpMMnhuOU5FdnFDQ1VXYmVoZHFtQjFRbS84bnhESlRpdzBOClNHWEpIUTRJbXJoeEV3SURBUUFCbzRJQktEQ0NBU1F3RGdZRFZSMFBBUUgvQkFRREFnV2dNQjBHQTFVZEpRUVcKTUJRR0NDc0dBUVVGQndNQ0JnZ3JCZ0VGQlFjREFUQ0I4Z1lEVlIwUkJJSHFNSUhuZ2hacmRXSmxjbTVsZEdWegpMbVJsWm1GMWJIUXVjM1pqZ2lScmRXSmxjbTVsZEdWekxtUmxabUYxYkhRdWMzWmpMbU5zZFhOMFpYSXViRzlqCllXeUNFbXQxWW1WeWJtVjBaWE11WkdWbVlYVnNkSUlLYTNWaVpYSnVaWFJsYzRJbmFYTjBhVzh0YzJsa1pXTmgKY2kxcGJtcGxZM1J2Y2k1cGMzUnBieTF6ZVhOMFpXMHVjM1pqaHhEOUFCSTBBQUFBQUFBQUFBQUFBQUFCaHdSLwpBQUFCaHdRSzl3QUNod1FLOXdBQmh3UmtSa0wwaHdUQXFPeGxod1JrUnJFU2h3VEFxT3ppaHdSa1JoY3pod1RBCnFPelRod1FLRHdiNWh3UUtEd2JhaHdRS0R3Wmpod1FLRHdZN01BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQmUKTmlqLzhYS29DbGYzbXFwVVplVzNmZW1JOVlDTkJzQW5FcEhBcWdrOWoveTB3RVU4b1F5d3NnbkdRUDdZREhuawpZRUJsWjYvOEVXZEFpSzFJa1VWSlRGcHpiWDlMd25yRXYreFc2L1ZNWXd5Mm1lR1lkMkVtUFcrb0ZsZkRrdDNSClBrTGJPeE1FYzJXaUd6MW1NT0UxMWRYQ3dLZ2dSUDhRZnhDeU5DZ0JCS3JEK1RyYUROb2FBSGJCRVR3YXlMRWkKck53RkpOdmh2QnFZK3lkZU8zVlFsamxaRm9KMlo0cStBQ3l1b1hUZnNkcnB2M0h3WkFYa2Y4Q0ZlSzdXV1lnWAptSzVYa1BobkNaWm9RV2RWU3Z1RjlicUN4eTVocWRuVGpLUVNETmNBWkdzVlRmQVpwYitKRjhGMHdIbzk0NGtNCmp1TUp5VzJwenJ3OXM4Z1ZIYXZ0Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K&amp;#34;,&amp;#34;client-key-data&amp;#34;:&amp;#34;LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcFFJQkFBS0NBUUVBeHEvOXkvelZoT1VVcFdqejZ1UGU2alVZeWFnV0d3RTZib1ZLVzMxN0dKeGhjUC9SClp1TjlRTkV4WURXYUhIbERpMmNDS2IyZStlNDNaT3o4Sld4cWZOZW9aTDJpRE51aERuNXdoU1ZuL2JleHdnU2YKeVFydFJ6amdXR0Yxd1FoQVo3Z1VlS3R3MHgzV1FmQlBxRVpyZlVJTDBJK05zaEVtT2dQVHZUME82cmpLTkkrdgpZT3AvTjY4eHBGOGhRUWQweFpxaVFoc0czclRSdUd5VmpZbUZPTzhvaGtKVEt1bWU1RnNVWUNJOVFUZTFZMHNBCjNQMk8wam1Na1ZOcXRjemJiZzZMdzVYT1pWR09wS2xSVlBSeWg2dlZpQkZlVzRpd1NMVC90WkwyeG45TkV2cUMKQ1VXYmVoZHFtQjFRbS84bnhESlRpdzBOU0dYSkhRNEltcmh4RXdJREFRQUJBb0lCQVFDMGZjWFIzRUhmY3ZjNQplRWswMVlKNFFubmRIeHZOdG1UdFo1cHYyR0xOcmFuN0svbC9QU05Za1hFSVZFbEdtb1pZaWQvMktUTFZHcWtwCnZ2c2p5QVJJbXVSM2Q2bFJndWNoTW8xbTl0OHNKZ2FPR1FOS2IrbXpMS0RveU1oZTdlOE1DYlpYRkc3dTZnanMKWjdFRlRjdHh3MkRXT3NKZXc2TjFTbXE4VzA1RXZMT0RtbEF0dGsxcXlZMWdwYzlEa0d5Z1RPaEpQdWd2Vng0WgorUXh4YU9PUXNDN08rV3RMbkIxR0hnNmt2MDc0UzZLeVdKbkdXWnhKdHY5SEZ1dENTVkpqMjh5RXhobDBlSHkvCjU1a2E2SzVrak9FTnNMQTd0U2VlUUMwN3BsQUxIV2JCcm5yRGxOMlZ2NjkxR0wzVXV2VllaQnU4RG5QK0l5WUwKY3JsOHl3RHhBb0dCQVB1a3lOM0pBN2ZFT1BxUmNlQjVydUV5eHBxUVg2U1pjSmZSV1lXTW1hbWF6ZTdIOGcwNgozVko0dkhYdnRrcGVTVjRkbTdMQnVxRGZJNHkrWjRpVUhaTmozQVd4c3ZoNk9hMDNxUEtZMnYybzVDOXBQYlBHCjE3dld3eXJtazdmOGZoQjg0RjdkYXhVb2FHNW0zbS9FMDFaUU93RmhGaDF2cUwvVGdZQ1NCQXNwQW9HQkFNb2cKaFBjZGI0Ymh5RkdHMEtaZVluR3g4ZXF4eUdHQ0p6RFVTcHpBMlRPS20rRjBqeU5PTUxjMGxBcTlWTjgzTjRPTwowbkxMVXF4ZWRiVmtBK09BblBUTHB6WUJnQjJNcURqRCtkTlBSWmxVTUtLSlBFdEhSY05sekUyZEFNVFBNNXlUCkh3Wkp1aXpWWjIyV29DdVNoTFlwNnhVbnFjMnVQK1dxKzhPTExWM2JBb0dBVVhPMEpMMjArMTJEUisrZUdaZXAKZUhFMEFjR3JnNTY2NkJrMlRka0Z2L1ZBcFFLSklha2xERlhTUXFaVnJkcTVDc0t3cS9xekN2RlBFM1pxRXJaRwpvSGVaTnlxZWtIa1hoQzdZKzdWb1pPU3UvMzJrSURYRGpLUm1SZE9laXRZcWcvRzN1bDBYRlNFZ05HUU5xY1hlCjFqaGY4UUZZNUN4SlJkWVRPK2VIY1lrQ2dZRUFtVks3cWZ2eEtwN0FabDllaktUU0JpNldOSkp4VHMzOHpvUnEKcUtkODJ5VU1nNlA0SkM3ZXMwbzE5a09TU3RSR3p3dWF4YXRINWlxdEhWQmx4c0E3ejFGZ1lJNFkwZEZ0bGNuTApDeWg1d2dwajdoY3QzbWlOR2VCeGJucG5KK09JNGYrVHJDQm5FalU3QkowYW1KTEhDcXVYZ0crYTFjT1ZBckdGCjB0b1RLcnNDZ1lFQWpVZk5PQ3c1T1ZIanoyZGk2ZTRwV2J5azFLYjIramw2Y25EeGtGTUU2dDBxbXpWd1pId1kKNlRXb1JSakNROXd5WEhCL2JYaUtJQVl0b3NvWjVwT3c1MTdjZWhQS3JUaE5YSU1WdVBVWDBrZ0E1cWpqWmJSeQpTZVg2VGYveTM0NnQ0d0wrVFR6Y3F0WWViTnRwMG8yeWw0RDl1VWcyRjNNVWNjZUtJNnB2QmswPQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=&amp;#34;}}],&amp;#34;contexts&amp;#34;:[{&amp;#34;name&amp;#34;:&amp;#34;internal&amp;#34;,&amp;#34;context&amp;#34;:{&amp;#34;cluster&amp;#34;:&amp;#34;internalCluster&amp;#34;,&amp;#34;user&amp;#34;:&amp;#34;user&amp;#34;}}],&amp;#34;current-context&amp;#34;:&amp;#34;internal&amp;#34;} Reference Vault官方部署Chart Vault官方部署说明 Vault官方镜像GitHub Vault官方博客&amp;ndash;A</description>
+        
+        <dc:creator>Hex</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>Go</category>
+            
+          
+            
+              <category>Vault</category>
+            
+          
+            
+              <category>Draft</category>
+            
+          
+        
+        
+          
+            
+              <category>Golang</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

@@ -1,1 +1,108 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>Scheduler on Hex Blog</title><link>https://hex-go.github.io/tags/scheduler/</link><description>Recent content in Scheduler on Hex Blog</description><generator>Hugo -- gohugo.io</generator><language>zh</language><managingEditor>hex-py@gmail.com (Hex)</managingEditor><webMaster>hex-py@gmail.com (Hex)</webMaster><copyright>©2025, All Rights Reserved</copyright><lastBuildDate>Sun, 12 May 2024 06:10:41 +0000</lastBuildDate><atom:link href="https://hex-go.github.io/tags/scheduler/index.xml" rel="self" type="application/rss+xml"/><item><title>K8s网络CSI-面试速记</title><link>https://hex-go.github.io/posts/interview/2024-04-15-k8s-%E9%9D%A2%E8%AF%95%E9%80%9F%E8%AE%B0-%E8%B0%83%E5%BA%A6scheduler/</link><pubDate>Sun, 12 May 2024 06:10:41 +0000</pubDate><author>hex-py@gmail.com (Hex)</author><atom:modified>Sun, 12 May 2024 06:10:41 +0000</atom:modified><guid>https://hex-go.github.io/posts/interview/2024-04-15-k8s-%E9%9D%A2%E8%AF%95%E9%80%9F%E8%AE%B0-%E8%B0%83%E5%BA%A6scheduler/</guid><description/><dc:creator>Hex</dc:creator><category>Scheduler</category><category>Kubernetes</category><category>面试速记</category><category>面试</category></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Scheduler on Hex Blog</title>
+    <link>https://hex-go.github.io/tags/scheduler/</link>
+    <description>Recent content in Scheduler on Hex Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <managingEditor>hex-py@gmail.com (Hex)</managingEditor>
+    <webMaster>hex-py@gmail.com (Hex)</webMaster>
+    <copyright>©2026, All Rights Reserved</copyright>
+    <lastBuildDate>Mon, 10 Jun 2024 22:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://hex-go.github.io/tags/scheduler/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>K8s调度-调度器架构与策略</title>
+        <link>https://hex-go.github.io/posts/kubernetes/2024-06-10-k8s%E8%B0%83%E5%BA%A6-%E8%B0%83%E5%BA%A6%E5%99%A8%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%AD%96%E7%95%A5/</link>
+        <pubDate>Mon, 10 Jun 2024 22:00:00 +0000</pubDate>
+        <author>hex-py@gmail.com (Hex)</author>
+        <atom:modified>Mon, 10 Jun 2024 22:00:00 +0000</atom:modified>
+        <guid>https://hex-go.github.io/posts/kubernetes/2024-06-10-k8s%E8%B0%83%E5%BA%A6-%E8%B0%83%E5%BA%A6%E5%99%A8%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%AD%96%E7%95%A5/</guid>
+        <description>系列导航 本系列从 K8s 资源模型入手，逐步展开到调度器策略、优先级抢占与 AI 时代演进。 ① 资源模型 → ② Quota/LimitRange → ③ 调度器架构 → ④ 优先级抢占 → ⑤ AI调度演进 →</description>
+        
+        <dc:creator>Hex</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>调度器</category>
+            
+          
+            
+              <category>Scheduler</category>
+            
+          
+            
+              <category>Kubernetes</category>
+            
+          
+        
+        
+          
+            
+              <category>Kubernetes</category>
+            
+          
+        
+        
+          
+            
+              <category>k8s调度</category>
+            
+          
+        
+      </item>
+      
+      <item>
+        <title>K8s网络CSI-面试速记</title>
+        <link>https://hex-go.github.io/posts/interview/2024-04-15-k8s-%E9%9D%A2%E8%AF%95%E9%80%9F%E8%AE%B0-%E8%B0%83%E5%BA%A6scheduler/</link>
+        <pubDate>Sun, 12 May 2024 06:10:41 +0000</pubDate>
+        <author>hex-py@gmail.com (Hex)</author>
+        <atom:modified>Sun, 12 May 2024 06:10:41 +0000</atom:modified>
+        <guid>https://hex-go.github.io/posts/interview/2024-04-15-k8s-%E9%9D%A2%E8%AF%95%E9%80%9F%E8%AE%B0-%E8%B0%83%E5%BA%A6scheduler/</guid>
+        <description></description>
+        
+        <dc:creator>Hex</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>Scheduler</category>
+            
+          
+            
+              <category>Kubernetes</category>
+            
+          
+            
+              <category>面试速记</category>
+            
+          
+        
+        
+          
+            
+              <category>面试</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

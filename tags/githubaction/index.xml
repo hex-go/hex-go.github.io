@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>GithubAction on Hex Blog</title>
+    <link>https://hex-go.github.io/tags/githubaction/</link>
+    <description>Recent content in GithubAction on Hex Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <managingEditor>hex-py@gmail.com (Hex)</managingEditor>
+    <webMaster>hex-py@gmail.com (Hex)</webMaster>
+    <copyright>©2026, All Rights Reserved</copyright>
+    <lastBuildDate>Fri, 30 Sep 2022 07:26:26 +0000</lastBuildDate>
+    
+        <atom:link href="https://hex-go.github.io/tags/githubaction/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>博客迁移-3：构建工具由Travis改为GithubAction</title>
+        <link>https://hex-go.github.io/posts/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/2023-09-30-%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB-3_%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%94%B1travis%E6%94%B9%E4%B8%BAgithubaction/</link>
+        <pubDate>Fri, 30 Sep 2022 07:26:26 +0000</pubDate>
+        <author>hex-py@gmail.com (Hex)</author>
+        <atom:modified>Fri, 30 Sep 2022 07:26:26 +0000</atom:modified>
+        <guid>https://hex-go.github.io/posts/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/2023-09-30-%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB-3_%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%94%B1travis%E6%94%B9%E4%B8%BAgithubaction/</guid>
+        <description>1.简介 2.说明 3.总结 4.参考</description>
+        
+        <dc:creator>Hex</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>个人工具</category>
+            
+          
+            
+              <category>GithubAction</category>
+            
+          
+        
+        
+          
+            
+              <category>个人工具</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>
