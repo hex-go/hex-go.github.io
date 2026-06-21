@@ -5,6 +5,7 @@ categories:
 tags:
   - Kubernetes
 date: '2020-03-20 09:05:07'
+draft: true
 top: true
 comments: true
 ---
