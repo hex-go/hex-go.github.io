@@ -12,8 +12,6 @@ top: false
 comments: true
 ---
 
-# 重要
-
 # 定义共享库
 
 ## 目录结构
