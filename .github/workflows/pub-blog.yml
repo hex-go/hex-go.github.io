@@ -8,6 +8,8 @@ on:
 jobs:
   Deploy-GitHub-Page:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@v4
       with:
@@ -26,6 +28,6 @@ jobs:
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
       with:
-        github_token: ${{ secrets.GH_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
         commit_message: ${{ github.event.head_commit.message }}
