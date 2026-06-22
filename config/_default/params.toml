@@ -3,7 +3,7 @@
 logoText = "Hex Blog"                              # 导航栏logo旁边显示的网站名称
 logoType = "short" # long, short                   # 导航栏logologo类型，short: 正方形；long: 矩形
 description = "关注云原生领域技术栈的个人博客。"         # 博客描述
-custom_css = []                                    # 自定义css  举例说明 文件目录： assets/scss/custom.scss  配置文件： custom_css = ["css/custom.css", ...]
+custom_css = ["scss/custom.scss"]                   # 自定义css  文件目录： assets/scss/custom.scss
 custom_js = []                                     # 自定义Js
 useFaviconGenerator = true                         # https://www.favicon-generator.org/
 meta_image = ""                                    # 将博文分享到社交媒体（Twitter、Facebook、Telegram 等）时，博文链接可以使用元图像作为链接预览。
@@ -18,7 +18,7 @@ notAllowedTypesInHomeFeed = ["page", "archive"]    # 不想包含在 "RSS 订阅
 viewportSize = "normal"                    # 博客内容区宽度： widest=1600px, wider=1440px, wide=1280px, normal=960px, narrow=800px
 enableUiAnimation = true                   # 加载内容时启用或禁用用户界面动画
 hideSingleContentsWhenJSDisabled = false   # 浏览器禁用 javascript 时，博客内容是否被隐藏。false: 不隐藏
-enablePinnedPosts = true                   # 可以在帖子中设置 pinned: true 固定前置内容。被固定的帖子会出现在帖子列表的顶部。true: 可置顶(目前测试无法置顶，但会在标题前增加📌图标)
+enablePinnedPosts = true                   # pinned: true 的帖子排在列表最前，标题前显示 📌 图标
 minItemsToShowInTagCloud = 1               # 博客标签小于此数目的标签将被隐藏，1：全部显示
 
 # appbar
