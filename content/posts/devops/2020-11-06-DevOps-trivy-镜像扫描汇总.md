@@ -5,6 +5,7 @@ categories:
 tags:
   - Devops
 date: '2020-11-06 06:26:40'
+pinned: true
 top: false
 comments: true
 ---

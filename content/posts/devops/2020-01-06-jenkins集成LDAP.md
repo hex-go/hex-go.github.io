@@ -7,6 +7,7 @@ tags:
   - Jenkins
   - LDAP
 date: '2020-01-06 10:52:28'
+pinned: true
 top: false
 comments: true
 ---

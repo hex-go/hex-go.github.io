@@ -10,6 +10,7 @@ tags:
   - Kubernetes
   - Docker  
 date: '2019-12-31 07:05:19'
+pinned: true
 top: false
 comments: true
 ---

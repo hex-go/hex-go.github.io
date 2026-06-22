@@ -6,6 +6,7 @@ tags:
   - Kubernetes
   - RKE
 date: '2023-08-28 20:28:18'
+pinned: true
 top: false
 comments: true
 series:

@@ -7,6 +7,7 @@ tags:
   - Docker
   - Dockerfile
 date: '2020-05-29 09:36:32'
+pinned: true
 top: false
 
 comments: true

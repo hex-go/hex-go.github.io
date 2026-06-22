@@ -6,6 +6,7 @@ tags:
   - Kubernetes
   - CertManager
 date: '2020-11-05 03:55:15'
+pinned: true
 top: false
 comments: true
 series:

@@ -6,6 +6,7 @@ tags:
   - Linux
   - bash
 date: '2024-04-15 19:10:41'
+pinned: true
 top: false
 comments: true
 keywords:
