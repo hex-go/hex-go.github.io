@@ -9,6 +9,7 @@ tags:
 date: '2020-05-29 09:36:32'
 top: false
 comments: true
+pinned: true
 ---
 
 # 重要

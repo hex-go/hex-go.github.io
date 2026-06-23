@@ -9,6 +9,7 @@ tags:
 date: '2020-01-07 08:48:13'
 top: false
 comments: true
+pinned: true
 ---
 # 重点
 > 1. 能在DockerFile中做的，比如多阶段构建，就在Dockerfile中做。不能在Jenkinsfile中做太多特例化的事情，否则不好管理迁移。

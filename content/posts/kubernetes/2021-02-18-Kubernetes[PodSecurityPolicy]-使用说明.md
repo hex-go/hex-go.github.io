@@ -7,6 +7,7 @@ tags:
 date: '2021-02-18 10:19:23'
 top: false
 comments: true
+pinned: true
 ---
 
 # 重要

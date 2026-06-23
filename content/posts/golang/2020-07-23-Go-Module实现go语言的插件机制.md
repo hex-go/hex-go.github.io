@@ -7,6 +7,7 @@ tags:
 date: '2020-07-23 07:43:17'
 top: false
 comments: true
+pinned: true
 ---
 
 # 重要

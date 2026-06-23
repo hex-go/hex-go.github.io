@@ -10,8 +10,8 @@ tags:
   - Informer
   - RBAC
 date: '2023-10-01 20:19:12'
-top: false
-comments: true
+pinned: true
+draft: false
 series:
   - k8s扩展
 pinned: true

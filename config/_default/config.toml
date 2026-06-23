@@ -26,6 +26,21 @@ rssLimit = 100                            # RSS 订阅内容的最大条目数�
 enableGitInfo = false
 googleAnalytics = ""
 
+# 禁用 Hugo 资源缓存（避免 SCSS 修改后未热更新）
+[caches]
+  [caches.assets]
+    dir = ":resourceDir/_gen"
+    maxAge = 0
+  [caches.getcsv]
+    maxAge = 0
+  [caches.getjson]
+    maxAge = 0
+  [caches.images]
+    dir = ":resourceDir/_gen"
+    maxAge = 0
+  [caches.modules]
+    maxAge = 0
+
 [markup]                                 # 标记语言渲染html设置 https://gohugo.io/getting-started/configuration-markup/
   [markup.goldmark]                      #   goldmark是golang分析标记语言的包  https://github.com/yuin/goldmark/
     [markup.goldmark.renderer]           #
