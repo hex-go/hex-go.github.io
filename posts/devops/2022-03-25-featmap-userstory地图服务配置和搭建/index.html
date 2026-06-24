@@ -54,8 +54,7 @@
 </span></span><span class=line><span class=cl>├── conf.json                       # 配置文件： 构建镜像时， 打进镜像的默认配置
 </span></span><span class=line><span class=cl>├── Dockerfile
 </span></span><span class=line><span class=cl>├── Makefile
-</span></span><span class=line><span class=cl>└── README.md
-</span></span></code></pre></td></tr></table></div></div><h2 id=1-构建docker镜像>1. 构建Docker镜像</h2><h3 id=11-dockerfile-内容如下>1.1 Dockerfile 内容如下:</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span></span><span class=line><span class=cl>└── README.md</span></span></code></pre></td></tr></table></div></div><h2 id=1-构建docker镜像>1. 构建Docker镜像</h2><h3 id=11-dockerfile-内容如下>1.1 Dockerfile 内容如下:</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
 </span><span class=lnt> 4
@@ -74,8 +73,7 @@
 </span></span></span><span class=line><span class=cl><span class=err></span><span class=k>RUN</span> chmod <span class=m>775</span> /usr/local/bin/featmap<span class=err>
 </span></span></span><span class=line><span class=cl><span class=err>
 </span></span></span><span class=line><span class=cl><span class=err></span><span class=k>EXPOSE</span><span class=s> 5000</span><span class=err>
-</span></span></span><span class=line><span class=cl><span class=err></span><span class=k>ENTRYPOINT</span> <span class=p>[</span><span class=s2>&#34;featmap&#34;</span><span class=p>]</span><span class=err>
-</span></span></span></code></pre></td></tr></table></div></div><p>其中配置文件内容<code>conf.json</code>如下:</p><blockquote><p>不支持环境变量，只能通过此配置文件修改环境配置</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=k>ENTRYPOINT</span> <span class=p>[</span><span class=s2>&#34;featmap&#34;</span><span class=p>]</span></span></span></code></pre></td></tr></table></div></div><p>其中配置文件内容<code>conf.json</code>如下:</p><blockquote><p>不支持环境变量，只能通过此配置文件修改环境配置</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
 </span><span class=lnt> 4
@@ -98,8 +96,7 @@
 </span></span><span class=line><span class=cl>  <span class=nt>&#34;smtpUser&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>  <span class=nt>&#34;smtpPass&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>  <span class=nt>&#34;environment&#34;</span><span class=p>:</span> <span class=s2>&#34;development&#34;</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><h3 id=12-构建镜像-命令>1.2 构建镜像 命令</h3><blockquote><p>镜像地址: self.registry.com/featmap:2.1.0</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><h3 id=12-构建镜像-命令>1.2 构建镜像 命令</h3><blockquote><p>镜像地址: self.registry.com/featmap:2.1.0</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
 </span><span class=lnt> 4
