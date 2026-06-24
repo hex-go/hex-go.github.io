@@ -16,7 +16,7 @@ keywords:
   - kubelet
 series:
   - k8s设备插件
-pinned: true
+pinned: false
 ---
 
 ## 系列导航

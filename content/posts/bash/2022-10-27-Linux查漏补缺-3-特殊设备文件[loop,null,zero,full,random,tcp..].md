@@ -7,7 +7,7 @@ tags:
   - Linux
   - 特殊/dev
 date: '2022-10-27 01:46:34'
-pinned: true
+pinned: false
 top: false
 comments: true
 series:

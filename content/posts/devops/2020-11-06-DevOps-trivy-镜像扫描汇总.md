@@ -8,7 +8,7 @@ tags:
   - 镜像扫描
   - Trivy
 date: '2020-11-06 06:26:40'
-pinned: true
+pinned: false
 top: false
 comments: true
 ---

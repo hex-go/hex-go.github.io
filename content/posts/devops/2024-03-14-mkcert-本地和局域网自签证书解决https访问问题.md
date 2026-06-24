@@ -8,7 +8,7 @@ tags:
   - PKI
   - Mkcert
 date: '2024-03-14 09:16:33'
-pinned: true
+pinned: false
 top: false
 comments: true
 series:

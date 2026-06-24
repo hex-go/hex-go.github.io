@@ -16,7 +16,7 @@ keywords:
   - 多租户
 series:
   - k8s调度
-pinned: true
+pinned: false
 ---
 
 ## 系列导航

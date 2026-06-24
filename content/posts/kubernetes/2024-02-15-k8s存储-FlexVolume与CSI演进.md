@@ -16,7 +16,7 @@ keywords:
   - 存储插件
 series:
   - k8s存储
-pinned: true
+pinned: false
 ---
 
 ## 系列导航
