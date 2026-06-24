@@ -1,0 +1,21 @@
+{{ if .Params.series }}
+{{ $series := index .Params.series 0 }}
+{{ $seriesPages := where .Site.RegularPages "Params.series" "intersect" (slice $series) }}
+{{ if gt (len $seriesPages) 1 }}
+<nav class="series-nav">
+  <div class="series-nav__header">
+    <span class="series-nav__title">系列：<a href="{{ "/series/" | relLangURL }}{{ $series | urlize }}/">{{ $series }}</a></span>
+    <span class="series-nav__count">（共 {{ len $seriesPages }} 篇）</span>
+  </div>
+  <div class="series-nav__links">
+    {{ range $index, $page := $seriesPages.ByDate }}
+      {{ if eq $page.Permalink $.Permalink }}
+        <span class="series-nav__current">{{ add $index 1 }}. {{ $page.Title }}</span>
+      {{ else }}
+        <a href="{{ $page.Permalink }}" class="series-nav__link">{{ add $index 1 }}. {{ $page.Title }}</a>
+      {{ end }}
+    {{ end }}
+  </div>
+</nav>
+{{ end }}
+{{ end }}

@@ -348,3 +348,51 @@ body[class*="theme__"] .single__contents .keypoint code mark {
   padding: 1px 4px;
   border-radius: 3px;
 }
+
+// ============================================================
+// 系列导航（文章底部）
+// ============================================================
+.series-nav {
+  margin: 2em 0 1em;
+  padding: 1.2em 1.4em;
+  border-radius: 6px;
+  background: rgba(128, 128, 128, 0.08);
+
+  &__header {
+    margin-bottom: 0.8em;
+    font-weight: 600;
+  }
+
+  &__title a {
+    text-decoration: none;
+  }
+
+  &__count {
+    font-size: 0.88em;
+    opacity: 0.7;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.92em;
+  }
+
+  &__current {
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(128, 128, 128, 0.15);
+  }
+
+  &__link {
+    text-decoration: none;
+    padding: 2px 8px;
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(128, 128, 128, 0.1);
+    }
+  }
+}
