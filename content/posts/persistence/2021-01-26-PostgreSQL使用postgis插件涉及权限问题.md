@@ -1,71 +1,68 @@
 ---
-title: PostgreSQL使用postgis插件涉及权限问题
+title: PostgreSQL 使用 PostGIS 插件涉及权限问题
 categories:
   - Persistence
 tags:
   - Persistence
+  - PostgreSQL
+  - PostGIS
 date: '2021-01-26 10:06:30'
 top: false
 comments: true
 ---
+
 # 重要
-最重要的事: PostgreSQL已安装postgis插件，给开发提供服务时，创建了数据库，并创建新的用户，用户只有关联数据库的所有权限。导致出现如下报错
 
-```bash
-登录 postgresql 客户端
-psql -h "<PostgreSQL-Host|NoPort>" -U "<PostgreSQL-User>"  -d "<PostgreSQL-Database>"
+PostgreSQL 启用 PostGIS 插件需要 superuser 权限。普通用户即使拥有数据库的所有权限，也无法执行 `CREATE EXTENSION postgis`。
 
-# 查看支持的数据库类型, 未发现postgis支持的类型
-> \dT
-                                                     List of data types
- Schema |     Name      |                              Description                                                                       
---------+---------------+-----------------------------------------------------------------------------------------
- public | agg_count     | 
- public | box2df        | 
- public | gidx          | 
- public | spheroid      | 
- public | valid_detail  |
+## 1.简介
 
-# 查看此数据库支持的插件
->\dx
-                                     List of installed extensions
-  Name   | Version |   Schema   |                             Description                             
----------+---------+------------+---------------------------------------------------------------------
- plpgsql | 1.0     | pg_catalog | PL/pgSQL procedural language
-(1 rows)
-# 执行建库命令，报错类型不支持
->DROP TABLE IF EXISTS "public"."test";
->CREATE TABLE "public"."test" (
-  "id" varchar(50) COLLATE "pg_catalog"."default" NOT NULL,
-  "name" varchar(255) COLLATE "pg_catalog"."default",
-  "geometry" "public"."geometry",
-  "type" int4,
-  "parent_id" varchar(50) COLLATE "pg_catalog"."default"
-);
+PostgreSQL 已安装 PostGIS 插件后，创建新库并赋权给普通用户。开发在库中建表时报 `type "public.geometry" does not exist`。
 
-ERROR:  type "public.geometry" does not exist
-LINE 4:   "geometry" "public"."geometry",
+## 2.说明
 
+### 2.1 排错过程
+
+```text
+登录数据库，查看已安装插件：
+
+\dT  → 没有 geometry 等 PostGIS 类型
+\dx  → 只有 plpgsql，没有 postgis
 ```
 
-# 原因
+建表时报错：
 
-因为数据库没有启用postgis插件，需要执行以下命令
+```text
+ERROR:  type "public.geometry" does not exist
+LINE 4:   "geometry" "public"."geometry",
+```
+
+PostGIS 的 geometry 类型不可用 → 数据库未启用 PostGIS 扩展。
+
+### 2.2 原因
+
+即使插件已在 PostgreSQL 服务器安装，仍需逐个数据库启用：
+
 ```bash
 CREATE EXTENSION postgis;
 ```
-但由于启用插件需要全局管理员权限，因此需要用admin用户登录postgis, 并启用"<PostgreSQL-Database>"数据库的postgis插件
+
+但这个命令需要 superuser 权限，普通用户（即使有数据库所有权限）无权执行。
+
+### 2.3 处理
+
 ```bash
-# 赋予超级管理员权限
-alter role user_name superuser;
-# 打开一个新的pgsql,执行命令`CREATE EXTENSION postgis;`
-# 收回超级管理员权限
-alter role user_name nosuperuser
+# 由管理员赋予临时 superuser 权限
+ALTER ROLE user_name SUPERUSER;
+
+# 以该用户登录后启用扩展
+CREATE EXTENSION postgis;
+
+# 收回 superuser 权限
+ALTER ROLE user_name NOSUPERUSER;
 ```
 
-# Reference
+## 3.参考
 
-[StackOverflow-只能用superuser创建extension](https://stackoverflow.com/questions/16527806/cannot-create-extension-without-superuser-role)
-
-[StackOverflow-ERROR: type "public.geometry" does not exist](https://stackoverflow.com/questions/40711832/error-type-public-geometry-does-not-exist)
-
+- [Cannot create extension without superuser role](https://stackoverflow.com/questions/16527806/cannot-create-extension-without-superuser-role)
+- [ERROR: type "public.geometry" does not exist](https://stackoverflow.com/questions/40711832/error-type-public-geometry-does-not-exist)

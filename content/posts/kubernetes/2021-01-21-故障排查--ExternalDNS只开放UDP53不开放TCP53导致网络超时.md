@@ -4,38 +4,76 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
+  - DNS
+  - 故障排查
 date: '2021-01-21 10:02:19'
 top: false
 comments: true
 ---
 
 # 重要
-记同事一次奇葩问题拍错过程。
+
+DNS 协议在响应包超过 512 字节时，会自动切换到 TCP 传输。如果 DNS Server 只开放 UDP 53 端口，部分解析请求会被截断，客户端重试 TCP 超时后才会 fallback。
 
 # 环境说明
-presto 服务部署在k8s集群内部，并与集成了集群外的kerbos认证。
 
-*现象：*
-    集群内部访问presto一切正常，但集群外部访问会阻塞5分钟，之后访问正常。
-    
-*排错过程：*
-    抓包，抓client与kerbos之间包。发现客户端像`DNS-Server`发起了对域``的解析，返回的解析结果中包含36个主机IP,包大小超过了512字节，导致消息被截断，
-    然后重新发起了TCP请求，但`DNS-Server`的TCP-53端口没有开放，客户端重试5分钟，超时。但presto还继续了后面正常的逻辑。
+- Presto 服务部署在 K8s 集群内，集成集群外部 Kerberos 认证
+- K8s 内部使用 CoreDNS（UDP/TCP 53 均开放），集群外部使用独立 DNS Server
 
-*造成问题原因：*
-    1. 集群外部使用`DNS-Server`,安全组中中开放了`TCP-53`，未开放`UDP-53`端口。
+## 1.简介
 
-*导致问题难以定位原因：*
-    1. 之前主机较少，解析的包未超过512。集群内外状态皆正常。
-    2. 集群内部使用的`CoreDNS`，`TCP-53`与`UDP-53`端口开放；但集群外部使用的外部的`DNS-Server`,安全组中只开放了`TCP-53`。
-    3. 以为presto服务存在问题，只抓了客户端与presto之间的网路包。后期观察presto日志发现阻塞时，日志停留在与kerbos认证过程中。
-    4. presto处理机制存在问题，即dns解析异常未做处理(比如抛错或退出)；未收到期望的解析结果仍走了后面正常逻辑，导致只是等待5分钟，但后续逻辑正常。
+集群外部访问 Presto 时，请求阻塞约 5 分钟后恢复正常。
 
-# Reference
-抓取的包文件可从[此处获取](/images/files/presto-dns-53.cap)
+## 2.说明
 
-包通过`wireshark`打开，如下：
+### 2.1 现象
 
-<img src="/images/post-image/dns-TCP53-not-export.png" width="60%">
+| 访问来源 | 现象 |
+|----------|------|
+| 集群内部 | 正常 |
+| 集群外部 | 阻塞约 5 分钟后正常 |
 
-[DNS使用TCP和UDP的53端口](https://blog.csdn.net/ldw662523/article/details/79564884)
+### 2.2 排错过程
+
+1. 抓客户端与 Kerberos 之间的包，发现客户端向 DNS Server 发起域名解析；
+2. 解析结果包含 36 个主机 IP，响应包超过 512 字节；
+3. UDP 响应被截断，客户端发起 TCP 重试；
+4. 外部 DNS Server 的 TCP 53 端口未开放；
+5. 客户端 TCP 重试超时（约 5 分钟），之后走后续逻辑；
+6. Presto 未对 DNS 解析异常做错误处理，超时后继续执行。
+
+### 2.3 根因
+
+```text
+DNS 响应 > 512 字节
+   → UDP 响应被截断
+   → 客户端切换 TCP 53 重试
+   → 外部 DNS Server TCP 53 未开
+   → TCP 连接超时（~5min）
+   → 超时后客户端继续后续流程
+```
+
+### 2.4 为什么之前没暴露
+
+| 因素 | 说明 |
+|------|------|
+| 之前主机较少 | 响应包未超过 512 字节，UDP 即可完成 |
+| 集群内外部 DNS 不同 | 内部 CoreDNS TCP/UDP 均开放；外部 DNS 只开了 UDP |
+
+### 2.5 为什么难定位
+
+| 混淆点 | 说明 |
+|--------|------|
+| 表现是 Presto 慢 | 实际是 DNS 超时 |
+| 只抓了 Presto 业务包 | 没抓 DNS 包 |
+| 超时后正常 | Presto 没有 DNS 错误处理，超时后继续走 |
+
+## 3.总结
+
+1. DNS 512 字节截断不是协议 bug，是标准行为——UDP 包超过 512 字节时客户端必须切 TCP；
+2. 部署 DNS Server 必须同时开放 UDP 53 和 TCP 53；
+3. 排查跨系统问题时抓包范围要覆盖所有通信对（不只是业务服务）。
+
+## 4.参考
+
+- [DNS使用TCP和UDP的53端口](https://blog.csdn.net/ldw662523/article/details/79564884)

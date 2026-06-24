@@ -1,54 +1,119 @@
 ---
-title: Kubernetes-ingress-nginx配置grpc服务
+title: Kubernetes-ingress-nginx 配置 gRPC 服务
 categories:
   - Kubernetes
 tags:
   - Kubernetes
+  - Ingress
+  - gRPC
 date: '2020-11-06 06:17:38'
 top: false
 comments: true
 ---
 
 # 重要
-ingress-nginx对于暴露grpc的服务，要求必须tls加密。所以，要么ingress配置grpcs,在服务端自己管理证书；要么ingress配置grpc,在ingress配置统一管理证书。
 
-为便于运维管理证书，此处采用`cert-manager`统一在ingress配置中。自动生成证书，发布https服务。
+ingress-nginx 暴露 gRPC 服务时要求必须使用 TLS。两种方案：
 
-# 环境说明
-+ 
+| 方案 | 证书位置 | 适用场景 |
+|------|----------|----------|
+| gRPCS（后端 TLS） | 服务端自己管理证书 | 微服务内部已统一证书 |
+| gRPC（ingress TLS 终结） | Ingress 统一管理证书 | 运维集中管理，推荐 |
 
-# 使用
-1. 生成自签发CA证书，并保存在secret中(供cert-manager签发证书使用)；
-2. 配置`cluster-issuer`,和`certificate`，使生成Secret，保存证书、ca和私钥；
-3. 创建pod,service,ingress, ingress的tls配置使用第二步生成的Secret；
-4. 执行命令测试grpc端口是否暴露成功；
-```bash
-grpcurl -insecure test.icos.city:443 build.stack.fortune.FortuneTeller/Predict
+## 1.简介
+
+gRPC 使用 HTTP/2 传输。ingress-nginx 的 gRPC 支持通过 annotation 开启，后端端口必须标记为 gRPC 协议。
+
+## 2.说明
+
+### 2.1 整体流程
+
+```text
+客户端 gRPC 请求（TLS）
+    ↓
+Ingress（TLS 终结，cert-manager 自动签发证书）
+    ↓ annotation: nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+后端 gRPC Service（HTTP/2，纯文本）
 ```
 
-# Reference
-以上1.2步参考cert-manager相关内容
-[cert-manager hex-博客](https://hex-go.github.io/2020/11/05/kubernetes-2020-11-05-Kubernetes-certmanager%E8%A7%A3%E5%86%B3ingress-tls%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/)
-[cert-manager hex-github-示例项目](https://github.com/hex-go/cert-manager-example.git)
+### 2.2 前置：cert-manager 配置
 
-第3,4部参考`ingress-nginx`的官方示例，
-[IngressNginx官房GRPC示例](https://github.com/kubernetes/ingress-nginx/tree/master/images/grpc-fortune-teller)
+ClusterIssuer 签发证书：
 
-第3,4部也可参考cert-manager的示例代码测试
-[cert-manager hex-github-示例项目](https://github.com/hex-go/cert-manager-example.git)
+```yaml
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: ca-issuer
+spec:
+  ca:
+    secretName: ca-key-pair
+```
 
-其他关于grpc的内容，需要参考此链接
+Certificate 申请证书：
 
-[grpc_github](https://github.com/grpc/grpc) 
+```yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: grpc-cert
+spec:
+  secretName: grpc-tls
+  dnsNames:
+    - grpc.example.com
+  issuerRef:
+    name: ca-issuer
+    kind: ClusterIssuer
+```
 
-[grpc_go_quick_start](https://grpc.io/docs/languages/go/quickstart/) 
+### 2.3 Ingress 配置
 
-[grpc python quick-start](https://grpc.io/docs/languages/python/quickstart/) 
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grpc-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+spec:
+  tls:
+    - hosts:
+        - grpc.example.com
+      secretName: grpc-tls
+  rules:
+    - host: grpc.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: grpc-service
+                port:
+                  number: 50051
+```
 
-[grpc_java_quick-start](https://github.com/grpc/grpc-java)
+关键配置：
 
-[ingress-nginx-grpcExample](https://github.com/kubernetes/ingress-nginx/tree/master/docs/examples/grpc)
+| 配置 | 说明 |
+|------|------|
+| `backend-protocol: GRPC` | 告诉 ingress-nginx 使用 HTTP/2 连接后端 |
+| `tls.secretName` | cert-manager 自动生成的证书 Secret |
 
-[ingress-nginx-grpc-DOC](https://kubernetes.github.io/ingress-nginx/examples/grpc/)
+### 2.4 测试
 
-[ingress-nginx-grocExampleImage](https://github.com/kubernetes/ingress-nginx/tree/master/images/grpc-fortune-teller)
+```bash
+grpcurl -insecure grpc.example.com:443 build.stack.fortune.FortuneTeller/Predict
+```
+
+## 3.总结
+
+1. gRPC over ingress-nginx 必须带 TLS；
+2. 推荐 ingess TLS 终结方案——证书由 cert-manager 统一管理；
+3. `backend-protocol: GRPC` annotation 是关键，缺少会报协议不匹配。
+
+## 4.参考
+
+- [cert-manager 博客](/posts/kubernetes/2020-11-05-kubernetes-certmanager解决ingress-tls证书问题/)
+- [cert-manager 示例项目](https://github.com/hex-go/cert-manager-example.git)
+- [ingress-nginx gRPC 示例](https://kubernetes.github.io/ingress-nginx/examples/grpc/)

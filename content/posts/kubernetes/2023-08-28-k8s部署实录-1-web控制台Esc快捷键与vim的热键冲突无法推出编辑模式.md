@@ -1,9 +1,10 @@
 ---
-title: k8s部署实录-1-web控制台Esc快捷键与vim的热键冲突无法推出编辑模式
+title: k8s部署实录-1-web控制台Esc快捷键与vim的热键冲突
 categories:
   - Kubernetes
 tags:
   - Vim
+  - JumpServer
 date: '2023-08-28 19:58:28'
 top: false
 comments: true
@@ -12,39 +13,48 @@ series:
 ---
 
 # 重要
-- 前因： 
-客户现场只提供JumpServer的web-client方式连接，root密码甚至是普通用户的密码也不提供。导致只能通过web-client进行环境部署操作。
 
-- 现状：
-使用JumpServer的WebClient方式进行vim编辑文件时，发现Vim的编辑模式无法Esc退出
+通过 JumpServer WebClient 编辑文件时，Esc 被浏览器拦截，Vim 无法退出插入模式。将 `jj` 映射为 `<Esc>` 即可绕过。
 
-- 原因分析：
-  Esc会触发浏览器的Esc热键，导致Vim无法推出编辑模式
+## 1.简介
 
-- 处理方案
-> 将 jj 替代 Esc, 通过jj退出编辑模式
-在~/.vimrc下添加映射 "inoremap jj <Esc>"
+客户现场只提供 JumpServer WebClient 连接，不提供 root 密码。通过浏览器操作 Vim 时，按下 Esc 触发浏览器的全屏退出等快捷键，Vim 收不到 `<Esc>` 键。
 
-```bash
-# $vimrc_path文件存在时，向文件中追加"inoremap jj <Esc>",否则新建文件并增加以上内容
-vimrc_path="$HOME/.vimrc"
-content_to_append="inoremap jj <Esc>"; if [ -f "$vimrc_path" ]; then echo "$content_to_append" >> "$vimrc_path"; else echo "$content_to_append" > "$vimrc_path"; fi
+## 2.说明
+
+### 2.1 报错链路
+
+```text
+JumpServer WebClient
+   ↓
+浏览器拦截 Esc（全屏退出等快捷键）
+   ↓
+Vim 插入模式下收不到 <Esc>
+   ↓
+无法退出插入模式
 ```
 
-# Reference
+### 2.2 处理
 
-在 Vim 编辑器中，`.vimrc` 文件是用于配置 Vim 的设置和行为的配置文件。
-其中，`inoremap` 是 Vim 配置文件中的一个命令，用于定义插入模式（Insert Mode）下键盘映射。
-键盘映射允许您将按键序列映射为其他按键、命令或字符串，以改变编辑器的行为。
+将 `jj` 映射为 `<Esc>`：
 
-具体来说，`inoremap` 是 "Insert Normal Mode Mapping" 的缩写，它会在插入模式下将一个按键序列映射为另一个按键序列。
-常见的用例是将短按键序列映射为更长或更方便的按键序列，以提高编辑效率。
+```bash
+vimrc_path="$HOME/.vimrc"
+if [ -f "$vimrc_path" ]; then
+    echo 'inoremap jj <Esc>' >> "$vimrc_path"
+else
+    echo 'inoremap jj <Esc>' > "$vimrc_path"
+fi
+```
 
-`inoremap jj <Esc>` 将按下`两个连续的 j 键`映射为按下`<Esc>键`，而 <Esc> 键用于从插入模式返回到普通模式。
+效果：插入模式下连续按两次 `j`，等效于按 `<Esc>` 退出插入模式。
 
-解释一下具体含义：
+### 2.3 `inoremap` 说明
 
-`inoremap`: 表示在插入模式下进行键盘映射。
-`jj`: 指定按键序列，即按两次 j 键。
-`<Esc>`: 是特殊字符表示 <Esc> 键，它在 Vim 中表示退出插入模式，返回到普通模式。
-这样，每当在插入模式中按下两次 j 键，Vim 将会识别为按下了一个 <Esc> 键，从而退出插入模式。
+| 字段 | 含义 |
+|------|------|
+| `i` | 仅在 **插入模式**（Insert Mode）生效 |
+| `nore` | 禁止递归映射（映射不再触发其他映射） |
+| `map` | 按键映射 |
+| `jj` | 按键序列：连续按两次 j |
+| `<Esc>` | 映射目标：退出插入模式 |

@@ -7,6 +7,7 @@ tags:
 date: '2020-06-29 03:11:43'
 top: false
 comments: true
+draft: true
 ---
 > 当下流行两种方式来为云原生应用提供后台服务： `Operators`和`Open Services Broker API`。本文比较两种技术，并针对性研究如何整合两者协同工作。
 

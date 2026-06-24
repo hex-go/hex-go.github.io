@@ -1,66 +1,73 @@
 ---
-title: Postman使用Test解析jwt验证claim
+title: Postman Test 脚本解析 JWT 验证 Claim
 categories:
   - 个人工具
 tags:
   - 个人工具
   - Postman
+  - JWT
 date: '2021-01-27 02:02:13'
 top: false
 comments: true
 ---
 
 # 重要
-最重要的事: 通过postman的`tests`模块解析jwt，从而在Console查看claim的值。
 
-# 配置
+Postman 的 Tests 模块可以解析 JWT Token，在 Console 中查看 payload 内容，并将 claim 值设为环境变量供后续请求使用。
 
-在请求access-token的请求中，添加Tests脚本。请求示例如下
+## 1.简介
+
+测试 OAuth2 / OpenID Connect 接口时，需要验证返回的 JWT 中是否包含预期的 claim（如 `sub`、`iss`、`roles`），以及将 access_token 自动传递给后续请求。
+
+## 2.说明
+
+### 2.1 请求 Token
+
 ```bash
-curl --location --request POST 'https://sso.icos.city/auth/realms/icos/protocol/openid-connect/token' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'grant_type=password' \
---data-urlencode 'username=hexiang' \
---data-urlencode 'password=xxxxxx' \
---data-urlencode 'client_id=<client-id>' \
---data-urlencode 'client_secret=<client-secret>'
+curl -X POST 'https://sso.example.com/auth/realms/app/protocol/openid-connect/token' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'grant_type=password' \
+  -d 'username=user' \
+  -d 'password=xxx' \
+  -d 'client_id=<client-id>' \
+  -d 'client_secret=<client-secret>'
 ```
 
-<img src="/images/post-image/postman-tests-decode-jwt-2.png" width="60%">
+### 2.2 Tests 脚本
 
-增加的Test脚本如下
-```javascript 1.8
+在 Postman 请求的 Tests 标签中添加：
+
+```javascript
 let jsonData = pm.response.json();
-// use whatever key in the response contains the jwt you want to look into.  This example is using access_token
 let jwtContents = jwt_decode(jsonData.access_token);
 
-// Now you can set a postman variable with the value of a claim in the JWT
-pm.variable.set("someClaim", jwtContents.payload.someClaim);
+pm.environment.set("accessToken", jsonData.access_token);
+pm.environment.set("userId", jwtContents.payload.sub);
+
+console.log("Token Contents:\n" + JSON.stringify(jwtContents, null, 2));
 
 function jwt_decode(jwt) {
     var parts = jwt.split('.'); // header, payload, signature
-    let tokenContents={};
-    tokenContents.header = JSON.parse(atob(parts[0]));
-    tokenContents.payload = JSON.parse(atob(parts[1]));
-    tokenContents.signature = atob(parts[2]);
-
-    // this just lets you see the jwt contents in the postman console.
-    console.log("Token Contents:\n" + JSON.stringify(tokenContents, null, 2));
-
-    return tokenContents;
+    return {
+        header: JSON.parse(atob(parts[0])),
+        payload: JSON.parse(atob(parts[1])),
+        signature: atob(parts[2])
+    };
 }
 ```
 
-<img src="/images/post-image/postman-tests-decode-jwt-2.png" width="60%">
+| 方法 | 作用 |
+|------|------|
+| `pm.response.json()` | 解析响应体为 JSON |
+| `jwt.split('.')` | JWT 由三部分 base64 组成：header.payload.signature |
+| `atob()` | 浏览器内置方法，Base64 → 字符串 |
+| `pm.environment.set()` | 设置 Postman 环境变量，后续请求通过 `{{accessToken}}` 引用 |
 
+### 2.3 调试
 
-# Reference
-[Issue - 在Tests中解析jwt并显示claim](https://github.com/postmanlabs/postman-app-support/issues/1044)
+脚本中的 `console.log` 输出到 Postman Console（`View` → `Show Postman Console` 或 `Ctrl+Alt+C`）。
 
-[Stack Overflow - 在Tests中解析jwt并修改claim值](https://stackoverflow.com/questions/52607165/how-to-open-a-jwt-token-on-postman-to-put-one-of-the-claims-value-on-a-variable)
+## 3.参考
 
-[Stack Exchange - decoding-jwt-and-testing-results-in-postman](https://sqa.stackexchange.com/questions/41674/decoding-jwt-and-testing-results-in-postman)
-
-[Postman 文档 - Write Tests](https://learning.postman.com/docs/writing-scripts/test-scripts/)
-
-
+- [Postman Issue - 解析 JWT 并显示 claim](https://github.com/postmanlabs/postman-app-support/issues/1044)
+- [Postman 官方文档 - Write Tests](https://learning.postman.com/docs/writing-scripts/test-scripts/)
