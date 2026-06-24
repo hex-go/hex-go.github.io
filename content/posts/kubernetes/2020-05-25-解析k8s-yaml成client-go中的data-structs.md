@@ -1,131 +1,102 @@
 ---
-title: 解析k8s-yaml成client-go中的data-structs
+title: 解析 K8s YAML 为 client-go 中的 data structs
 categories:
   - Kubernetes
 tags:
   - Kubernetes
   - Go
+  - client-go
 date: '2020-05-25 03:35:11'
 top: false
 comments: true
 ---
 
 # 重要
-开发过程中，需要解析helm-manifest获取到的各种资源的yaml。每个都写映射
+
+client-go 的 `scheme.Codecs.UniversalDeserializer().Decode` 可以将 YAML 字符串解码为 `runtime.Object`。结合 `---` 分割多文档 YAML，就能一次性解析 `helm get manifest` 的输出。
+
 # 环境说明
 
-+ helm 3
-+ kubernetes-v1.15.6
+- Helm 3
+- Kubernetes v1.15.6
 
-# 安装
+## 1. 核心函数
 
-无
-
-# 使用
-
-注意:
-
-k8s版本不同。，资源所在的api接口会有变化。
+YAML → `runtime.Object` 的关键行：
 
 ```go
-package k8s
-
-import (
-	"fmt"
-	"heroku/pkg/api/log"
-	"k8s.io/apimachinery/pkg/runtime"
-	"k8s.io/client-go/kubernetes/scheme"
-	"regexp"
-	"strings"
-)
-
-func ParseK8sYaml(fileR []byte) []runtime.Object {
-
-	acceptedK8sTypes := regexp.MustCompile(`(Role|ClusterRole|RoleBinding|ClusterRoleBinding|ServiceAccount|Deployment|StatefulSet|Service|Ingress|HorizontalPodAutoscaler)`)
-	fileAsString := string(fileR[:])
-	sepYamlfiles := strings.Split(fileAsString, "---")
-	retVal := make([]runtime.Object, 0, len(sepYamlfiles))
-
-	for _, f := range sepYamlfiles {
-		if f == "\n" || f == "" {
-			// ignore empty cases
-			continue
-		}
-
-		checkList := strings.Split(f, "#")
-		if len(checkList) > 10 {
-			// ignore annotation resource
-			log.Warn(fmt.Sprintf("ignore annotation resource: %s", f[:10]))
-
-			continue
-		}
-
-		decode := scheme.Codecs.UniversalDeserializer().Decode
-		obj, groupVersionKind, err := decode([]byte(f), nil, nil)
-
-		if err != nil {
-			log.Warn(fmt.Sprintf("Error while decoding YAML object. Err was: %s", err))
-			continue
-		}
-		log.Debug(fmt.Sprintf("Helm-Manitest:--:%s", groupVersionKind))
-
-		if !acceptedK8sTypes.MatchString(groupVersionKind.Kind) {
-			log.Info(fmt.Sprintf("The custom-roles configMap contained K8s object types which are not supported! Skipping object with type: %s", groupVersionKind.Kind))
-		} else {
-			retVal = append(retVal, obj)
-		}
-
-	}
-	return retVal
-}
-
-func stringToFile(outDir string, aut model.Aut) (configFile string, err error) {
-	filename := filepath.Join(outDir, "config")
-
-	var data = []byte(aut.K8sConf)
-	err = ioutil.WriteFile(filename, data, 0666)
-	if err != nil {
-		return "", errors.New(fmt.Sprintf("k8s-config load to tmp Error : %s", err.Error()))
-	}
-	return filename, nil
-}
-
-func Show(helmRelease string, aut model.Aut) (instances []runtime.Object, err error) {
-	tmp, err := ioutil.TempDir("", "curator-")
-	if err != nil {
-		return nil, errors.Wrapf(err, "Error while preparing temp Dir")
-	}
-
-	defer os.RemoveAll(tmp) // clean up
-
-	configPath, err := stringToFile(tmp, aut)
-	if err != nil {
-		return nil, err
-	}
-
-	log.Info("Started Helm-show:")
-
-	args := []string{
-		"--kubeconfig", configPath,
-		"get",
-		"manifest",
-		helmRelease,
-		"-n", aut.Namespace,
-	}
-
-	stdout, err := utils.ExecCMD("helm", args)
-	if err != nil {
-		return nil, err
-	}
-
-	instances = k8s.ParseK8sYaml(stdout)
-	return instances, err
-}
-
+decode := scheme.Codecs.UniversalDeserializer().Decode
+obj, groupVersionKind, err := decode([]byte(yamlContent), nil, nil)
 ```
 
+`Decode` 内置了 K8s 资源到 Go 结构体的映射表，返回的 `obj` 可以直接断言为具体类型。
 
+## 2. 完整示例
 
-# Reference
+从 `helm get manifest` 输出中批量解析 K8s 资源：
 
-[Support for parsing K8s yaml spec into client-go data structures](https://github.com/kubernetes/client-go/issues/193#issuecomment-343138889)
+```go
+import (
+    "k8s.io/apimachinery/pkg/runtime"
+    "k8s.io/client-go/kubernetes/scheme"
+    "regexp"
+    "strings"
+)
+
+func ParseK8sYaml(yamlContent []byte) []runtime.Object {
+    acceptedTypes := regexp.MustCompile(
+        `(Deployment|StatefulSet|Service|Ingress|Role|ClusterRole|
+          RoleBinding|ClusterRoleBinding|ServiceAccount|HorizontalPodAutoscaler)`,
+    )
+
+    sepYamlfiles := strings.Split(string(yamlContent), "---")
+    retVal := make([]runtime.Object, 0, len(sepYamlfiles))
+
+    for _, f := range sepYamlfiles {
+        if f == "\n" || f == "" {
+            continue
+        }
+
+        decode := scheme.Codecs.UniversalDeserializer().Decode
+        obj, groupVersionKind, err := decode([]byte(f), nil, nil)
+        if err != nil {
+            continue
+        }
+
+        if acceptedTypes.MatchString(groupVersionKind.Kind) {
+            retVal = append(retVal, obj)
+        }
+    }
+    return retVal
+}
+```
+
+调用端——从 Helm Release 获取所有资源：
+
+```go
+func GetResources(helmRelease, namespace, kubeconfig string) ([]runtime.Object, error) {
+    args := []string{
+        "--kubeconfig", kubeconfig,
+        "get", "manifest", helmRelease,
+        "-n", namespace,
+    }
+    stdout, err := execCmd("helm", args)
+    if err != nil {
+        return nil, err
+    }
+    return ParseK8sYaml(stdout), nil
+}
+```
+
+## 3. 注意
+
+| 注意点 | 说明 |
+|--------|------|
+| `---` 分割 | Helm manifest 是多文档 YAML，`---` 分隔 |
+| 版本差异 | K8s 版本不同，资源的 API Group 可能变化 |
+| 白名单过滤 | 仅解析支持的资源类型，忽略 ConfigMap 等 |
+| 注释行干扰 | `#` 开头的内容可能导致解码失败，需过滤 |
+
+## 参考
+
+- [Support for parsing K8s yaml spec into client-go data structures](https://github.com/kubernetes/client-go/issues/193#issuecomment-343138889)
