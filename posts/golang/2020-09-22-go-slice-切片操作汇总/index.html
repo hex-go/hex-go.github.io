@@ -57,15 +57,15 @@
 </span></span><span class=line><span class=cl>    <span class=nx>newcap</span> <span class=o>+=</span> <span class=p>(</span><span class=nx>newcap</span> <span class=o>+</span> <span class=mi>3</span><span class=o>*</span><span class=mi>256</span><span class=p>)</span> <span class=o>/</span> <span class=mi>4</span>
 </span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><p>即：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>newcap = (5 × oldcap + 3 × 256) / 4</span></span></code></pre></td></tr></table></div></div><p>新旧容量之间的增长系数随 oldcap 变化：</p><pre class=ascii-diagram>系数
-2.00 ┤╲
-     │ ╲
-1.75 ┤  ╲
-     │   ╲
-1.50 ┤    ╲___
-     │        ╲___
-1.25 ┤           ╲___________________
-     └──────────────────────────────── oldcap
-         128  256  512  1024  2048   ∞</pre><p>公式会<strong>循环计算</strong>，直到计算值首次 ≥ 所需容量。增长系数为 2 时预留一倍 buffer，增长至 1.25 时预留 0.25 倍 buffer。</p><p>设计意图：大切片若翻倍浪费严重，故采用增长因子从 2 逐渐降至 1.25 的公式，适度预留空间，平衡未来扩容次数与内存占用。</p><h3 id=23-内存对齐与最终容量>2.3 内存对齐与最终容量</h3><p>上面计算出的 <code>newcap</code> 只是一个<strong>目标容量</strong>。在最终分配内存前，Go 运行时还会进行内存对齐操作。</p><table><thead><tr><th>步骤</th><th>操作</th></tr></thead><tbody><tr><td>1</td><td>计算目标容量 <code>newcap</code>（上述三种情况之一）</td></tr><tr><td>2</td><td>结合元素类型大小，计算所需内存总量</td></tr><tr><td>3</td><td>将内存量向上取整到 Go 内存管理器的 mspan 规格（如 8、16、48 字节等）</td></tr><tr><td>4</td><td>最终容量 = 对齐后的内存规格 ÷ 元素类型大小</td></tr></tbody></table><p>最终容量通常会略大于 <code>newcap</code>，但不会浪费太多——最多到下一个内存规格。</p><div class=keypoint>扩容不是简单翻倍。完整的扩容路径：期望容量 → 三种情况判断 → 平滑公式 → 内存对齐 → 最终 cap。两个驱动因素（增长需求 + 原切片大小）决定预留策略，内存对齐负责最终的规格调整。</div><h3 id=24-go-118-前后的区别>2.4 Go 1.18 前后的区别</h3><table><thead><tr><th>版本</th><th>&lt; 1024</th><th>≥ 1024</th></tr></thead><tbody><tr><td>1.17 及以前</td><td>翻倍（2x）</td><td>1.25x</td></tr><tr><td>1.18+</td><td>&lt; 256 翻倍（2x）</td><td>平滑公式：2x → ~1.25x</td></tr></tbody></table><p>1.18 改动的动机：1024 之前一直翻倍导致大容量切片浪费严重。新算法在 256 之后就启动平滑过渡，更省内存。</p><h3 id=25-预分配避免扩容>2.5 预分配避免扩容</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+2.00 ┤████████████▌╲
+     │            ▐ ╲
+1.75 ┤            ▐  ╲
+     │            ▐   ╲___
+1.50 ┤            ▐       ╲___
+     │            ▐           ╲___
+1.25 ┤            ▐              ╲___________________
+     └────────────┴──────────────────────────────── oldcap
+      0         256  512  1024  2048         ∞</pre><p>公式会<strong>循环计算</strong>，直到计算值首次 ≥ 所需容量。增长系数为 2 时预留一倍 buffer，增长至 1.25 时预留 0.25 倍 buffer。</p><p>设计意图：大切片若翻倍浪费严重，故采用增长因子从 2 逐渐降至 1.25 的公式，适度预留空间，平衡未来扩容次数与内存占用。</p><h3 id=23-内存对齐与最终容量>2.3 内存对齐与最终容量</h3><p>上面计算出的 <code>newcap</code> 只是一个<strong>目标容量</strong>。在最终分配内存前，Go 运行时还会进行内存对齐操作。</p><table><thead><tr><th>步骤</th><th>操作</th></tr></thead><tbody><tr><td>1</td><td>计算目标容量 <code>newcap</code>（上述三种情况之一）</td></tr><tr><td>2</td><td>结合元素类型大小，计算所需内存总量</td></tr><tr><td>3</td><td>将内存量向上取整到 Go 内存管理器的 mspan 规格（如 8、16、48 字节等）</td></tr><tr><td>4</td><td>最终容量 = 对齐后的内存规格 ÷ 元素类型大小</td></tr></tbody></table><p>最终容量通常会略大于 <code>newcap</code>，但不会浪费太多——最多到下一个内存规格。</p><div class=keypoint>扩容不是简单翻倍。完整的扩容路径：期望容量 → 三种情况判断 → 平滑公式 → 内存对齐 → 最终 cap。两个驱动因素（增长需求 + 原切片大小）决定预留策略，内存对齐负责最终的规格调整。</div><h3 id=24-go-118-前后的区别>2.4 Go 1.18 前后的区别</h3><table><thead><tr><th>版本</th><th>&lt; 1024</th><th>≥ 1024</th></tr></thead><tbody><tr><td>1.17 及以前</td><td>翻倍（2x）</td><td>1.25x</td></tr><tr><td>1.18+</td><td>&lt; 256 翻倍（2x）</td><td>平滑公式：2x → ~1.25x</td></tr></tbody></table><p>1.18 改动的动机：1024 之前一直翻倍导致大容量切片浪费严重。新算法在 256 之后就启动平滑过渡，更省内存。</p><h3 id=25-预分配避免扩容>2.5 预分配避免扩容</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
 </span><span class=lnt> 4
