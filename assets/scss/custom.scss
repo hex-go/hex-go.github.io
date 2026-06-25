@@ -118,8 +118,36 @@ body[class*="theme__"] details {
 
       &::before {
         color: $bar;
-      }
-    }
+  }
+}
+
+// ============================================================
+// GC 三色标记颜色标签
+// ============================================================
+.gc-white {
+  background: #e8e8e8;
+  color: #333;
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-weight: 600;
+}
+.gc-gray {
+  background: #888;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid #666;
+  font-weight: 600;
+}
+.gc-black {
+  background: #333;
+  color: #ddd;
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid #555;
+  font-weight: 600;
+}
 
     &[open] > summary {
       border-bottom-color: $sep;
