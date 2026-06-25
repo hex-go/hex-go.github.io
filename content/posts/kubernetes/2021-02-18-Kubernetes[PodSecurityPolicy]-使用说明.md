@@ -4,6 +4,7 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
+  - Deprecated
 date: '2021-02-18 10:19:23'
 top: false
 comments: true
@@ -11,6 +12,18 @@ pinned: false
 ---
 
 # 重要
+
+**PodSecurityPolicy 已在 K8s 1.21 弃用、1.25 移除。** 本文内容仅适用于 ≤1.24 的集群。
+
+替代方案：
+
+| 方案 | 说明 |
+|------|------|
+| Pod Security Admission（内置） | K8s 1.23+ 内置，通过 namespace label 设置 `enforce`/`audit`/`warn` 级别 |
+| Kyverno | 第三方策略引擎，支持更灵活的 Pod 安全策略 |
+| OPA Gatekeeper | 基于 Rego 的通用策略引擎 |
+
+PSA 配置示例：在 namespace 上加 label `pod-security.kubernetes.io/enforce=baseline`，即可限制特权容器、hostNetwork 等。
 
 Kubernetes: 1.20.2
 
@@ -258,4 +271,38 @@ helm install ingress-nginx ingress-nginx/ -n ingress-nginx
 # Reference
 
 [Pod 安全策略](https://kubernetes.io/zh/docs/concepts/policy/pod-security-policy/#run-another-pod)
+
+## 迁移至 Pod Security Admission（K8s 1.23+）
+
+从 PSP 迁移到 PSA 只需两步：
+
+1. 删除 PSP 资源和对应的 RBAC：
+
+```bash
+kubectl delete psp --all
+kubectl delete clusterrole psp:unprivileged
+kubectl delete clusterrolebinding psp:unprivileged
+```
+
+2. 为每个 namespace 添加安全标签：
+
+```bash
+# baseline 策略：禁止特权容器、hostNetwork、hostPID 等
+kubectl label ns <namespace> pod-security.kubernetes.io/enforce=baseline
+
+# 如需宽松策略
+kubectl label ns <namespace> pod-security.kubernetes.io/enforce=privileged
+```
+
+| 标签 | 级别 | 说明 |
+|------|------|------|
+| `pod-security.kubernetes.io/enforce` | 强制拒绝不合规 Pod |
+| `pod-security.kubernetes.io/audit` | 仅审计日志，不拒绝 |
+| `pod-security.kubernetes.io/warn` | 仅警告，不拒绝 |
+
+| 策略级别 | 限制 |
+|----------|------|
+| `privileged` | 无限制（等同无 PSP） |
+| `baseline` | 禁止特权容器、hostNetwork、hostPID、hostIPC、hostPorts 等 |
+| `restricted` | baseline + 强制非 root、禁止权能提升、限制 volume 类型 |
 

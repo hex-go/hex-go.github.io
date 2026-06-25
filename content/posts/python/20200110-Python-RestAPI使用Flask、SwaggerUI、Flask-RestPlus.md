@@ -14,14 +14,10 @@ comments: true
 ---
 
 # 重要
-本文概述了使用`Flask`和`Flask-restplus`创建`REST API`所需的步骤。这些工具组合成一个框架，Swagger被整合在`Flask-restplus`中。
-> 1. API参数校验
-> 2. 格式化输出（Json）
-> 3. 生成交互式API文档
-> 4. 将python异常转化为Readable http响应。
-> 5. API文档可导出`Swagger`格式，也可以导出为`Postman-collection`
 
-# 1.简介
+Flask + Flask-RestPlus 可以快速搭建 REST API，内置参数校验、Swagger 文档、异常转 HTTP 响应。文档可导出为 Swagger 格式或 Postman Collection。
+
+## 1. 简介
 [*Flask*](https://flask.readthedocs.io/en/1.1.x): 轻量级的Python Web框架。
 [*Flask-RestPlus*](https://flask-restplus.readthedocs.io/en/stable) 使开发`REST api`变得快速和简单。它提供了足够的语法糖，使您的代码易于阅读和维护。它集成`Swagger UI`为API生成交互式文档。
 
