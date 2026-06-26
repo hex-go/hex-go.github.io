@@ -13,7 +13,7 @@
                 {{ $filteredPagesPinned = (where $filteredPages "Params.pinned" "==" true) }}
             {{ end }}
             {{ $filteredPages := $filteredPages | intersect (where $filteredPages "Params.pinned" "!=" true) }}
-            {{ $filteredPages := $filteredPagesPinned | union ($filteredPages) }}
+            {{ $filteredPages := $filteredPages | union ($filteredPagesPinned) }}
             {{ $paginator := .Paginate $filteredPages }}
             {{ range $paginator.Pages }}
                 {{ .Render "summary" }}
