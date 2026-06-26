@@ -3,10 +3,8 @@ title: DevOps-trivy-镜像扫描汇总
 categories:
   - Devops
 tags:
-  - Devops
+  - DevOps
   - 安全
-  - 镜像扫描
-  - Trivy
 date: 2020-06-10 00:00:00
 pinned: false
 top: false

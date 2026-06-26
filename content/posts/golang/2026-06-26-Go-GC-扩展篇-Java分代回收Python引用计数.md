@@ -3,9 +3,8 @@ title: GC 扩展篇——Java 分代回收与 Python 引用计数
 categories:
   - Golang
 tags:
-  - Go
   - GC
-  - Java
+  - Go
   - Python
 date: 2024-08-23 00:00:00
 top: false

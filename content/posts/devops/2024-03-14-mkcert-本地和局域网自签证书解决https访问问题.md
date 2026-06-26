@@ -3,10 +3,8 @@ title: mkcert-本地、局域网自签证书解决https访问问题
 categories:
   - Devops
 tags:
-  - Devops
+  - DevOps
   - 证书
-  - PKI
-  - Mkcert
 date: 2024-03-14 00:00:00
 pinned: false
 top: false

@@ -3,9 +3,7 @@ title: PostgreSQL 使用 PostGIS 插件涉及权限问题
 categories:
   - Persistence
 tags:
-  - Persistence
-  - PostgreSQL
-  - PostGIS
+  - Storage
 date: 2020-08-15 00:00:00
 top: false
 comments: true

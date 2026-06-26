@@ -3,10 +3,7 @@ title: Jenkins Pipeline 共享库使用说明
 categories:
   - Devops
 tags:
-  - Devops
-  - Jenkins
-  - JenkinsFile
-  - Pipeline
+  - DevOps
 date: 2020-02-23 00:00:00
 top: false
 comments: true

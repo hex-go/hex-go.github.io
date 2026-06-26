@@ -3,9 +3,6 @@ title: Postman Test 脚本解析 JWT 验证 Claim
 categories:
   - 个人工具
 tags:
-  - 个人工具
-  - Postman
-  - JWT
 date: 2020-08-05 00:00:00
 top: false
 comments: true

@@ -4,7 +4,6 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - Coredns
 date: 2020-04-03 00:00:00
 top: false
 comments: true

@@ -5,7 +5,6 @@ categories:
 tags:
   - Device Plugin
   - GPU
-  - gRPC
   - Kubernetes
 date: 2024-07-05 00:00:00
 top: false

@@ -4,7 +4,6 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - Deprecated
 date: 2020-07-01 00:00:00
 top: false
 comments: true

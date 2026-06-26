@@ -3,8 +3,6 @@ title: 密码管理工具 Bitwarden 使用
 categories:
   - 个人工具
 tags:
-  - 个人工具
-  - Bitwarden
 date: 2022-07-28 00:00:00
 top: false
 comments: true

@@ -3,10 +3,8 @@ title: Drone-Pipeline使用举例
 categories:
   - Devops
 tags:
-  - Devops
-  - Drone
-  - Pipeline
-  - Dockerfile
+  - DevOps
+  - Docker
 date: 2020-02-15 00:00:00
 top: false
 comments: true

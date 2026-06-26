@@ -4,9 +4,6 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - Filebeat
-  - Sidecar
-  - 日志
 date: 2020-07-12 00:00:00
 top: false
 comments: true

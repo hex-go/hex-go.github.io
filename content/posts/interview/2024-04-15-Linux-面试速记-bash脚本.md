@@ -4,7 +4,6 @@ categories:
   - 面试
 tags:
   - Linux
-  - bash
 date: 2024-10-08 00:00:00
 pinned: false
 top: false

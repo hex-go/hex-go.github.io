@@ -3,7 +3,7 @@ title: Keycloak-配置gatekeeper保护没有认证授权的应用功能
 categories:
   - Devops
 tags:
-  - Devops
+  - DevOps
 date: 2020-07-08 00:00:00
 top: false
 comments: true

@@ -5,7 +5,6 @@ categories:
 tags:
   - Kubernetes
   - Scheduler
-  - 调度
 date: 2024-08-01 00:00:00
 top: false
 comments: true

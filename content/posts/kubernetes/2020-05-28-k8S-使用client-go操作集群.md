@@ -3,10 +3,8 @@ title: k8S-使用client-go操作集群
 categories:
   - Kubernetes
 tags:
-  - Kubernetes
-  - Client-go
   - Go
-  - Informer
+  - Kubernetes
 date: 2020-05-01 00:00:00
 pinned: true
 ---

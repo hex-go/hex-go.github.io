@@ -3,9 +3,8 @@ title: 禁止使用Alpine作为Python的基础镜像构建
 categories:
   - Devops
 tags:
-  - Devops
+  - DevOps
   - Docker
-  - Dockerfile
 date: 2020-03-08 00:00:00
 pinned: false
 top: false

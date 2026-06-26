@@ -3,10 +3,7 @@ title: Ubuntu常见安装软件方式(ded、appimage、snap)说明.md
 categories:
   - 个人工具
 tags:
-  - 个人工具
-  - Ubuntu
-  - Appimage
-  - Snap
+  - Linux
 date: 2019-11-01 00:00:00
 top: false
 comments: true

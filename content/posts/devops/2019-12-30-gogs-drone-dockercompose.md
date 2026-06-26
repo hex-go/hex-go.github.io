@@ -3,10 +3,7 @@ title: Gogs + Drone 通过 Docker Compose 部署
 categories:
   - Devops
 tags:
-  - Devops
-  - CI/CD
-  - Drone
-  - Gogs
+  - DevOps
   - Docker
 date: 2020-02-01 00:00:00
 top: false

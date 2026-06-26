@@ -3,11 +3,9 @@ title: 基于 Jenkins + GitLab + Docker + Helm + Kubernetes 的 CI/CD
 categories:
   - Devops
 tags:
-  - Devops
-  - Jenkins
-  - JenkinsFile
-  - Kubernetes
+  - DevOps
   - Docker
+  - Kubernetes
 date: 2020-02-20 00:00:00
 top: false
 comments: true

@@ -6,9 +6,6 @@ categories:
 tags:
   - Kubernetes
   - Operator
-  - CRD
-  - Informer
-  - RBAC
 date: 2023-10-01 00:00:00
 pinned: true
 draft: false

@@ -4,8 +4,6 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - Ingress
-  - gRPC
 date: 2020-06-16 00:00:00
 top: false
 comments: true

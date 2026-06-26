@@ -4,7 +4,6 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - DNS
   - 故障排查
 date: 2020-08-20 00:00:00
 top: false

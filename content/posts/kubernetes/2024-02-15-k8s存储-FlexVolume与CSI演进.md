@@ -4,9 +4,8 @@ categories:
   - Kubernetes
 tags:
   - CSI
-  - FlexVolume
-  - Storage
   - Kubernetes
+  - Storage
 date: 2024-02-15 00:00:00
 top: false
 comments: true

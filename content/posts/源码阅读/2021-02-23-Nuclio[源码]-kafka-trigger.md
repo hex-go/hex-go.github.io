@@ -3,9 +3,6 @@ title: 'Nuclio[源码]-kafka-trigger流程'
 categories:
   - 源码阅读
 tags:
-  - Source Code
-  - Nuclio
-  - 待完善
 date: 2021-03-20 00:00:00
 top: false
 comments: true

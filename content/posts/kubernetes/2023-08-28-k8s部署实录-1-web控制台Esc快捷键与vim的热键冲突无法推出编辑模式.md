@@ -3,8 +3,6 @@ title: k8s部署实录-1-web控制台Esc快捷键与vim的热键冲突
 categories:
   - Kubernetes
 tags:
-  - Vim
-  - JumpServer
 date: 2023-08-28 00:00:00
 top: false
 comments: true

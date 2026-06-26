@@ -3,10 +3,9 @@ title: FeatMap-UserStory地图服务配置和搭建
 categories:
   - Devops
 tags:
-  - Devops
-  - Featmap
-  - Dockerfile
-  - Chart
+  - DevOps
+  - Docker
+  - Kubernetes
 date: 2022-03-25 00:00:00
 top: false
 comments: true

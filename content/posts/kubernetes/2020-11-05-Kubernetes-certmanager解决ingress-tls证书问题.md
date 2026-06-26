@@ -4,7 +4,7 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - CertManager
+  - 证书
 date: 2020-06-05 00:00:00
 pinned: false
 top: false

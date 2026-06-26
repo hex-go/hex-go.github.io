@@ -3,9 +3,9 @@ title: Registry 部署至 K8s 集群并使用
 categories:
   - Persistence
 tags:
-  - Persistence
-  - Registry
+  - Docker
   - Kubernetes
+  - Storage
 date: 2020-06-13 00:00:00
 top: false
 comments: true

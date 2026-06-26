@@ -4,7 +4,6 @@ categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - Ingress
 date: 2020-06-19 00:00:00
 top: false
 comments: true

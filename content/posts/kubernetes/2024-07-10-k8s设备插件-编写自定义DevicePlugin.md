@@ -3,10 +3,9 @@ title: "K8s设备插件-编写自定义DevicePlugin"
 categories:
   - Kubernetes
 tags:
+  - CNI
   - Device Plugin
   - Go
-  - FPGA
-  - RDMA
 date: 2024-07-10 00:00:00
 top: false
 comments: true

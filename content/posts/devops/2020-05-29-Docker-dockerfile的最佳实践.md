@@ -3,9 +3,8 @@ title: Docker-Dockerfile的最佳实践
 categories:
   - Devops
 tags:
-  - Devops
+  - DevOps
   - Docker
-  - Dockerfile
 date: 2020-03-05 00:00:00
 top: false
 comments: true

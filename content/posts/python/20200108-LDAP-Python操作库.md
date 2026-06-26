@@ -4,7 +4,7 @@ categories:
   - Python
 tags:
   - Python
-  - LDAP
+  - 安全
 date: 2020-02-09 00:00:00
 top: false
 comments: true

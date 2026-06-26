@@ -3,9 +3,8 @@ title: Jenkins 集成 LDAP 认证
 categories:
   - Devops
 tags:
-  - Devops
-  - Jenkins
-  - LDAP
+  - DevOps
+  - 安全
 date: 2020-02-03 00:00:00
 top: false
 comments: true

@@ -3,12 +3,10 @@ title: K8s 扩展性机制——从基础设施到自定义控制器
 categories:
   - Kubernetes
 tags:
-  - Kubernetes
   - CNI
   - CSI
-  - CRI
-  - DevicePlugin
-  - CRD
+  - Device Plugin
+  - Kubernetes
   - Operator
   - Scheduler
 date: 2020-04-08 00:00:00

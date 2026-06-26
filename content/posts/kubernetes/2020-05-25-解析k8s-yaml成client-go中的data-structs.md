@@ -3,9 +3,8 @@ title: 解析 K8s YAML 为 client-go 中的 data structs
 categories:
   - Kubernetes
 tags:
-  - Kubernetes
   - Go
-  - client-go
+  - Kubernetes
 date: 2020-05-05 00:00:00
 top: false
 comments: true

@@ -3,7 +3,7 @@ title: Docker 易错集锦 — ENTRYPOINT 中环境变量无法替换
 categories:
   - Devops
 tags:
-  - Devops
+  - DevOps
   - Docker
 date: 2020-11-15 00:00:00
 top: false

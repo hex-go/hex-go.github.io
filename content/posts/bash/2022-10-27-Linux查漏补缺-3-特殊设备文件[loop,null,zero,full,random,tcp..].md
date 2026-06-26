@@ -3,9 +3,7 @@ title: 'Linux查漏补缺-3-特殊设备文件[loop,null,zero,full,random,tcp..]
 categories:
   - Linux
 tags:
-  - Bash
   - Linux
-  - 特殊/dev
 date: 2020-12-05 00:00:00
 pinned: false
 top: false

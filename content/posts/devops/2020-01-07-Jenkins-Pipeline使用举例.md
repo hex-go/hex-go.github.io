@@ -3,9 +3,7 @@ title: Jenkins-Pipeline使用举例
 categories:
   - Devops
 tags:
-  - Devops
-  - Jenkins
-  - Pipeline
+  - DevOps
 date: 2020-02-18 00:00:00
 top: false
 comments: true
