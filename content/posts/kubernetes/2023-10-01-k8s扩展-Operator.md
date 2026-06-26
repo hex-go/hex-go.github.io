@@ -9,7 +9,7 @@ tags:
   - CRD
   - Informer
   - RBAC
-date: '2023-10-01 20:19:12'
+date: 2023-10-01 00:00:00
 pinned: true
 draft: false
 series:

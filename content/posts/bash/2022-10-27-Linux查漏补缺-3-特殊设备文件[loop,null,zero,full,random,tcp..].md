@@ -6,7 +6,7 @@ tags:
   - Bash
   - Linux
   - 特殊/dev
-date: '2022-10-27 01:46:34'
+date: 2020-12-05 00:00:00
 pinned: false
 top: false
 comments: true

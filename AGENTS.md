@@ -152,9 +152,9 @@ draft: false
 
 - `content/posts/kubernetes/2020-05-28-k8S-使用client-go操作集群.md`
 - `content/posts/kubernetes/2021-02-18-Kubernetes[PodSecurityPolicy]-使用说明.md`
-- `content/posts/kubernetes/2023-09-01-k8s网络CNI-Calico详细说明.md`
-- `content/posts/kubernetes/2023-08-31-k8s网络CNI-Flannel详细说明.md`
-- `content/posts/kubernetes/2023-08-30-k8s网络CNI-概念与介绍.md`
+- `content/posts/kubernetes/2023-09-01-k8s网络-Calico详细说明.md`
+- `content/posts/kubernetes/2023-08-31-k8s网络-Flannel详细说明.md`
+- `content/posts/kubernetes/2023-08-30-k8s网络-概念与介绍.md`
 
 ### DevOps
 

@@ -5,7 +5,7 @@ categories:
 tags:
   - Python
   - LDAP
-date: '2020-01-08 03:05:07'
+date: 2020-02-09 00:00:00
 top: false
 comments: true
 ---

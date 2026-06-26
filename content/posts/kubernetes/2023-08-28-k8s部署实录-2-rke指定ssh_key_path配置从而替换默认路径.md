@@ -5,7 +5,7 @@ categories:
 tags:
   - Kubernetes
   - RKE
-date: '2023-08-28 20:28:18'
+date: 2023-08-28 00:00:00
 top: false
 comments: true
 series:

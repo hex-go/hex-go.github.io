@@ -7,7 +7,7 @@ tags:
   - Jenkins
   - JenkinsFile
   - Pipeline
-date: '2020-01-09 09:27:16'
+date: 2020-02-23 00:00:00
 top: false
 comments: true
 ---

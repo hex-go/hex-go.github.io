@@ -6,7 +6,7 @@ tags:
   - Devops
   - Jenkins
   - Pipeline
-date: '2020-01-07 08:48:13'
+date: 2020-02-18 00:00:00
 top: false
 comments: true
 pinned: false

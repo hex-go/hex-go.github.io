@@ -5,7 +5,7 @@ categories:
 tags:
   - Kubernetes
   - Coredns
-date: '2020-08-07 08:29:55'
+date: 2020-04-03 00:00:00
 top: false
 comments: true
 ---

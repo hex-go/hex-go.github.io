@@ -6,7 +6,7 @@ tags:
   - Devops
   - Docker
   - Dockerfile
-date: '2020-05-29 09:36:32'
+date: 2020-03-08 00:00:00
 pinned: false
 top: false
 

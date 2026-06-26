@@ -6,7 +6,7 @@ tags:
   - Devops
   - Jenkins
   - LDAP
-date: '2020-01-06 10:52:28'
+date: 2020-02-03 00:00:00
 top: false
 comments: true
 ---

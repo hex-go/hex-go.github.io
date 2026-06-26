@@ -6,7 +6,7 @@ tags:
   - Persistence
   - Registry
   - Kubernetes
-date: '2021-01-22 10:13:28'
+date: 2020-06-13 00:00:00
 top: false
 comments: true
 ---

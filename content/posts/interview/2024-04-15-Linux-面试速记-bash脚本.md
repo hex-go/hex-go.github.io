@@ -5,7 +5,7 @@ categories:
 tags:
   - Linux
   - bash
-date: '2024-04-15 19:10:41'
+date: 2024-10-08 00:00:00
 pinned: false
 top: false
 comments: true

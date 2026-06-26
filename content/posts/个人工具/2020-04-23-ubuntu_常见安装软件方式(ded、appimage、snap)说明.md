@@ -7,7 +7,7 @@ tags:
   - Ubuntu
   - Appimage
   - Snap
-date: '2020-04-23 09:09:56'
+date: 2019-11-01 00:00:00
 top: false
 comments: true
 ---
