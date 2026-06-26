@@ -1,7 +1,7 @@
 ---
-title: "Linux-面试速记-bash脚本"
+title: "Linux bash — 速查手册"
 categories:
-  - 面试
+  - Linux
 tags:
   - Linux
 date: 2024-10-08 00:00:00
