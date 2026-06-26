@@ -9,20 +9,11 @@
                 {{ $filteredPages = (where $filteredPages "Type" "!=" (lower .)) }}
             {{ end }}
             {{ $filteredPagesPinned := slice }}
-            {{ $filteredPagesOthers := slice }}
             {{ if .Site.Params.enablePinnedPosts }}
-                {{ range $filteredPages }}
-                    {{ if .Params.pinned }}
-                        {{ $filteredPagesPinned = $filteredPagesPinned | append . }}
-                    {{ else }}
-                        {{ $filteredPagesOthers = $filteredPagesOthers | append . }}
-                    {{ end }}
-                {{ end }}
-                {{ $filteredPages = $filteredPagesPinned }}
-                {{ range $filteredPagesOthers }}
-                    {{ $filteredPages = $filteredPages | append . }}
-                {{ end }}
+                {{ $filteredPagesPinned = (where $filteredPages "Params.pinned" "==" true) }}
             {{ end }}
+            {{ $filteredPages := $filteredPages | intersect (where $filteredPages "Params.pinned" "!=" true) }}
+            {{ $filteredPages := $filteredPagesPinned | union ($filteredPages) }}
             {{ $paginator := .Paginate $filteredPages }}
             {{ range $paginator.Pages }}
                 {{ .Render "summary" }}
