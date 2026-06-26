@@ -283,7 +283,7 @@ func (d *DynamicClient) CreateFromYAML(namespace string, yamlStr string) error {
 - 无法实时感知变更
 - 控制器重启后丢失历史事件
 
-Informer 通过 List-Watch + 本地缓存 + 事件回调解决这个问题的完整示意图见 [Operator 文章 §3.2](/posts/kubernetes/k8s扩展-operator/#32-informer-机制)。
+Informer 通过 List-Watch + 本地缓存 + 事件回调解决这个问题的完整示意图见 [Operator 文章 §3.2](/posts/kubernetes/2023-10-01-k8s扩展-operator/#32-informer-机制)。
 
 ### 4.2 SharedInformerFactory
 
@@ -489,7 +489,7 @@ func (k *K8S) HealthCheck() error {
 | WorkQueue | 控制器的任务队列，支持限流重试 | `workqueue.NewRateLimitingQueue()` |
 | RetryOnConflict | 变更冲突自动重试 | `retry.RetryOnConflict(retry.DefaultRetry, fn)` |
 
-Informer + WorkQueue 的组合是编写 Operator / Controller 的标准范式，完整示例见 [Operator 文章](/posts/kubernetes/k8s扩展-operator/)。
+Informer + WorkQueue 的组合是编写 Operator / Controller 的标准范式，完整示例见 [Operator 文章](/posts/kubernetes/2023-10-01-k8s扩展-operator/)。
 
 # 参考链接
 
