@@ -9,6 +9,7 @@ type: "page"
 + [ljchen's Notes](http://ljchen.net/)<font color=#bbb> [consul istio  Kubernetes]-[详细]</font>
 + [田飞雨](https://blog.tianfeiyu.com)<font color=#bbb> [Kubernetes 源码阅读]-[详细]</font>
 + [煎鱼](https://eddycjy.com/posts/)<font color=#bbb> [gin 使用 example]-[详细]</font>
++ [Go语言进阶之路](https://golangstar.cn/go_series/introduction.html)<font color=#bbb> [Go 基础 → 并发 → 原理 → 面试]-[系统]</font>
 
 + [HuangHuang的博客](https://mozillazg.com/archives.html)<font color=#bbb> [python go 云原生 安全 镜像优化]-[详细]</font>
 > 通过 k8s-ClientGo 的Dynamic.interface包操作CRD资源，发现此博客。后面了解技术栈也是云原生、go、python，故收藏。以下博客打算有时间细读
