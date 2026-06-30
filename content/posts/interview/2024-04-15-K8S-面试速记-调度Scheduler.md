@@ -1,13 +1,12 @@
 ---
-title: "K8s网络CSI-面试速记"
+title: "K8s 调度 Scheduler — 速查手册"
 categories:
-  - 面试
-tags:
-  - Scheduler
   - Kubernetes
-  - 面试速记
+tags:
+  - Kubernetes
+  - 速查手册
 date: '2024-05-12 6:10:41'
-draft: true
+draft: false
 top: false
 comments: true
 keywords:
