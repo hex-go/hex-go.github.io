@@ -66,8 +66,13 @@ Avoid:
 - “通过本文你将学会...”
 - “希望本文对你有所帮助”
 - generic AI summaries
-- over-polished promotional tone
+ - over-polished promotional tone
+ - `--` / `——` in titles（显得割裂，且在 TOC 中容易换行导致格式混乱）
 
+### Title Formatting
+
+- 表达精确度第一，但如果能做到，尽量让 TOC 中的标题不换行
+- 避免 `--` 和 `——`，用中文冒号替代
 Preferred wording:
 
 - “由于生产环境...”

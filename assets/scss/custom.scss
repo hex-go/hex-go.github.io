@@ -268,11 +268,34 @@ body[class*="theme__"] .keypoint {
 // ============================================================
 .single__contents {
   > .highlight {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin: 1.1rem 0.5rem 1.4rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 
     > .chroma {
-      border-radius: 6px;
+      border-radius: 8px;
+      padding: 0.75rem 0;
+      font-family: "JetBrains Mono", Consolas, "SF Mono", "Source Code Pro", Menlo, Monaco, monospace;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      tab-size: 4;
+    }
+
+    pre {
+      margin: 0;
+      padding: 0;
+    }
+
+    .lntd:first-child {
+      user-select: none;
+      opacity: 0.6;
+    }
+
+    .hl {
+      display: block;
+      border-left: 3px solid #f5c542;
+      box-shadow: inset 0 0 0 1px rgba(245, 197, 66, 0.12);
     }
   }
 
@@ -319,6 +342,89 @@ $table-themes: (
     }
     thead {
       background: $head-bg;
+    }
+  }
+}
+
+// ============================================================
+// IDEA 风格代码块主题微调
+// 保留 Hugo/Chroma 语法高亮，仅覆盖代码块底色、行号、高亮行底色
+// ============================================================
+$code-themes: (
+  light: (
+    bg: #f7f8fa,
+    fg: #2b2d30,
+    border: #dcdfe6,
+    lineno: #8c8c8c,
+    hl-bg: #fff4ce,
+    hl-border: #f0b400
+  ),
+  dark: (
+    bg: #2b2d30,
+    fg: #a9b7c6,
+    border: #3c3f41,
+    lineno: #606366,
+    hl-bg: #3a3320,
+    hl-border: #ffc66d
+  ),
+  hacker: (
+    bg: #101312,
+    fg: #d4d4d4,
+    border: #243026,
+    lineno: #5f7a63,
+    hl-bg: #26351f,
+    hl-border: #a6e22e
+  ),
+  solarized: (
+    bg: #fdf6e3,
+    fg: #586e75,
+    border: #eee8d5,
+    lineno: #93a1a1,
+    hl-bg: #eee8d5,
+    hl-border: #b58900
+  ),
+  kimbie: (
+    bg: #221a0f,
+    fg: #d3af86,
+    border: #4d3926,
+    lineno: #8f6f4c,
+    hl-bg: #3b2b1c,
+    hl-border: #f0a45d
+  )
+);
+
+@each $theme-name, $colors in $code-themes {
+  $bg: map-get($colors, bg);
+  $fg: map-get($colors, fg);
+  $border: map-get($colors, border);
+  $lineno: map-get($colors, lineno);
+  $hl-bg: map-get($colors, hl-bg);
+  $hl-border: map-get($colors, hl-border);
+
+  body.theme__#{$theme-name} .single__contents > .highlight {
+    border: 1px solid $border;
+    background: $bg;
+
+    > .chroma,
+    pre,
+    code {
+      background: $bg !important;
+      color: $fg;
+    }
+
+    .lnt,
+    .ln {
+      color: $lineno;
+    }
+
+    .lntd:first-child {
+      background: rgba(128, 128, 128, 0.06);
+      border-right: 1px solid $border;
+    }
+
+    .hl {
+      background: $hl-bg !important;
+      border-left-color: $hl-border;
     }
   }
 }

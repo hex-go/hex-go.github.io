@@ -135,7 +135,7 @@ Controller 定义            ← Watch 回调注册、工作队列
 
 main 函数关键步骤：
 
-```go
+```go {hl_lines=[4,5,8,11,15,16]}
 func main() {
     // 1. 创建 Kubernetes client 和自定义资源的 client
     cfg, _ := clientcmd.BuildConfigFromFlags(masterURL, kubeconfig)
@@ -188,7 +188,7 @@ Reflector ──→ Delta FIFO ──→ Indexer（本地缓存）
 
 ### 3.3 工作队列与调谐循环
 
-```go
+```go {hl_lines=[3,8,15,16,20,22,23,24,27]}
 func (c *Controller) Run(workers int, stopCh <-chan struct{}) error {
     // 等待本地缓存同步完成
     if !cache.WaitForCacheSync(stopCh, c.informerSynced) {
