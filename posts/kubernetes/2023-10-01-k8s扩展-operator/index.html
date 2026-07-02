@@ -115,36 +115,36 @@
 </span></span><span class=line><span class=cl>业务逻辑 (Reconcile)       ← 从队列取 key → 调谐逻辑 → 更新 Status</span></span></code></pre></td></tr></table></div></div><p>main 函数关键步骤：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
+</span><span class=hl><span class=lnt> 4
+</span></span><span class=hl><span class=lnt> 5
+</span></span><span class=lnt> 6
 </span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
+</span><span class=hl><span class=lnt> 8
+</span></span><span class=lnt> 9
 </span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
+</span><span class=hl><span class=lnt>11
+</span></span><span class=lnt>12
 </span><span class=lnt>13
 </span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
+</span><span class=hl><span class=lnt>15
+</span></span><span class=hl><span class=lnt>16
+</span></span><span class=lnt>17
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>    <span class=c1>// 1. 创建 Kubernetes client 和自定义资源的 client
 </span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>cfg</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>clientcmd</span><span class=p>.</span><span class=nf>BuildConfigFromFlags</span><span class=p>(</span><span class=nx>masterURL</span><span class=p>,</span> <span class=nx>kubeconfig</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>    <span class=nx>kubeClient</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>kubernetes</span><span class=p>.</span><span class=nf>NewForConfig</span><span class=p>(</span><span class=nx>cfg</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>    <span class=nx>networkClient</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>clientset</span><span class=p>.</span><span class=nf>NewForConfig</span><span class=p>(</span><span class=nx>cfg</span><span class=p>)</span>
+</span></span><span class="line hl"><span class=cl>    <span class=nx>kubeClient</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>kubernetes</span><span class=p>.</span><span class=nf>NewForConfig</span><span class=p>(</span><span class=nx>cfg</span><span class=p>)</span>
+</span></span><span class="line hl"><span class=cl>    <span class=nx>networkClient</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>clientset</span><span class=p>.</span><span class=nf>NewForConfig</span><span class=p>(</span><span class=nx>cfg</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=c1>// 2. 创建 Informer 工厂
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>informerFactory</span> <span class=o>:=</span> <span class=nx>informers</span><span class=p>.</span><span class=nf>NewSharedInformerFactory</span><span class=p>(</span><span class=nx>networkClient</span><span class=p>,</span> <span class=nx>time</span><span class=p>.</span><span class=nx>Second</span><span class=o>*</span><span class=mi>30</span><span class=p>)</span>
+</span></span></span><span class="line hl"><span class=cl><span class=c1></span>    <span class=nx>informerFactory</span> <span class=o>:=</span> <span class=nx>informers</span><span class=p>.</span><span class=nf>NewSharedInformerFactory</span><span class=p>(</span><span class=nx>networkClient</span><span class=p>,</span> <span class=nx>time</span><span class=p>.</span><span class=nx>Second</span><span class=o>*</span><span class=mi>30</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=c1>// 3. 创建控制器
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>controller</span> <span class=o>:=</span> <span class=nf>NewController</span><span class=p>(</span><span class=nx>kubeClient</span><span class=p>,</span> <span class=nx>networkClient</span><span class=p>,</span>
+</span></span></span><span class="line hl"><span class=cl><span class=c1></span>    <span class=nx>controller</span> <span class=o>:=</span> <span class=nf>NewController</span><span class=p>(</span><span class=nx>kubeClient</span><span class=p>,</span> <span class=nx>networkClient</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>        <span class=nx>informerFactory</span><span class=p>.</span><span class=nf>Samplecrd</span><span class=p>().</span><span class=nf>V1</span><span class=p>().</span><span class=nf>Networks</span><span class=p>())</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=c1>// 4. 启动 Informer 和控制器
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>go</span> <span class=nx>informerFactory</span><span class=p>.</span><span class=nf>Start</span><span class=p>(</span><span class=nx>stopCh</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>    <span class=nx>controller</span><span class=p>.</span><span class=nf>Run</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=nx>stopCh</span><span class=p>)</span>
+</span></span></span><span class="line hl"><span class=cl><span class=c1></span>    <span class=k>go</span> <span class=nx>informerFactory</span><span class=p>.</span><span class=nf>Start</span><span class=p>(</span><span class=nx>stopCh</span><span class=p>)</span>
+</span></span><span class="line hl"><span class=cl>    <span class=nx>controller</span><span class=p>.</span><span class=nf>Run</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=nx>stopCh</span><span class=p>)</span>
 </span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><h3 id=32-informer-机制>3.2 Informer 机制</h3><p>Informer 是控制器模式的核心组件，负责从 API Server 获取并缓存 API 对象：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
@@ -172,61 +172,61 @@
 </span></span><span class=line><span class=cl>                ▼
 </span></span><span class=line><span class=cl>         Controller (工作队列 → Reconcile)</span></span></code></pre></td></tr></table></div></div><table><thead><tr><th>组件</th><th>职责</th></tr></thead><tbody><tr><td><strong>Reflector</strong></td><td>通过 List & Watch 从 API Server 同步数据到 Delta FIFO</td></tr><tr><td><strong>Delta FIFO</strong></td><td>存储对象的变化事件（Added/Updated/Deleted），先进先出</td></tr><tr><td><strong>Indexer</strong></td><td>本地线程安全的缓存，按 key 索引，避免反复查 API Server</td></tr><tr><td><strong>Informer</strong></td><td>从 Delta FIFO 取事件，调用注册的回调函数，写入工作队列</td></tr></tbody></table><p>核心优势：Informer 使用<strong>本地缓存</strong>而非每次查 API Server，控制器重连后通过 <code>resourceVersion</code> 从断点续传。</p><blockquote><p>如果控制器以 Pod 方式运行在集群内，可以使用 <code>InClusterConfig()</code> 自动加载 ServiceAccount 的认证信息，无需手动指定 kubeconfig。</p></blockquote><h3 id=33-工作队列与调谐循环>3.3 工作队列与调谐循环</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
+</span><span class=hl><span class=lnt> 3
+</span></span><span class=lnt> 4
 </span><span class=lnt> 5
 </span><span class=lnt> 6
 </span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
+</span><span class=hl><span class=lnt> 8
+</span></span><span class=lnt> 9
 </span><span class=lnt>10
 </span><span class=lnt>11
 </span><span class=lnt>12
 </span><span class=lnt>13
 </span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
+</span><span class=hl><span class=lnt>15
+</span></span><span class=hl><span class=lnt>16
+</span></span><span class=lnt>17
 </span><span class=lnt>18
 </span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
+</span><span class=hl><span class=lnt>20
+</span></span><span class=lnt>21
+</span><span class=hl><span class=lnt>22
+</span></span><span class=hl><span class=lnt>23
+</span></span><span class=hl><span class=lnt>24
+</span></span><span class=lnt>25
 </span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
+</span><span class=hl><span class=lnt>27
+</span></span><span class=lnt>28
 </span><span class=lnt>29
 </span><span class=lnt>30
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>c</span> <span class=o>*</span><span class=nx>Controller</span><span class=p>)</span> <span class=nf>Run</span><span class=p>(</span><span class=nx>workers</span> <span class=kt>int</span><span class=p>,</span> <span class=nx>stopCh</span> <span class=o>&lt;-</span><span class=kd>chan</span> <span class=kd>struct</span><span class=p>{})</span> <span class=kt>error</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>    <span class=c1>// 等待本地缓存同步完成
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span> <span class=p>!</span><span class=nx>cache</span><span class=p>.</span><span class=nf>WaitForCacheSync</span><span class=p>(</span><span class=nx>stopCh</span><span class=p>,</span> <span class=nx>c</span><span class=p>.</span><span class=nx>informerSynced</span><span class=p>)</span> <span class=p>{</span>
+</span></span></span><span class="line hl"><span class=cl><span class=c1></span>    <span class=k>if</span> <span class=p>!</span><span class=nx>cache</span><span class=p>.</span><span class=nf>WaitForCacheSync</span><span class=p>(</span><span class=nx>stopCh</span><span class=p>,</span> <span class=nx>c</span><span class=p>.</span><span class=nx>informerSynced</span><span class=p>)</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nx>fmt</span><span class=p>.</span><span class=nf>Errorf</span><span class=p>(</span><span class=s>&#34;cache sync failed&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>    <span class=p>}</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=c1>// 启动 workers
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=p>&lt;</span> <span class=nx>workers</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span> <span class=p>{</span>
+</span></span></span><span class="line hl"><span class=cl><span class=c1></span>    <span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=p>&lt;</span> <span class=nx>workers</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>        <span class=k>go</span> <span class=nx>wait</span><span class=p>.</span><span class=nf>Until</span><span class=p>(</span><span class=nx>c</span><span class=p>.</span><span class=nx>runWorker</span><span class=p>,</span> <span class=nx>time</span><span class=p>.</span><span class=nx>Second</span><span class=p>,</span> <span class=nx>stopCh</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>    <span class=p>}</span>
 </span></span><span class=line><span class=cl>    <span class=o>&lt;-</span><span class=nx>stopCh</span>
 </span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kc>nil</span>
 </span></span><span class=line><span class=cl><span class=p>}</span>
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>c</span> <span class=o>*</span><span class=nx>Controller</span><span class=p>)</span> <span class=nf>runWorker</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=nx>c</span><span class=p>.</span><span class=nf>processNextWorkItem</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class="line hl"><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>c</span> <span class=o>*</span><span class=nx>Controller</span><span class=p>)</span> <span class=nf>runWorker</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class="line hl"><span class=cl>    <span class=k>for</span> <span class=nx>c</span><span class=p>.</span><span class=nf>processNextWorkItem</span><span class=p>()</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>    <span class=p>}</span>
 </span></span><span class=line><span class=cl><span class=p>}</span>
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>c</span> <span class=o>*</span><span class=nx>Controller</span><span class=p>)</span> <span class=nf>processNextWorkItem</span><span class=p>()</span> <span class=kt>bool</span> <span class=p>{</span>
+</span></span><span class="line hl"><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>c</span> <span class=o>*</span><span class=nx>Controller</span><span class=p>)</span> <span class=nf>processNextWorkItem</span><span class=p>()</span> <span class=kt>bool</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>    <span class=nx>key</span><span class=p>,</span> <span class=nx>quit</span> <span class=o>:=</span> <span class=nx>c</span><span class=p>.</span><span class=nx>workqueue</span><span class=p>.</span><span class=nf>Get</span><span class=p>()</span>
-</span></span><span class=line><span class=cl>    <span class=k>defer</span> <span class=nx>c</span><span class=p>.</span><span class=nx>workqueue</span><span class=p>.</span><span class=nf>Done</span><span class=p>(</span><span class=nx>key</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>    <span class=nx>err</span> <span class=o>:=</span> <span class=nx>c</span><span class=p>.</span><span class=nf>syncHandler</span><span class=p>(</span><span class=nx>key</span><span class=p>.(</span><span class=kt>string</span><span class=p>))</span>
-</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+</span></span><span class="line hl"><span class=cl>    <span class=k>defer</span> <span class=nx>c</span><span class=p>.</span><span class=nx>workqueue</span><span class=p>.</span><span class=nf>Done</span><span class=p>(</span><span class=nx>key</span><span class=p>)</span>
+</span></span><span class="line hl"><span class=cl>    <span class=nx>err</span> <span class=o>:=</span> <span class=nx>c</span><span class=p>.</span><span class=nf>syncHandler</span><span class=p>(</span><span class=nx>key</span><span class=p>.(</span><span class=kt>string</span><span class=p>))</span>
+</span></span><span class="line hl"><span class=cl>    <span class=k>if</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>        <span class=nx>c</span><span class=p>.</span><span class=nx>workqueue</span><span class=p>.</span><span class=nf>AddRateLimited</span><span class=p>(</span><span class=nx>key</span><span class=p>)</span>  <span class=c1>// 失败重试
 </span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=nx>c</span><span class=p>.</span><span class=nx>workqueue</span><span class=p>.</span><span class=nf>Forget</span><span class=p>(</span><span class=nx>key</span><span class=p>)</span>
+</span></span><span class="line hl"><span class=cl>        <span class=nx>c</span><span class=p>.</span><span class=nx>workqueue</span><span class=p>.</span><span class=nf>Forget</span><span class=p>(</span><span class=nx>key</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>    <span class=p>}</span>
 </span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kc>true</span>
 </span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><h2 id=4-rbac控制器访问-api-server-的权限>4. RBAC：控制器访问 API Server 的权限</h2><p>自定义控制器需要操作 API 对象（CRD 和内置资源），必须通过 RBAC 授权。</p><h3 id=41-三要素>4.1 三要素</h3><table><thead><tr><th>概念</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td><strong>Role</strong></td><td>一组权限规则，限定 Namespace</td><td>对 Pod 有 get/watch/list 权限</td></tr><tr><td><strong>Subject</strong></td><td>被授权者：User、Group 或 ServiceAccount</td><td><code>system:serviceaccount:default:my-controller</code></td></tr><tr><td><strong>RoleBinding</strong></td><td>绑定 Subject 和 Role</td><td>把 my-controller 的 SA 绑定到 pod-reader Role</td></tr></tbody></table><blockquote><p>Kubernetes 中并没有名为 &ldquo;User&rdquo; 的 API 对象——&ldquo;用户"只是一个授权逻辑概念，实际认证由外部系统（Keystone、证书、静态密码文件）提供。在集群内部，Pod 通过 <strong>ServiceAccount</strong> 获取身份。</p></blockquote><h3 id=42-role--clusterrole>4.2 Role / ClusterRole</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
