@@ -1,0 +1,11 @@
+[
+  {
+    "label": "Shortcut Cheat Sheet",
+    "command": "bash ~/.zed-cheatsheet.sh",
+    "reveal": "always",
+    "reveal_target": "center",
+    "hide": "on_success",
+    "allow_concurrent_runs": false,
+    "use_new_terminal": false
+  }
+]

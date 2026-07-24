@@ -1,0 +1,30 @@
+// Zed keymap — keyboard-only use + cheat sheet popup.
+// opencode runs in the terminal; use its leader key (ctrl-x) to avoid conflicts.
+// Docs: https://zed.dev/docs/key-bindings
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // Open a terminal in the MAIN editor area (center pane), run opencode there.
+      "ctrl-shift-enter": "workspace::NewCenterTerminal",
+      // PowerToys-style shortcut cheat sheet popup (Esc closes the terminal tab it opens).
+      "ctrl-shift-/": [
+        "task::Spawn",
+        { "task_name": "Shortcut Cheat Sheet", "reveal_target": "center" }
+      ],
+      // Browse ALL keybindings (Zed's searchable keymap editor).
+      "ctrl-k ctrl-s": "zed::OpenKeymap",
+      // VS Code default align:
+      "ctrl-shift-w": "pane::CloseActiveItem",  // close tab
+      "ctrl-shift-\\": "pane::SplitRight"         // split vertically (left-right)
+      // 标签切换 ctrl-tab / ctrl-shift-tab 用 Zed 默认，无需绑定
+    }
+  },
+  {
+    // 让 opencode 能收到 ctrl-shift-a（否则被 Zed 的 editor::SelectAll 拦截）
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-shift-a": ["terminal::SendKeystroke", "ctrl-shift-a"]
+    }
+  }
+]
