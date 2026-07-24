@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#0B1220"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="98" fill="url(#bg2)"/>
+  <g transform="translate(100 100)" fill="none" stroke="#326CE5" stroke-width="5" stroke-linejoin="round">
+    <polygon points="0,-72 62.4,-36 62.4,36 0,72 -62.4,36 -62.4,-36"/>
+  </g>
+  <g transform="translate(100 100)" fill="none" stroke="#326CE5" stroke-width="2.5" stroke-linecap="round" opacity="0.85">
+    <line x1="0" y1="-72" x2="0" y2="-52"/>
+    <line x1="62.4" y1="-36" x2="45" y2="-26"/>
+    <line x1="62.4" y1="36" x2="45" y2="26"/>
+    <line x1="0" y1="72" x2="0" y2="52"/>
+    <line x1="-62.4" y1="36" x2="-45" y2="26"/>
+    <line x1="-62.4" y1="-36" x2="-45" y2="-26"/>
+  </g>
+  <g fill="#ffffff" font-family="'JetBrains Mono','Fira Code','Menlo',monospace" font-weight="700" text-anchor="middle">
+    <text x="100" y="115" font-size="52" letter-spacing="2">Hex</text>
+  </g>
+  <text x="100" y="142" fill="#8AB4FF" font-family="'JetBrains Mono','Menlo',monospace" font-size="10" text-anchor="middle" letter-spacing="3">CLOUD·NATIVE</text>
+</svg>
