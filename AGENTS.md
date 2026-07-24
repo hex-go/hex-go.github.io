@@ -222,3 +222,30 @@ make server
 - 优先保留作者已有表达，再做结构和准确性修正
 - 任何技术解释都要先确保用户理解，再落到博客正文
 - 求职展示优先级高于文章数量
+
+## Three-Project Boundary
+
+The user maintains three repos under `/home/hex/hexlab/` with strict domain boundaries.
+
+| Project | Path | Domain |
+|---|---|---|
+| **auto-job-hunter** | `~/hexlab/auto-job-hunter` | 求职自动化：履历打磨、简历生成、JD 匹配、投递追踪 |
+| **knowledge-base** | `~/hexlab/knowledge-base` | Go/CS 知识图谱 + AI 陪练：Go 知识学习、编码练习、算法刷题、错题回顾、面试准备 |
+| **hex-go.github.io** | `~/hexlab/hex-go.github.io` | 个人技术博客 (Hugo)：技术文章撰写/编辑、博客主题调整 |
+
+### Boundary Enforcement
+
+When the user requests work outside this project's domain, **ask for confirmation first**, then execute the switch command:
+
+```
+User: "帮我生成一份简历"
+→ AI: "这是 blog 会话，求职工作在 ~/hexlab/auto-job-hunter。要我切换过去吗？"
+→ User confirms
+→ AI: bash ~/hexlab/auto-job-hunter/scripts/vscode-switch.sh ~/hexlab/auto-job-hunter
+```
+
+| User attempts in blog session | Target project | Switch path |
+|---|---|---|
+| 简历生成/打磨、JD 匹配、投递追踪 | auto-job-hunter | `~/hexlab/auto-job-hunter` |
+| Go 知识学习、算法刷题、面试速记 | knowledge-base | `~/hexlab/knowledge-base` |
+| 博客文章写作/编辑、主题调整 | ✅ 正常处理（本仓库职责） |

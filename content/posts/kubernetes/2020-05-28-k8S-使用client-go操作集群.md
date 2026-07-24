@@ -131,6 +131,76 @@ Informer 通过 List-Watch + 本地缓存 + 事件回调解决这些问题。
 | **WorkQueue** | 保存待处理 key，支持限速和失败重试 |
 | **Reconcile** | 根据 key 对比期望状态和实际状态 |
 
+<details>
+<summary>数据流转全貌：oldObj / newObj 从哪里来</summary>
+
+{{< diagram >}}
+                    API Server (Etcd)
+                         │
+          ┌──────────────┼──────────────┐
+          │ List         │ Watch        │ re-connect
+          │ (启动全量)    │ (增量推送)    │ (断线续传)
+          ▼              ▼              ▼
+        ┌─────────────────────────────────┐
+        │          Reflector              │
+        │  维护 ResourceVersion 游标       │
+        └──────────┬──────────────────────┘
+                   │ 写入 Delta{Type, Object}
+                   ▼
+        ┌─────────────────────────────────┐
+        │         DeltaFIFO               │
+        │  Added / Updated / Deleted      │
+        └──────────┬──────────────────────┘
+                   │ Pop
+                   ▼
+        ┌─────────────────────────────────┐
+        │   SharedIndexInformer 处理循环   │
+        │                                 │
+        │  Added:                          │
+        │    → Object 写入 Indexer         │
+        │    → AddFunc(Object)             │
+        │                        ┌────────┤
+        │  Updated (真实变更):     │        │
+        │    → oldObj ← Indexer   │ 旧对象  │
+        │    → newObj ← Delta     │ 新对象  │
+        │    → Object 覆盖 Indexer │        │
+        │    → UpdateFunc(old,new)│  RV不同 │
+        │                        └────────┤
+        │  Updated (resync 触发):  │        │
+        │    → oldObj ← Indexer   │ 同对象  │
+        │    → newObj ← Indexer   │ 同对象  │
+        │    → UpdateFunc(old,new)│  RV相同 │
+        │                        ┌────────┤
+        │  Deleted:              │        │
+        │    → 从 Indexer 删除key │        │
+        │    → DeleteFunc(被删对象)│        │
+        └──────────┬──────────────────────┘
+                   │ ResourceEventHandler
+                   ▼
+        ┌─────────────────────────────────┐
+        │          WorkQueue              │
+        │     只存 key (namespace/name)    │
+        │     同一 key 自动去重            │
+        └──────────┬──────────────────────┘
+                   │ Get
+                   ▼
+        ┌─────────────────────────────────┐
+        │           Worker                │
+        │  1. Lister 读期望状态(Indexer)   │
+        │  2. 查实际状态(外部系统)         │
+        │  3. 对比 → 新建/更新/删除/跳过   │
+        └─────────────────────────────────┘
+{{< /diagram >}}
+
+| 对比项 | Watch 真实变更 | resync |
+|--------|--------------|--------|
+| oldObj 来源 | Indexer 中更新前的旧对象 | Indexer 当前对象 |
+| newObj 来源 | Watch 事件携带的新对象 | Indexer 当前对象（同一指针） |
+| ResourceVersion | old ≠ new | old == new |
+| 触发条件 | Etcd 数据变化 | resyncPeriod 周期到达 |
+
+</details>
+
 {{< keypoint >}}
 Informer 的本质：带本地缓存、事件回调、索引能力的 Kubernetes client。
 {{< /keypoint >}}
