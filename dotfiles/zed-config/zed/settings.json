@@ -1,0 +1,71 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "outline_panel": {
+    "button": false
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "project_panel": {
+    "bold_folder_labels": true,
+    "dock": "left"
+  },
+  "wsl_connections": [
+    {
+      "distro_name": "Ubuntu-22.04",
+      "user": null,
+      "projects": [
+        {
+          "paths": [
+            "/home/hex"
+          ]
+        },
+        {
+          "paths": [
+            "/home/hex/github/hex-go.github.io"
+          ]
+        }
+      ]
+    }
+  ],
+  "proxy": "http://10.10.81.29:10808",
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "base_keymap": "VSCode",
+  "minimap": {
+    "show": "always"
+  },
+  "autosave": "on_focus_change",
+  "file_types": {
+    "markdown": [
+      "*.mdx"
+    ],
+    "groovy": [
+      "Jenkinsfile",
+      "*.groovy"
+    ]
+  },
+  "line_ending": "prefer_lf",
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry"
+    }
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+}
