@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Zed config sync helpers (WSL <-> GitHub dotfiles repo)
-# zed-sync  : live Zed config  ->  repo dotfiles/zed-config/zed  -> commit & push
-# zed-setup : repo dotfiles/zed-config/zed  ->  live Zed config
+# zed-sync  : live Zed config + ~/ dotfiles  ->  repo  -> commit & push
+# zed-setup : repo  ->  live Zed config + ~/ dotfiles
 #
 # This script lives INSIDE the repo (dotfiles/zed-config/zed-dotfiles.sh) so it
 # is version-controlled and travels to every machine. Paths are auto-detected.
@@ -15,6 +15,12 @@ _zed_self_dir="$(cd "$(dirname "$_zed_self")" && pwd)"
 ZED_REPO_SUB="dotfiles/zed-config/zed"
 ZED_FILES=(keymap.json settings.json tasks.json AGENTS.md)
 ZED_DIRS=(themes)
+
+# WSL home dotfiles (live in $HOME, backed by dotfiles/zed-config/wsl/).
+# The cheat-sheet task (ctrl-shift-/) runs `bash ~/.zed-cheatsheet.sh`, so this
+# file must land in $HOME on every machine or the shortcut breaks.
+ZED_WSL_SUB="dotfiles/zed-config/wsl"
+ZED_HOME_FILES=(.zed-cheatsheet.sh)
 
 # Resolve the live Zed config dir lazily (only when a command runs, so we never
 # slow down shell startup). Strategy, in order:
@@ -83,12 +89,24 @@ zed-sync() {
       echo "  + $d/"
     fi
   done
-  git -C "$ZED_REPO" add "$ZED_REPO_SUB"
-  if git -C "$ZED_REPO" diff --cached --quiet -- "$ZED_REPO_SUB"; then
+
+  # WSL home dotfiles -> repo dotfiles/zed-config/wsl
+  local wdst="$ZED_REPO/$ZED_WSL_SUB"
+  mkdir -p "$wdst"
+  local hf
+  for hf in "${ZED_HOME_FILES[@]}"; do
+    if [ -f "$HOME/$hf" ]; then
+      cp -f "$HOME/$hf" "$wdst/$hf"
+      echo "  + wsl/$hf"
+    fi
+  done
+
+  git -C "$ZED_REPO" add "$ZED_REPO_SUB" "$ZED_WSL_SUB"
+  if git -C "$ZED_REPO" diff --cached --quiet -- "$ZED_REPO_SUB" "$ZED_WSL_SUB"; then
     echo "[zed] nothing changed, skip commit"
     return 0
   fi
-  git -C "$ZED_REPO" commit -m "chore(zed): sync config $(date +%Y-%m-%d\ %H:%M)" -- "$ZED_REPO_SUB"
+  git -C "$ZED_REPO" commit -m "chore(zed): sync config $(date +%Y-%m-%d\ %H:%M)" -- "$ZED_REPO_SUB" "$ZED_WSL_SUB"
   echo "[zed] pushing..."
   git -C "$ZED_REPO" push origin "$(git -C "$ZED_REPO" branch --show-current)"
   echo "[zed] sync done"
@@ -125,6 +143,26 @@ zed-setup() {
       echo "  + $d/"
     fi
   done
+
+  # repo dotfiles/zed-config/wsl -> WSL home dotfiles
+  local wsrc="$ZED_REPO/$ZED_WSL_SUB"
+  echo "[zed] restoring home dotfiles -> $HOME"
+  local hf
+  for hf in "${ZED_HOME_FILES[@]}"; do
+    if [ -f "$wsrc/$hf" ]; then
+      [ -f "$HOME/$hf" ] && cp -f "$HOME/$hf" "$backup/$hf"
+      cp -f "$wsrc/$hf" "$HOME/$hf"
+      chmod +x "$HOME/$hf" 2>/dev/null
+      echo "  + ~/$hf"
+    fi
+  done
+
+  # the cheat-sheet task depends on python3; warn early if it's missing
+  if ! command -v python3 >/dev/null 2>&1; then
+    echo "[zed] WARNING: python3 not found — the cheat sheet (ctrl-shift-/) needs it." >&2
+    echo "[zed]          install it, e.g.: sudo apt-get install -y python3" >&2
+  fi
+
   echo "[zed] setup done. Fully restart Zed to apply."
 }
 
