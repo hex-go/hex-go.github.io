@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Zed config sync helpers (WSL <-> GitHub dotfiles repo)
-# sync  : live Zed config  ->  repo dotfiles/zed-config/zed  -> commit & push
-# setup : repo dotfiles/zed-config/zed  ->  live Zed config
+# zed-sync  : live Zed config  ->  repo dotfiles/zed-config/zed  -> commit & push
+# zed-setup : repo dotfiles/zed-config/zed  ->  live Zed config
 #
 # This script lives INSIDE the repo (dotfiles/zed-config/zed-dotfiles.sh) so it
 # is version-controlled and travels to every machine. Paths are auto-detected.
@@ -12,19 +12,46 @@ _zed_self="${BASH_SOURCE[0]}"
 _zed_self_dir="$(cd "$(dirname "$_zed_self")" && pwd)"
 : "${ZED_REPO:=$(cd "$_zed_self_dir/../.." && pwd)}"
 
-# --- locate live Zed config dir (%APPDATA%\Zed on the Windows host)
-if [ -z "$ZED_LIVE" ]; then
-  _appdata="$(cmd.exe /c 'echo %APPDATA%' 2>/dev/null | tr -d '\r')"
-  if [ -n "$_appdata" ]; then
-    ZED_LIVE="$(wslpath "$_appdata" 2>/dev/null)/Zed"
-  fi
-fi
-
 ZED_REPO_SUB="dotfiles/zed-config/zed"
 ZED_FILES=(keymap.json settings.json tasks.json AGENTS.md)
 ZED_DIRS=(themes)
 
+# Resolve the live Zed config dir lazily (only when a command runs, so we never
+# slow down shell startup). Strategy, in order:
+#   1) honour a user-provided $ZED_LIVE
+#   2) glob /mnt/c/Users/*/AppData/Roaming/Zed  (no interop needed, fast)
+#   3) fall back to cmd.exe %APPDATA% (needs WSL interop enabled)
+_zed_resolve_live() {
+  [ -n "$ZED_LIVE" ] && return 0
+
+  local hits=(/mnt/c/Users/*/AppData/Roaming/Zed)
+  local found=()
+  local p
+  for p in "${hits[@]}"; do
+    [ -d "$p" ] && found+=("$p")
+  done
+  if [ "${#found[@]}" -eq 1 ]; then
+    ZED_LIVE="${found[0]}"
+    return 0
+  elif [ "${#found[@]}" -gt 1 ]; then
+    echo "[zed] multiple Zed config dirs found, set ZED_LIVE to pick one:" >&2
+    printf '  %s\n' "${found[@]}" >&2
+    return 1
+  fi
+
+  # fallback: ask Windows for %APPDATA%
+  local appdata
+  appdata="$(cmd.exe /c 'echo %APPDATA%' 2>/dev/null | tr -d '\r')"
+  if [ -n "$appdata" ]; then
+    local wp
+    wp="$(wslpath "$appdata" 2>/dev/null)/Zed"
+    [ -d "$wp" ] && ZED_LIVE="$wp" && return 0
+  fi
+  return 1
+}
+
 _zed_check() {
+  _zed_resolve_live
   if [ -z "$ZED_LIVE" ] || [ ! -d "$ZED_LIVE" ]; then
     echo "[zed] live config dir not found: ${ZED_LIVE:-<empty>}" >&2
     echo "[zed] set it manually: export ZED_LIVE=/mnt/c/Users/<you>/AppData/Roaming/Zed" >&2
@@ -101,5 +128,4 @@ zed-setup() {
   echo "[zed] setup done. Fully restart Zed to apply."
 }
 
-alias sync='zed-sync'
-alias setup='zed-setup'
+# commands are exposed as functions zed-sync / zed-setup (zed- prefix)

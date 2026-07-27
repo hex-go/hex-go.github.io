@@ -2,7 +2,7 @@
 # Bootstrap on a NEW machine — run once after cloning the repo:
 #   bash <repo>/dotfiles/zed-config/bootstrap.sh
 # It wires the versioned zed-dotfiles.sh into ~/.bashrc so that
-# `sync` / `setup` become available in every new shell.
+# `zed-sync` / `zed-setup` become available in every new shell.
 
 set -e
 _dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -23,5 +23,5 @@ fi
 
 # shellcheck disable=SC1090
 source "$_target"
-echo "[zed] loaded. Commands available now: sync / setup"
+echo "[zed] loaded. Commands available now: zed-sync / zed-setup"
 echo "[zed] (new shells will auto-load too)"
